@@ -152,7 +152,7 @@ find . -name *.map
 
 После установки IDA необходимо запустить её, открыть интересующий нас исполняемый файл (в нашем случае это `wget`)
 
-![image](https://user-images.githubusercontent.com/46653985/152351389-7cd54129-c087-4dc3-8bf6-be500f8193c3.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map1.png)
 пройти процедуру генерации map-файла
 
 ![image](https://user-images.githubusercontent.com/46653985/152351322-d92d16e0-5650-4c96-a61a-3abeb992b18e.png)

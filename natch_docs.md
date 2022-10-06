@@ -37,6 +37,20 @@
 [Version]
 version=1
 
+# Section for path to work directory
+[OutputData]
+workdir=/home/user/workdir
+
+# Section for loading task_struct offsets
+[Tasks]
+config=task_config.ini
+
+# Section for loading modules
+[Modules]
+config=module_config.cfg
+log=taint.log
+params_log=params.log
+
 [Ports]
 # 6 is for tcp
 ip_protocol=6
@@ -44,56 +58,102 @@ ip_protocol=6
 in=22;80;3500;5432
 out=22;80;3500;5432
 
-# threshold value for tainting. should be in decimal number system [0..255]
 [Taint]
+# Threshold value for tainting. Should be in decimal number system [0..255]
 threshold=50
 on=true
 
-# section for loading modules
-[Modules]
-config=module_config.cfg
-log=taint.log
-params_log=params.log
-
-# section for loading task_struct offsets
-[Tasks]
-config=task_config.ini
-
-# section for loading custom syscall config
-[Syscalls]
-config=custom_x86_64.cfg
-
-# section for enable generating graphs
+# Section for enable generating graphs
 [TaintedTask]
 task_graph=true
 module_graph=false
 
-# section for network log. only for record
+# Section for tainted network packets. !Only for replay mode!
+[NetTaintLog]
+log=tnetpackets.log
+
+# Section for network log in pcap. !Only for record mode!
 [NetLog]
 on=true
 log=netpackets.log
 
-# section for add tainted files
+# Section for add tainted files
 [TaintFile]
 list=file1.txt;file2.txt
 
-# output directory for all Natch data
-
-[OutputData]
-workdir=/home/user/workdir
-
-# section for getting coverage
+# Section for getting coverage
 [Coverage]
 file=coverage.cov64
 taint=true
 
-# section for additional plugins
+# Section for enabling additional plugins
 [Plugins]
 items=bcqti,broker,addr=:5555;some_plugin
 
-# section for tainted network packets. only for replay
-[NetTaintLog]
-log=tnetpackets.log
+# Section for loading custom syscall config
+[Syscalls]
+config=custom_x86_64.cfg
 ```
+
+**Секция Version**
+- Поле *version*: номер версии конфигурацинного файла *Natch*. Генерируется автоматически, редактирование не требуется.
+
+**Секция OutputData**
+- Поле *workdir*: путь к директории, куда будут записываться все файлы, генерируемые инструментом.
+Внутри *workdir* будут созданы два каталога *output* и *output_text*. В первый будут записаны файлы для анализа в графической подсистеме (бинарные логи, графы взаимодействия процессов и модулей, символьная информация), этот же каталог будет заархивирован. В *output_text* попадут файлы с текстовым представлением поверхности атаки (surface_functions.txt и surface_modules.txt).
+
+**Секция Tasks**
+- Поле *config*: указывается имя конфигурационного файла для распознавания процессов (подробнее в разделе [ССЫЛКА](#tasks_config_label)).
+
+**Секция Modules**
+- Поле *config*: указывается имя конфигурационного файла для распознавания модулей (подробнее в разделе [ССЫЛКА](#api_config_label)).
+- Полe *log*: содержит название файла, в который в процессе работы будет записываться подробный лог помеченных данных (подробнее в разделе [ССЫЛКА](#taint_log_label)).
+- Полe *params_log*: содержит название файла, в который в процессе работы будет записываться лог с помеченными параметрами функций (подробнее в разделе [ССЫЛКА](#taint_params_log_label`)).
+
+**Секция Ports**
+- Поле *ip_protocol* описывает тип протокола 4 уровня. Если не указано, пакеты по этому полю не фильтруются.
+- Поле *out* - фильтр по Source Port в заголовке TCP, порты перечисляются через точку с запятой.
+- Поле *in* - фильтр по Destination Port в заголовке TCP, порты перечисляются через точку с запятой.
+
+При необходимости отслеживать трафик по всем портам, в полях *in/out* секции *Ports* следует указать значение -1. Если хотя бы в одном поле будет -1, будет отслеживаться весь трафик.
+
+**Секция Taint**
+- Поле *threshold*: пороговое значение для отслеживания помеченных данных, задается десятеричным числом в диапазоне от 0 до 255. Чем больше число, тем пометка будет сильнее, то есть в поверхность атаки будут попадать минимально измененные данные.
+- Поле *on*: принимает логическое значение, при установке в true отслеживание помеченных данных будет включено при старте эмулятора. Если это не требуется, следует установить значение false.
+
+Если секция *Taint* не определена, по умолчанию отслеживание помеченных данных будет выключено и пороговое значение будет установлено в 0.
+
+**Секция TaintedTask**
+- Поле *task_graph*: принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф задач и потоков помеченных данных.
+- Поле *module_graph*: принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф модулей и потоков помеченных данных.
+
+**Секция NetTaintLog**
+- Поле *log*: содержит название файла, в который в процессе воспроизведения будут записываться помеченные сетевые пакеты.
+
+**Секция NetLog**
+- Поле *on*: принимает логическое значение, при установке в true осуществляется сохранение сетевых пакетов в файл.
+- Поле *log*: опциональное поле, содержит название файла для записи пакетов. Расширение указывать не нужно, оно автоматически будет *.pcap*. Если поле не задано, имя файла по умолчанию *net_packets_log.pcap*.
+
+Использование этой секции предусмотрено только в режиме записи журнала и собирается только входящий трафик.
+
+**Секция TaintFile**
+- Поле *list*: через точку с запятой могут быть перечислены имена файлов, которые требуется пометить. Указываются имена файлов гостевой машины в формате имя + расширение. Для надежности рекомендуется не использовать пути. Пометка произойдет автоматически при запуске эмулятора.
+
+Если включена секция *TaintFile* без указания списка файлов, плагин *taint_file* все равно будет загружен.
+
+**Секция Coverage**
+- Поле *file*: указывается имя файла, куда будет записана операция о покрытии кода.
+- Поле *taint*: определяет режим сбора покрытия кода (подробнее в разделе [ССЫЛКА](#coverage_label)).
+
+**Секция Plugins**
+- Поле *items*: через точку с запятой указываются плагины, не входящие в состав *Natch*, но которые должны быть загружены.
+
+**Секция Tasks**
+- Поле *config*: указывается имя конфигурационного файла для распознавания процессов (подробнее в разделе [ССЫЛКА](#tasks_config_label)).
+
+
+
+
+
 
 

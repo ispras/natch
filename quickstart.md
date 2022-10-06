@@ -155,10 +155,10 @@ find . -name *.map
 ![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map1.png)
 пройти процедуру генерации map-файла
 
-![image](https://user-images.githubusercontent.com/46653985/152351322-d92d16e0-5650-4c96-a61a-3abeb992b18e.png)
-обязательным пунктом является только *Segmentation information*, остальные по желанию (хотя, например, локальные имена дизассемблера вряд ли сделают вывод понятнее)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map2.png)
+обязательным пунктом является только *Segmentation information*, остальные по желанию (хотя, например, локальные имена дизассемблера вряд ли сделают вывод понятнее).
 
-<img src="https://user-images.githubusercontent.com/46653985/152351245-d3a3510f-adba-4919-adfb-be081a6800e8.png" width="200" height="200">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map3.png" width="200" height="200">
 
 после чего убедиться, что map-файл появился в файловой системе
 
@@ -220,7 +220,7 @@ cd /wget-1.21.2 && sudo ./wget ispras.ru
 ```
 В результате вы должны увидеть приблизительно следующую картину в графическом окне QEMU, свидетельствующую о том, что ОО корректно выполняется в среде функционирования и сетевая доступность для ВМ обеспечена:
 
-![image](https://user-images.githubusercontent.com/46653985/151779302-c2d59bd1-aed1-45ce-8f00-2702380a3157.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/check.png)
 
 
 ## 1.3 Обучающие примеры 
@@ -247,11 +247,11 @@ cd /wget-1.21.2 && sudo ./wget ispras.ru
 
 В случае установки в формате бинарного комплекта следует скачать его и распаковать -- команда для скачивания тестового комплекта с помощью *curl* выглядит так `curl -o materials.zip 'https://nextcloud.ispras.ru/index.php/s/testing_2.0/download'`. Состав комплекта бинарной поставки в облачном хранилище выглядит примерно так: 
 
-<img src="https://user-images.githubusercontent.com/46653985/190381059-d3e5f651-eabb-48f1-9087-25dd5720ee24.png" width="400" height="175">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/bins.png" width="400" height="175">
 
 После скачивания дистрибутива и обучающих материалов их следует распаковать -- традиционно (но не обязательно, реальное размещение файлов тестовых материалов непринципиально и зависит от ваших предпочтений) после распаковки содержимое каталога будет выглядеть примерно так:
 
-<img src="https://user-images.githubusercontent.com/46653985/190384425-8ae1d2d0-d07c-4d7b-ad9d-5174f71de50d.png" width="650" height="140">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/unzip_bins.png" width="650" height="140">
 
 В каталоге `libs` размещаются используемые *Natch* библиотеки (подключаются с использованием стандартного механизма [preload](https://www.baeldung.com/linux/ld_preload-trick-what-is#:~:text=The%20LD_PRELOAD%20trick%20is%20a,a%20collection%20of%20compiled%20functions.) при запуске qemu-system и иных qemu-процессов). В каталоге `qemu_plugins...` помещаются собственно исполняемые файлы *Natch*. Каталог `docs`, содержащий веб-страницу руководства, располагается внутри каталога `qemu_plugins...`.
 
@@ -380,7 +380,7 @@ file=coverage
 taint=true
 ```
 
-#### 1.3.1.4.Запись трассы
+#### 1.3.1.4. Запись трассы
 
 Выполним запись трассы с интересующим нас сценарием выполнения:
 ```bash
@@ -392,7 +392,7 @@ user@natch1:~/natch_quickstart/test1$ LD_LIBRARY_PATH=../libs/ ./run_record.sh
 ```
 Введём логин и пароль учетной записи пользователя - `user/user` и запустим redis-сервер:
 
-![image](https://user-images.githubusercontent.com/46653985/190400669-38291176-5bdb-4c7e-8e33-b7332184cd97.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/redis_rec.png)
 Тестово соединимся с ним из хостовой ОС чтобы убедиться, что система в комплексе работает как надо:
 ```text
 user@natch1:~/natch_quickstart$ redis-cli -h localhost -p 15555
@@ -512,21 +512,21 @@ Detected module /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins
 
 Анализ покрытия по базовым блокам выполняется с использованием *IDA Pro* (протестировано на версиях 7.0, 7.2), общий алгоритм действий описан в п. 5.7 документации ССЫЛКА. В ходе его выполнения может потребоваться ручное сопоставление модуля, для которого собрано покрытие, с модулем, загруженным в *IDA Pro*. Наиболее явная причина -- несовпадение имён исполняемого файла и файла, распознанного *Natch*. Пример такового несовпадения приведён на рисунке ниже:
 
-![image](https://user-images.githubusercontent.com/46653985/169868133-325ba022-0cef-4d12-be6a-0390d3f22178.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida1.png)
 
 После выполнения маппинга в представленном выше меню в ручном режиме мы увидим приблизительно следующие сведения о покрытии:
 
-![image](https://user-images.githubusercontent.com/46653985/169868949-e46d60e6-a2b5-47a5-8801-e6857953a7b6.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida2.png)
 
 Также при выборе функции можно увидеть покрытие непосредственно по ассемблерным инструкциям (голубой цвет):
 
-![image](https://user-images.githubusercontent.com/46653985/169868764-24e49753-294a-4722-a71f-633e1f233063.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/coverage.png)
 
 Демонстрация покрытия по декомпилированному коду в настоящий момент не поддерживается.
 
 Также можно открыть и изучить записанный файл сетевого трафика `wireshark packets.pcap`:
 
-![image](https://user-images.githubusercontent.com/46653985/190404652-dd6c7c9b-5a48-48dc-87db-e78bef7f2bf1.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/wireshark.png)
 
 #### 1.3.1.7. Анализ трассы с использованием Snatch
 
@@ -540,14 +540,14 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_run.sh
 ```
 Создадим проект на основе результатов анализа трассы (необходимо указывать zip-архив, формируемый *Natch* в каталоге проекта по результатам выполнения `run_replay.sh`):
 
-<img src="https://user-images.githubusercontent.com/46653985/190407222-c4bab44e-7e79-441f-94c9-0a436b730b03.png" width="300" height="200">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_create.png" width="300" height="200">
 
 Через некоторое время процесс загрузки проекта завершится и станут доступны различные виды (**их число и возможности постоянно нарастают**) аналитик, такие как просмотр стека вызовов обработки помеченных данных:
 
-<img src="https://user-images.githubusercontent.com/46653985/190407597-cba04ddf-f8f7-4b40-afc1-5fa0e594dc19.png" width="500" height="450">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_call.png" width="500" height="450">
 
 а также основное окно динамической визуализации распространения помеченных данных:
 
-<img src="https://user-images.githubusercontent.com/46653985/190407752-6adc7439-5b34-4795-a95f-006ceb6495e5.png" width="500" height="450">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_graph.png" width="500" height="450">
 
 Полное рукодство пользователя *SNatch* доступно в [руководстве](snatch_docs.md) ССЫЛКА. Основное внимание нужно обратить на то, что ярким цветом на каждом шаге *Timeline* выделяются сущности, взаимодействующие на данном конкретном шаге *Timeline*.

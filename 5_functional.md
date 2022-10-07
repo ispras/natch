@@ -59,3 +59,31 @@ Task wget2
   
 Число после описания каждой функции обозначает количество ее обращений к помеченным данным.
 Это позволяет выбирать функции, наиболее интенсивно задействованные в обработке данных тестового сценария.
+
+## 5.2. Подробная трасса помеченных данных
+
+Для более детального анализа может потребоваться больше информации, которую можно получить с помощью опции конфигурационного файла *Modules/log*.
+
+В генерируемом логе на каждое обращение к помеченной памяти формируется расширенный набор данных.  
+
+Фрагмент лога для одного обращения:  
+```text
+Load:
+Process name: wget2 cr3:  0x1b5a5c000
+Tainted access at 00007f921af88896
+Access address 0x7f921a504b08 size 8 taint 0xfcfcfcfc
+icount: 21216379863
+Module name: /lib/x86_64-linux-gnu/libpthread.so.0 base:  0x00007f921af77000
+Call stack:
+    0: 00007f921af88896 in func 00007f921b3b1c40 wget2/build/lib/libwget.so.1::.recvfrom
+    1: 00007f921b3c5307 wget2/libwget/net.c:861 in func 00007f921b3b0860 wget2/build/lib/libwget.so.1::.wget_tcp_read
+    2: 00007f921b3bdbda wget2/libwget/http.c:990 in func 000055b58a29f350 files/wget2::.wget_http_get_response_cb
+    3: 000055b58a2ac0ec wget2/src/wget.c:4017 in func 000055b58a2ac0e0 files/wget2::http_receive_response wget2/src/wget.c:4016
+    4: 000055b58a2ac654 wget2/src/wget.c:2266 in func 000055b58a2ac2b0 files/wget2::downloader_thread wget2/src/wget.c:2250
+    5: 00007f921af7efa1 in func 00007f921af7eeb0 /lib/x86_64-linux-gnu/libpthread.so.0
+    6: 00007f921aeaf4cd
+```
+Не рекомендуется включать эту опцию по умолчанию, поскольку файл получается ощутимого размера
+(сотни байт на каждое обращение к помеченным данным).
+
+

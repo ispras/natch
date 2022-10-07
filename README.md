@@ -8,14 +8,14 @@ Natch (Network Application Tainting Can Help) - это инструмент дл
 Natch представляет собой набор плагинов для эмулятора Qemu.
 
 
-1. [Начало работы с Natch](quickstart.md)
+1. [Начало работы с Natch](1_quickstart.md)
 
-1. [Основы работы с Natch](natch_begin.md)
+1. [Основы работы с Natch](2_natch_begin.md)
 
-1. [Конфигурационные файлы Natch](configs.md)
+1. [Конфигурационные файлы Natch](3_configs.md)
 
-1. [Запуск Natch](launch.md)
+1. [Запуск Natch](4_launch.md)
 
-1. [Функциональные возможности Natch](functional.md)
+1. [Функциональные возможности Natch](5_functional.md)
 
-1. [Графический интерфейс для анализа SNatch](snatch_docs.md)
+1. [Графический интерфейс для анализа SNatch](6_snatch_docs.md)

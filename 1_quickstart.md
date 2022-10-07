@@ -225,7 +225,7 @@ cd /wget-1.21.2 && sudo ./wget ispras.ru
 ![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/check.png)
 
 
-## 1.3 Обучающие примеры 
+## 1.3. Обучающие примеры 
 
 ### 1.3.1. Анализ образа системы, содержащего тестовые комплекты пресобранных исполняемых файлов
 

@@ -86,4 +86,39 @@ Call stack:
 Не рекомендуется включать эту опцию по умолчанию, поскольку файл получается ощутимого размера
 (сотни байт на каждое обращение к помеченным данным).
 
+## 5.3. Получение областей помеченной памяти для функций
+
+Инструмент позволяет получить лог вызовов функций с диапазонами адресов записанных и прочитанных помеченных данных. Для получения лога необходимо использовать опцию конфигурационного файла *Modules/params_log*. Эта опция задает имя файла, куда будет записан лог с параметрами функций.
+
+Выходной файл содержит диапазоны адресов и типы операций, выполненных с помеченными данными (r=чтение, w=запись). Также выводится стек вызовов на момент выхода из функции.
+
+Фрагмент выходного файла:
+
+```text
+0xffffffff82dfc6f0 vmlinux:eth_type_trans
+    0xffff88800e723840 8 bytes r
+    0xffff88800e72384c 2 bytes r
+    enter_icount: 58799550862
+    exit_icount: 58799551027
+    0: ffffffff82dfc963 in func ffffffff82dfc6f0 vmlinux::eth_type_trans
+    1: ffffffff827cd3b6 in func ffffffff827ccec0 vmlinux::e1000_clean_rx_irq
+    2: ffffffff827d544c in func ffffffff827d4c50 vmlinux::e1000_clean
+    3: ffffffff82d1ea25 in func ffffffff82d1e6c0 vmlinux::net_rx_action
+    4: ffffffff83a001b0 in func ffffffff83a00000 vmlinux::__do_softirq
+    5: ffffffff83800f8d
+0xffffffff81232e20 vmlinux:lock_acquire
+    0xffff88806d009a90 8 bytes rw
+    enter_icount: 58799552881
+    exit_icount: 58799554333
+    0: ffffffff81232ffd in func ffffffff81232e20 vmlinux::lock_acquire
+    1: ffffffff8302c830 in func ffffffff8302c670 vmlinux::inet_gro_receive
+    2: ffffffff82d200cb in func ffffffff82d1f440 vmlinux::dev_gro_receive
+    3: ffffffff82d22885 in func ffffffff82d22680 vmlinux::napi_gro_receive
+    4: ffffffff827cd485 in func ffffffff827ccec0 vmlinux::e1000_clean_rx_irq
+    5: ffffffff827d544c in func ffffffff827d4c50 vmlinux::e1000_clean
+    6: ffffffff82d1ea25 in func ffffffff82d1e6c0 vmlinux::net_rx_action
+    7: ffffffff83a001b0 in func ffffffff83a00000 vmlinux::__do_softirq
+    8: ffffffff83800f8d
+```
+
 

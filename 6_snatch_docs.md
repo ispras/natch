@@ -17,7 +17,7 @@
 Все скрипты для *SNatch* можно запускать из любого расположения. Если по какой-то причине при запуске
 *snatch_run.sh* страница в браузере не загрузилась, но при этом службы запустились, следует обновить страницу.
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_interface.png" width="954" height="561">
+![Окно SNatch](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_interface.png)
   
 На данном рисунке показано окно *SNatch*, где цифрами обозначены основные элементы интерфейса:
 
@@ -37,14 +37,14 @@
 
 При создании нового проекта происходит открытие модального окна:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_newproj.png">  
+![Создание проекта](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_newproj.png)
 
 В данном окне пользователь может ввести имя нового проекта в соответствующее поле *Project name*,
 а также выбрать архив поверхности атаки в *Choose surface file* (данный архив получается в результате работы *Natch*). Если оба этих поля заполнены, то становится активна кнопка *Create*, по нажатию на которую произойдет закрытие данного модального окна, создание нового проекта, автоматическое переключение на него и запуск процесса обработки архива. При нажатии на кнопку *Close* происходит закрытие модального окна.
 
 Во время обработки архива поверхности атаки в верхней части экрана появляется шкала прогресса следующего вида:
  
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_progressbar.png">  
+![Шкала прогресса](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_progressbar.png)
 
 В процессе обработки текст, сопровождающий шкалу прогресса, будет изменяться таким образом, чтобы оповещать об актуальном статусе выполняемой задачи. Нажатие на кнопку *Abort* аварийно прерывает процесс обработки, и в данном случае корректное функционирование полученных данных не может быть гарантировано.
 
@@ -53,15 +53,15 @@
 
 В процессе первоначальной обработки архива поверхности атаки граф вызовов не создаётся. Чтобы граф вызовов появился в проекте, необходимо нажать на кнопку *Generate* (3). По завершении процесса генерации в боковом меню проекта под пунктом *Call-graphs* появится строка *call-graph* с цифровым идентификатором. Для открытия графа вызовов достаточно нажатие на него в меню. После открытия появится новая вкладка с соответствующим названием, а в окне отображения содержимого откроется граф, представленный в виде древовидной структуры:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_cgraph_overview.png" width="857" height="394">
+![Граф вызовов](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_cgraph_overview.png)
 
 В корне отображаемых деревьев располагается идентификатор контекста, далее же идут адреса
 вызываемых функций. Интерактивное взаимодействие с графом достигается с помощью нажатия на кнопки "+"/"-", которые раскрывают/сворачивают данную ветку. Также по нажатию на символ из трех горизонтальных отрезков рядом с корнем дерева происходит полное раскрытие или же сворачивание выбранного дерева.
 
 В меню графа процессов есть три пункта: *task graph* (процессы с идентичными именами сливаются в один
 примитив в пределах одного контейнера), *task graph all* (процессы не сливаются), *task graph content* (json представление графа). После выбора одного из этих пунктов открывается новая вкладка с соответствующим названием, а в окне отображения содержимого откроется граф, представленный следующим образом:
-  
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_ui.png"> 
+
+![Граф процессов](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_ui.png)
 
 В данном окне присутствуют следующие элементы:
 
@@ -78,27 +78,27 @@
 
 При переключении режимов (3) отображаемые на (5) элементы будут изменяться соответствующим образом:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_active.png"> 
+![Режим Active](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_active.png)
 
 *Active* – отображаются элементы (узлы и стрелки), которые задействованы на текущем шаге.
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_past.png">
+![Режим Past](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_past.png)
 
 *Past* – отображаются элементы, которые задействованы на текущем шаге, а также те, которые произошли в прошлом (узлы и стрелки серого цвета).
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_signif.png">
+![Режим Significant](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_signif.png)
 
 *Significant* – отображаются элементы, которые задействованы на текущем шаге, а также те узлы, которые были задействованы в прошлом и при этом еще будут задействованы в будущем, и прошедшие стрелки между ними (узлы и стрелки серого цвета).
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_all.png">  
+![Режим All](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_all.png)
 
 *All* – отображаются элементы, которые задействованы на текущем шаге, а также те узлы (но не стрелки), которые вообще существуют на схеме (узлы серого цвета).
 
 В случае наличия информации о контейнерах, таковые будут отображены на графе в виде зеленых блоков, содержащих соответствующие им узлы (*cont_1* на рисунке):
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_container.png">  
+![Отображение контейнеров](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_container.png)
 
 Также по двойному нажатию на стрелку в графе процессов в новой вкладке открывается соответствующий этому взаимодействию стек вызовов:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_cstack.png">
+![Стек вызовов](https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_cstack.png)
 

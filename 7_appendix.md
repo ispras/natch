@@ -103,7 +103,7 @@
 
 При использовании IDA для генерации map файлов нужно выставлять галочку *Segmentation information*.
 
-## Поле textstart
+**Поле textstart**
 
 В разделах типа *Image* вместе с *map* может быть задано поле *textstart*.
 Как правило, нет необходимости определять *textstart* вручную, потому что это может
@@ -174,6 +174,94 @@
 поэтому параметр *textstart* можно не указывать.
 
 
+# Приложение 4. Формат конфигурационного файла для секции Tasks (task_struct_offsets.ini)
 
+Конфигурационный файл содержит в себе смещения полей структур ядра Linux, необходимых для работы инструмента.
 
+Пример конфигурационного файла:
+
+```ini
+    [Version]
+    Version=3
+
+    [Task struct offsets]
+    pid=1224
+    name=1648
+    parent=1240
+    state=16
+    task_struct=89152
+
+    [Files struct offsets]
+    ts_files=1720
+    fs_file=48
+    fs_fdt=32
+    fdt_file=8
+    f_dentry=24
+    d_parent=24
+    d_name=40
+    d_iname=56
+
+    [Memory mapping struct offsets]
+    ts_mm=1048
+    ts_mm_active=1056
+    mm_mmap=0
+    mm_map_count=104
+    mm_exe_file=928
+    vm_start=0
+    vm_end=8
+    vm_next=16
+    vm_prev=24
+    vm_mm=64
+    vm_file=160
+    vma_struct_size=208
+```
+
+**Секция Version**
+
+- *Version*. Версия формата конфигурационного файла.
+
+**Секция Task struct offsets**
+
+- *task_struct*. Смещение переменной *current_task* в сегменте *GS*. Для старых ядер должно быть 0, *current_task* извлекается из стека.
+- *pid*. Смещение поля *pid* внутри *task_struct*.
+- *name*. Смещение поля *comm* внутри *task_struct*.
+- *parent*. Смещение поля *real_parent* внутри *task_struct*.
+- *state*. Смещение поля *__state* внутри *task_struct*.
+
+**Секция Files struct offsets**
+
+- *ts_files*. Смещение поля *files* внутри *task_struct*.
+- *fs_file*. Смещение поля *fd* или *fdtab.fd* внутри *files_struct*.
+- *fs_fdt*. Смещение поля *fdt* внутри *files_struct* или 0 для старых ядер.
+- *fdt_file*. Смещение поля *fd* внутри *fdtable* или 0 для старых ядер.
+- *f_dentry*. Смещение поля *f_path.dentry* внутри *file*.
+- *d_parent*. Смещение *d_parent* внутри *dentry*.
+- *d_name*. Смещение поля *name* или *d_name.name* внутри *dentry*.
+- *d_iname*. Смещение *d_iname* внутри *dentry*.
+
+**Секция Memory mapping struct offsets**
+
+- *ts_mm*. Смещение поля *mm* внутри *task_struct*.
+- *ts_mm_active*. Смещение поля *active_mm* внутри *task_struct*.
+- *mm_mmap*. Смещение поля *mmap* внутри *mm_struct*.
+- *mm_map_count*. Смещение поля *map_count* внутри *mm_struct*.
+- *mm_exe_file*. Смещение поля *exe_file* внутри *mm_struct*.
+- *vm_start*. Смещение поля *vm_start* внутри *vm_area_struct*.
+- *vm_end*. Смещение поля *vm_end* внутри *vm_area_struct*.
+- *vm_next*. Смещение поля *vm_next* внутри *vm_area_struct*.
+- *vm_prev*. Смещение поля *vm_prev* внутри *vm_area_struct*.
+- *vm_mm*. Смещение поля *vm_mm* внутри *vm_area_struct*.
+- *vm_flags*. Смещение поля *vm_flags* внутри *vm_area_struct*.
+- *vm_file*. Смещение поля *vm_file* внутри *vm_area_struct*.
+- *vma_struct_size*. Размер структуры *vm_area_struct*.
+
+## Принцип работы автоматической настройки
+
+Смещения полей в структурах данных ядра определяются в ходе отдельного настроечного запуска *Natch*.
+В первую очередь ищется смещение переменной *current_task* в сегменте *GS*.
+Поиск опирается на эвристики, связанные с перехватом системного вызова *getpid*. Затем определяются смещения полей
+*pid*, *name*, *parent* и всех переменных из раздела *files struct offsets*. Для их вычисления обрабатываются системные вызовы
+*getpid* и *open*. Для поиска смещения поля *state* перехватывается
+системный вызов *exit*. Смещения переменных из раздела *memory mapping struct offsets*
+вычисляются на основе системного вызова *mmap*.
 

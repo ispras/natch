@@ -15,13 +15,13 @@
     sudo dpkg -i aksusbd_8.31-1_amd64.deb
 ```
 
-2. Открыть браузер и ввести строку ```localhost:1947```
+2. Открыть браузер и ввести строку ``localhost:1947``
 
-3. Откроется главная страница ```Sentinel Admin Control Center```, на которой нужно перейти в раздел ```Configuration```, в нем найти раздел ```Access to Remote License Managers```.
+3. Откроется главная страница ``Sentinel Admin Control Center``, на которой нужно перейти в раздел ``Configuration``, в нем найти раздел ``Access to Remote License Managers``.
 
-4. Убедиться, что в полях ```Allow Access to Remote Licenses``` и ``Broadcast Search to Remote Licenses``` стоят галочки.
+4. Убедиться, что в полях ``Allow Access to Remote Licenses`` и ``Broadcast Search to Remote Licenses`` стоят галочки.
 
-5. В поле ```Remote License Search Parameters``` ввести ```license.intra.ispras.ru``` и нажать кнопку ```Submit```.
+5. В поле ``Remote License Search Parameters`` ввести ``license.intra.ispras.ru`` и нажать кнопку ``Submit``.
 
 6. Создать VPN соединение.
 
@@ -49,5 +49,28 @@
 <img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/profit.png" width=60% height=60% alt="Подключение VPN">
 
 После всех проделанных действий инструмент готов к использованию на вашем компьютере.
+
+
+# Приложение 2. Командная строка эмулятора Qemu
+
+Пример командной строки для запуска Qemu выглядит следующим образом:
+
+``./qemu-system-x86_64 -hda debian.qcow2 -m 6G -monitor stdio -netdev user,id=net0 -device e1000,netdev=net0``
+
+- ``qemu-system-x86_64``: исполняемый файл эмулятора
+- ``-hda debian.qcow2``: подключение образа гостевой операционной системы
+- ``-m 6G``: выделение оперативной памяти гостевой системе
+- ``-monitor stdio``: подключение управляющей консоли эмулятора к терминалу
+- ``-netdev user,id=net0 -device e1000,netdev=net0``: настройка сети и подключение сетевой карты модели е1000
+
+Командная строка выше просто запускает эмулятор с заданным образом диска. Для работы Natch потребуются дополнительные опции командной строки, а именно: ::
+
+```
+-os-version Linux
+-plugin <plugin_name>
+```
+
+Опция ``os-version`` настраивает *Natch* для работы с операционной системой Linux, а ``plugin`` непосредственно загружает плагин.
+
 
 

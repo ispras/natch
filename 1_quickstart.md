@@ -47,11 +47,11 @@ sudo kvm-ok
 
 Перед установкой KVM в гостевой ОС необходимо выполнить следующие настройки среды виртуализации VirtualBox в хостовой ОС Natch (для нормально функционирования системы, параметры должны быть в два раза больше чем на скринах, видеопамяти, по возможности вашей системы, кратно больше):
 
-![image](https://user-images.githubusercontent.com/46653985/194891613-2b99d4b2-00d0-441e-b4db-6644c9d2bd89.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/vbox_system.png)
 
-![image](https://user-images.githubusercontent.com/46653985/194891632-fec7fb7c-5752-4a3a-ab5d-685eb9d28d42.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/vbox_system2.png)
 
-![image](https://user-images.githubusercontent.com/46653985/194891646-22f36d9a-b984-4f33-89cb-a68d3fda4a4a.png)
+![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/vbox_display.png)
 
 Перед установкой KVM необходимо определить, поддерживает ли процессор эту функцию: `egrep -c '(vmx|svm)' /proc/cpuinfo`
 

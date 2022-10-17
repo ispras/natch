@@ -107,7 +107,7 @@ Copyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers
 ```
 Для установки гостевой ОС создадим образ жесткого диска в формате `qcow2`, с именем `lubuntu.qcow2` и размером `20 ГБайт`. Установка параметра `preallocation=metadata` позволит сразу выделить весь объем виртуального диска, таким образом qemu не придется динамически наращивать его и выполнение сценария будет более быстрым.
 ```bash
-qemu-img create -f qcow2 lubuntu.qcow2 20G preallocation=metadata
+qemu-img create -f qcow2 -o preallocation=metadata lubuntu.qcow2 20G 
 Formatting 'lubuntu.qcow2', fmt=qcow2 size=21474836480 cluster_size=65536 lazy_refcounts=off refcount_bits=16
 ll
 total 8100768

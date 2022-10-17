@@ -105,9 +105,9 @@ qemu-system-x86_64 --version
 QEMU emulator version 4.2.1 (Debian 1:4.2-3ubuntu6.19)
 Copyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers
 ```
-Для установки гостевой ОС создадим образ жесткого диска в формате `qcow2`, с именем `lubuntu.qcow2` и размером `20 ГБайт`.
+Для установки гостевой ОС создадим образ жесткого диска в формате `qcow2`, с именем `lubuntu.qcow2` и размером `20 ГБайт`. Установка параметра `preallocation=metadata` позволит сразу выделить весь объем виртуального диска, таким образом qemu не придется динамически наращивать его и выполнение сценария будет более быстрым.
 ```bash
-qemu-img create -f qcow2 lubuntu.qcow2 20G
+qemu-img create -f qcow2 lubuntu.qcow2 20G preallocation=metadata
 Formatting 'lubuntu.qcow2', fmt=qcow2 size=21474836480 cluster_size=65536 lazy_refcounts=off refcount_bits=16
 ll
 total 8100768
@@ -116,11 +116,13 @@ drwxr-xr-x 25 user user       4096 янв 30 20:40 ../
 -rw-rw-r--  1 user user  751828992 янв 30 20:34 lubuntu-18.04-alternate-amd64.iso
 -rw-r--r--  1 user user     196928 янв 30 20:08 lubuntu.qcow2
 ```
-Создадим скрипт запуска нашей ВМ `run.sh`. Он достаточно объемный, поэтому желательно именно сохранять его в виде отдельного файла, допускающего удобное внесение изменений. Для тех, кто сталкивается с синтаксисом QEMU впервые, настоятельно рекомендуется ознакомиться с основными командами, подробно расписанными в официальной [документации QEMU](https://www.qemu.org/docs/master/system/invocation.html).
+Создадим скрипт запуска нашей ВМ `run.sh`. Он достаточно объемный, поэтому желательно именно сохранять его в виде отдельного файла, допускающего удобное внесение изменений. Для тех, кто сталкивается с синтаксисом QEMU впервые, настоятельно рекомендуется ознакомиться с основными командами, подробно расписанными в официальной [документации QEMU](https://www.qemu.org/docs/master/system/invocation.html). Важным для ускорения работы виртуализированной среды qemu, за счет проброса аппаратной виртуализации хоста, является установка ключей `-enable-kvm` и `-cpu host,nx`.
 ```bash
 qemu-system-x86_64 \
 -hda lubuntu.qcow2  \
 -m 4G \
+-enable-kvm \
+-cpu host,nx \
 -monitor stdio \
 -netdev user,id=net0 \
 -device e1000,netdev=net0 \

@@ -596,5 +596,5 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_run.sh
 
 <img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_graph.png" width="500" height="450">
 
-Полное рукодство пользователя *SNatch* доступно в [руководстве](6_snatch_docs.md). Основное внимание нужно обратить на то, что ярким цветом на каждом шаге *Timeline* выделяются сущности, взаимодействующие на данном конкретном шаге *Timeline*.
+Полное рукодство пользователя *SNatch* доступно в [руководстве](6_snatch_docs.md#snatch). Основное внимание нужно обратить на то, что ярким цветом на каждом шаге *Timeline* выделяются сущности, взаимодействующие на данном конкретном шаге *Timeline*.
 

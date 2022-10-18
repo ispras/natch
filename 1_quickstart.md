@@ -391,7 +391,7 @@ Tuning completed successfully! Now you can restart emulator and enjoy! :)
 
 Отлично, автоматизированная настройка и создание базовых скриптов завершены успешно, всё готово к записи трассы, о чём *Natch* сообщил нам дополнительно:
 ```text
-File '/home/user/natch_quickstart/test1/natch_config_linux.cfg' created. You can edit it before using Natch.
+File '/home/user/natch_quickstart/test1/natch_config.cfg' created. You can edit it before using Natch.
 
 After checking config file you can launch:
 	just Natch with help 'run.sh'
@@ -399,11 +399,11 @@ After checking config file you can launch:
 	Natch in replay mode with help 'run_replay.sh'
 	Qemu without Natch with help 'run_qemu.sh'
 ```
-Обратите внимание на файл настроек `natch_config_linux.cfg` -- именно его мы будем редактировать при необходимости выполнения ручной настройки, а также на файл `natch_log.log` - в нём логируются основные результаты работы подпрограмм, входящих в комплект поставки *Natch*.
+Обратите внимание на файл настроек `natch_config.cfg` -- именно его мы будем редактировать при необходимости выполнения ручной настройки, а также на файл `natch_log.log` - в нём логируются основные результаты работы подпрограмм, входящих в комплект поставки *Natch*.
 
 ##### 1.3.1.3.2. Дополнительная ручная настройка <a name="additional_settings"></a>
 
-Отредактируем сгенерированный основной конфигурационный файл  *Natch* `natch_config_linux.cfg` в соответствии с рекомендациями. _Не забываем, что необходимо раскомментировать также названия секций в квадратных скобках, а не только сами параметры._. Раскомментируем следующие секции (подробнее об их предназначении см. [документацию](3_configs.md#main_config)):
+Отредактируем сгенерированный основной конфигурационный файл  *Natch* `natch_config.cfg` в соответствии с рекомендациями. _Не забываем, что необходимо раскомментировать также названия секций в квадратных скобках, а не только сами параметры._. Раскомментируем следующие секции (подробнее об их предназначении см. [документацию](3_configs.md#main_config)):
 
 Логирование сетевых пакетов, поступающих из источников, указанных в секции `[Ports]`, в pcap-файл:
 ```ini

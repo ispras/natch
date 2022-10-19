@@ -194,13 +194,15 @@ find . -name *.map
 
 После установки IDA необходимо запустить её, открыть интересующий нас исполняемый файл (в нашем случае это `wget`)
 
-![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map1.png)
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map1.png" width=706 height=431><figcaption>_Загрузка файла в IDA Pro_</figcaption>
+
 пройти процедуру генерации map-файла
 
-![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map2.png)
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map2.png"><figcaption>_Генерация map-файла_</figcaption>
+
 обязательным пунктом является только *Segmentation information*, остальные по желанию (хотя, например, локальные имена дизассемблера вряд ли сделают вывод понятнее).
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map3.png" width="200" height="200">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map3.png" width=200 height=207><figcaption>_Информация для map-файла_</figcaption>
 
 после чего убедиться, что map-файл появился в файловой системе
 

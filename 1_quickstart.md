@@ -194,7 +194,7 @@ find . -name *.map
 
 После установки IDA необходимо запустить её, открыть интересующий нас исполняемый файл (в нашем случае это `wget`)
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map1.png" width=706 height=431><figcaption>_Загрузка файла в IDA Pro_</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map1.png"><figcaption>_Загрузка бинарного файла в IDA Pro_</figcaption>
 
 пройти процедуру генерации map-файла
 
@@ -202,7 +202,7 @@ find . -name *.map
 
 обязательным пунктом является только *Segmentation information*, остальные по желанию (хотя, например, локальные имена дизассемблера вряд ли сделают вывод понятнее).
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map3.png" width=200 height=207><figcaption>_Информация для map-файла_</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map3.png"><figcaption>_Выбор опций map-файла_</figcaption>
 
 после чего убедиться, что map-файл появился в файловой системе
 
@@ -292,11 +292,11 @@ cd /wget-1.21.2 && sudo ./wget ispras.ru
 
 В случае установки в формате бинарного комплекта следует скачать его и распаковать -- команда для скачивания тестового комплекта с помощью *curl* выглядит так `curl -o materials.zip 'https://nextcloud.ispras.ru/index.php/s/testing_2.0/download'`. Состав комплекта бинарной поставки в облачном хранилище выглядит примерно так: 
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/bins.png" width="400" height="175">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/bins.png" width="400" height="175"><figcaption>_Комплект поставки_</figcaption>
 
 После скачивания дистрибутива и обучающих материалов их следует распаковать -- традиционно (но не обязательно, реальное размещение файлов тестовых материалов непринципиально и зависит от ваших предпочтений) после распаковки содержимое каталога будет выглядеть примерно так:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/unzip_bins.png" width="650" height="140">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/unzip_bins.png" width="650" height="140"><figcaption>_Комплект поставки после распаковки_</figcaption>
 
 В каталоге `libs` размещаются используемые *Natch* библиотеки (подключаются с использованием стандартного механизма [preload](https://www.baeldung.com/linux/ld_preload-trick-what-is#:~:text=The%20LD_PRELOAD%20trick%20is%20a,a%20collection%20of%20compiled%20functions.) при запуске qemu-system и иных qemu-процессов). В каталоге `qemu_plugins...` помещаются собственно исполняемые файлы *Natch*. Каталог `docs`, содержащий веб-страницу руководства, располагается внутри каталога `qemu_plugins...`.
 
@@ -437,7 +437,7 @@ user@natch1:~/natch_quickstart/test1$ LD_LIBRARY_PATH=../libs/ ./run_record.sh
 ```
 Введём логин и пароль учетной записи пользователя - `user/user` и запустим redis-сервер:
 
-![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/redis_rec.png)
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/redis_rec.png><figcaption>_Запуск redis-сервера_</figcaption>
 Тестово соединимся с ним из хостовой ОС чтобы убедиться, что система в комплексе работает как надо:
 ```text
 user@natch1:~/natch_quickstart$ redis-cli -h localhost -p 15555
@@ -560,21 +560,21 @@ Detected module /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins
 
 Анализ покрытия по базовым блокам выполняется с использованием *IDA Pro* (протестировано на версиях 7.0, 7.2), общий алгоритм действий описан в [документации](5_functional.md#functional_coverage). В ходе его выполнения может потребоваться ручное сопоставление модуля, для которого собрано покрытие, с модулем, загруженным в *IDA Pro*. Наиболее явная причина -- несовпадение имён исполняемого файла и файла, распознанного *Natch*. Пример такового несовпадения приведён на рисунке ниже:
 
-![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida1.png)
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida1.png><figcaption>_Пример несовпадения имен модулей_</figcaption>
 
 После выполнения маппинга в представленном выше меню в ручном режиме мы увидим приблизительно следующие сведения о покрытии:
 
-![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida2.png)
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida2.png><figcaption>_Загруженный проект_</figcaption>
 
 Также при выборе функции можно увидеть покрытие непосредственно по ассемблерным инструкциям (голубой цвет):
 
-![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/coverage.png)
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/coverage.png><figcaption>_Пример покрытия по ассемблерным инструкциям_</figcaption>
 
 Демонстрация покрытия по декомпилированному коду в настоящий момент не поддерживается.
 
 Также можно открыть и изучить записанный файл сетевого трафика `wireshark packets.pcap`:
 
-![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/wireshark.png)
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/wireshark.png><figcaption>_Исследование трафика в Wireshark_</figcaption>
 
 #### 1.3.1.7. Анализ трассы с использованием Snatch
 

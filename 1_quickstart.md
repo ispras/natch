@@ -292,11 +292,11 @@ cd /wget-1.21.2 && sudo ./wget ispras.ru
 
 В случае установки в формате бинарного комплекта следует скачать его и распаковать -- команда для скачивания тестового комплекта с помощью *curl* выглядит так `curl -o materials.zip 'https://nextcloud.ispras.ru/index.php/s/testing_2.0/download'`. Состав комплекта бинарной поставки в облачном хранилище выглядит примерно так: 
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/bins.png" width="400" height="175"><figcaption>_Комплект поставки_</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/bins.png"><figcaption>_Комплект поставки_</figcaption>
 
 После скачивания дистрибутива и обучающих материалов их следует распаковать -- традиционно (но не обязательно, реальное размещение файлов тестовых материалов непринципиально и зависит от ваших предпочтений) после распаковки содержимое каталога будет выглядеть примерно так:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/unzip_bins.png" width="650" height="140"><figcaption>_Комплект поставки после распаковки_</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/unzip_bins.png"><figcaption>_Комплект поставки после распаковки_</figcaption>
 
 В каталоге `libs` размещаются используемые *Natch* библиотеки (подключаются с использованием стандартного механизма [preload](https://www.baeldung.com/linux/ld_preload-trick-what-is#:~:text=The%20LD_PRELOAD%20trick%20is%20a,a%20collection%20of%20compiled%20functions.) при запуске qemu-system и иных qemu-процессов). В каталоге `qemu_plugins...` помещаются собственно исполняемые файлы *Natch*. Каталог `docs`, содержащий веб-страницу руководства, располагается внутри каталога `qemu_plugins...`.
 

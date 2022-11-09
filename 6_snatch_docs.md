@@ -81,21 +81,23 @@
 
 При переключении режимов (3) отображаемые на (5) элементы будут изменяться соответствующим образом:
 
-<img src=https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_active.png><figcaption>_Режим Active_</figcaption>
-
 *Active* – отображаются элементы (узлы и стрелки), которые задействованы на текущем шаге.
 
-<img src=https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_past.png><figcaption>_Режим Past_</figcaption>
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_active.png><figcaption>_Режим Active_</figcaption>
+
 
 *Past* – отображаются элементы, которые задействованы на текущем шаге, а также те, которые произошли в прошлом (узлы и стрелки серого цвета).
 
-<img src=https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_signif.png><figcaption>_Режим Significant_</figcaption>
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_past.png><figcaption>_Режим Past_</figcaption>
 
 *Significant* – отображаются элементы, которые задействованы на текущем шаге, а также те узлы, которые были задействованы в прошлом и при этом еще будут задействованы в будущем, и прошедшие стрелки между ними (узлы и стрелки серого цвета).
 
-<img src=https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_all.png><figcaption>_Режим All_</figcaption>
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_signif.png><figcaption>_Режим Significant_</figcaption>
 
 *All* – отображаются элементы, которые задействованы на текущем шаге, а также те узлы (но не стрелки), которые вообще существуют на схеме (узлы серого цвета).
+
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_tgraph_all.png><figcaption>_Режим All_</figcaption>
+
 
 В случае наличия информации о контейнерах, таковые будут отображены на графе в виде зеленых блоков, содержащих соответствующие им узлы (*cont_1* на рисунке):
 

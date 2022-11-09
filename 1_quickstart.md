@@ -51,7 +51,7 @@ sudo kvm-ok
 
 <img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/vbox_system2.png">
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/vbox_display.png"><figcaption>Рисунок: Настройки машины в VBox</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/vbox_display.png"><figcaption>_Настройки машины в VBox_</figcaption>
 
 Перед установкой KVM необходимо определить, поддерживает ли процессор эту функцию: `egrep -c '(vmx|svm)' /proc/cpuinfo`
 
@@ -264,7 +264,7 @@ cd /wget-1.21.2 && sudo ./wget ispras.ru
 ```
 В результате вы должны увидеть приблизительно следующую картину в графическом окне QEMU, свидетельствующую о том, что ОО корректно выполняется в среде функционирования и сетевая доступность для ВМ обеспечена:
 
-![image](https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/check.png)
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/check.png"><figcaption>_Пример подготовленного ОО в QEMU_</figcaption>
 
 
 ## 1.3. Обучающие примеры 

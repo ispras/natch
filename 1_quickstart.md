@@ -588,15 +588,15 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_run.sh
 ```
 Создадим проект на основе результатов анализа трассы (необходимо указывать zip-архив, формируемый *Natch* в каталоге проекта по результатам выполнения `run_replay.sh`):
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_create.png" width="300" height="200">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_create.png"><figcaption>_Создание Snatch проекта_</figcaption>
 
 Через некоторое время процесс загрузки проекта завершится и станут доступны различные виды (**их число и возможности постоянно нарастают**) аналитик, такие как просмотр стека вызовов обработки помеченных данных:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_call.png" width="500" height="450">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_call.png"><figcaption>_Стек вызовов_</figcaption>
 
 а также основное окно динамической визуализации распространения помеченных данных:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_graph.png" width="500" height="450">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_graph.png"><figcaption>_Граф процессов, работавших с помеченными данными_</figcaption>
 
 Полное рукодство пользователя *SNatch* доступно в соответствующем [разделе](6_snatch_docs.md#snatch). Основное внимание нужно обратить на то, что ярким цветом на каждом шаге *Timeline* выделяются сущности, взаимодействующие на данном конкретном шаге *Timeline*.
 

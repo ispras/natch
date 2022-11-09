@@ -30,26 +30,26 @@
 
 Для этого создания VPN соединения необходимо открыть настройки операционной системы и перейти в раздел *Network*. В секции *VPN* нажать на плюсик.
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/settings.png" width=60% height=60% alt="Настройки сети">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/settings.png"><figcaption>_Настройки сети_</figcaption>
 
 Появится окно для добавления новой конфигурации VPN. Нужный вариант *Import from file..*, куда следует передать входящий в поставку
 файл *sailor-license.ovpn*. В предлагаемой ОС OpenVPN установлен по умолчанию.
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/import.png" width=40% height=40% alt="Импорт настроек VPN">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/import.png"><figcaption>_Импорт настроек VPN_</figcaption>
 
 После импорта файла появится окно настройки соединения, в которое необходимо вписать логин и пароль, так же входящие в поставку.
 Далее осталось нажать кнопку *Add* в верхнем правом углу и конфигурация будет создана.
 
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/login.png" width=40% height=40% alt="Добавление конфигурации VPN">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/login.png"><figcaption>_Добавление конфигурации VPN_</figcaption>
 
 Осталось только включить переключатель напротив VPN и соединение будет установлено.
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/ok.png" width=40% height=40% alt="VPN готов">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/ok.png"><figcaption>_VPN готов_</figcaption>
 
 Кроме того, управлять подключением можно в трее, как показано на рисунке ниже.
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/profit.png" width=60% height=60% alt="Подключение VPN">
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/profit.png"><figcaption>_Подключение VPN_</figcaption>
 
 После всех проделанных действий инструмент готов к использованию на вашем компьютере.
 

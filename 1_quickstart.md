@@ -313,6 +313,7 @@ user@natch1:~/natch_quickstart$ pip3 install -r qemu_plugins_2004_tainting_x64_n
 ```bash
 user@natch1:~/natch_quickstart/snatch$ ./snatch_setup.sh
 ```
+При выполнении скрипт запросит пароль для sudo.
 
 #### 1.3.1.3. Настройка Natch для работы с тестовым образом ОС
 

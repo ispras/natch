@@ -44,7 +44,7 @@ img {
 }
 
 figcaption {
-	font-size: smaller;
+	font-size: 10px;
 	font-style: italic;
 	padding: 0.2em;
 	text-align: center;

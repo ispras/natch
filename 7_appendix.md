@@ -193,7 +193,7 @@
 
 ```ini
     [Version]
-    Version=3
+    Version=9
 
     [Task struct offsets]
     pid=1224
@@ -201,6 +201,7 @@
     parent=1240
     state=16
     task_struct=89152
+    dead_flag=128
 
     [Files struct offsets]
     ts_files=1720
@@ -211,6 +212,11 @@
     d_parent=24
     d_name=40
     d_iname=56
+    f_mnt=16
+    m_vfs_mount=32
+    m_root=32
+    m_mountpoint=24
+    m_parent=16
 
     [Memory mapping struct offsets]
     ts_mm=1048
@@ -223,8 +229,23 @@
     vm_next=16
     vm_prev=24
     vm_mm=64
+    vm_flags=80
     vm_file=160
+    arg_start=304
+    arg_end=312
+    env_start=312
+    env_end=328
     vma_struct_size=208
+
+    [Socket struct offsets]
+    file_private_data=200
+    socket=32
+    unix_addr=720
+    unix_name=12
+
+    [Cred struct offsets]
+    cred=1632;1640;
+    uid=4;12;20;28;
 ```
 
 **Секция Version**
@@ -238,6 +259,7 @@
 - *name*. Смещение поля *comm* внутри *task_struct*.
 - *parent*. Смещение поля *real_parent* внутри *task_struct*.
 - *state*. Смещение поля *__state* внутри *task_struct*.
+- *dead_flag*. Значение константы TASK_DEAD, которая записывается в поле *state* при умирании процесса.
 
 **Секция Files struct offsets**
 
@@ -249,6 +271,11 @@
 - *d_parent*. Смещение *d_parent* внутри *dentry*.
 - *d_name*. Смещение поля *name* или *d_name.name* внутри *dentry*.
 - *d_iname*. Смещение *d_iname* внутри *dentry*.
+- *f_mnt*. Смещение поля *f_path.mnt* внутри *file*.
+- *m_vfs_mount*. Смещение поля *vfsmount* внутри *mount*.
+- *m_root*. Смещение поля *mnt.root* внутри *mount*.
+- *m_mountpoint*. Смещение поля *mnt_mountpoint* внутри *mount*.
+- *m_parent*. Смещение поля *mnt_parent* внутри *mount*.
 
 **Секция Memory mapping struct offsets**
 
@@ -264,7 +291,17 @@
 - *vm_mm*. Смещение поля *vm_mm* внутри *vm_area_struct*.
 - *vm_flags*. Смещение поля *vm_flags* внутри *vm_area_struct*.
 - *vm_file*. Смещение поля *vm_file* внутри *vm_area_struct*.
+- *arg_start*. Смещение поля *arg_start* внутри *mm_struct*.
+- *arg_end*. Смещение поля *arg_end* внутри *mm_struct*.
+- *env_start*. Смещение поля *env_start* внутри *mm_struct*.
+- *env_end*. Смещение поля *env_end* внутри *mm_struct*.
 - *vma_struct_size*. Размер структуры *vm_area_struct*.
+
+**Секция Socket struct offsets**
+- *file_private_data*. Смещение поля *private_data* внутри *file*.
+- *socket*. Смещение поля *sk* внутри *socket*.
+- *unix_addr*. Смещение поля *addr* внутри *unix_sock*.
+- *unix_name*. Смещение поля *name* внутри *unix_address*.
 
 
 # <a name="natch_mon_commands"></a>Приложение 5. Команды монитора Qemu для работы с Natch

@@ -307,7 +307,7 @@ cd /wget-1.21.2 && sudo ./wget ispras.ru
 
 Для работы *Natch* следует установить python-библиотеки, обеспечивающие работоспособность скриптов:
 ```text 
-user@natch1:~/natch_quickstart$ pip3 install -r qemu_plugins_2004_tainting_x64_natch/bin/natch_scripts/requirements.txt
+user@natch1:~/natch_quickstart$ pip3 install -r qemu_plugins_2004_natch_release_latest/bin/natch_scripts/requirements.txt
 ```
 Для работы *Snatch* следует запустить установочный скрипт и дождаться его успешного выполнения (сообщения об ошибках сборки некоторых python-пакетов можно игнорировать при условии того, что скрипт в целом завершается успешно):
 ```bash

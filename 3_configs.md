@@ -73,6 +73,7 @@ items=bcqti,broker,addr=:5555;some_plugin
 # Section for loading custom syscall config
 [Syscalls]
 config=custom_x86_64.cfg
+attempts=50
 ```
 
 **Секция Version**
@@ -143,6 +144,7 @@ config=custom_x86_64.cfg
 **Секция Syscalls**
 
 - Поле *config*: указывается имя конфигурационного файла для перехвата системных вызовов (подробнее в пункте [Syscalls](3_configs.md#syscalls_config)).
+- Поле *attempts*: дает возможность задать количество срабатываний системных вызовов для тюнинга. Может понадобиться уменьшить, если настройка не успевает пройти. По умолчанию 50.
 
 
 ## <a name="api_config"></a>3.2. Modules

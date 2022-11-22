@@ -303,6 +303,9 @@
 - *unix_addr*. Смещение поля *addr* внутри *unix_sock*.
 - *unix_name*. Смещение поля *name* внутри *unix_address*.
 
+**Секция Cred struct offsets**
+- *cred*. Смещения полей *real_cred* и *cred* в структуре *task_struct*.
+- *uid*. Смещения полей *uid*, *suid*, *euid*, *fsuid* в структуре *cred*.
 
 # <a name="natch_mon_commands"></a>Приложение 5. Команды монитора Qemu для работы с Natch
 

@@ -600,11 +600,11 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_run.sh
 
 Через некоторое время процесс загрузки проекта завершится и станут доступны различные виды (**их число и возможности постоянно нарастают**) аналитик, такие как просмотр стека вызовов обработки помеченных данных:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_call.png"><figcaption>_Стек вызовов_</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/call_graph.png"><figcaption>_Стек вызовов_</figcaption>
 
 а также основное окно динамической визуализации распространения помеченных данных:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_graph.png"><figcaption>_Граф процессов, работавших с помеченными данными_</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/process_graph.png"><figcaption>_Граф процессов, работавших с помеченными данными_</figcaption>
 
 Полное рукодство пользователя *SNatch* доступно в соответствующем разделе [Графический интерфейс для анализа SNatch](6_snatch_docs.md#snatch). Основное внимание нужно обратить на то, что ярким цветом на каждом шаге *Timeline* выделяются сущности, взаимодействующие на данном конкретном шаге *Timeline*.
 

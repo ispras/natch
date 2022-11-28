@@ -18,11 +18,18 @@
 
 - **основной** - защищенный бинарный дистрибутив, требующий наличие аппаратного ключа (персональный "черный" ключ, сетевой "красный" ключ или иные версии ключа) с лицензией c идентификатором "6":
 
-    [Natch v.2.0](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0) 
+    [Natch v.2.1](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1) 
 
 - **резервный** - .ova-образ Ubuntu 20 для VirtualBox с предустановленным защищенным Natch, необходимым ПО (pip3, vim) и доступом к VPN-серверу, раздающему лицензии:
 
-    [Natch v.2.0](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0_vbox)
+    [Natch v.2.1](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1_vbox)
+    
+
+Предыдущие релизы:
+
+- **основной** - [Natch v.2.0](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0) 
+
+- **резервный** - [Natch v.2.0](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0_vbox)
 
 
 ## <a name="create-qemu-env"></a>1.2. Подготовка виртуализованной среды в формате QEMU

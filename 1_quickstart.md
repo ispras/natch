@@ -596,7 +596,7 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_run.sh
 ```
 Создадим проект на основе результатов анализа трассы (необходимо указывать zip-архив, формируемый *Natch* в каталоге проекта по результатам выполнения `run_replay.sh`):
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_create.png"><figcaption>_Создание Snatch проекта_</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_new_proj_modal.png"><figcaption>_Создание Snatch проекта_</figcaption>
 
 Через некоторое время процесс загрузки проекта завершится и станут доступны различные виды (**их число и возможности постоянно нарастают**) аналитик, такие как просмотр стека вызовов обработки помеченных данных:
 

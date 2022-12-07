@@ -24,6 +24,8 @@
 
     [Natch v.2.1](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1_vbox)
     
+[Обновленная версия Natch v.2.1.1](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1.1) - исправлен баг с построением графа процессов, улучшен механизм распространения помеченных данных.
+    
 
 Предыдущие релизы:
 

@@ -636,7 +636,7 @@ raw.githubusercontent.com/ispras/natch/main/images/quickstart/call_graph.png"><f
 
 Открыть конфигурацию grub: `vi/etc/default/grub`
 
-Изменить следующие строки:
+Изменить следующие строки(в скачанном образе эти строки уже раскомментированы):
 - раскомментировать: `GRUB_TERMINAL=console`
 - установить значение: `GRUB_CMDLINE_LINUX_DEFAULT="nomodeset"`
 

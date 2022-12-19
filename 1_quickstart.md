@@ -620,7 +620,7 @@ raw.githubusercontent.com/ispras/natch/main/images/quickstart/call_graph.png"><f
 - актуальный [дистрибутив](#complect) Natch;
 - подготовленный разработчиком [тестовый набор](https://nextcloud.ispras.ru/index.php/s/testing_2.0, https://github.com/Orlovskiiparen/natch/tree/main/sydr_overflow), включающий в себя минимизированный образ гостевой операционной системы Debian (размер qcow2-образа около 1 ГБ), а также комплекта файлов с помеченными данными (sydr_0_int_overflow_1_unsigned,sydr_1_int_overflow_0_unsigned и sydr_2_int_overflow_0_unsigned). 
 
-#### 1.3.2.1.  дистрибутива
+#### 1.3.2.1. Подготовка образа виртуальной машины
 
 Необходимо скачать тестовый образ `test_image_debian.qcow2` и создать скрипт запуска `run1.sh`:
 
@@ -699,6 +699,9 @@ int main(int argc, char** argv)
 ```
 /usr/bin/clang++ -g -O0 pugixml/src/pugixml.cpp  pugixml/wrapper.cpp  --include=unistd.h -Ipugixml/src -o target && chmod +x target
 ```
+
+#### 1.3.2.3. Перенос объекта оценки
+
 Далее необходимо перенести объект оценки в виртуальную машину, для чего используется nbd-сервер QEMU:
 ```
 sudo modprobe nbd max_part=8
@@ -715,7 +718,6 @@ sudo umount /mnt/
 sudo qemu-nbd --disconnect /dev/nbd0
 sudo rmmod nbd
 ```
-
 Запустить скрипт `run1.sh`, перейти в папку, в которой находятся 3 сэмпла и скомпилированный файл target и последовательно подать сэмплы в программу обработчик:
 ```
 ./ target sydr_0_int_overflow_1_unsigned
@@ -748,8 +750,8 @@ Overlay created
 ```Network option
 Do you want to use ports forwarding? [Y/n] n
 ```
-```
 Задать пути к копиям бинарных файлов (необходимо указать папку, в которой находится необходимый бинарный файл): 
+```
 Modules part
 Do you want to create module config? [Y/n] y
 Enter path to maps dir: ./targetdir
@@ -759,10 +761,12 @@ Enter path to maps dir: ./targetdir
 [TaintFile]
 list=/root/pugi/sydr_0_int_overflow_1_unsigned;/root/pugi/sydr_1_int_overflow_0_unsigned;/root/pugi/sydr_2_int_overflow_0_unsigned
 ```
-После завершения настройки и создания базовых скриптов все готово к записи трассы:
+Записать трассу:
+```
 LD_LIBRARY_PATH=../libs/ ./run_record.sh
-22) Выполним генерацию снэпшота командой (в окне терминала, в котором запущена QEMU): `savevm ready`
-23) Последовательно подать три сэмпла в программу обработчик:
+```
+Выполним генерацию снэпшота командой (в окне терминала, в котором запущена QEMU): `savevm ready`
+Последовательно подать три сэмпла в программу обработчик:
 ```
 ./ target sydr_0_int_overflow_1_unsigned
 ./ target sydr_1_int_overflow_0_unsigned

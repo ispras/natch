@@ -243,7 +243,7 @@ Call stack:
 -device e1000,netdev=net0 \
 -object filter-replay,id=replay,netdev=net0 \
 -icount shift=5,rr=replay,rrfile=replay.bin,rrsnapshot=snap \
--plugin natch,config=natch_config.cfg \
+-plugin natch,config=natch.cfg \
 -plugin coverage,taint=false \
 ```
 

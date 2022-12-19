@@ -359,14 +359,14 @@ Your port for connecting outside: 15555
 Modules part
 Do you want to create module config? [Y/n] Y
 Enter path to maps dir: Natch_testing_materials/Sample2_bins
-Your config file 'module_config.cfg' for modules was created
+Your config file 'module.cfg' for modules was created
 ELF files found: 2
 Map files found: 2
 ```
 Финальная стадия - конфигурирование технических параметров *Natch*, требующая тестового запуска виртуальной машины. В ходе данного запуска выполняется получение информации о параметрах ядра и заполнение ini-файла (данный файл не следует корректировать вручную, если только вы не абсолютно уверены в том, зачем вы это делаете). Вы можете отказаться от данного шага, в случае если этот файл уже был ранее создан для данного образа гостевой виртуальной машины -- тогда вам потребуется указать к нему путь, однако, в большинстве случаев вы вероятно будете создавать таковые файлы с нуля:
 
 ```text
-Do you have a config file task_config.ini for your image? [N/y] N (или просто нажмите Enter. Не пишите здесь 'y' за исключением случаев, когда в точно знаете зачем вы это делаете - а именно хотите записать новую трассу на уже ранее преднастроенном конфигурационном файле)
+Generate config file task.cfg? [Y/n] y (или просто нажмите Enter)
 
 Now will be launch tuning. Don't close emulator
 Three...
@@ -379,11 +379,11 @@ Natch v.2.0
 (c) 2020-2022 ISP RAS
 
 Reading Natch config file...
-[Tasks] No such file '/home/user/natch_quickstart/test1/task_config.ini'. It will be created.
+[Tasks] No such file '/home/user/natch_quickstart/test1/task.cfg'. It will be created.
 Now tuning will be launched.
 
 Tuning started. Please wait a little...
-Generating config file: /home/user/natch_quickstart/test1/task_config.ini
+Generating config file: /home/user/natch_quickstart/test1/task.cfg
 Trying to find 12 kernel-specific parameters
 [01/12] Parameter - task_struct->pid            : Found
 [02/12] Parameter - task_struct->comm           : Found
@@ -403,7 +403,7 @@ Tuning completed successfully! Now you can restart emulator and enjoy! :)
 
 Отлично, автоматизированная настройка и создание базовых скриптов завершены успешно, всё готово к записи трассы, о чём *Natch* сообщил нам дополнительно:
 ```text
-File '/home/user/natch_quickstart/test1/natch_config.cfg' created. You can edit it before using Natch.
+File '/home/user/natch_quickstart/test1/natch.cfg' created. You can edit it before using Natch.
 
 After checking config file you can launch:
 	just Natch with help 'run.sh'
@@ -411,11 +411,11 @@ After checking config file you can launch:
 	Natch in replay mode with help 'run_replay.sh'
 	Qemu without Natch with help 'run_qemu.sh'
 ```
-Обратите внимание на файл настроек `natch_config.cfg` -- именно его мы будем редактировать при необходимости выполнения ручной настройки, а также на файл `natch_log.log` - в нём логируются основные результаты работы подпрограмм, входящих в комплект поставки *Natch*.
+Обратите внимание на файл настроек `natch.cfg` -- именно его мы будем редактировать при необходимости выполнения ручной настройки, а также на файл `natch.log` - в нём логируются основные результаты работы подпрограмм, входящих в комплект поставки *Natch*.
 
 ##### <a name="additional_settings"></a>1.3.1.3.2. Дополнительная ручная настройка
 
-Отредактируем сгенерированный основной конфигурационный файл  *Natch* `natch_config.cfg` в соответствии с рекомендациями. _Не забываем, что необходимо раскомментировать также названия секций в квадратных скобках, а не только сами параметры._. Раскомментируем следующие секции (подробнее об их предназначении см. пункт [Основной конфигурационный файл](3_configs.md#main_config) документации):
+Отредактируем сгенерированный основной конфигурационный файл  *Natch* `natch.cfg` в соответствии с рекомендациями. _Не забываем, что необходимо раскомментировать также названия секций в квадратных скобках, а не только сами параметры._. Раскомментируем следующие секции (подробнее об их предназначении см. пункт [Основной конфигурационный файл](3_configs.md#main_config) документации):
 
 Логирование сетевых пакетов, поступающих из источников, указанных в секции `[Ports]`, в pcap-файл:
 ```ini
@@ -652,14 +652,14 @@ LD_LIBRARY_PATH=../libs/
 
 **Решение**: чаще всего такая ситуация возникает, если источник помеченных данных был указан неверно или если работа с помеченными данными происходила до того как состояние машины было сохранено. Проверьте:
 	
-- указали ли вы нужные порты и/или файлы в конфигурационном файле `natch_config.cfg`
+- указали ли вы нужные порты и/или файлы в конфигурационном файле `natch.cfg`
 - выполнили ли команду `savevm` до того как поработали с помеченными данными
 	
 Если все верно, а поверхность атаки пустая, возможно это баг :) Обратитесь к разработчику, пожалуйста.
 
 -----------------------------------------------------------------------------------
 
-**Проблема**: появилась необходимость перегенерировать `task_config.ini`. Например, у вас есть проект и вы не хотите его пересоздавать, а версия конфигурационного файла `task_config.ini` изменилась и *Natch* не запускается.
+**Проблема**: появилась необходимость перегенерировать `task.cfg`. Например, у вас есть проект и вы не хотите его пересоздавать, а версия конфигурационного файла `task.cfg` изменилась и *Natch* не запускается.
 
 **Решение**: в таком случае вы можете удалить старый файл и запустить `run_replay.sh`, в результате чего будет произведена попытка выполнить тюнинг. Эта ситуация может закончиться успехом, а может и нет, если журнал слишком короткий и все параметры не успеют обнаружиться. Решений может быть несколько:
 

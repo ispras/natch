@@ -657,7 +657,8 @@ qemu-system-x86_64 \
 
 #### 1.3.2.2. Сборка программы обработчика 
 
-Запустить скрипт `run1.sh` скачать папку pugixml:
+Запустить скрипт `run1.sh`. 
+Скачать папку "pugixml":
 ```
 git clone --depth-1 --single-branch https://github.com/zeux/pugixml
 ```
@@ -765,7 +766,7 @@ list=/root/pugi/sydr_0_int_overflow_1_unsigned;/root/pugi/sydr_1_int_overflow_0_
 ```
 LD_LIBRARY_PATH=../libs/ ./run_record.sh
 ```
-Выполним генерацию снэпшота командой (в окне терминала, в котором запущена QEMU): `savevm ready`
+Выполнить генерацию снэпшота командой (в окне терминала, в котором запущена QEMU): `savevm ready`
 Последовательно подать три сэмпла в программу обработчик:
 ```
 ./ target sydr_0_int_overflow_1_unsigned

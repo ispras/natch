@@ -668,7 +668,7 @@ int main(int argc, char** argv)
 sudo modprobe nbd max_part=8
 ```
 ```
-sudo qemu-nbd –connect=/dev/nbd0 test_image_debian.qcow2
+sudo qemu-nbd -–connect=/dev/nbd0 test_image_debian.qcow2
 ```
 ```
 sudo fdisk /dev/nbd0 -l

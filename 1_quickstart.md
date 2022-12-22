@@ -585,10 +585,10 @@ raw.githubusercontent.com/ispras/natch/main/images/quickstart/call_graph.png"><f
 Необходимо скачать тестовый образ `test_image_debian.qcow2` и создать скрипт запуска `run1.sh`:
 
 ```
- qemu-system-x86_64 \ 
--hda test_image_debian.qcow2 \ 
--enable-kvm \ 
--m 4G \
+qemu-system-x86_64 \
+-hda test_image_debian.qcow2 \
+-enable-kvm \
+-m 4G
 ```
 
 Запустить скрипт `run1.sh`, залогиниться `root:root`
@@ -606,12 +606,12 @@ raw.githubusercontent.com/ispras/natch/main/images/quickstart/call_graph.png"><f
 
 Изменить скрипт запуска:
 ```
-qemu-system-x86_64 \ 
--hda test_image_debian.qcow2 \ 
--enable-kvm \ 
--m 4G \ 
--nographic \ 
--curses \ 
+qemu-system-x86_64 \
+-hda test_image_debian.qcow2 \
+-enable-kvm \
+-m 4G \
+-nographic \
+-curses \
 -monitor tcp:0.0.0.0:7799,server,nowait
 ```
 
@@ -681,12 +681,12 @@ sudo rmmod nbd
 ```
 Запустить скрипт `run1.sh`, перейти в папку, в которой находятся 3 сэмпла и скомпилированный файл target и последовательно подать сэмплы в программу обработчик:
 ```
-./ target sydr_0_int_overflow_1_unsigned
-./ target sydr_1_int_overflow_0_unsigned
-./ target sydr_2_int_overflow_0_unsigned
+./target sydr_0_int_overflow_1_unsigned
+./target sydr_1_int_overflow_0_unsigned
+./target sydr_2_int_overflow_0_unsigned
 ```
 
-Используя nbd-сервер переместить файл "target" на хост.
+Используя nbd-сервер переместить файл "target" на хост (Например в папку **targetdir**).
 
 #### 1.3.2.4. Настройка Natch для работы с тестовым образом ОС
 
@@ -729,15 +729,15 @@ LD_LIBRARY_PATH=../libs/ ./run_record.sh
 Выполнить генерацию снэпшота командой (в окне терминала, в котором запущена QEMU): `savevm ready`
 Последовательно подать три сэмпла в программу обработчик:
 ```
-./ target sydr_0_int_overflow_1_unsigned
-./ target sydr_1_int_overflow_0_unsigned
-./ target sydr_2_int_overflow_0_unsigned
+./target sydr_0_int_overflow_1_unsigned
+./target sydr_1_int_overflow_0_unsigned
+./target sydr_2_int_overflow_0_unsigned
 ```
 Воспроизвести трассу:
 ```
 LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./run_replay.sh ready
 ```
-Через какое-то время выполнение сценария завершится, графическое окно закроется, и появится сообщение наподобие приведённого ниже:
+Через какое-то время выполнение сценария завершится, графическое окно закроется, и появятся сообщения наподобии приведённых ниже:
 ```
 updating: files_b.log (deflated 80%)
 updating: log_cs_b.log (deflated 84%)

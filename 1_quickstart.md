@@ -178,49 +178,9 @@ tar -xzf wget-1.21.2.tar.gz && cd wget-1.21.2
 CFLAGS='-g -O0' ./configure
 make
 ```
-**Важное замечание - следующие два подраздела 1.2.3 и 1.2.4 оставлены в качестве пособия для специфических случаев, когда возможность сборки исполняемого файла из исходных текстов с произвольными параметрами отсутствует, либо явно требуется получение отдельных [map-файлов](https://stackoverflow.com/questions/22199844/what-are-gcc-linker-map-files-used-for), в частности для случаев анализа ядра Linux. Не требуется выполнение генерации map-файлов в случае обычных тестовых сценариев анализа usermode-приложений**
+**Важное замечание - в Приложении 6 представлено пособие для специфических случаев, когда возможность сборки исполняемого файла из исходных текстов с произвольными параметрами отсутствует, либо явно требуется получение отдельных [map-файлов](https://stackoverflow.com/questions/22199844/what-are-gcc-linker-map-files-used-for).**
 
-### 1.2.3. *Генерация map-файлов средствами компилятора*
-
-Выполним скрипт: 
-```bash
-CFLAGS='-g -O0 -Xlinker -Map=output.map' ./configure && \
-make
-```
-и проверим, что map-файлы создались:
-```bash
-find . -name *.map
-./src/output.map
-./output.map
-```
-Полученные map-файлы можно поместить на хосте в явно обозначенный Natch`у каталог, содержащий исполняемые файлы *wget* -- тогда Natch будет опираться на данные map-файлы при символизации соответствующиех процессов.
-**Важное замечание: название бинарного файла и соответствующего ему map-файла должны совпадать.**
-
-### 1.2.4. *Генерация map-файлов сторонними инструментами*
-
-Получение map-файлов для исполняемого файла, собранного с отладочными символами, возможно с помощью сторонних инструментов. Это может быть актуально в тех случаях, когда сборочный конвейер недоступен, 
-либо получение от сборочного конвейера map-файлов в поддерживаемом *Natch* формате невозможно (например, использование специфического компилятора/компоновщика). Сгенерируем map-файлы с использованием бесплатной версии дизассемблера [IDA Pro](https://hex-rays.com/ida-free/) -- необходимо скачать установочный комплект по указанной ссылке, возможно в систему придётся доустановить библиотеки Qt `apt install -y qt5-default`.
-
-После установки IDA необходимо запустить её, открыть интересующий нас исполняемый файл (в нашем случае это `wget`)
-
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map1.png"><figcaption>_Загрузка бинарного файла в IDA Pro_</figcaption>
-
-пройти процедуру генерации map-файла
-
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map2.png"><figcaption>_Генерация map-файла_</figcaption>
-
-обязательным пунктом является только *Segmentation information*, остальные по желанию (хотя, например, локальные имена дизассемблера вряд ли сделают вывод понятнее).
-
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map3.png"><figcaption>_Выбор опций map-файла_</figcaption>
-
-после чего убедиться, что map-файл появился в файловой системе
-
-```bash
-ll src | grep .map
--rw-rw-r--  1 user user  564686 фев  3 16:11 wget.map
-```
-
-### 1.2.5. Перенос прототипа объекта оценки из образа ВМ на хост (или с хоста в образ ВМ)
+### 1.2.3. Перенос прототипа объекта оценки из образа ВМ на хост (или с хоста в образ ВМ)
 
 Чтобы поместить собранный *wget* в виртуальную машину или выкачать его из виртуальной машины на хост, воспользуемся [nbd-сервером QEMU](https://manpages.debian.org/testing/qemu-utils/qemu-nbd.8.en.html), позволяющим [смонтировать](https://gist.github.com/shamil/62935d9b456a6f9877b5) созданный ранее qcow2-диск ВМ в файловую систему хостовой ОС. Для монтирования диск не должен быть задействован (виртуальная машина должна быть выключена).
 
@@ -265,7 +225,7 @@ sudo qemu-nbd --disconnect /dev/nbd0
 sudo rmmod nbd
 ```
 
-### 1.2.6. Тестирование виртуализированной среды функционирования ОО
+### 1.2.4. Тестирование виртуализированной среды функционирования ОО
 
 Запускаем ВМ скриптом `run.sh` с учетом отключенного ранее cdrom, дожидаемся загрузки ОС ВМ, авторизуемся в ОС, пробуем выполнить обращение к произвольному сетевому ресурсу с помощью собранной нами версии *wget*:
 ```bash
@@ -602,7 +562,7 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_run.sh
 
 Через некоторое время процесс загрузки проекта завершится и станут доступны различные виды (**их число и возможности постоянно нарастают**) аналитик, такие как просмотр стека вызовов обработки помеченных данных:
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/call_graph.png"><figcaption>_Стек вызовов_</figcaption>
+raw.githubusercontent.com/ispras/natch/main/images/quickstart/call_graph.png"><figcaption>_Стек вызовов_</figcaption>
 
 а также основное окно динамической визуализации распространения помеченных данных:
 
@@ -612,6 +572,202 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_run.sh
 
 Полное руководство пользователя *SNatch* доступно в соответствующем разделе [Графический интерфейс для анализа SNatch](6_snatch_docs.md#snatch). 
 
+### 1.3.2. Анализ образа системы в режиме командной строки с файлом источником помеченных данных 
+
+Для выполнения данного примера потребуется:
+
+- рабочая станция под управлением ОС Linux (традиционно Ubuntu 20.04);
+- актуальный [дистрибутив](#complect) Natch;
+- подготовленный разработчиком [тестовый набор](https://nextcloud.ispras.ru/index.php/s/testing_2.0, https://github.com/Orlovskiiparen/natch/tree/main/sydr_overflow), включающий в себя минимизированный образ гостевой операционной системы Debian (размер qcow2-образа около 1 ГБ), а также комплекта файлов с помеченными данными (sydr_0_int_overflow_1_unsigned,sydr_1_int_overflow_0_unsigned и sydr_2_int_overflow_0_unsigned). 
+
+#### 1.3.2.1. Подготовка образа виртуальной машины
+
+Необходимо скачать тестовый образ `test_image_debian.qcow2` и создать скрипт запуска `run1.sh`:
+
+```
+qemu-system-x86_64 \
+-hda test_image_debian.qcow2 \
+-enable-kvm \
+-m 4G
+```
+
+Запустить скрипт `run1.sh`, залогиниться `root:root`
+Установить неграфическую цель "по умолчанию": `systemctl set-default multi-user.target`
+
+Открыть конфигурацию grub: `vim /etc/default/grub`
+
+Изменить следующие строки(в скачанном образе эти строки уже раскомментированы):
+- раскомментировать: `GRUB_TERMINAL=console`
+- установить значение: `GRUB_CMDLINE_LINUX_DEFAULT="nomodeset"`
+
+Сохранить, после этого выполнить: `update-grub`
+
+Завершить работу: `shutdown 0`
+
+Изменить скрипт запуска:
+```
+qemu-system-x86_64 \
+-hda test_image_debian.qcow2 \
+-enable-kvm \
+-m 4G \
+-nographic \
+-curses \
+-monitor tcp:0.0.0.0:7799,server,nowait
+```
+
+#### 1.3.2.2. Сборка программы обработчика 
+
+Запустить скрипт `run1.sh`. 
+Скачать папку "pugixml":
+```
+git clone --depth-1 --single-branch https://github.com/zeux/pugixml
+```
+Собрать объектный файл:
+```
+gcc -c -Isrc src/pugixml.cpp 
+```
+
+В каталоге pugixml создать файл wrapper.cpp со следующим содержанием:
+```
+#include "pugixml.hpp"
+
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
+{
+        pugi::xml_document doc;
+        pugi::xml_parse_result result = doc.load_buffer((void *)data, size);
+        return 0;
+}
+
+int main(int argc, char** argv)
+{
+        FILE *fd = fopen(argv[1], "rb");
+
+        if (fd == NULL) return 1;
+        fseek(fd, 0, SEEK_END);
+        int fsize = ftell(fd);
+        fseek(fd, 0, SEEK_SET);
+
+        char* buffer = (char*) malloc(sizeof(char) * fsize);
+        fread(buffer, 1, fsize, fd);
+        fclose(fd);
+
+        return LLVMFuzzerTestOneInput((const uint8_t*)buffer, fsize);
+}
+
+```
+
+Скомпилировать цель из каталога, который находится на уровень выше содержимого каталога pugixml командой:
+```
+/usr/bin/clang++ -g -O0 pugixml/src/pugixml.cpp  pugixml/wrapper.cpp  --include=unistd.h -Ipugixml/src -o target && chmod +x target
+```
+
+#### 1.3.2.3. Перенос объекта оценки
+
+Далее необходимо перенести объект оценки в виртуальную машину, для чего используется nbd-сервер QEMU:
+```
+sudo modprobe nbd max_part=8
+```
+```
+sudo qemu-nbd --connect=/dev/nbd0 test_image_debian.qcow2
+```
+```
+sudo fdisk /dev/nbd0 -l
+```
+```
+sudo mount /dev/nbd0p1 /mnt/
+```
+Используя Midnight Commander переместить 3 сэмпла (sydr_0_int_overflow_1_unsigned, sydr_1_int_overflow_0_unsigned, sydr_2_int_overflow_0_unsigned) в папку к скомпилированному файлу: `mc`
+
+Завершить работу виртуальной машины: `shutdown 0`
+
+Cмонтировать диск на хостовой машине:
+```
+sudo umount /mnt/
+```
+```
+sudo qemu-nbd --disconnect /dev/nbd0
+```
+```
+sudo rmmod nbd
+```
+Запустить скрипт `run1.sh`, перейти в папку, в которой находятся 3 сэмпла и скомпилированный файл target и последовательно подать сэмплы в программу обработчик:
+```
+./target sydr_0_int_overflow_1_unsigned
+./target sydr_1_int_overflow_0_unsigned
+./target sydr_2_int_overflow_0_unsigned
+```
+
+Используя nbd-сервер переместить файл "target" на хост (Например в папку **targetdir**).
+
+#### 1.3.2.4. Настройка Natch для работы с тестовым образом ОС
+
+Запустить natch:
+```
+LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./qemu_plugins_2004_natch_release/bin/natch_scripts/natch_run.py Natch_testing_materials/test_image_debian.qcow2
+```
+
+Ввести имя проекта:
+```
+Enter path to directory for project (optional): test6
+Directory for project files /home/user/natch_quickstart/test6 was created
+Directory for output files /home/user/natch_quickstart/test6/output was created
+```
+Выделить гостевой виртуальной машине память:
+```Common options
+Enter RAM size with suffix G or M (e.g. 4G or 256M): 4G
+Now we will trying to create overlay...
+Overlay created
+```
+Задать опции сети: 
+```Network option
+Do you want to use ports forwarding? [Y/n] n
+```
+Задать пути к копиям бинарных файлов (необходимо указать папку, в которой находится необходимый бинарный файл): 
+```
+Modules part
+Do you want to create module config? [Y/n] y
+Enter path to maps dir: ./targetdir
+```
+После запуска natch, в папке с созданным проектом, необходимо раскомментировать строки "TaintFile" (Строки №56, 57) и прописать имена файлов, которые требуется пометить:
+```
+[TaintFile]
+list=/root/pugi/sydr_0_int_overflow_1_unsigned;/root/pugi/sydr_1_int_overflow_0_unsigned;/root/pugi/sydr_2_int_overflow_0_unsigned
+```
+Записать трассу:
+```
+LD_LIBRARY_PATH=../libs/ ./run_record.sh
+```
+Выполнить генерацию снэпшота командой (в окне терминала, в котором запущена QEMU): `savevm ready`
+Последовательно подать три сэмпла в программу обработчик:
+```
+./target sydr_0_int_overflow_1_unsigned
+./target sydr_1_int_overflow_0_unsigned
+./target sydr_2_int_overflow_0_unsigned
+```
+Воспроизвести трассу:
+```
+LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./run_replay.sh ready
+```
+Через какое-то время выполнение сценария завершится, графическое окно закроется, и появятся сообщения наподобии приведённых ниже:
+```
+updating: files_b.log (deflated 80%)
+updating: log_cs_b.log (deflated 84%)
+updating: log_m_b.log (deflated 73%)
+updating: log_p_b.log (deflated 71%)
+updating: log_t_b.log (deflated 97%)
+updating: module_graph.json (deflated 88%)
+updating: symbols.log (deflated 86%)
+updating: task_graph.json (deflated 71%)
+updating: tasks_b.log (deflated 74%)
+```
+Запустить snatch:
+```
+user@ubuntu:~/natch_quickstart/1/snatch$ ./snatch_run.sh 
+```
+Создать проект, увидеть данные, приведенные в примере  ниже и убедиться, что все получилось :)
+<img width="722" alt="call_graph" src="https://user-images.githubusercontent.com/47216218/208419146-b524a61f-f8f1-41ff-938b-6784295a8816.png">
+<img width="925" alt="flame_graph2" src="https://user-images.githubusercontent.com/47216218/208419147-0194f1e7-ba53-49d3-8cbd-aaedb33329c0.png">
+ 
 ## <a name="faq"></a>1.4. FAQ
 
 В этом разделе собраны наиболее часто встречающиеся проблемы при работе с инструментом *Natch*, раздел будет пополняться.

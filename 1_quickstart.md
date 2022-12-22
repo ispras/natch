@@ -594,7 +594,7 @@ qemu-system-x86_64 \
 Запустить скрипт `run1.sh`, залогиниться `root:root`
 Установить неграфическую цель "по умолчанию": `systemctl set-default multi-user.target`
 
-Открыть конфигурацию grub: `vi/etc/default/grub`
+Открыть конфигурацию grub: `vim /etc/default/grub`
 
 Изменить следующие строки(в скачанном образе эти строки уже раскомментированы):
 - раскомментировать: `GRUB_TERMINAL=console`
@@ -666,8 +666,15 @@ int main(int argc, char** argv)
 Далее необходимо перенести объект оценки в виртуальную машину, для чего используется nbd-сервер QEMU:
 ```
 sudo modprobe nbd max_part=8
+```
+```
 sudo qemu-nbd –connect=/dev/nbd0 test_image_debian.qcow2
+```
+```
 sudo fdisk /dev/nbd0 -l
+```
+```
+sudo mount /dev/nbd0p1 /mnt/
 ```
 Используя Midnight Commander переместить 3 сэмпла (sydr_0_int_overflow_1_unsigned, sydr_1_int_overflow_0_unsigned, sydr_2_int_overflow_0_unsigned) в папку к скомпилированному файлу: `mc`
 

@@ -733,7 +733,7 @@ LD_LIBRARY_PATH=../libs/ ./run_record.sh
 ./ target sydr_1_int_overflow_0_unsigned
 ./ target sydr_2_int_overflow_0_unsigned
 ```
-Воспроизведем трассу:
+Воспроизвести трассу:
 ```
 LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./run_replay.sh ready
 ```

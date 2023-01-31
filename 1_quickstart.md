@@ -697,3 +697,22 @@ qemu-img snapshot -l image_name.diff
 На данный момент при построении флейм графа почти никакого прогресса не выводится. В консоль выводятся только сообщения: `generating flame graph` - при старте генерации, `preparing flame graph output` - при старте символизации графа, `saving flame graph` - при сохранении построенного графа в БД.
 
 Чтобы прервать процесс построения графа нужно остановить весь *SNatch* (запустить скрипт `snatch_stop.sh`). В последующих релизах механизм будет доработан.
+
+-----------------------------------------------------------------------------------
+
+**Проблема**: При запуске run_record.sh мы получаем ошибку 
+```bash
+qemu-system-x86_64: -icount is not allowed with hardware virtualization.
+```
+
+**Решение**: в скриптах run_record.sh и run_replay.sh найдите параметр -machine и измените -accel=kvm на -accel=tcg.
+
+-----------------------------------------------------------------------------------
+
+**Проблема**: При запуске run_record.sh мы получаем ошибку 
+```bash
+qemu-system-x86_64: Record/replay: Record/replay feature is not supported for 'smp'
+```
+
+**Решение**: удалите параметр -smp из скрипта run_record.sh и run_replay.sh.
+

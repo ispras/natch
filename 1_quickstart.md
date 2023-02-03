@@ -27,11 +27,7 @@
 [Обновленная версия Natch v.2.1.1](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1.1) - исправлен баг с построением графа процессов, улучшен механизм распространения помеченных данных.
     
 
-Предыдущие релизы:
-
-- **основной** - [Natch v.2.0](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0) 
-
-- **резервный** - [Natch v.2.0](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0_vbox)
+Предыдущие релизы можно найти [здесь](7_appendix.md#app_6).
 
 
 ## <a name="create-qemu-env"></a>1.2. Подготовка виртуализованной среды в формате QEMU

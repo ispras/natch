@@ -355,7 +355,9 @@
     * добавлен скрипт для внесения изменений в скрипты запуска Natch
 * Документация теперь доступна на github, а так же в виде PDF  
     
-**Natch v.2.0**
+[**Natch v.2.0**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0) 
+
+[(reserve) Natch v.2.0_ova](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0_vbox)
 
 * Представлен графический интерфейс SNatch v.1.0. Основные возможности:
     * построение графа взаимодействия процессов

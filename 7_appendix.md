@@ -327,13 +327,15 @@
 
 # <a name="app_6"></a>Приложение 6. История релизов Natch
     
-**Natch v.2.1.1**
+[**Natch v.2.1.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1.1)
 
 * Исправлен баг с построением графа процессов
 * Улучшения в распространении помеченных данных
 * Доработан раздел Modules в SNatch
 
-**Natch v.2.1**
+[**Natch v.2.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1)
+
+[(reserve) Natch v.2.1_ova](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1_vbox)
 
 * Обновлен графический интерфейс SNatch 
     * Добавлены новые аналитики:

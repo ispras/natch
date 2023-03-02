@@ -15,7 +15,7 @@
 
 # Section Version since Natch v.2.0
 [Version]
-version=2
+version=3
 
 # Section for path to work directory
 [OutputData]
@@ -48,14 +48,14 @@ on=true
 task_graph=true
 module_graph=false
 
-# Section for tainted network packets. !Only for replay mode!
-[NetTaintLog]
-log=tnetpackets.log
+# Directory name (related to workdir) for saving data
+# of the recorded execution
+[Replay]
+name=replay
 
-# Section for network log in pcap. !Only for record mode!
+# Enable network logging
 [NetLog]
 on=true
-log=netpackets.log
 
 # Section for add tainted files
 [TaintFile]
@@ -115,14 +115,13 @@ attempts=50
 - Поле *task_graph*: принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф задач и потоков помеченных данных.
 - Поле *module_graph*: принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф модулей и потоков помеченных данных.
 
-**Секция NetTaintLog**
+**Секция Replay**
 
-- Поле *log*: содержит название файла, в который в процессе воспроизведения будут записываться помеченные сетевые пакеты.
+- Поле *name*: содержит название подкаталога, в который в процессе записи сценария сохраняются сетевые пакеты.
 
 **Секция NetLog**
 
-- Поле *on*: принимает логическое значение, при установке в true осуществляется сохранение сетевых пакетов в файл.
-- Поле *log*: опциональное поле, содержит название файла для записи пакетов. Расширение указывать не нужно, оно автоматически будет *.pcap*. Если поле не задано, имя файла по умолчанию *net_packets_log.pcap*.
+- Поле *on*: принимает логическое значение, при установке в true данные о сетевом трафике и его содержимое сохраняются в файлы для дальнейшего анализа.
 
 Использование этой секции предусмотрено только в режиме записи журнала и собирается только входящий трафик.
 

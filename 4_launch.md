@@ -133,7 +133,7 @@ change_settings.py [-h] [-d DIRECTORY] [-m MEMORY] [-p PORTS]
 -object filter-replay,id=replay,netdev=net0 \
 -monitor stdio \
 ```
-  
+
 Пример командной строки для воспроизведения работы:
 
 ```text

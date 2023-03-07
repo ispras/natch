@@ -176,138 +176,7 @@
 Адрес секции здесь указан и он соответствует адресам, записанным в map-файле,
 поэтому параметр *textstart* можно не указывать.
 
-
-# <a name="app_4"></a>Приложение 4. Формат конфигурационного файла для секции Tasks (task_struct_offsets.ini)
-
-Конфигурационный файл содержит в себе смещения полей структур ядра Linux, необходимых для работы инструмента.
-
-Смещения полей в структурах данных ядра определяются в ходе отдельного настроечного запуска *Natch*.
-В первую очередь ищется смещение переменной *current_task* в сегменте *GS*.
-Поиск опирается на эвристики, связанные с перехватом системного вызова *getpid*. Затем определяются смещения полей
-*pid*, *name*, *parent* и всех переменных из раздела *files struct offsets*. Для их вычисления обрабатываются системные вызовы
-*getpid* и *open*. Для поиска смещения поля *state* перехватывается
-системный вызов *exit*. Смещения переменных из раздела *memory mapping struct offsets*
-вычисляются на основе системного вызова *mmap*.
-
-Пример конфигурационного файла:
-
-```ini
-    [Version]
-    Version=9
-
-    [Task struct offsets]
-    pid=1224
-    name=1648
-    parent=1240
-    state=16
-    task_struct=89152
-    dead_flag=128
-
-    [Files struct offsets]
-    ts_files=1720
-    fs_file=48
-    fs_fdt=32
-    fdt_file=8
-    f_dentry=24
-    d_parent=24
-    d_name=40
-    d_iname=56
-    f_mnt=16
-    m_vfs_mount=32
-    m_root=32
-    m_mountpoint=24
-    m_parent=16
-
-    [Memory mapping struct offsets]
-    ts_mm=1048
-    ts_mm_active=1056
-    mm_mmap=0
-    mm_map_count=104
-    mm_exe_file=928
-    vm_start=0
-    vm_end=8
-    vm_next=16
-    vm_prev=24
-    vm_mm=64
-    vm_flags=80
-    vm_file=160
-    arg_start=304
-    arg_end=312
-    env_start=312
-    env_end=328
-    vma_struct_size=208
-
-    [Socket struct offsets]
-    file_private_data=200
-    socket=32
-    unix_addr=720
-    unix_name=12
-
-    [Cred struct offsets]
-    cred=1632;1640;
-    uid=4;12;20;28;
-```
-
-**Секция Version**
-
-- *Version*. Версия формата конфигурационного файла.
-
-**Секция Task struct offsets**
-
-- *task_struct*. Смещение переменной *current_task* в сегменте *GS*. Для старых ядер должно быть 0, *current_task* извлекается из стека.
-- *pid*. Смещение поля *pid* внутри *task_struct*.
-- *name*. Смещение поля *comm* внутри *task_struct*.
-- *parent*. Смещение поля *real_parent* внутри *task_struct*.
-- *state*. Смещение поля *__state* внутри *task_struct*.
-- *dead_flag*. Значение константы TASK_DEAD, которая записывается в поле *state* при умирании процесса.
-
-**Секция Files struct offsets**
-
-- *ts_files*. Смещение поля *files* внутри *task_struct*.
-- *fs_file*. Смещение поля *fd* или *fdtab.fd* внутри *files_struct*.
-- *fs_fdt*. Смещение поля *fdt* внутри *files_struct* или 0 для старых ядер.
-- *fdt_file*. Смещение поля *fd* внутри *fdtable* или 0 для старых ядер.
-- *f_dentry*. Смещение поля *f_path.dentry* внутри *file*.
-- *d_parent*. Смещение *d_parent* внутри *dentry*.
-- *d_name*. Смещение поля *name* или *d_name.name* внутри *dentry*.
-- *d_iname*. Смещение *d_iname* внутри *dentry*.
-- *f_mnt*. Смещение поля *f_path.mnt* внутри *file*.
-- *m_vfs_mount*. Смещение поля *vfsmount* внутри *mount*.
-- *m_root*. Смещение поля *mnt.root* внутри *mount*.
-- *m_mountpoint*. Смещение поля *mnt_mountpoint* внутри *mount*.
-- *m_parent*. Смещение поля *mnt_parent* внутри *mount*.
-
-**Секция Memory mapping struct offsets**
-
-- *ts_mm*. Смещение поля *mm* внутри *task_struct*.
-- *ts_mm_active*. Смещение поля *active_mm* внутри *task_struct*.
-- *mm_mmap*. Смещение поля *mmap* внутри *mm_struct*.
-- *mm_map_count*. Смещение поля *map_count* внутри *mm_struct*.
-- *mm_exe_file*. Смещение поля *exe_file* внутри *mm_struct*.
-- *vm_start*. Смещение поля *vm_start* внутри *vm_area_struct*.
-- *vm_end*. Смещение поля *vm_end* внутри *vm_area_struct*.
-- *vm_next*. Смещение поля *vm_next* внутри *vm_area_struct*.
-- *vm_prev*. Смещение поля *vm_prev* внутри *vm_area_struct*.
-- *vm_mm*. Смещение поля *vm_mm* внутри *vm_area_struct*.
-- *vm_flags*. Смещение поля *vm_flags* внутри *vm_area_struct*.
-- *vm_file*. Смещение поля *vm_file* внутри *vm_area_struct*.
-- *arg_start*. Смещение поля *arg_start* внутри *mm_struct*.
-- *arg_end*. Смещение поля *arg_end* внутри *mm_struct*.
-- *env_start*. Смещение поля *env_start* внутри *mm_struct*.
-- *env_end*. Смещение поля *env_end* внутри *mm_struct*.
-- *vma_struct_size*. Размер структуры *vm_area_struct*.
-
-**Секция Socket struct offsets**
-- *file_private_data*. Смещение поля *private_data* внутри *file*.
-- *socket*. Смещение поля *sk* внутри *socket*.
-- *unix_addr*. Смещение поля *addr* внутри *unix_sock*.
-- *unix_name*. Смещение поля *name* внутри *unix_address*.
-
-**Секция Cred struct offsets**
-- *cred*. Смещения полей *real_cred* и *cred* в структуре *task_struct*.
-- *uid*. Смещения полей *uid*, *suid*, *euid*, *fsuid* в структуре *cred*.
-
-# <a name="natch_mon_commands"></a>Приложение 5. Команды монитора Qemu для работы с Natch
+# <a name="natch_mon_commands"></a>Приложение 4. Команды монитора Qemu для работы с Natch
 
 Некоторыми плагинами, входящими в состав *Natch*, можно управлять с помощью дополнительных команд. В этом разделе
 перечислены доступные команды.
@@ -324,7 +193,8 @@
 
 -   **taint_file <name>** - пометить файл (если секция *TaintFile* в конфигурации не активна, необходимо загрузить плагин *taint_file* командой ``load_plugin taint_file``).
 
-# <a name="app_6"></a>Приложение 6. Формат файла с покрытием кода
+
+# <a name="app_5"></a>Приложение 5. Формат файла с покрытием кода
 
 
 Выходной файл начинается со списка загруженных модулей, из которого собирается информация о покрытии. Каждый элемент этого списка содержит следующую информацию о модуле:
@@ -345,7 +215,7 @@
 
 Каждый ББ встречается в логе ровно один раз, независимо от того, сколько раз он был выполнен.
 
-# <a name="app_releases"></a>Приложение 7. История релизов Natch
+# <a name="app_releases"></a>Приложение 6. История релизов Natch
 
 [**Natch v.2.1.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1.1)
 

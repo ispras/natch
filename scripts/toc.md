@@ -11,7 +11,7 @@
 
 [4. Запуск Natch](#natch_run_main)
 
-[5. Графический интерфейс для анализа SNatch](#snatch)
+[5. Анализ поверхности атаки с помощью SNatch](#snatch)
 
 [6. Дополнительные возможности Natch](#natch_additional)
 

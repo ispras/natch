@@ -277,6 +277,8 @@ cd wget-1.21.2/src && sudo ./wget ispras.ru
 
 ### 1.3.1. Анализ образа системы, содержащего тестовые комплекты пресобранных исполняемых файлов
 
+Все нижеописанное проделано на примере дистрибутива, работающего под Ubuntu 20.
+
 Для этого примера потребуется:
 
 - рабочая станция под управлением ОС Linux (традиционно Ubuntu 20.04). Отдельная установка пакета **qemu-system** не требуется, нужная версия входит в дистрибутив *Natch*;
@@ -307,10 +309,12 @@ cd wget-1.21.2/src && sudo ./wget ispras.ru
 
 #### 1.3.1.2. Установка Natch и Snatch
 
-Для работы *Natch* следует установить python-библиотеки, обеспечивающие работоспособность скриптов:
+Для работы *Natch* следует установить python-библиотеки, обеспечивающие работоспособность скриптов, а так же deb-пакеты с помощью скрипта:
 ```text
-user@natch1:~/natch_quickstart$ pip3 install -r qemu_plugins_2004_natch_release_latest/bin/natch_scripts/requirements.txt
+user@natch1:~/natch_quickstart$ ./natch_ubuntu20/bin/natch_scripts/setup_requirements.sh
 ```
+В процессе работы скрипта потребуется пароль администратора.
+
 Для работы *Snatch* следует запустить установочный скрипт и дождаться его успешного выполнения (сообщения об ошибках сборки некоторых python-пакетов можно игнорировать при условии того, что скрипт в целом завершается успешно):
 ```bash
 user@natch1:~/natch_quickstart/snatch$ ./snatch_setup.sh
@@ -319,13 +323,13 @@ user@natch1:~/natch_quickstart/snatch$ ./snatch_setup.sh
 
 #### 1.3.1.3. Настройка Natch для работы с тестовым образом ОС
 
-Процесс настройки состоит из двух этапов -- автоматизированно (обязательный) и ручного (дополнительный, при необходимости тонкой настройки). Предназначение [файлов конфигурации и их параметров](3_configs.md#natch_config_main) **описано в документации**):
+Процесс настройки состоит из двух этапов -- автоматизированного (обязательный) и ручного (дополнительный, при необходимости тонкой настройки). Предназначение [файлов конфигурации и их параметров](3_configs.md#natch_config_main) **описано в документации**):
 
 ##### 1.3.1.3.1. Автоматизированная настройка
 
 Автоматизированная настройка выполняется интерактивным скриптом `natch_run.py`, выводимые которым вопросы и примеры ответов на которые приведём далее. Запуск скрипта (**не забываем про необходимость прелоада библиотек**):
 ```text
-user@natch1:~/natch_quickstart$ LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./qemu_plugins_2004_tainting_x64_natch/bin/natch_scripts/natch_run.py Natch_testing_materials/test_image_debian.qcow2
+user@natch1:~/natch_quickstart$ LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./natch_ubuntu20/bin/natch_scripts/natch_run.py Natch_testing_materials/test_image_debian.qcow2
 Image: /home/user/natch_quickstart/Natch_testing_materials/test_image_debian.qcow2
 OS: Linux
 ```
@@ -340,23 +344,29 @@ Directory for output files '/home/user/natch_quickstart/test1/output' was create
 Common options
 Enter RAM size with suffix G or M (e.g. 4G or 256M): 4G
 ```
+Далее можно выбрать режим работы эмулятора -- графический или тестовый. По умолчанию графический.
+```text
+Do you want to run emulator in graphic mode? [Y/n] y
+```
+На этом этапе скрипт попробует обратиться к утилите qemu-img для создания оверлея для образа. В случае успеха увидим:
+```text
+Now we will trying to create overlay...
+Overlay created
+```
+Если что-то пошло не так, скрипт прекратит работу.
+
 Если наш сценарий предполагает передачу помеченных данных по сети (далее мы рассматриваем в качестве основного как раз сценарий №2 -- взаимодействие с redis-сервером, слушающим tcp-порт 5555), нам потребуется взаимодействовать с сетевыми сервисами гостевой ОС с помощью программ, запущенных на хосте. **перехват пакетов, отправитель и получатель которых "находятся" внутри гостевой ОС (localhost <--> localhost), в настоящий момент не поддерживается**. Указываем *Natch*, какой порт мы хотим опубликовать в гостевую ОС:
 ```text
 Network option
-Do you want to use ports forwarding? [Y/n] Y
+Do you want to use ports forwarding? [Y/n] y
+Do you want to taint source ports too? [Y/n] n
 Write the ports you want separated by commas (e.g. 7777, 8888, etc) 5555
 Your port for connecting outside: 15555
 ```
-Далее нам нужно указать пути к каталогам на хосте, содержащим копии бинарных файлов, размещенных в гостевой ОС - это как раз те самые файлы (собранные с символами, или с отдельными map-файлами), которые мы получили в ходе выполнения пункта [Сборка прототипа объекта оценки](#build_prototype). Мы увидим подтверждение того, что все помещенные в каталог файлы найдены (в данном комплекте их 2, *Natch* ищет все ELF-файлы и соответствующие им по названию map-файлы на всю глубину вложенности каталогов):
-```text
-Modules part
-Do you want to create module config? [Y/n] Y
-Enter path to maps dir: Natch_testing_materials/Sample2_bins
-Your config file 'module.cfg' for modules was created
-ELF files found: 2
-Map files found: 2
-```
-Финальная стадия - конфигурирование технических параметров *Natch*, требующая тестового запуска виртуальной машины. В ходе данного запуска выполняется получение информации о параметрах ядра и заполнение ini-файла (данный файл следует корректировать вручную, если только вы абсолютно уверены в том, зачем вы это делаете). Вы можете отказаться от данного шага, в случае если этот файл уже был ранее создан для данного образа гостевой виртуальной машины -- тогда вам потребуется указать к нему путь, однако, в большинстве случаев вы вероятно будете создавать таковые файлы с нуля:
+Далее нам нужно указать пути к каталогам на хосте, содержащим копии бинарных файлов, размещенных в гостевой ОС -- это как раз те самые файлы (собранные с символами, или с отдельными map-файлами), которые мы получили в ходе выполнения пункта [Сборка прототипа объекта оценки](#build_prototype). 
+Этот процесс будет выполняться параллельно, результаты увидим позже.
+
+Следующая стадия - конфигурирование технических параметров *Natch*, требующая тестового запуска виртуальной машины. В ходе данного запуска выполняется получение информации о параметрах ядра и заполнение ini-файла. Вы можете отказаться от данного шага, в случае если этот файл уже был ранее создан для данного образа гостевой виртуальной машины -- тогда вам потребуется указать к нему путь, однако, в большинстве случаев вы вероятно будете создавать эти файлы с нуля:
 
 ```text
 Generate config file task.cfg? [Y/n] y (или просто нажмите Enter)
@@ -367,39 +377,111 @@ Two..
 One.
 Go!
 QEMU 6.2.0 monitor - type 'help' for more information
-(qemu)
-Natch v.2.0
-(c) 2020-2022 ISP RAS
+Natch v.2.2
+(c) 2020-2023 ISP RAS
 
 Reading Natch config file...
-[Tasks] No such file '/home/user/natch_quickstart/test1/task.cfg'. It will be created.
+Network logging enabled
+[Tasks] No such file 'task.cfg'. It will be created.
 Now tuning will be launched.
 
 Tuning started. Please wait a little...
-Generating config file: /home/user/natch_quickstart/test1/task.cfg
-Trying to find 12 kernel-specific parameters
-[01/12] Parameter - task_struct->pid            : Found
-[02/12] Parameter - task_struct->comm           : Found
-[03/12] Parameter - task_struct->parent         : Found
-[04/12] Parameter - files_struct fields         : Found
-[05/12] Parameter - vm_area_struct size         : Found
-[06/12] Parameter - vm_area_struct->vm_start    : Found
-[07/12] Parameter - vm_area_struct->vm_end      : Found
-[08/12] Parameter - vm_area_struct->vm_flags    : Found
-[09/12] Parameter - mm->map_count               : Found
-[10/12] Parameter - mm_struct fields            : Found
-[11/12] Parameter - task_struct->mm             : Found
-[12/12] Parameter - task_struct->state          : Found
+Generating config file: task.cfg
+Trying to find 19 kernel-specific parameters
+[01/19] Parameter - task_struct->pid            : Found
+[02/19] Parameter - task_struct->comm           : Found
+[03/19] Parameter - task_struct->group_leader   : Found
+[04/19] Parameter - task_struct->parent         : Found
+[05/19] Parameter - mount fields                : Found
+[06/19] Parameter - files_struct fields         : Found
+[07/19] Parameter - vm_area_struct size         : Found
+[08/19] Parameter - vm_area_struct->vm_start    : Found
+[09/19] Parameter - vm_area_struct->vm_end      : Found
+[10/19] Parameter - vm_area_struct->vm_flags    : Found
+[11/19] Parameter - mm->map_count               : Found
+[12/19] Parameter - mm_struct fields            : Found
+[13/19] Parameter - task_struct->mm             : Found
+[14/19] Parameter - mm->arg_start               : Found
+[15/19] Parameter - task_struct->state          : Found
+[16/19] Parameter - socket struct fields        : Found
+[17/19] Parameter - task_struct->exit_state     : Found
+[18/19] Parameter - cred->uid                   : Found
+[19/19] Parameter - task_struct->cred           : Found
+Detected 43298 system events
+Detected 19 of 19 kernel-specific parameters. Creating config file...
 
-Tuning completed successfully! Now you can restart emulator and enjoy! :)
+Tuning completed successfully!
+```
+Следом появятся результаты генерации файла конфигурации для модулей.
+Мы увидим подтверждение того, что все помещенные в каталог файлы найдены (в данном комплекте их 2, *Natch* ищет все ELF-файлы и соответствующие им по названию map-файлы на всю глубину вложенности каталогов):
+```text
+Module config is completed
+
+Your config file module.cfg for modules was created
+ELF files found: 2
+Map files found: 0
+```
+
+Финальным этапом будет предложено получить отладочную информацию для загруженных модулей, модулей, которые от них зависят и для ядра.
+```text
+Debug info part
+Do you want to get debug info for system modules? (requires sudo) [Y/n] y
+```
+Для более информативных результатов следует согласиться. На данном этапе потребует пароль администратора. Будет произведено монтирование образа, поиск библиотек и скачивание отладочных символов.
+```text
+[sudo] password for user: 
+Mounting img - OK                                                                                                                                                  
+Searching Binary Files...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
+Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
+Searching Shared Libraries - OK                                                                                                                                    
+vmlinux-5.10.0-17-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 643.2/643.2 MB 100% 0:04:39
+vmlinux-5.10.0-16-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 640.3/640.3 MB 100% 0:04:47
+[KERNEL] Download debugging information - OK                                                                                                                       
+libpthread-2.31.so.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB   100% 0:00:00
+libc-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB   100% 0:00:00
+libm-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB   100% 0:00:00
+libdl-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.2/44.2 kB 100% 0:00:00
+[SHARED_LIB] Download debugging information - OK                                                                                                           
+Umounting img - OK                                                                                                                                         
+
+Module config statistics:                                                                                                                                   
+In module config there were modules                          :  2                                                                                           
+Binaries files in qcow2 found                                :  2                                                                                           
+                                                                                                                                                           
+Kernel statistics:                                                                                                                                         
+Kernel symbols have been found                               :  OK                                                                                         
+Added kernel symbols                                         :  2                                                                                          
+Added debugging information for kernel                       :  2                                                                                          
+
+Shared library Statistics:                                                                                                                                 
+Added shared libraries                                       :  4                                                                                          
+Added debugging information for shared libraries             :  4                                                                                          
+ld-linux-* is always skipped and isn't counted in calculations                                                                                             
+
+Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was updated        
+```
+Следом будет запущен процесс генерации базы данных символов, это займет некоторое время.
+```text
+Symbol info part
+Reading symbols for loaded modules                                                                                                                                 
+Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server                                                   
+Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-cli                                                                                                
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-16-amd64                                              
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-17-amd64                                              
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libdl-2.31.so                                                        
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libc-2.31.so                                                         
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libm-2.31.so                                                         
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libpthread-2.31.so                                                   
+
+Your config file '/home/user/natch_quickstart/test1//module.cfg' for modules was updated 
 ```
 
 Отлично, автоматизированная настройка и создание базовых скриптов завершены успешно, всё готово к записи сценария, о чём *Natch* сообщил нам дополнительно:
 ```text
-File '/home/user/natch_quickstart/test1/natch.cfg' created. You can edit it before using Natch.
+Configuration file '/home/user/natch_quickstart/test1/natch.cfg' was created.
 
-After checking config file you can launch:
-	just Natch with help 'run.sh'
+Settings completed! Now you can launch emulator and enjoy! :)
+
 	Natch in record mode with help 'run_record.sh'
 	Natch in replay mode with help 'run_replay.sh'
 	Qemu without Natch with help 'run_qemu.sh'

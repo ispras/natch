@@ -512,7 +512,7 @@ user@natch1:~/natch_quickstart/test1$ ./run_record.sh
 ```
 **И получим ожидаемую ошибку - забыли про прелоад :)** Выполним запуск по правилам:
 ```bash
-user@natch1:~/natch_quickstart/test1$ LD_LIBRARY_PATH=../libs/ ./run_record.sh
+user@natch1:~/natch_quickstart/test1$ LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./run_record.sh
 ```
 Введём логин и пароль учетной записи пользователя - `user/user` и запустим redis-сервер:
 
@@ -537,14 +537,15 @@ user@natch1:~/natch_quickstart/test1$ LD_LIBRARY_PATH=../libs/ ./run_record.sh
 
 QEMU 6.2.0 monitor - type 'help' for more information
 (qemu)
-Natch v.2.0
-(c) 2020-2022 ISP RAS
+Natch v.2.2
+(c) 2020-2023 ISP RAS
 
 Reading Natch config file...
+Network logging enabled
 Config is loaded.
 You can make system snapshots with the command: savevm <snapshot_name>
-Natch works in network packet logging mode
-Network logging plugin started with pcap log file: "/home/user/natch_quickstart/test1/packets.pcap"
+Network pcap log file: "/home/user/natch_quickstart/test1/record/network.pcap"
+Network json log file: "/home/user/natch_quickstart/test1/record/network.json"
 
 (qemu) savevm ready
 (qemu)
@@ -572,27 +573,53 @@ user@natch1:~/natch_quickstart$ LD_LIBRARY_PATH=/home/user/natch_quickstart/libs
 
 Через какое-то время выполнение сценария завершится, графическое окно закроется, и вы увидете сообщение наподобие приведённого ниже, свидетельствующее о том, что интересующие нас модули гостевой ОС (в данном случае это один модуль - redis-сервер) были распознаны успешно, и, следовательно, мы получим в отчетах корректную символьную информацию.
 ```text
+Snapshot to load: ready
 QEMU 6.2.0 monitor - type 'help' for more information
-(qemu)
-Natch v.2.0
-(c) 2020-2022 ISP RAS
+(qemu) 
+Natch v.2.2
+(c) 2020-2023 ISP RAS
 
 Reading Natch config file...
+Network logging enabled
 Task graph enabled
+Module graph enabled
 Taint enabled
 Config is loaded.
+File events binary log file /home/user/natch_quickstart/test1/output/files_b.log created successfully
 Module binary log file /home/user/natch_quickstart/test1/output/log_m_b.log created successfully
 Modules: started reading binaries
-Modules: finished with 2 of 2 binaries for analysis
+Modules: finished with 8 of 8 binaries for analysis
 thread_monitor: identification method is set to a complex developed at isp approach
 Started thread monitoring
-Process events binary log file /home/user/natch_quickstart/test1/output/log_p_b.log created successfully
 Tasks: config file is open.
+Process events binary log file /home/user/natch_quickstart/test1/output/log_p_b.log created successfully
+Network json log file: "/home/user/natch_quickstart/test1/output/tnetwork.json"
 Binary log file /home/user/natch_quickstart/test1/output/log_t_b.log created successfully
+Binary call_stack log file /home/user/natch_quickstart/test1/output/log_cs_b.log created successfully
+Tainting file: sample.txt
+Detected module /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-17-amd64 execution
+Detected module /home/user/natch_quickstart/test1/libs/src/libc-2.31.so execution
 Detected module /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server execution
+Detected module /home/user/natch_quickstart/test1/libs/src/libpthread-2.31.so execution
+Detected module /home/user/natch_quickstart/test1/libs/src/libm-2.31.so execution
+
+============ Statistics ============
+
+Tainted files count           : 1
+Tainted processes count       : 3
+Tainted modules count         : 5
+Tainted functions count       : 231
+Tainted packets count         : 149
+Tainted file reading count    : 0
+
+Compressing data. Please wait..
+
+output.tar.zst completed
 ```
 
 Если работа системы завершилась успешно, и вы не словили, например, `core dumped` (о чём стоит немедленно сообщить в [трекер](https://gitlab.community.ispras.ru/trackers/natch/-/issues) с приложением всех артефактов), можно переходить к анализу собранных данных.
+
+Помеченный файл в данном случае это тот самый `sample.txt`, который мы пометили в `natch.cfg`, но не использовали в этом сценарии.
 
 #### 1.3.1.6. Анализ с использованием Snatch
 

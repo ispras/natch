@@ -533,7 +533,7 @@ localhost:15555> exit
 
 Нажмем `Ctrl+Alt+G`, выйдем в монитор QEMU (bash-терминал хостовой ОС в котором мы запустили `run_record.sh`) и выполним команду генерации снэпшота (займёт несколько секунд, в зависимости от размера образа и производительности компьютера в целом) - с названием `ready` - **команда savevm ready**:
 ```text
-user@natch1:~/natch_quickstart/test1$ LD_LIBRARY_PATH=../libs/ ./run_record.sh
+user@natch1:~/natch_quickstart/test1$ LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./run_record.sh
 
 QEMU 6.2.0 monitor - type 'help' for more information
 (qemu)

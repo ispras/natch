@@ -1,5 +1,5 @@
 
-**Natch v.2.1.1**
+**Natch v.2.2**
 
 Natch (Network Application Tainting Can Help) - это инструмент для определения поверхности атаки, основанный на полносистемном эмуляторе Qemu.
 

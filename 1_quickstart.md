@@ -680,7 +680,11 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 
 #### 1.3.1.8. Просмотр сетевого трафика в Wireshark
 
-Можно открыть и изучить записанный файл сетевого трафика `wireshark output/network.pcap`:
+Анализировать трафик в Wireshark можно прямо из интерфейса *SNatch* с помощью раздела *Traffic*. Здесь можно увидеть интерфейсы и сессии, клик по каждой записи будет открывать Wireshark с соответствующими данными.
+
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_traffic.png><figcaption>_Информация о трафике_</figcaption>
+
+Так же можно открывать весь .pcap файл с помощью соответствующей кнопки.
 
 <img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/wireshark.png><figcaption>_Исследование трафика в Wireshark_</figcaption>
 

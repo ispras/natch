@@ -143,25 +143,18 @@ Call stack:
 * *socket* - остальные виды сокетов. Поле *name* содержит название типа сокета. Наличие такого узла в графе говорит о том, что обработка параметров данного типа сокетов в настоящее время не реализована.
 * *pipe* - неименованный канал. Поле *name* содержит строку *pair + число*.
 * *network* - сеть, источник помеченных данных. Поле *protocol* описывает номер ip протокола в сетевых пакетах. Поле *port_in* описывает входящий порт, поле *port_out* исходящий порт.
-* *user-process* - пользовательский процесс. Поле *name* содержит имя процесса. Поле proc содержит адрес структуры *task_struct*.
+* *user-process* - пользовательский процесс. Поле proc содержит уникальный id процесса.
 * *kernel-process* - процесс ядра. Поля совпадают с *user-process*.
 * *module* - модуль (Только для *module_graph*). Поле *name* содержит имя модуля, поле *address* - адрес модуля.
+* *kernel* - ядро в *module_graph*. При наличии отладочных символов поле *name* содержит имя исполняемого файла ядра.
 
 Пример выходного файла:
 
 ```text
-{"icount": {"start": 16638764870, "final": 16638764870}, "source": {"name": "client_tcp", "proc": "0xffff941c3bd73700", "type": "user-process"}, "destination": {"name": "server_tcp_s", "proc": "0xffff941c3bd75280", "type": "user-process"}, "score": 2},
-{"icount": {"start": 16638780181, "final": 16638780181}, "source": {"name": "server_tcp_s", "proc": "0xffff941c3bd75280", "type": "user-process"}, "destination": {"port": 1234, "ip": "127.0.0.1", "type": "tcp"}, "score": 2068},
-{"icount": {"start": 16638780181, "final": 16638780181}, "source": {"port": 1234, "ip": "127.0.0.1", "type": "tcp"}, "destination": {"name": "client_tcp", "proc": "0xffff941c3bd73700", "type": "user-process"}, "score": 2068},
-{"icount": {"start": 16883848026, "final": 16883848026}, "source": {"name": "/home/nat/bin/scripts/index.html", "type": "file"}, "destination": {"name": "args1", "proc": "0xffff941c3b4f3700", "type": "user-process"}, "score": 2050},
-{"icount": {"start": 16883982774, "final": 16883987750}, "extra": {"type": "private-memory"}, "source": {"name": "args1", "proc": "0xffff941c3b4f3700", "type": "user-process"}, "destination": {"name": "args1", "proc": "0xffff941c3bd76e00", "type": "user-process"}, "score": 4104},
-{"icount": {"start": 16885074396, "final": 16885511425}, "extra": {"type": "private-memory"}, "source": {"name": "args1", "proc": "0xffff941c3bd76e00", "type": "user-process"}, "destination": {"name": "args2", "proc": "0xffff941c3bd76e00", "type": "user-process"}, "score": 2155},
-{"icount": {"start": 16890900062, "final": 16890900062}, "source": {"name": "args2", "proc": "0xffff941c3bd76e00", "type": "user-process"}, "destination": {"name": "/tty1", "type": "file"}, "score": 100},
-{"icount": {"start": 16909717359, "final": 16909717359}, "source": {"name": "wget", "proc": "0xffff941c3bd71b80", "type": "user-process"}, "destination": {"name": "/home/nat/bin/scripts/index.html", "type": "file"}, "score": 2058},
-{"icount": {"start": 16909717359, "final": 16909717359}, "source": {"name": "/home/nat/bin/scripts/index.html", "type": "file"}, "destination": {"name": "shm2", "proc": "0xffff941c3b53a940", "type": "user-process"}, "score": 2058},
-{"icount": {"start": 16915543303, "final": 16915547137}, "extra": {"type": "shared-memory"}, "source": {"name": "shm2", "proc": "0xffff941c3b53a940", "type": "user-process"}, "destination": {"name": "shm3", "proc": "0xffff941c3b538000", "type": "user-process"}, "score": 100},
-{"icount": {"start": 16921037754, "final": 16921038372}, "extra": {"type": "shared-memory"}, "source": {"name": "shm3", "proc": "0xffff941c3b538000", "type": "user-process"}, "destination": {"name": "shm1", "proc": "0xffff941c3b539b80", "type": "user-process"}, "score": 236},
-{"icount": {"start": 16926559320, "final": 16926559320}, "source": {"name": "shm1", "proc": "0xffff941c3b539b80", "type": "user-process"}, "destination": {"name": "/tty1", "type": "file"}, "score": 100},
+{"icount": {"start": 13557580656, "final": 13557582746}, "source": {"port": 80, "ip": "172.217.168.228", "type": "tcp", "id": 219}, "destination": {"proc": 20, "type": "user-process"}, "score": 1642},
+{"icount": {"start": 14161961429, "final": 14161966494}, "source": {"proc": 20, "type": "user-process"}, "destination": {"name": "/home/nat/bin/scripts/index.html", "type": "file", "id": 2035}, "score": 2058},
+{"icount": {"start": 14161961429, "final": 14161966494}, "source": {"name": "/home/nat/bin/scripts/index.html", "type": "file", "id": 2035}, "destination": {"proc": 196, "type": "user-process"}, "score": 2048},
+{"icount": {"start": 14167892352, "final": 14167896186}, "extra": {"type": "shared-memory"}, "source": {"proc": 196, "type": "user-process"}, "destination": {"proc": 198, "type": "user-process"}, "score": 100},
 ```
 
 ## <a name="functional_coverage"></a>6.5. Анализ покрытия бинарного кода

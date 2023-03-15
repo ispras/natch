@@ -429,51 +429,57 @@ Do you want to get debug info for system modules? (requires sudo) [Y/n] y
 ```
 Для более информативных результатов следует согласиться. На данном этапе потребуется пароль администратора. Будет произведено монтирование образа, поиск библиотек и скачивание отладочных символов.
 ```text
-[sudo] password for user: 
-Mounting img - OK                                                                                                                                                  
+[sudo] password for user:
+Mounting img - OK
+
 Searching Binary Files...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
 Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-Searching Shared Libraries - OK                                                                                                                                    
+Searching Shared Libraries - OK
+
 vmlinux-5.10.0-17-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 643.2/643.2 MB 100% 0:04:39
 vmlinux-5.10.0-16-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 640.3/640.3 MB 100% 0:04:47
-[KERNEL] Download debugging information - OK                                                                                                                       
+[KERNEL] Download debugging information - OK
+
 libpthread-2.31.so.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB   100% 0:00:00
 libc-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB   100% 0:00:00
 libm-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB   100% 0:00:00
 libdl-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.2/44.2 kB 100% 0:00:00
-[SHARED_LIB] Download debugging information - OK                                                                                                           
-Umounting img - OK                                                                                                                                         
+[SHARED_LIB] Download debugging information - OK
 
-Module config statistics:                                                                                                                                   
-In module config there were modules                          :  2                                                                                           
-Binaries files in qcow2 found                                :  2                                                                                           
-                                                                                                                                                           
-Kernel statistics:                                                                                                                                         
-Kernel symbols have been found                               :  OK                                                                                         
-Added kernel symbols                                         :  2                                                                                          
-Added debugging information for kernel                       :  2                                                                                          
+Umounting img - OK
 
-Shared library Statistics:                                                                                                                                 
-Added shared libraries                                       :  4                                                                                          
-Added debugging information for shared libraries             :  4                                                                                          
-ld-linux-* is always skipped and isn't counted in calculations                                                                                             
+
+Module config statistics:                                                                                      
+In module config there were modules                          : 2
+Binaries files in qcow2 found                                : 2
+
+Kernel statistics:
+Kernel symbols have been found                               : OK
+Added kernel symbols                                         : 2
+Added debugging information for kernel                       : 2
+
+Shared library Statistics:
+Added shared libraries                                       : 4
+Added debugging information for shared libraries             : 4
+ld-linux-* is always skipped and isn't counted in calculations
 
 Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was updated        
 ```
 Следом будет запущен процесс генерации базы данных символов, это займет некоторое время.
 ```text
 Symbol info part
-Reading symbols for loaded modules                                                                                                                                 
-Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server                                                   
-Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-cli                                                                                                
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-16-amd64                                              
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-17-amd64                                              
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/libdl-2.31.so                                                        
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/libc-2.31.so                                                         
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/libm-2.31.so                                                         
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/libpthread-2.31.so                                                   
+Reading symbols for loaded modules
 
-Your config file '/home/user/natch_quickstart/test1//module.cfg' for modules was updated 
+Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server
+Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-cli
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-16-amd64
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-17-amd64
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libdl-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libc-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libm-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libpthread-2.31.so
+
+Your config file '/home/user/natch_quickstart/test1//module.cfg' for modules was updated
 ```
 
 Отлично, автоматизированная настройка и создание базовых скриптов завершены успешно, всё готово к записи сценария, о чём *Natch* сообщил нам дополнительно:

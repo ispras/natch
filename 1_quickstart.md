@@ -468,17 +468,18 @@ Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was 
 Следом будет запущен процесс генерации базы данных символов, это займет некоторое время.
 ```text
 Symbol info part
-Reading symbols for loaded modules                                                                                                                                 
-Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server                                                   
-Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-cli                                                                                                
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-16-amd64                                              
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-17-amd64                                              
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/libdl-2.31.so                                                        
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/libc-2.31.so                                                         
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/libm-2.31.so                                                         
-Created symbol database for /home/user/natch_quickstart/test1/libs/src/libpthread-2.31.so                                                   
+Reading symbols for loaded modules
 
-Your config file '/home/user/natch_quickstart/test1//module.cfg' for modules was updated 
+Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server
+Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-cli
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-16-amd64
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-17-amd64
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libdl-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libc-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libm-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/libpthread-2.31.so
+
+Your config file '/home/user/natch_quickstart/test1//module.cfg' for modules was updated
 ```
 
 Отлично, автоматизированная настройка и создание базовых скриптов завершены успешно, всё готово к записи сценария, о чём *Natch* сообщил нам дополнительно:

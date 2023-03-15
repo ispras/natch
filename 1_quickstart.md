@@ -429,20 +429,24 @@ Do you want to get debug info for system modules? (requires sudo) [Y/n] y
 ```
 Для более информативных результатов следует согласиться. На данном этапе потребуется пароль администратора. Будет произведено монтирование образа, поиск библиотек и скачивание отладочных символов.
 ```text
-[sudo] password for user: 
-Mounting img - OK                                                                                                                                                  
+[sudo] password for user:
+Mounting img - OK
+
 Searching Binary Files...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
 Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-Searching Shared Libraries - OK                                                                                                                                    
+Searching Shared Libraries - OK
+
 vmlinux-5.10.0-17-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 643.2/643.2 MB 100% 0:04:39
 vmlinux-5.10.0-16-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 640.3/640.3 MB 100% 0:04:47
-[KERNEL] Download debugging information - OK                                                                                                                       
+[KERNEL] Download debugging information - OK
+
 libpthread-2.31.so.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB   100% 0:00:00
 libc-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB   100% 0:00:00
 libm-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB   100% 0:00:00
 libdl-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.2/44.2 kB 100% 0:00:00
-[SHARED_LIB] Download debugging information - OK                                                                                                           
-Umounting img - OK                          
+[SHARED_LIB] Download debugging information - OK
+
+Umounting img - OK
 
 
 Module config statistics:                                                                                      

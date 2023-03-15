@@ -442,21 +442,22 @@ libc-2.31.so.dbg...                             ━━━━━━━━━━�
 libm-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB   100% 0:00:00
 libdl-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.2/44.2 kB 100% 0:00:00
 [SHARED_LIB] Download debugging information - OK                                                                                                           
-Umounting img - OK                                                                                                                                         
+Umounting img - OK                          
 
-Module config statistics:                                                                                                                                   
-In module config there were modules                          :  2                                                                                           
-Binaries files in qcow2 found                                :  2                                                                                           
-                                                                                                                                                           
-Kernel statistics:                                                                                                                                         
-Kernel symbols have been found                               :  OK                                                                                         
-Added kernel symbols                                         :  2                                                                                          
-Added debugging information for kernel                       :  2                                                                                          
 
-Shared library Statistics:                                                                                                                                 
-Added shared libraries                                       :  4                                                                                          
-Added debugging information for shared libraries             :  4                                                                                          
-ld-linux-* is always skipped and isn't counted in calculations                                                                                             
+Module config statistics:                                                                                      
+In module config there were modules                          : 2
+Binaries files in qcow2 found                                : 2
+
+Kernel statistics:
+Kernel symbols have been found                               : OK
+Added kernel symbols                                         : 2
+Added debugging information for kernel                       : 2
+
+Shared library Statistics:
+Added shared libraries                                       : 4
+Added debugging information for shared libraries             : 4
+ld-linux-* is always skipped and isn't counted in calculations
 
 Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was updated        
 ```

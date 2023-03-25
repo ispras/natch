@@ -844,9 +844,9 @@ docker run -v /home/user/natch_quickstart/:/mnt/ --network=host -it --privileged
 ```
 Где '/home/user/natch_quickstart/' это папка, в которой находится тестовый образ ОС.
 
-Выполнить настройку natch согласно пункту 1.3.1.3.
+Выполнить настройку Natch согласно пункту 1.3.1.3.
 
-Выбрать текстовый режим работы эмулятора.
+Выбрать текстовый режим работы эмулятора:
 ```text
 Do you want to run emulator in graphic mode? [Y/n] n
 ```

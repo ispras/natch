@@ -813,7 +813,7 @@ int main(int argc, char** argv)
 
 Используя nbd-сервер переместить файл "target" на хост (Например в папку **targetdir**).
 
-#### 1.3.2.4. Создание контейнера 
+#### 1.3.2.4. Создание контейнера и запуск Natch 
 
 Создадим контейнер со следующим содержимым:
 
@@ -844,19 +844,12 @@ docker run -v /home/user/natch_quickstart/:/mnt/ --network=host -it --privileged
 ```
 Где '/home/user/natch_quickstart/' это папка, в которой находится тестовый образ ОС.
 
-Выполнить настройку natch согласно пункту 1.3.1.3. После распаковки дистрибутива необходимо в файле запуска natch_run.py
-Удалить строку:
-'''
-cmdline += '-monitor stdio\\\n’
-'''
-Вместо удаленной строки добавить:
-'''
-cmdline += '-nographic \\\n'
-cmdline += '-curses \\\n'
-'''
+Выполнить настройку natch согласно пункту 1.3.1.3.
 
-При запуске изменить в настройке:
-
+Выбрать текстовый режим работы эмулятора.
+```text
+Do you want to run emulator in graphic mode? [Y/n] y
+```
 Опции сети: 
 ```Network option
 Do you want to use ports forwarding? [Y/n] n
@@ -872,7 +865,6 @@ Enter path to maps dir: ./targetdir
 [TaintFile]
 list=/root/pugi/sydr_0_int_overflow_1_unsigned;/root/pugi/sydr_1_int_overflow_0_unsigned;/root/pugi/sydr_2_int_overflow_0_unsigned
 ```
-В конфигурационных файлах 'run_record, run_replay, run_qemu' необходимо изменить конфигурации и добавить '-monitor tcp:0.0.0.0:7799,server,nowait' крайней строкой в конфигурационном файле.
 
 Выполнить запись трассы согласно пункта 1.3.1.4, на этапе с созданием снапшота, необходимо на хостовой машине открыть новое окно терминала и выполнить подключение к тестовой ОС:
 ```
@@ -889,7 +881,7 @@ nc -N 0.0.0.0 7799
 Воспроизвести трассу, согласно пункта 1.3.1.5:
 Запустить snatch, согласно пункта 1.3.1.7
 
-Создать проект, увидеть данные, приведенные в примере  ниже и убедиться, что все получилось :)
+Создать проект, увидеть данные, подобные приведенным в примере ниже и убедиться, что все получилось :)
 <img width="722" alt="call_graph" src="https://user-images.githubusercontent.com/47216218/208419146-b524a61f-f8f1-41ff-938b-6784295a8816.png">
 <img width="925" alt="flame_graph2" src="https://user-images.githubusercontent.com/47216218/208419147-0194f1e7-ba53-49d3-8cbd-aaedb33329c0.png">
  

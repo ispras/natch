@@ -712,6 +712,188 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 
 <img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/wireshark.png><figcaption>_Исследование трафика в Wireshark_</figcaption>
 
+### 1.3.2. Анализ образа системы в режиме командной строки в контейнере с файлом источником помеченных данных 
+В данном разделе описан пример использования natch в режиме командной строки, что в ряде сценариев, например, для использоывания на сервере значительно удобнее. Помимо этого, в разделе описан вариант использования с файлом, источником помеченных данных.
+Для выполнения данного примера потребуется:
+
+- тестовый образ, аналогично пункту 1.3.1
+- подготовленный разработчиком [тестовый набор](https://nextcloud.ispras.ru/index.php/s/testing_2.0, https://github.com/Orlovskiiparen/natch/tree/main/sydr_overflow), включающий в себя минимизированный образ гостевой операционной системы Debian (размер qcow2-образа около 1 ГБ), а также комплекта файлов с помеченными данными (sydr_0_int_overflow_1_unsigned,sydr_1_int_overflow_0_unsigned и sydr_2_int_overflow_0_unsigned). 
+
+#### 1.3.2.1. Подготовка образа виртуальной машины
+
+Необходимо скачать тестовый образ `test_image_debian.qcow2` и создать скрипт запуска `run1.sh`:
+
+```
+qemu-system-x86_64 \
+-hda test_image_debian.qcow2 \
+-enable-kvm \
+-m 4G
+```
+
+Запустить скрипт `run1.sh`, залогиниться `root:root`
+Установить неграфическую цель "по умолчанию": `systemctl set-default multi-user.target`
+
+Открыть конфигурацию grub: `vim /etc/default/grub`
+
+Изменить следующие строки(в скачанном образе эти строки уже раскомментированы):
+- раскомментировать: `GRUB_TERMINAL=console`
+- установить значение: `GRUB_CMDLINE_LINUX_DEFAULT="nomodeset"`
+
+Сохранить, после этого выполнить: `update-grub`
+
+Завершить работу: `shutdown 0`
+
+Изменить скрипт запуска:
+```
+qemu-system-x86_64 \
+-hda test_image_debian.qcow2 \
+-enable-kvm \
+-m 4G \
+-nographic \
+-curses \
+-monitor tcp:0.0.0.0:7799,server,nowait
+```
+
+#### 1.3.2.2. Сборка программы обработчика 
+
+Запустить скрипт `run1.sh`. 
+Скачать папку "pugixml":
+```
+git clone --depth 1 --single-branch https://github.com/zeux/pugixml
+```
+Собрать объектный файл:
+```
+gcc -c -Isrc src/pugixml.cpp 
+```
+
+В каталоге pugixml создать файл wrapper.cpp со следующим содержанием:
+```
+#include "pugixml.hpp"
+
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
+{
+        pugi::xml_document doc;
+        pugi::xml_parse_result result = doc.load_buffer((void *)data, size);
+        return 0;
+}
+
+int main(int argc, char** argv)
+{
+        FILE *fd = fopen(argv[1], "rb");
+
+        if (fd == NULL) return 1;
+        fseek(fd, 0, SEEK_END);
+        int fsize = ftell(fd);
+        fseek(fd, 0, SEEK_SET);
+
+        char* buffer = (char*) malloc(sizeof(char) * fsize);
+        fread(buffer, 1, fsize, fd);
+        fclose(fd);
+
+        return LLVMFuzzerTestOneInput((const uint8_t*)buffer, fsize);
+}
+
+```
+
+Скомпилировать цель из каталога, который находится на уровень выше содержимого каталога pugixml командой:
+```
+/usr/bin/clang++ -g -O0 pugixml/src/pugixml.cpp  pugixml/wrapper.cpp  --include=unistd.h -Ipugixml/src -o target && chmod +x target
+```
+
+#### 1.3.2.3. Перенос объекта оценки
+
+Далее необходимо перенести объект оценки в виртуальную машину, аналогично пункту 1.2.3, переместить 3 сэмпла (sydr_0_int_overflow_1_unsigned, sydr_1_int_overflow_0_unsigned, sydr_2_int_overflow_0_unsigned) в папку к скомпилированному файлу: `mc`:
+
+Запустить скрипт `run1.sh`, перейти в папку, в которой находятся 3 сэмпла и скомпилированный файл target и последовательно подать сэмплы в программу обработчик:
+```
+./target sydr_0_int_overflow_1_unsigned
+./target sydr_1_int_overflow_0_unsigned
+./target sydr_2_int_overflow_0_unsigned
+```
+
+Используя nbd-сервер переместить файл "target" на хост (Например в папку **targetdir**).
+
+#### 1.3.2.4. Создание контейнера 
+
+Создадим контейнер со следующим содержимым:
+
+```
+  GNU nano 4.8                       Dockerfile                                 
+FROM ubuntu:20.04
+
+#Set Timezone or get hang during the docker build...
+ENV TZ=Europe/Moscow
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt update
+RUN apt install -y vim git cmake make clang zlib1g-dev unzip curl python3-pip
+RUN apt install -y mc
+RUN apt install -y qemu-system
+RUN apt install -y netcat
+RUN apt install -y nano
+RUN apt install -y unzip
+RUN apt install libsdl2-2.0-0
+```
+Создадим образ контейнера на основе созданного Dockerfile:
+```
+sudo docker build -t docker ~/natch_quickstart
+```
+И запустим созданный образ:
+```
+docker run -v /home/user/natch_quickstart/:/mnt/ --network=host -it --privileged docker
+```
+Где '/home/user/natch_quickstart/' это папка, в которой находится тестовый образ ОС.
+
+Выполнить настройку natch согласно пункту 1.3.1.3. После распаковки дистрибутива необходимо в файле запуска natch_run.py
+Удалить строку:
+'''
+cmdline += '-monitor stdio\\\n’
+'''
+Вместо удаленной строки добавить:
+'''
+cmdline += '-nographic \\\n'
+cmdline += '-curses \\\n'
+'''
+
+При запуске изменить в настройке:
+
+Опции сети: 
+```Network option
+Do you want to use ports forwarding? [Y/n] n
+```
+Задать пути к копиям бинарных файлов (необходимо указать папку, в которой находится необходимый бинарный файл): 
+```
+Modules part
+Do you want to create module config? [Y/n] y
+Enter path to maps dir: ./targetdir
+```
+После запуска natch, в папке с созданным проектом, необходимо раскомментировать строки "TaintFile" (Строки №56, 57) и прописать имена файлов, которые требуется пометить:
+```
+[TaintFile]
+list=/root/pugi/sydr_0_int_overflow_1_unsigned;/root/pugi/sydr_1_int_overflow_0_unsigned;/root/pugi/sydr_2_int_overflow_0_unsigned
+```
+В конфигурационных файлах 'run_record, run_replay, run_qemu' необходимо изменить конфигурации и добавить '-monitor tcp:0.0.0.0:7799,server,nowait' крайней строкой в конфигурационном файле.
+
+Выполнить запись трассы согласно пункта 1.3.1.4, на этапе с созданием снапшота, необходимо на хостовой машине открыть новое окно терминала и выполнить подключение к тестовой ОС:
+```
+nc -N 0.0.0.0 7799
+```
+После загрузки интерфейса управления qemu, выполнить команду 'savevm ready'.
+Открыть окно тестовой ОС и последовательно подать три сэмпла в программу обработчик:
+```
+./target sydr_0_int_overflow_1_unsigned
+./target sydr_1_int_overflow_0_unsigned
+./target sydr_2_int_overflow_0_unsigned
+```
+В интерфейсе уаправления qemu на хостовой машине, выполнить 'qemu stop','quit'.
+Воспроизвести трассу, согласно пункта 1.3.1.5:
+Запустить snatch, согласно пункта 1.3.1.7
+
+Создать проект, увидеть данные, приведенные в примере  ниже и убедиться, что все получилось :)
+<img width="722" alt="call_graph" src="https://user-images.githubusercontent.com/47216218/208419146-b524a61f-f8f1-41ff-938b-6784295a8816.png">
+<img width="925" alt="flame_graph2" src="https://user-images.githubusercontent.com/47216218/208419147-0194f1e7-ba53-49d3-8cbd-aaedb33329c0.png">
+ 
+
 ## <a name="faq"></a>1.4. FAQ
 
 В этом разделе собраны наиболее часто встречающиеся проблемы при работе с инструментом *Natch*, раздел будет пополняться.

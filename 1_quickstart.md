@@ -848,7 +848,7 @@ docker run -v /home/user/natch_quickstart/:/mnt/ --network=host -it --privileged
 
 Выбрать текстовый режим работы эмулятора.
 ```text
-Do you want to run emulator in graphic mode? [Y/n] y
+Do you want to run emulator in graphic mode? [Y/n] n
 ```
 Опции сети: 
 ```Network option

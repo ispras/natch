@@ -25,8 +25,7 @@
 
 <img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/import.png"><figcaption>_Импорт настроек VPN_</figcaption>
 
-После импорта файла появится окно настройки соединения, в которое необходимо вписать логин и пароль, так же входящие в поставку.
-Далее осталось нажать кнопку *Add* в верхнем правом углу и конфигурация будет создана.
+После импорта файла появится окно настройки соединения, в которое необходимо вписать логин и пароль, так же входящие в поставку. В этом же окне следует перейти на вкладки IPv4 и IPv6 и установить флажок ``Use this connection only for resources on its network``. Далее осталось нажать кнопку *Add* в верхнем правом углу и конфигурация будет создана.
 
 
 <img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/login.png"><figcaption>_Добавление конфигурации VPN_</figcaption>

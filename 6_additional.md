@@ -2,67 +2,7 @@
 </div>
 
 # <a name="natch_additional"></a>6. Дополнительные возможности Natch
-## 6.1. Получение поверхности атаки
-
-Основным результатом работы инструмента *Natch* является поверхность атаки. Поверхность атаки представлена набором процессов, модулей и функций, которые обрабатывали помеченные данные по время выполнения тестового сценария.
-
-Для получения поверхности атаки можно воспользоваться командой монитора ``natch_get_attack_surface <filename>``, либо завершить работу эмулятора и файлы с информацией сгенерируются автоматически.
-
-Поверхность атаки разбита на два файла, в одном находятся модули, во втором функции. В обоих случаях сущности привязаны к процессу. К введенному пользователем имени файла добавляются соответствующие суффиксы: ``<filename>_modules.txt`` и ``<filename>_functions.txt``. Автоматически сгенерированные файлы называются *surface_modules.txt* и *surface_functions.txt*.
-
-Фрагмент файла *surface_modules.txt*:
-
-```text
-Task docker
-    Module /lib/x86_64-linux-gnu/libpthread.so.0 0x7f6bc94a4000
-    Module /lib/x86_64-linux-gnu/libc.so.6 0x7f6bc92de000
-Task containerd-shim
-    Module 0x0
-Task wget2
-    Module /lib/x86_64-linux-gnu/libpsl.so.5 0x7f921b147000
-    Module 0x0
-    Module 0x7f921b419000
-    Module files/wget2 0x55b58a293000
-    Module wget2/build/lib/libwget.so.1 0x7f921b3a2000
-    Module /lib/x86_64-linux-gnu/libpthread.so.0 0x7f921af77000
-    Module /lib/x86_64-linux-gnu/libresolv.so.2 0x7f9219cce000
-    Module /lib/x86_64-linux-gnu/libc.so.6 0x7f921adb6000
-    Module /lib/x86_64-linux-gnu/libz.so.1 0x7f921b15a000
-```
-
-Фрагмент файла *surface_functions.txt*:
-
-```text
-Task docker
-    Module /lib/x86_64-linux-gnu/libpthread.so.0 0x7f6bc94a4000
-        Function pthread_create 0x7f6bc94ac280 43
-    Module /lib/x86_64-linux-gnu/libc.so.6 0x7f6bc92de000
-        Function 0x7f6bc94aa390 5
-        Function 0x556426eee1b0 54
-        Function 0x556426eee180 1
-Task containerd-shim
-    Module 0x0
-        Function 0xffffffff94af9700 453
-        Function 0xffffffff94c001b8 54
-        Function 0xffffffff94e03000 1
-Task wget2
-    Module files/wget2 0x55b58a293000
-        Function 0x7f921b3b1210 2
-        Function process_response_header 0x55b58a2a9560 8 wget2/src/wget.c:1665
-        Function prepare_file 0x55b58a2a7720 1 wget2/src/wget.c:3214
-        Function _host_hash 0x55b58a2a2400 28 wget2/src/host.c:81
-        Function 0x7f921b3bcbe0 4
-        Function get_header 0x55b58a2a85a0 5 wget2/src/wget.c:3485
-        Function my_free 0x55b58a2ad2d0 1 wget2/src/options.c:4232
-        Function plugin_db_forward_downloaded_file 0x55b58a2a4510 1 wget2/src/plugin.c:556
-        Function hash_iri 0x55b58a2a1880 56 wget2/src/blacklist.c:171
-        Function process_response 0x55b58a2aaf40 8 wget2/src/wget.c:1980
-```
-
-Число после описания каждой функции обозначает количество ее обращений к помеченным данным.
-Это позволяет выбирать функции, наиболее интенсивно задействованные в обработке данных тестового сценария.
-
-## <a name="taint_log"></a>6.2. Подробная трасса помеченных данных
+## <a name="taint_log"></a>6.1. Подробная трасса помеченных данных
 
 Для более детального анализа может потребоваться больше информации, которую можно получить с помощью опции конфигурационного файла *Modules/log*.
 
@@ -88,7 +28,7 @@ Call stack:
 Не рекомендуется включать эту опцию по умолчанию, поскольку файл получается ощутимого размера
 (сотни байт на каждое обращение к помеченным данным).
 
-## <a name="taint_params_log"></a>6.3. Получение областей помеченной памяти для функций
+## <a name="taint_params_log"></a>6.2. Получение областей помеченной памяти для функций
 
 Инструмент позволяет получить лог вызовов функций с диапазонами адресов записанных и прочитанных помеченных данных. Для получения лога необходимо использовать опцию конфигурационного файла *Modules/params_log*. Эта опция задает имя файла, куда будет записан лог с параметрами функций.
 
@@ -123,7 +63,7 @@ Call stack:
     8: ffffffff83800f8d
 ```
 
-## 6.4. Получение графов взаимодействий процессов и модулей
+## 6.3. Получение графов взаимодействий процессов и модулей
 
 *Natch* позволяет получить историю распространения помеченных данных между процессами. Каждая строка лог-файла описывает передачу данных между двумя процессами, либо между процессом и файлом.
 
@@ -157,7 +97,7 @@ Call stack:
 {"icount": {"start": 14167892352, "final": 14167896186}, "extra": {"type": "shared-memory"}, "source": {"proc": 196, "type": "user-process"}, "destination": {"proc": 198, "type": "user-process"}, "score": 100},
 ```
 
-## <a name="functional_coverage"></a>6.5. Анализ покрытия бинарного кода
+## <a name="functional_coverage"></a>6.4. Анализ покрытия бинарного кода
 
 Плагин *coverage* используется для сбора покрытия исполняемого кода.
 

@@ -29,16 +29,8 @@ Natch (Network Application Tainting Can Help) - это инструмент дл
 
 1. [Релизы](7_appendix.md#app_releases)
 
-Видеозаписи вебинаров по Natch располагаются [здесь](https://nextcloud.ispras.ru/index.php/s/natch_webinars).
+1. [Видеозаписи вебинаров](https://nextcloud.ispras.ru/index.php/s/natch_webinars)
 
-<br><br>
 
-**Сборка PDF**
-
-Все необходимое для сборки PDF находится в папке scripts.
-
-При первом использовании запустить скрипт `setup.sh`.
-
-Для непосредственно сборки запустить скрипт `generate_pdf.sh`, запускать можно из любого места, документ с именем `natch_docs.pdf` сгенерируется в месте запуска скрипта.
 
 

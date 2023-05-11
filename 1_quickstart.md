@@ -724,7 +724,7 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 Для выполнения данного примера потребуется:
 
 - подготовленный разработчиком [тестовый комплект](#test_complect), включающий в себя минимизированный образ гостевой операционной системы Debian (размер qcow2-образа около 1 ГБ)
-- [комплект файлов](спросить автора PR) с помеченными данными (sydr_0_int_overflow_1_unsigned,sydr_1_int_overflow_0_unsigned и sydr_2_int_overflow_0_unsigned). 
+- там же [архив](https://nextcloud.ispras.ru/index.php/s/testing_2.0/download?path=%2F&files=samples.zip) с комплектом файлов с помеченными данными (sydr_0_int_overflow_1_unsigned,sydr_1_int_overflow_0_unsigned и sydr_2_int_overflow_0_unsigned). 
 
 #### 1.3.2.1. Подготовка образа виртуальной машины
 

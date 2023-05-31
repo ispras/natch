@@ -37,7 +37,7 @@ params_log=params.log
 
 [Taint]
 # Threshold value for tainting. Should be in decimal number system [0..255]
-threshold=50
+threshold=255
 on=true
 
 # Section for enable generating graphs

@@ -360,7 +360,7 @@ cd wget-1.21.2/src && sudo ./wget ispras.ru
 В папке `Natch_testing_materials` находится образ гоствой ОС. Учётные записи пользователей: `user/user` и `root/root`.
 
 
-#### <a name="aetup_natchSnatch"></a>1.3.1.2. Установка Natch и Snatch
+#### <a name="setup_natchSnatch"></a>1.3.1.2. Установка Natch и Snatch
 
 Установка *Natch* описана в разделе [Установка и настройка Natch](#setup_natch).
 

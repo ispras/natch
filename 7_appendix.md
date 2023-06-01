@@ -25,7 +25,7 @@
 <img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/settings.png"><figcaption>_Настройки сети_</figcaption>
 
 Появится окно для добавления новой конфигурации VPN. Нужный вариант *Import from file..*, куда следует передать входящий в поставку
-файл *sailor-license.ovpn*. В предлагаемой ОС OpenVPN установлен по умолчанию.
+файл *\*.ovpn*. В предлагаемой ОС OpenVPN установлен по умолчанию.
 
 <img src="https://raw.githubusercontent.com/ispras/natch/main/images/app_vpn/import.png"><figcaption>_Импорт настроек VPN_</figcaption>
 

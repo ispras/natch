@@ -11,23 +11,25 @@ Natch (Network Application Tainting Can Help) - это инструмент дл
 
 Результат работы инструмента представлен множеством интерактивных аналитик, которые собраны в веб-интерфейсе *SNatch*.
 
-1. [Начало работы с Natch](1_quickstart.md)
+1. [Что такое Natch](1_natch.md)
 
-1. [Основы работы с Natch](2_natch_begin.md)
+1. [Начало работы с Natch](2_quickstart.md)
 
-1. [Конфигурационные файлы Natch](3_configs.md)
+1. [Установка Natch](3_setup.md)
 
-1. [Запуск Natch](4_launch.md)
+1. [Конфигурационные файлы Natch](4_configs.md)
 
-1. [Анализ поверхности атаки с помощью SNatch](5_snatch.md)
+1. [Запуск Natch](5_launch.md)
 
-1. [Дополнительные возможности Natch](6_additional.md)
+1. [Анализ поверхности атаки с помощью SNatch](6_snatch.md)
 
-1. [Приложения](7_appendix.md)
+1. [Дополнительные возможности Natch](7_additional.md)
 
-1. [FAQ](1_quickstart.md#faq)
+1. [Приложения](8_appendix.md)
 
-1. [Релизы](7_appendix.md#app_releases)
+1. [FAQ](2_quickstart.md#faq)
+
+1. [Релизы](8_appendix.md#app_releases)
 
 1. [Видеозаписи вебинаров](https://nextcloud.ispras.ru/index.php/s/natch_webinars)
 

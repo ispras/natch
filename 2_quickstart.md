@@ -25,7 +25,7 @@
 
 Предыдущие релизы можно найти [здесь](8_appendix.md#app_releases).
 
-Установка *Natch* описана в разделе [Установка Natch](3_setup.md).
+Установка *Natch* описана в разделе [Установка Natch](3_setup.md#setup_natch).
 
 ## <a name="create-qemu-env"></a>2.2. Подготовка виртуализованной среды в формате QEMU
 

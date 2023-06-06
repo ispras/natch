@@ -310,7 +310,7 @@ cd wget-1.21.2/src && sudo ./wget ispras.ru
 
 #### <a name="setup_natchSnatch"></a>2.3.1.2. Установка Natch и Snatch
 
-Установка *Natch* описана в разделе [Установка Natch](3_setup.md).
+Установка *Natch* описана в разделе [Установка Natch](3_setup.md#setup_natch).
 
 Для устaновки *SNatch* следует запустить скрипт и дождаться его успешного выполнения:
 ```bash

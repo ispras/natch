@@ -152,7 +152,7 @@ qemu-system-x86_64 \
 
 ### <a name="build_prototype"></a>2.2.2. Сборка прототипа объекта оценки
 
-Рекомендации по подготовке исполняемого кода приведены [здесь](https://gitlab.community.ispras.ru/trackers/natch/-/wikis/Natch-requirements#%D0%B2-%D0%BF%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0-%D0%BF%D0%BE%D0%B4%D0%BB%D0%B5%D0%B6%D0%B0%D1%89%D0%B5%D0%B9-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D1%83-%D0%B3%D0%BE%D1%81%D1%82%D0%B5%D0%B2%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B).
+Рекомендации по подготовке исполняемого кода приведены [здесь](https://gitlab.ispras.ru/natch/natch-support/-/wikis/Natch%20requirements).
 
 В общем случае к анализируемому исполняемому коду выставляется два требования:
 

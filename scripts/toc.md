@@ -3,17 +3,19 @@
 <br>
 
 
-[1. Начало работы с Natch](#begin)
+[1. Что такое Natch](#natch_base)
 
-[2. Основы работы с Natch](#natch_base)
+[2. Начало работы с Natch](#begin)
 
-[3. Конфигурационные файлы Natch](#natch_config_main)
+[3. Установка Natch](#setup_natch)
 
-[4. Запуск Natch](#natch_run_main)
+[4. Конфигурационные файлы Natch](#natch_config_main)
 
-[5. Анализ поверхности атаки с помощью SNatch](#snatch)
+[5. Запуск Natch](#natch_run_main)
 
-[6. Дополнительные возможности Natch](#natch_additional)
+[6. Анализ поверхности атаки с помощью SNatch](#snatch)
+
+[7. Дополнительные возможности Natch](#natch_additional)
 
 [Приложение 1. Настройка окружения для использования лицензированного Natch](#app_1)
 
@@ -26,4 +28,5 @@
 [Приложение 5. Формат файла с покрытием кода](#app_5)
 
 [Приложение 6. История релизов Natch](#app_releases)
+
 

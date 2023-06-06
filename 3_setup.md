@@ -28,7 +28,7 @@ sudo rpm -ivh natch_2.3_alt10.rpm
 ```
 Для удаления *Natch* из системы используйте команду:
 ```
-sudo rpm -e --allmatches --nodeps natch_2.3-1.x86_64
+sudo rpm -e --allmatches --nodeps natch
 ```
 
 ___

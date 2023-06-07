@@ -9,6 +9,7 @@ https://werewblog.wordpress.com/2015/12/31/create-a-virtual-network-with-qemukvm
 
 Сконфигурировать туннель из tap-адаптеров на хосте:
 
+```
 modprobe tun tap
 sudo ip link add br0 type bridge
 sudo ip tuntap add dev tap0 mode tap
@@ -22,8 +23,10 @@ sudo ip address delete 192.168.159.131 dev ens33
 sudo ip address add 192.168.159.131/24 dev br0
 sudo ip route add default via 192.168.159.2 dev br0
 sudo resolvectl dns br0 192.168.159.2
+```
 
 Командная строка для запуска эмулятора:
+```
 qemu-system-x86_64 \
 -hda ubuntu_nginx.qcow2  \
 -m 4G \
@@ -32,6 +35,7 @@ qemu-system-x86_64 \
 -monitor stdio \
 -netdev tap,id=net0,ifname=tap0 \
 -device e1000,netdev=net0,mac=50:54:00:00:00:43
+```
 
 Нужно придумать несколько mac-адресов для разных машин
 
@@ -172,6 +176,7 @@ RUN apt install -y netcat
 RUN apt install -y nano
 RUN apt install -y unzip
 RUN apt install -y libsdl2-2.0-0
+RUN apt install -y libguestfs-tools
 ```
 Создадим образ контейнера на основе созданного Dockerfile:
 ```
@@ -182,6 +187,12 @@ sudo docker build -t docker /home/user/natch_quickstart
 Теперь запустим созданный образ:
 ```
 docker run -v /home/user/natch_quickstart/:/mnt/ --network=host -it --privileged docker
+```
+
+Сначала установим необходимые библиотеки для работы Python-скриптов:
+```
+pip3 install -r natch/bin/natch_scripts/requirements.txt
+pip3 install -r natch/bin/natch_scripts/guest_system/requirements.txt
 ```
 
 Дальше нужно создать с помощью Natch проект, как описано в [разделе "Начало работы"](2_quickstart.md#config_natch_test_image).
@@ -222,6 +233,6 @@ nc -N 0.0.0.0 7799
 Дальше остаётся [воспроизвести сценарий](2_quickstart.md#replay_scenario), чтобы записать поверхность атаки,
 а потом [загрузить её в SNatch](2_quickstart.md#snatch_analysis)
 
-Если SNatch появятся диаграммы, подобные приведенным в примере ниже, то все получилось.
+Если SNatch появятся диаграммы, подобные приведенным в примере ниже, то всё получилось.
 <img width="722" alt="call_graph" src="https://user-images.githubusercontent.com/47216218/208419146-b524a61f-f8f1-41ff-938b-6784295a8816.png">
 <img width="925" alt="flame_graph2" src="https://user-images.githubusercontent.com/47216218/208419147-0194f1e7-ba53-49d3-8cbd-aaedb33329c0.png">

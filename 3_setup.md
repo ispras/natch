@@ -1,3 +1,6 @@
+﻿<div style="page-break-before:always;">
+</div>
+
 # <a name="setup_natch"></a>3. Установка Natch
 
 Установка *Natch* делится на два этапа:

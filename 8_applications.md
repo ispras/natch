@@ -1,7 +1,7 @@
 <div style="page-break-before:always;">
 </div>
 
-# <a name="natch_applications"></a> 8. Примеры применения Natch
+# <a name="natch_applications"></a> 8. Примеры использования Natch
 
 ## 8.1. Соединение нескольких эмуляторов в сеть
 

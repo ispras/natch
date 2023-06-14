@@ -586,35 +586,25 @@ Network json log file: "/home/user/natch_quickstart/test1/record/network.json"
 
 #### <a name="replay_scenario"></a>2.3.1.5. Воспроизведение сценария и сбор данных для анализа
 
-
-<!---
-Пометка файла в гостевой ОС (пригодится для выполнения тестового сценария №1):
-```ini
-[TaintFile]
-list=sample.txt
-```
--->
-
-Для воспроизведения нужно запустить скрипт `run_replay.sh`. Скрипт принимает параметр с именем снэпшота, в нашем случае команда будет выглядеть так:
+Для воспроизведения нужно запустить скрипт `run_replay.sh`.
 ```text
-user@natch1:~/natch_quickstart$ LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./test1/run_replay.sh ready
+user@natch1:~/natch_quickstart$ ./test1/run_replay.sh
 ```
-Если по какой-то причине вы не хотите использовать параметр, то скрипт можно запустить без него, но при этом надо будет внести изменения в сам скрипт. Перед воспроизведением сценария следует заменить значение параметра `SNAPSHOT` на имя нашего снэпшота, например, используя редактор `vim`. По умолчанию параметр содержит строку *record*. Заменяем:
-```bash
-SNAPSHOT="ready"
+Скрипт может принимать два параметра: название спенария и имя снапшота. В нашем случае команда могла бы выглядеть так:
+```text
+user@natch1:~/natch_quickstart$ ./test1/run_replay.sh sample_redis ready
 ```
-Начнём воспроизведение сценария, а точнее его фрагмента, который выполнялся после создария снэпшота. Это будет приблизительно на порядок медленнее, чем базовое выполнение, вы моментально оцените пользу создания снэпшота:
-```bash
-user@natch1:~/natch_quickstart$ LD_LIBRARY_PATH=/home/user/natch_quickstart/libs/ ./test1/run_replay.sh
-```
-Если в скрипт не был передан параметр и скрипт не был отредактирован - воспроизведение начнется с начала загрузки ОС.
+Оба параметра являются обязательными. Однако, запускать скрипт можно без параметров, он сам или загрузит нужный сценарий (если он единственный) или предложит выбрать из списка существующих, точно
+так же произойдет с выбором снапшота.
+
+Начнём воспроизведение сценария, а точнее его фрагмента, который выполнялся после со
 
 Через какое-то время выполнение сценария завершится, графическое окно закроется, и вы увидете сообщение наподобие приведённого ниже, свидетельствующее о том, что интересующие нас модули гостевой ОС были распознаны успешно, и, следовательно, мы получим в отчетах корректную символьную информацию.
 ```text
 Snapshot to load: ready
-QEMU 6.2.0 monitor - type 'help' for more information
-(qemu) 
-Natch v.2.2
+Natch monitor - type 'help' for more information
+(natch) 
+Natch v.2.3
 (c) 2020-2023 ISP RAS
 
 Reading Natch config file...
@@ -641,14 +631,14 @@ Detected module /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins
 Detected module /home/user/natch_quickstart/test1/libs/src/libpthread-2.31.so execution
 Detected module /home/user/natch_quickstart/test1/libs/src/libm-2.31.so execution
 
-============ Statistics ============
+=========== Statistics ===========
 
-Tainted files count           : 1
-Tainted processes count       : 3
-Tainted modules count         : 5
-Tainted functions count       : 231
-Tainted packets count         : 149
-Tainted file reading count    : 0
+Tainted files             : 0
+Tainted packets           : 
+Tainted processes         : 
+Tainted modules           : 
+Tainted file reads        : 
+Tainted memory accesses   : 
 
 Compressing data. Please wait..
 
@@ -657,7 +647,18 @@ output.tar.zst completed
 
 Если работа системы завершилась успешно, и вы не словили, например, `core dumped` (о чём стоит немедленно сообщить в [трекер](https://gitlab.ispras.ru/natch/natch-support/-/issues) с приложением всех артефактов), можно переходить к анализу собранных данных.
 
-Помеченный файл в данном случае это тот самый `sample.txt`, который мы пометили в `natch.cfg`, но не использовали в этом сценарии.
+
+
+<!---
+Про помеченный файл написать тут
+Пометка файла в гостевой ОС (пригодится для выполнения тестового сценария №1):
+```ini
+[TaintFile]
+list=sample.txt
+```
+-->
+
+
 
 #### <a name="snatch_analysis"></a>2.3.1.6. Анализ с использованием Snatch
 

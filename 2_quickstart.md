@@ -624,11 +624,12 @@ Process events binary log file /home/user/natch_quickstart/test1/output/log_p_b.
 Network json log file: "/home/user/natch_quickstart/test1/output/tnetwork.json"
 Binary log file /home/user/natch_quickstart/test1/output/log_t_b.log created successfully
 Binary call_stack log file /home/user/natch_quickstart/test1/output/log_cs_b.log created successfully
-Detected module /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-17-amd64 execution
-Detected module /home/user/natch_quickstart/test1/libs/src/libc-2.31.so execution
+Detected module /home/user/natch_quickstart/test1/libs/src/cc89a8838df3652561ab61598035775fa95f8917/vmlinux-5.10.0-17-amd64 execution
+Detected module /home/user/natch_quickstart/test1/libs/src/2e5abcee94f3bcbed7bba094f341070a2585a2ba/libc-2.31.so execution
 Detected module /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server execution
-Detected module /home/user/natch_quickstart/test1/libs/src/libpthread-2.31.so execution
-Detected module /home/user/natch_quickstart/test1/libs/src/libm-2.31.so execution
+Detected module /home/user/natch_quickstart/test1/libs/src/5018237bbf012b4094027fd0b96fc22a24496ea4/libpthread-2.31.so execution
+Detected module /home/user/natch_quickstart/test1/libs/src/e9d2c06479b13dd3cfa78d714d11dccf6fcbee51/libm-2.31.so execution
+
 
 =========== Statistics ===========
 

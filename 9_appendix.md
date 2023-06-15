@@ -10,12 +10,23 @@
 
 В качестве хостовой системы предлагается использовать Ubuntu 20.04.
 
-Все необходимые файлы настройки будут предоставлены пользователю, а именно, пакет aksusbd_*current_version*\_amd64.deb, файл с конфигурацией vpn ``*.ovpn`` и логин/пароль для подключения.
+Все необходимые файлы настройки будут предоставлены пользователю, а именно, пакет aksusbd_*current_version*\_amd64.deb (Ubuntu, Debian)/haspd-_*current_version*\_x86_64.rpm (Alt), файл с конфигурацией vpn ``*.ovpn`` и логин/пароль для подключения.
 
-1. Установить deb пакет aksusbd_*current_version*\_amd64.deb с помощью команды:
+1. Установить окружение для ключей Sentinel
 
+**Для Ubuntu, Debian**
+
+Установить deb пакет `aksusbd` с помощью команды:
 ```bash
     sudo dpkg -i aksusbd_*current_version*_amd64.deb
+```
+
+**Для Alt**
+
+Установить rpm пакет `haspd` и перезапустить службу:
+```bash
+    rpm -i haspd-_*current_version*_x86_64.rpm
+    sudo systemctl restart haspd
 ```
 
 2. Создать VPN соединение.

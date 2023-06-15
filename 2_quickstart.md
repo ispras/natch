@@ -588,18 +588,18 @@ Network json log file: "/home/user/natch_quickstart/test1/record/network.json"
 
 Для воспроизведения нужно запустить скрипт `run_replay.sh`.
 ```text
-user@natch1:~/natch_quickstart$ ./test1/run_replay.sh
+user@natch1:~/natch_quickstart/test1/$ ./run_replay.sh
 ```
-Скрипт может принимать два параметра: название спенария и имя снапшота. В нашем случае команда могла бы выглядеть так:
+Скрипт может принимать два параметра: название сценария и имя снапшота. В нашем случае команда могла бы выглядеть так:
 ```text
-user@natch1:~/natch_quickstart$ ./test1/run_replay.sh sample_redis ready
+user@natch1:~/natch_quickstar/test1/t$ ./run_replay.sh sample_redis ready
 ```
-Оба параметра являются обязательными. Однако, запускать скрипт можно без параметров, он сам или загрузит нужный сценарий (если он единственный) или предложит выбрать из списка существующих, точно
+Если используются параметры, то они оба являются обязательными. Однако, запускать скрипт можно без параметров, он сам или загрузит нужный сценарий (если он единственный) или предложит выбрать из списка существующих, точно
 так же произойдет с выбором снапшота.
 
-Начнём воспроизведение сценария, а точнее его фрагмента, который выполнялся после со
+Начнём воспроизведение сценария, а точнее его фрагмента, который выполнялся после создания снапшота. Это будет несколько медленнее, чем базовое выполнение.
 
-Через какое-то время выполнение сценария завершится, графическое окно закроется, и вы увидете сообщение наподобие приведённого ниже, свидетельствующее о том, что интересующие нас модули гостевой ОС были распознаны успешно, и, следовательно, мы получим в отчетах корректную символьную информацию.
+Через какое-то время выполнение сценария завершится, графическое окно закроется, и вы увидите сообщение наподобие приведённого ниже, свидетельствующее о том, что интересующие нас модули гостевой ОС были распознаны успешно, и, следовательно, мы получим в отчетах корректную символьную информацию.
 ```text
 Snapshot to load: ready
 Natch monitor - type 'help' for more information
@@ -616,7 +616,7 @@ Config is loaded.
 File events binary log file /home/user/natch_quickstart/test1/output/files_b.log created successfully
 Module binary log file /home/user/natch_quickstart/test1/output/log_m_b.log created successfully
 Modules: started reading binaries
-Modules: finished with 8 of 8 binaries for analysis
+Modules: finished with 13 of 13 binaries for analysis
 thread_monitor: identification method is set to a complex developed at isp approach
 Started thread monitoring
 Tasks: config file is open.
@@ -624,7 +624,6 @@ Process events binary log file /home/user/natch_quickstart/test1/output/log_p_b.
 Network json log file: "/home/user/natch_quickstart/test1/output/tnetwork.json"
 Binary log file /home/user/natch_quickstart/test1/output/log_t_b.log created successfully
 Binary call_stack log file /home/user/natch_quickstart/test1/output/log_cs_b.log created successfully
-Tainting file: sample.txt
 Detected module /home/user/natch_quickstart/test1/libs/src/vmlinux-5.10.0-17-amd64 execution
 Detected module /home/user/natch_quickstart/test1/libs/src/libc-2.31.so execution
 Detected module /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server execution
@@ -634,11 +633,11 @@ Detected module /home/user/natch_quickstart/test1/libs/src/libm-2.31.so executio
 =========== Statistics ===========
 
 Tainted files             : 0
-Tainted packets           : 
-Tainted processes         : 
-Tainted modules           : 
-Tainted file reads        : 
-Tainted memory accesses   : 
+Tainted packets           : 151
+Tainted processes         : 3
+Tainted modules           : 3
+Tainted file reads        : 0
+Tainted memory accesses   : 21838
 
 Compressing data. Please wait..
 
@@ -647,18 +646,15 @@ output.tar.zst completed
 
 Если работа системы завершилась успешно, и вы не словили, например, `core dumped` (о чём стоит немедленно сообщить в [трекер](https://gitlab.ispras.ru/natch/natch-support/-/issues) с приложением всех артефактов), можно переходить к анализу собранных данных.
 
+В этом сценарии нам не пришлось изменять конфигурационный файл сценария, потому что порт был установлен при настройке проекта. Однако, это может потребоваться. Конфигурационный файл `taint.cfg` находится в папке
+со сценарием и содержит всего две секции: **Ports** и **TaintFile**.
 
+Если бы мы выполняли первый тестовый сценарий (бинарный файл test_samle), нам следовало бы пометить файл *sample.txt* следующим образом:
 
-<!---
-Про помеченный файл написать тут
-Пометка файла в гостевой ОС (пригодится для выполнения тестового сценария №1):
 ```ini
 [TaintFile]
 list=sample.txt
 ```
--->
-
-
 
 #### <a name="snatch_analysis"></a>2.3.1.6. Анализ с использованием Snatch
 

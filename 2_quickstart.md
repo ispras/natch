@@ -20,11 +20,11 @@
 
 В пакете представлен защищенный бинарный дистрибутив, требующий наличия аппаратного ключа (персональный "черный" ключ, сетевой "красный" ключ или иные версии ключа) с лицензией c идентификатором "6".
 
-Дистрибутив доступен по ссылке [Natch v.2.3](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3)
+[Дистрибутив Natch v.2.3](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3)
 
-Предыдущие релизы можно найти [здесь](9_appendix.md#app_releases)
+[Предыдущие релизы](9_appendix.md#app_releases)
 
-Установка *Natch* описана в разделе [Установка Natch](3_setup.md#setup_natch)
+[Установка Natch](3_setup.md#setup_natch)
 
 ## <a name="create-qemu-env"></a>2.2. Подготовка виртуализованной среды в формате QEMU
 

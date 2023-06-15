@@ -300,18 +300,18 @@ cd Sample1
 
 *Сценарий использования тестового комплекта Sample2_bins*
 
-Процесс сервера redis-server следует запустить командой `redis-server --port 5555 --protected-mode no`, после чего соединиться с ним из хостовой системы клиентской утилитой `redis-cli -h localhost -p 15555` (её можно поставить например так `sudo apt install redis-tools`) и выполнить какие-нибудь действия, например `SET b VeryBigValue`. В образе redis установлен в систему.
+Процесс сервера redis-server следует запустить командой `redis-server --port 5555 --protected-mode no`, после чего соединиться с ним из хостовой системы клиентской утилитой `redis-cli -h localhost -p 15555` (её можно поставить так: `sudo apt install redis-tools`) и выполнить какие-нибудь действия, например `SET b VeryBigValue`. В образе redis установлен в систему.
 
 
 #### 2.3.1.1. Получение образа и дистрибутива
 
-Команда для скачивания тестового комплекта с помощью *curl* выглядит так `curl -o materials.zip 'https://nextcloud.ispras.ru/index.php/s/testing_2.0/download'`. 
+Команда для скачивания тестового комплекта с помощью *curl* выглядит так: `curl -o materials.zip 'https://nextcloud.ispras.ru/index.php/s/testing_2.0/download'`. 
 
-Состав комплекта поставки *Natch* в облачном хранилище включает deb-пакет Natch, SNatch и докуменатацию.
+Состав комплекта поставки *Natch* для Ubuntu20 в облачном хранилище включает deb-пакет Natch, SNatch и докуменатацию.
 
 После скачивания дистрибутива и обучающих материалов их следует распаковать.
 
-В папке `Natch_testing_materials` находится образ гоствой ОС. Учётные записи пользователей: `user/user` и `root/root`.
+Образ гоствой ОС находится в папке `Natch_testing_materials`. Учётные записи пользователей: `user/user` и `root/root`.
 
 
 #### <a name="setup_natchSnatch"></a>2.3.1.2. Установка Natch и Snatch

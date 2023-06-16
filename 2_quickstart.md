@@ -722,7 +722,7 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 
 <img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_traffic.png><figcaption>_Информация о трафике_</figcaption>
 
-Так же можно открывать весь .pcap файл с помощью соответствующей кнопки.
+Так же можно открывать только помеченный трафик, трафик, относящийся к сценарию, а так же весь трафик с помощью соответствующих кнопок.
 
 <img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/wireshark.png><figcaption>_Исследование трафика в Wireshark_</figcaption>
 

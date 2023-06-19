@@ -15,12 +15,12 @@
 Для установки *Natch* скачайте соответствующий вашей ОС дистрибутив и используйте команду (пример для ubuntu20):
 
 ```bash
-dpkg -i natch_2.3_ubuntu20.deb
+sudo dpkg -i natch_2.3_ubuntu20.deb
 ```
 Для удаления *Natch* из системы используйте команду:
 
 ```bash
-dpkg -r natch
+sudo dpkg -r natch
 ```
 
 **Установка для Alt**

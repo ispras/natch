@@ -25,7 +25,7 @@
 
 Установить rpm пакет `haspd` и перезапустить службу:
 ```bash
-    rpm -i haspd-_*current_version*_x86_64.rpm
+    sudo rpm -i haspd-_*current_version*_x86_64.rpm
     sudo systemctl restart haspd
 ```
 

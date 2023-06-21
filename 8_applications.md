@@ -140,7 +140,7 @@ nc -N 0.0.0.0 7799
 
 Для создания контейнера нужен файл `Dockerfile` со следующим содержимым.
 В этом же каталоге должен находиться пакет *Natch* для Ubuntu 20.04 --
-`natch_v.X.X.deb`.
+`natch_X.X_ubuntu2004.deb`.
 ```
 FROM ubuntu:20.04
 
@@ -166,7 +166,7 @@ ENV PATH="${PATH}:/bin/natch/bin"
 
 COPY natch_Ubuntu20_amd64.deb /home/user
 
-RUN apt install /home/user/natch_v.X.X.deb
+RUN apt install /home/user/natch_X.X_ubuntu2004.deb
 
 USER $cuidname
 RUN /bin/natch/bin/natch_scripts/setup_requirements.sh

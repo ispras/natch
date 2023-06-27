@@ -267,6 +267,14 @@
 
 # <a name="app_releases"></a>Приложение 7. История релизов Natch
 
+[**Natch v.2.3.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3.1)
+
+* SNatch
+    * Улучшен PDF отчет
+* Natch
+    * Расширен перехват системных вызовов
+    * Улучшена поддержка DWARF
+
 [**Natch v.2.3**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3)
 
 * SNatch

@@ -20,7 +20,7 @@
 
 В пакете представлен защищенный бинарный дистрибутив, требующий наличия аппаратного ключа (персональный "черный" ключ, сетевой "красный" ключ или иные версии ключа) с лицензией c идентификатором "6".
 
-[Дистрибутив Natch v.2.3](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3)
+[Дистрибутив Natch v.2.3.1](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3.1)
 
 [Предыдущие релизы](9_appendix.md#app_releases)
 
@@ -440,50 +440,138 @@ Do you want to get debug info for system modules? (requires sudo) [Y/n] y
 ```text
 [sudo] password for user:
 Mounting img - OK
-Reading module config - OK
 
+─────────────────────────────────────────────── Read Module Config ────────────────────────────────────────────────────────
+
+Reading module config - OK
 Searching Binary Files...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-python3.9.dbg...                                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB 100% 0:00:01
+Searching Binary Files - OK
+
+───────────────────────────────────────────────── Python Section ──────────────────────────────────────────────────────────
+
+Searching python interpreters - OK                                                                                                           
+Method: DebugInfoD                                                                                                                           
+_json.cpython-39-x86_64-linux-gnu.so.dbg...     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.2/64.2 kB   100% 0:00:00
+_crypt.cpython-39-x86_64-linux-gnu.so.dbg...    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.2/13.2 kB   100% 0:00:00
+_hashlib.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.0/90.0 kB   100% 0:00:00
+ossaudiodev.cpython-39-x86_64-linux-gnu.so.d... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 kB   100% 0:00:00
+_dbm.cpython-39-x86_64-linux-gnu.so.dbg...      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.1/42.1 kB   100% 0:00:00
+_testimportmultiple.cpython-39-x86_64-linux-... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 kB     100% 0:00:00
+termios.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.5/19.5 kB   100% 0:00:00
+xxlimited.cpython-39-x86_64-linux-gnu.so.dbg... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 kB   100% 0:00:00
+_sqlite3.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 152.8/152.8 kB 100% 0:00:00
+python3.9.dbg...                                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB     100% 0:00:04
+_codecs_kr.cpython-39-x86_64-linux-gnu.so.db... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.5/24.5 kB   100% 0:00:00
+_queue.cpython-39-x86_64-linux-gnu.so.dbg...    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 22.9/22.9 kB   100% 0:00:00
+_bz2.cpython-39-x86_64-linux-gnu.so.dbg...      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 30.9/30.9 kB   100% 0:00:00
+readline.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.3/45.3 kB   100% 0:00:00
+_curses_panel.cpython-39-x86_64-linux-gnu.so... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 28.5/28.5 kB   100% 0:00:00
+_ssl.cpython-39-x86_64-linux-gnu.so.dbg...      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 139.4/139.4 kB 100% 0:00:00
+_posixshmem.cpython-39-x86_64-linux-gnu.so.d... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.1/16.1 kB   100% 0:00:00
+_codecs_iso2022.cpython-39-x86_64-linux-gnu.... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.1/35.1 kB   100% 0:00:00
+_codecs_hk.cpython-39-x86_64-linux-gnu.so.db... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 22.0/22.0 kB   100% 0:00:00
+parser.cpython-39-x86_64-linux-gnu.so.dbg...    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.6/43.6 kB   100% 0:00:00
+_uuid.cpython-39-x86_64-linux-gnu.so.dbg...     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.1/11.1 kB   100% 0:00:00
+_xxsubinterpreters.cpython-39-x86_64-linux-g... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 70.9/70.9 kB   100% 0:00:00
+_asyncio.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.2/98.2 kB   100% 0:00:00
+_testmultiphase.cpython-39-x86_64-linux-gnu.... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 31.7/17.5 kB   100% 0:00:00
+_decimal.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 234.9/234.9 kB 100% 0:00:00
+_opcode.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.5/8.3 kB    100% 0:00:00
+_lzma.cpython-39-x86_64-linux-gnu.so.dbg...     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.8/32.8 kB   100% 0:00:00
+_ctypes_test.cpython-39-x86_64-linux-gnu.so.... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 30.4/30.4 kB   100% 0:00:00
+_xxtestfuzz.cpython-39-x86_64-linux-gnu.so.d... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 27.4/19.4 kB   100% 0:00:00
+_codecs_jp.cpython-39-x86_64-linux-gnu.so.db... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 33.8/33.8 kB   100% 0:00:00
+_ctypes.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 229.9/229.9 kB 100% 0:00:00
+_testcapi.cpython-39-x86_64-linux-gnu.so.dbg... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 173.6/173.6 kB 100% 0:00:00
+_lsprof.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.5/42.5 kB   100% 0:00:00
+_curses.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 146.1/146.1 kB 100% 0:00:00
+_zoneinfo.cpython-39-x86_64-linux-gnu.so.dbg... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.3/65.3 kB   100% 0:00:00
+_codecs_tw.cpython-39-x86_64-linux-gnu.so.db... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.8/13.4 kB   100% 0:00:00
+_testinternalcapi.cpython-39-x86_64-linux-gn... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.1/11.1 kB   100% 0:00:00
+_codecs_cn.cpython-39-x86_64-linux-gnu.so.db... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 25.5/18.0 kB   100% 0:00:00
+mmap.cpython-39-x86_64-linux-gnu.so.dbg...      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 38.5/38.5 kB   100% 0:00:00
+_multiprocessing.cpython-39-x86_64-linux-gnu... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 25.2/16.7 kB   100% 0:00:00
+nis.cpython-39-x86_64-linux-gnu.so.dbg...       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.5/23.5 kB   100% 0:00:00
+_testbuffer.cpython-39-x86_64-linux-gnu.so.d... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 77.9/77.9 kB   100% 0:00:00
+resource.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 22.2/22.2 kB   100% 0:00:00
+_contextvars.cpython-39-x86_64-linux-gnu.so.... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.6/11.6 kB   100% 0:00:00
+audioop.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 81.7/81.7 kB   100% 0:00:00
+_multibytecodec.cpython-39-x86_64-linux-gnu.... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.9/78.9 kB   100% 0:00:00
 [PYTHON] Download debugging information - OK
 
 [PYTHON_TIED] Download debugging information - OK
-vmlinux-5.10.0-17-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 643.2/643.2 MB 100% 0:04:39
+
+───────────────────────────────────────────────── Kernel Section ──────────────────────────────────────────────────────────
+
+Method: DebugInfoD                                                                                                                           
+vmlinux-5.10.0-17-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 643.2/643.2 MB 100% 0:02:03
 [KERNEL] Download debugging information - OK
 
 [KERNEL_TIED] Download debugging information - OK
-Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
+Find Debugging Information For Kernel - OK
+
+──────────────────────────────────────────── Shared Libraries Section ─────────────────────────────────────────────────────
+
+Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50/50 100% 0:00:01
 Searching Shared Libraries - OK
+Method: DebugInfoD
+libk5crypto.so.3.1.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.3/211.3 kB 100% 0:00:00
+libkrb5support.so.0.1.dbg...                    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.8/74.8 kB   100% 0:00:00
+libcom_err.so.2.1.dbg...                        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 kB   100% 0:00:00
+libgssapi_krb5.so.2.2.dbg...                    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 504.9/504.9 kB 100% 0:00:00
+libtirpc.so.3.0.0.dbg...                        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 253.2/253.2 kB 100% 0:00:00
+libtinfo.so.6.2.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 127.1/127.1 kB 100% 0:00:00
+libncursesw.so.6.2.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 273.1/273.1 kB 100% 0:00:00
+libkeyutils.so.1.9.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.1/20.1 kB   100% 0:00:00
+libkrb5.so.3.3.dbg...                           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB     100% 0:00:00
+libnsl.so.2.0.1.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 126.5/126.5 kB 100% 0:00:00
+liblzma.so.5.2.5.dbg...                         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 264.2/264.2 kB 100% 0:00:00
+libdl-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.2/44.2 kB   100% 0:00:00
+libreadline.so.8.1.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 349.9/349.9 kB 100% 0:00:00
+libc-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB     100% 0:00:03
+libcrypt.so.1.1.0.dbg...                        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 193.8/193.8 kB 100% 0:00:00
+libpanelw.so.6.2.dbg...                         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.6/17.6 kB   100% 0:00:00
+libpthread-2.31.so.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB     100% 0:00:02
 libz.so.1.2.11.dbg...                           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 109.8/109.8 kB 100% 0:00:00
 libexpat.so.1.6.12.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 167.0/167.0 kB 100% 0:00:00
-libdl-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.2/44.2 kB   100% 0:00:00
-libpthread-2.31.so.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB     100% 0:00:00
-libc-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB     100% 0:00:00
-libm-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB     100% 0:00:00
-libutil-2.31.so.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.1/11.0 kB   100% 0:00:00
+libresolv-2.31.so.dbg...                        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 136.8/136.8 kB 100% 0:00:00
+libbz2.so.1.0.4.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB   100% 0:00:00
+libffi.so.7.1.0.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.5/59.5 kB   100% 0:00:00
+libcrypto.so.1.1.dbg...                         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB     100% 0:00:01
+libsqlite3.so.0.8.6.dbg...                      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB     100% 0:00:03
+libssl.so.1.1.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 646.4/646.4 kB 100% 0:00:00
+libutil-2.31.so.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.1/16.1 kB   100% 0:00:00
+libmpdec.so.2.5.1.dbg...                        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 259.8/259.8 kB 100% 0:00:00
+libm-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB     100% 0:00:01
+librt-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.4/73.4 kB   100% 0:00:00
+libuuid.so.1.3.0.dbg...                         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.3/34.3 kB   100% 0:00:00
+libdb-5.3.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 MB     100% 0:00:03
 [SHARED_LIB] Download debugging information - OK
-
+libtinfo6.debug.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 kB 100% 0:00:00
+libncursesw6.debug.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 kB 100% 0:00:00
 [SHARED_LIB_TIED] Download debugging information - OK
 Umounting img - OK
 
+───────────────────────────────────────────────── Result Section ──────────────────────────────────────────────────────────
 
-Module config statistics:
-In module config there were modules                          : 2
-Binaries files in qcow2 found                                : 2
+Module config statistics:                                                                                                                          
+In module config there were modules                               :     2
+Binaries files in qcow2 found                                     :     2
 
 Python interpreters statistics:
-Python interpreters have been found                          : OK
-Added python interpreters                                    : 1
-Added debugging information for python interpreters          : 1
+Python interpreters have been found                               :     OK
+Added python interpreters                                         :     46
+Added debugging information for python interpreters               :     46
 
 Kernel statistics:
-Kernel symbols have been found                               : OK
-Added kernel symbols                                         : 1
-Added debugging information for kernel                       : 1
+Kernel symbols have been found                                    :     OK
+Added kernel symbols                                              :     1
+Added debugging information for kernel                            :     1
 
 Shared library Statistics:
-Added shared libraries                                       : 7
-Added debugging information for shared libraries             : 7
-Added debugging information for tied files                   : 0
+Added shared libraries                                            :     31
+Added debugging information for shared libraries                  :     31
+Added debugging information for tied files                        :     2
 ld-linux-* is always skipped and isn't counted in calculations
 
 Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was updated
@@ -495,6 +583,7 @@ Reading symbols for loaded modules
 
 Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server
 Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-cli
+...
 Created symbol database for /home/user/natch_quickstart/test1/libs/src/f902f8a561c3abdb9c8d8c859d4243bd8c3f928f/python3.9
 Created symbol database for /home/user/natch_quickstart/test1/libs/src/cc89a8838df3652561ab61598035775fa95f8917/vmlinux-5.10.0-17-amd64
 Created symbol database for /home/user/natch_quickstart/test1/libs/src/5018237bbf012b4094027fd0b96fc22a24496ea4/libpthread-2.31.so

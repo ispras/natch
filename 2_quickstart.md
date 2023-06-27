@@ -333,7 +333,7 @@ user@natch1:~/natch_quickstart/snatch$ ./snatch_setup.sh
 
 Автоматизированная настройка выполняется [интерактивным скриптом](5_launch.md#natch_run_script) `natch_run.py`. Далее приведем вопросы скрипта и примеры ответов. Запустим скрипт:
 ```text
-user@natch1:~/natch_quickstart$ ./natch_ubuntu20/bin/natch_scripts/natch_run.py Natch_testing_materials/test_image_debian.qcow2
+user@natch1:~/natch_quickstart$ /usr/bin/natch/bin/natch_scripts/natch_run.py Natch_testing_materials/test_image_debian.qcow2
 Image: /home/user/natch_quickstart/Natch_testing_materials/test_image_debian.qcow2
 OS: Linux
 ```

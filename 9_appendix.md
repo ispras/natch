@@ -267,7 +267,7 @@
 
 # <a name="app_releases"></a>Приложение 7. История релизов Natch
 
-[**Natch v.2.3.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3.1)
+[**Natch v.2.3.1**](https://nextcloud.ispras.ru/index.php/s/NALSzi9xGSaftsN)
 
 * SNatch
     * Улучшен PDF отчет

@@ -385,7 +385,7 @@ Two..
 One.
 Go!
 Natch monitor - type 'help' for more information
-Natch v.2.3
+Natch v.2.3.1
 (c) 2020-2023 ISP RAS
 
 Reading Natch config file...
@@ -611,7 +611,7 @@ Enter scenario name: sample_redis
 
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.2.3
+Natch v.2.3.1
 (c) 2020-2023 ISP RAS
 
 Reading Natch config file...
@@ -649,7 +649,7 @@ user@natch1:~/natch_quickstar/test1/t$ ./run_replay.sh sample_redis ready
 Snapshot to load: ready
 Natch monitor - type 'help' for more information
 (natch) 
-Natch v.2.3
+Natch v.2.3.1
 (c) 2020-2023 ISP RAS
 
 Reading Natch config file...

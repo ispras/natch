@@ -52,8 +52,6 @@ ____
 **ВНИМАНИЕ!**
 
 На момент 30.06.2023 по-прежнему наблюдается проблема с тем, что VirtualBox версии 7+ (7.0.8) не позволяет корректно запускать QEMU в режиме поддержки KVM. Используйте VirtualBox версии 6.1.40 (именно эту). Наиболее актуальный тикет на данную ошибку заведён [здесь](https://www.virtualbox.org/ticket/21552), пока что без ответа.
-____
-
 
 <img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/vbox_system.png">
 

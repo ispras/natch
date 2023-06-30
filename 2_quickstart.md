@@ -20,7 +20,7 @@
 
 В пакете представлен защищенный бинарный дистрибутив, требующий наличия аппаратного ключа (персональный "черный" ключ, сетевой "красный" ключ или иные версии ключа) с лицензией c идентификатором "6".
 
-[Дистрибутив Natch v.2.3](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3)
+[Дистрибутив Natch v.2.3.1](https://nextcloud.ispras.ru/index.php/s/NALSzi9xGSaftsN)
 
 [Предыдущие релизы](9_appendix.md#app_releases)
 
@@ -385,7 +385,7 @@ Two..
 One.
 Go!
 Natch monitor - type 'help' for more information
-Natch v.2.3
+Natch v.2.3.1
 (c) 2020-2023 ISP RAS
 
 Reading Natch config file...
@@ -440,50 +440,91 @@ Do you want to get debug info for system modules? (requires sudo) [Y/n] y
 ```text
 [sudo] password for user:
 Mounting img - OK
-Reading module config - OK
 
+─────────────────────────────────── Read Module Config ────────────────────────────────────────────
+
+Reading module config - OK
 Searching Binary Files...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-python3.9.dbg...                                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB 100% 0:00:01
+Searching Binary Files - OK
+
+───────────────────────────────────── Python Section ──────────────────────────────────────────────
+
+Searching python interpreters - OK                                                                                                           
+Method: DebugInfoD                                                                                                                           
+_json.cpython-39-x86_64-linux-gnu.so.dbg...     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.2/64.2 kB   100% 0:00:00
+_crypt.cpython-39-x86_64-linux-gnu.so.dbg...    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.2/13.2 kB   100% 0:00:00
+_hashlib.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.0/90.0 kB   100% 0:00:00
+ossaudiodev.cpython-39-x86_64-linux-gnu.so.d... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 kB   100% 0:00:00
+_dbm.cpython-39-x86_64-linux-gnu.so.dbg...      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.1/42.1 kB   100% 0:00:00
+_testimportmultiple.cpython-39-x86_64-linux-... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 kB     100% 0:00:00
+termios.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.5/19.5 kB   100% 0:00:00
+xxlimited.cpython-39-x86_64-linux-gnu.so.dbg... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 kB   100% 0:00:00
+_sqlite3.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 152.8/152.8 kB 100% 0:00:00
+python3.9.dbg...                                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB     100% 0:00:04
+...
+...
+nis.cpython-39-x86_64-linux-gnu.so.dbg...       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.5/23.5 kB   100% 0:00:00
+_testbuffer.cpython-39-x86_64-linux-gnu.so.d... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 77.9/77.9 kB   100% 0:00:00
+resource.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 22.2/22.2 kB   100% 0:00:00
+_contextvars.cpython-39-x86_64-linux-gnu.so.... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.6/11.6 kB   100% 0:00:00
+audioop.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 81.7/81.7 kB   100% 0:00:00
+_multibytecodec.cpython-39-x86_64-linux-gnu.... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.9/78.9 kB   100% 0:00:00
 [PYTHON] Download debugging information - OK
 
 [PYTHON_TIED] Download debugging information - OK
-vmlinux-5.10.0-17-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 643.2/643.2 MB 100% 0:04:39
+
+───────────────────────────────────── Kernel Section ──────────────────────────────────────────────
+
+Method: DebugInfoD                                                                                                                           
+vmlinux-5.10.0-17-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 643.2/643.2 MB 100% 0:02:03
 [KERNEL] Download debugging information - OK
 
 [KERNEL_TIED] Download debugging information - OK
-Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-Searching Shared Libraries - OK
-libz.so.1.2.11.dbg...                           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 109.8/109.8 kB 100% 0:00:00
-libexpat.so.1.6.12.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 167.0/167.0 kB 100% 0:00:00
-libdl-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.2/44.2 kB   100% 0:00:00
-libpthread-2.31.so.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB     100% 0:00:00
-libc-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB     100% 0:00:00
-libm-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB     100% 0:00:00
-libutil-2.31.so.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.1/11.0 kB   100% 0:00:00
-[SHARED_LIB] Download debugging information - OK
+Find Debugging Information For Kernel - OK
 
+──────────────────────────────── Shared Libraries Section ─────────────────────────────────────────
+
+Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50/50 100% 0:00:01
+Searching Shared Libraries - OK
+Method: DebugInfoD
+libk5crypto.so.3.1.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.3/211.3 kB 100% 0:00:00
+libkrb5support.so.0.1.dbg...                    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.8/74.8 kB   100% 0:00:00
+...
+...
+libsqlite3.so.0.8.6.dbg...                      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB     100% 0:00:03
+libssl.so.1.1.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 646.4/646.4 kB 100% 0:00:00
+libutil-2.31.so.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.1/16.1 kB   100% 0:00:00
+libmpdec.so.2.5.1.dbg...                        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 259.8/259.8 kB 100% 0:00:00
+libm-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB     100% 0:00:01
+librt-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.4/73.4 kB   100% 0:00:00
+libuuid.so.1.3.0.dbg...                         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.3/34.3 kB   100% 0:00:00
+libdb-5.3.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 MB     100% 0:00:03
+[SHARED_LIB] Download debugging information - OK
+libtinfo6.debug.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 kB 100% 0:00:00
+libncursesw6.debug.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 kB 100% 0:00:00
 [SHARED_LIB_TIED] Download debugging information - OK
 Umounting img - OK
 
+───────────────────────────────────── Result Section ──────────────────────────────────────────────
 
-Module config statistics:
-In module config there were modules                          : 2
-Binaries files in qcow2 found                                : 2
+Module config statistics:                                                                                                                          
+In module config there were modules                               :     2
+Binaries files in qcow2 found                                     :     2
 
 Python interpreters statistics:
-Python interpreters have been found                          : OK
-Added python interpreters                                    : 1
-Added debugging information for python interpreters          : 1
+Python interpreters have been found                               :     OK
+Added python interpreters                                         :     46
+Added debugging information for python interpreters               :     46
 
 Kernel statistics:
-Kernel symbols have been found                               : OK
-Added kernel symbols                                         : 1
-Added debugging information for kernel                       : 1
+Kernel symbols have been found                                    :     OK
+Added kernel symbols                                              :     1
+Added debugging information for kernel                            :     1
 
 Shared library Statistics:
-Added shared libraries                                       : 7
-Added debugging information for shared libraries             : 7
-Added debugging information for tied files                   : 0
+Added shared libraries                                            :     31
+Added debugging information for shared libraries                  :     31
+Added debugging information for tied files                        :     2
 ld-linux-* is always skipped and isn't counted in calculations
 
 Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was updated
@@ -495,6 +536,8 @@ Reading symbols for loaded modules
 
 Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server
 Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-cli
+...
+...
 Created symbol database for /home/user/natch_quickstart/test1/libs/src/f902f8a561c3abdb9c8d8c859d4243bd8c3f928f/python3.9
 Created symbol database for /home/user/natch_quickstart/test1/libs/src/cc89a8838df3652561ab61598035775fa95f8917/vmlinux-5.10.0-17-amd64
 Created symbol database for /home/user/natch_quickstart/test1/libs/src/5018237bbf012b4094027fd0b96fc22a24496ea4/libpthread-2.31.so
@@ -568,7 +611,7 @@ Enter scenario name: sample_redis
 
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.2.3
+Natch v.2.3.1
 (c) 2020-2023 ISP RAS
 
 Reading Natch config file...
@@ -606,7 +649,7 @@ user@natch1:~/natch_quickstar/test1/t$ ./run_replay.sh sample_redis ready
 Snapshot to load: ready
 Natch monitor - type 'help' for more information
 (natch) 
-Natch v.2.3
+Natch v.2.3.1
 (c) 2020-2023 ISP RAS
 
 Reading Natch config file...

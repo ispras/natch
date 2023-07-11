@@ -43,7 +43,7 @@ ___
 После успешной установки *Natch* следует установить зависимости, необходимые для работы скриптов. Для этого нужно запустить скрипт `setup_requirements.sh`, входящий в поставку:
 
 ```bash
-/usr/bin/natch/bin/natch_scripts/setup_requiremets.sh
+/usr/bin/natch/bin/natch_scripts/setup_requirements.sh
 ```
 Во время выполнения скрипта потребуется пароль администратора.
 

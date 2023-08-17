@@ -368,7 +368,7 @@ Network option
 Do you want to use ports forwarding? [Y/n] y
 Do you want to taint source ports too? [Y/n] n
 Write the ports you want separated by commas (e.g. 7777, 8888, etc) 5555
-Your port for connecting outside: 15555
+Your port for connecting outside: 49152
 ```
 Далее нам нужно указать пути к каталогам на хосте, содержащим копии бинарных файлов, размещенных в гостевой ОС -- это как раз те самые файлы (собранные с символами, или с отдельными map-файлами), которые мы получили в ходе выполнения пункта [Сборка прототипа объекта оценки](#build_prototype). 
 Этот процесс будет выполняться параллельно, результаты увидим позже.
@@ -617,8 +617,8 @@ Reading Natch config file...
 Network logging enabled
 Config is loaded.
 You can make system snapshots with the command: savevm <snapshot_name>
-Network pcap log file: "/home/user/natch_quickstart/test1/record/network.pcap"
-Network json log file: "/home/user/natch_quickstart/test1/record/network.json"
+Network pcap log file: "/home/user/natch_quickstart/test1/sample_redis/network.pcap"
+Network json log file: "/home/user/natch_quickstart/test1/sample_redis/network.json"
 
 (natch) savevm ready
 (natch)
@@ -686,7 +686,7 @@ Tainted memory accesses   : 21838
 
 Compressing data. Please wait..
 
-output.tar.zst completed
+test1+sample_redis.tar.zst completed
 ```
 
 Если работа системы завершилась успешно, и вы не словили, например, `core dumped` (о чём стоит немедленно сообщить в [трекер](https://gitlab.ispras.ru/natch/natch-support/-/issues) с приложением всех артефактов), можно переходить к анализу собранных данных.

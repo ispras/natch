@@ -340,7 +340,6 @@ OS: Linux
 ```text
 Enter path to directory for project (optional): test1
 Directory for project files '/home/user/natch_quickstart/test1' was created
-Directory for output files '/home/user/natch_quickstart/test1/output' was created
 ```
 Сколько памяти выдать гостевой виртуальной машине (постфикс указывать обязательно. G или M):
 ```text
@@ -657,17 +656,17 @@ Task graph enabled
 Module graph enabled
 Taint enabled
 Config is loaded.
-File events binary log file /home/user/natch_quickstart/test1/output/files_b.log created successfully
-Module binary log file /home/user/natch_quickstart/test1/output/log_m_b.log created successfully
+File events binary log file /home/user/natch_quickstart/test1/output_sample_redis/files_b.log created successfully
+Module binary log file /home/user/natch_quickstart/test1/output_sample_redis/log_m_b.log created successfully
 Modules: started reading binaries
 Modules: finished with 13 of 13 binaries for analysis
 thread_monitor: identification method is set to a complex developed at isp approach
 Started thread monitoring
 Tasks: config file is open.
-Process events binary log file /home/user/natch_quickstart/test1/output/log_p_b.log created successfully
-Network json log file: "/home/user/natch_quickstart/test1/output/tnetwork.json"
-Binary log file /home/user/natch_quickstart/test1/output/log_t_b.log created successfully
-Binary call_stack log file /home/user/natch_quickstart/test1/output/log_cs_b.log created successfully
+Process events binary log file /home/user/natch_quickstart/test1/output_sample_redis/log_p_b.log created successfully
+Network json log file: "/home/user/natch_quickstart/test1/output_sample_redis/tnetwork.json"
+Binary log file /home/user/natch_quickstart/test1/output_sample_redis/log_t_b.log created successfully
+Binary call_stack log file /home/user/natch_quickstart/test1/output_sample_redis/log_cs_b.log created successfully
 Detected module /home/user/natch_quickstart/test1/libs/src/cc89a8838df3652561ab61598035775fa95f8917/vmlinux-5.10.0-17-amd64 execution
 Detected module /home/user/natch_quickstart/test1/libs/src/2e5abcee94f3bcbed7bba094f341070a2585a2ba/libc-2.31.so execution
 Detected module /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server execution

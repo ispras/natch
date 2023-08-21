@@ -17,9 +17,8 @@
 ```ini
 # Natch settings
 
-# Section Version since Natch v.2.0
 [Version]
-version=4
+version=5
 
 # Section for path to work directory
 [OutputData]

@@ -36,3 +36,5 @@ Natch (Network Application Tainting Can Help) - это инструмент дл
 1. [Релизы](9_appendix.md#app_releases)
 
 1. [Видеозаписи вебинаров](https://nextcloud.ispras.ru/index.php/s/natch_webinars)
+
+1. [Применение Natch с пользой](trophies.md)

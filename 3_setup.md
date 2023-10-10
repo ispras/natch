@@ -1,7 +1,7 @@
 ﻿<div style="page-break-before:always;">
 </div>
 
-# <a name="setup_natch"></a>3. Установка Natch
+# <a name="setup_natch"></a>3. Установка и настройка Natch
 
 ## <a name="complect"></a>3.1. Комплект поставки Natch
 

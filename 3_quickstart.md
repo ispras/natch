@@ -307,11 +307,11 @@ cd Sample1
 
 
 
-#### <a name="config_natch_test_image"></a>2.3.1.3. Настройка Natch для работы с тестовым образом ОС
+### <a name="config_natch_test_image"></a>3.2.2. Настройка Natch для работы с тестовым образом ОС
 
 Процесс настройки состоит из двух этапов -- автоматизированного (обязательный) и ручного (дополнительный, при необходимости тонкой настройки). Предназначение файлов конфигурации и их параметров описано в разделе [Конфигурационные файлы Natch](4_configs.md#natch_config_main).
 
-##### 2.3.1.3.1. Автоматизированная настройка
+#### 3.2.2.1. Автоматизированная настройка
 
 Автоматизированная настройка выполняется [интерактивным скриптом](5_launch.md#natch_run_script) `natch_run.py`. Далее приведем вопросы скрипта и примеры ответов. Запустим скрипт:
 ```text
@@ -340,22 +340,25 @@ Utility natch-qemu-img is ok
 ```
 Если что-то пошло не так, скрипт прекратит работу.
 
-Если наш сценарий предполагает передачу помеченных данных по сети (далее мы рассматриваем в качестве основного как раз сценарий №2 -- взаимодействие с redis-сервером, слушающим tcp-порт 5555), нам потребуется взаимодействовать с сетевыми сервисами гостевой ОС с помощью программ, запущенных на хосте. Указываем *Natch*, какой порт мы хотим опубликовать в гостевую ОС:
-<!---
-**перехват пакетов, отправитель и получатель которых "находятся" внутри гостевой ОС (localhost - localhost), в настоящий момент не поддерживается**
--->
+Если наш сценарий предполагает передачу помеченных данных по сети (далее мы рассматриваем в качестве основного как раз сценарий №2 -- взаимодействие с redis-сервером, слушающим tcp-порт 5555),
+нам потребуется взаимодействовать с сетевыми сервисами гостевой ОС с помощью программ, запущенных на хосте. Указываем *Natch*, какой порт мы хотим опубликовать в гостевую ОС:
 
 ```text
 Network option
 Do you want to use ports forwarding? [Y/n] y
 Do you want to taint source ports too? [Y/n] n
 Write the ports you want separated by commas (e.g. 7777, 8888, etc) 5555
-Your port for connecting outside: 49152
+Your pair of ports for connecting: 5555 <=> 49152
 ```
-Далее нам нужно указать пути к каталогам на хосте, содержащим копии бинарных файлов, размещенных в гостевой ОС -- это как раз те самые файлы (собранные с символами, или с отдельными map-файлами), которые мы получили в ходе выполнения пункта [Сборка прототипа объекта оценки](#build_prototype). 
+Далее нам нужно указать путь к каталогу на хосте, содержащем копии бинарных файлов, размещенных в гостевой ОС. Находятся в папках `Sample1_bins` и `Sample2_bins` в тестовых материалах.
+Так как будет проделан пример с redis, то следует указать путь к папке `Sample2_bins`.
 Этот процесс будет выполняться параллельно, результаты увидим позже.
 
-Следующая стадия: конфигурирование технических параметров *Natch*, требующая тестового запуска виртуальной машины. В ходе данного запуска выполняется получение информации о параметрах ядра и заполнение ini-файла. Вы можете отказаться от данного шага, в случае если этот файл уже был ранее создан для данного образа гостевой виртуальной машины -- тогда вам потребуется указать к нему путь, однако, в большинстве случаев вы вероятно будете создавать эти файлы с нуля:
+Следующая стадия: конфигурирование технических параметров *Natch*, требующая тестового запуска виртуальной машины. В ходе данного запуска происходит получение информации
+о параметрах ядра и заполнение ini-файла. Вы можете отказаться от данного шага, в случае если этот файл уже был ранее создан для данного образа гостевой виртуальной машины --
+тогда вам потребуется указать к нему путь в конфигурационном файле или скопировать этот файл в рабочую директорию.
+
+Согласимся на создание task.cfg:
 
 ```text
 Generate config file task.cfg? [Y/n] y (или просто нажмите Enter)
@@ -366,7 +369,7 @@ Two..
 One.
 Go!
 Natch monitor - type 'help' for more information
-Natch v.2.3.1
+Natch v.2.4
 (c) 2020-2023 ISP RAS
 
 Reading Natch config file...
@@ -377,27 +380,28 @@ Now tuning will be launched.
 Tuning started. Please wait a little...
 Generating config file: task.cfg
 Trying to find 19 kernel-specific parameters
-[01/19] Parameter - task_struct->pid            : Found
-[02/19] Parameter - task_struct->comm           : Found
-[03/19] Parameter - task_struct->group_leader   : Found
-[04/19] Parameter - task_struct->parent         : Found
-[05/19] Parameter - mount fields                : Found
-[06/19] Parameter - files_struct fields         : Found
-[07/19] Parameter - vm_area_struct size         : Found
-[08/19] Parameter - vm_area_struct->vm_start    : Found
-[09/19] Parameter - vm_area_struct->vm_end      : Found
-[10/19] Parameter - vm_area_struct->vm_flags    : Found
-[11/19] Parameter - mm->map_count               : Found
-[12/19] Parameter - mm_struct fields            : Found
-[13/19] Parameter - task_struct->mm             : Found
-[14/19] Parameter - mm->arg_start               : Found
-[15/19] Parameter - task_struct->state          : Found
-[16/19] Parameter - socket struct fields        : Found
-[17/19] Parameter - task_struct->exit_state     : Found
-[18/19] Parameter - cred->uid                   : Found
-[19/19] Parameter - task_struct->cred           : Found
-Detected 43298 system events
-Detected 19 of 19 kernel-specific parameters. Creating config file...
+[01/20] Parameter - task_struct->pid            : Found
+[02/20] Parameter - task_struct->comm           : Found
+[03/20] Parameter - task_struct->group_leader   : Found
+[04/20] Parameter - task_struct->parent         : Found
+[05/20] Parameter - mount fields                : Found
+[06/20] Parameter - files_struct fields         : Found
+[07/20] Parameter - file->f_pos                 : Found
+[08/20] Parameter - vm_area_struct size         : Found
+[09/20] Parameter - vm_area_struct->vm_start    : Found
+[10/20] Parameter - vm_area_struct->vm_end      : Found
+[11/20] Parameter - vm_area_struct->vm_flags    : Found
+[12/20] Parameter - mm->map_count               : Found
+[13/20] Parameter - mm_struct fields            : Found
+[14/20] Parameter - task_struct->mm             : Found
+[15/20] Parameter - mm->arg_start               : Found
+[16/20] Parameter - task_struct->state          : Found
+[17/20] Parameter - socket struct fields        : Found
+[18/20] Parameter - task_struct->exit_state     : Found
+[19/20] Parameter - cred->uid                   : Found
+[20/20] Parameter - task_struct->cred           : Found
+Detected 43096 system events
+Detected 20 of 20 kernel-specific parameters. Creating config file...
 
 Tuning completed successfully!
 ```
@@ -411,6 +415,16 @@ ELF files found: 2
 Map files found: 0
 ```
 
+Далее скрипт попробует скопировать из образа системые файлы (/etc/passwd и /etc/group) для чего попросит ввести пароль администратора.
+
+```
+Users info part
+[sudo] password for user: 
+Mounting img - OK                                                                                                                                           
+Files copied from the guest system: 2                                                                                                                       
+Umounting img - OK 
+```
+
 Финальным этапом будет предложено получить отладочную информацию для загруженных модулей, модулей, которые от них зависят, для ядра и установленных интерпретаторов.
 ```text
 Debug info part
@@ -422,69 +436,25 @@ Do you want to get debug info for system modules? (requires sudo) [Y/n] y
 [sudo] password for user:
 Mounting img - OK
 
-─────────────────────────────────── Read Module Config ────────────────────────────────────────────
+─────────────────────────────── Libraries Searching Section ───────────────────────────────────────
 
 Reading module config - OK
 Searching Binary Files...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
 Searching Binary Files - OK
-
-───────────────────────────────────── Python Section ──────────────────────────────────────────────
-
-Searching python interpreters - OK                                                                                                           
-Method: DebugInfoD                                                                                                                           
-_json.cpython-39-x86_64-linux-gnu.so.dbg...     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.2/64.2 kB   100% 0:00:00
-_crypt.cpython-39-x86_64-linux-gnu.so.dbg...    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.2/13.2 kB   100% 0:00:00
-_hashlib.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.0/90.0 kB   100% 0:00:00
-ossaudiodev.cpython-39-x86_64-linux-gnu.so.d... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 kB   100% 0:00:00
-_dbm.cpython-39-x86_64-linux-gnu.so.dbg...      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.1/42.1 kB   100% 0:00:00
-_testimportmultiple.cpython-39-x86_64-linux-... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 kB     100% 0:00:00
-termios.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.5/19.5 kB   100% 0:00:00
-xxlimited.cpython-39-x86_64-linux-gnu.so.dbg... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 kB   100% 0:00:00
-_sqlite3.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 152.8/152.8 kB 100% 0:00:00
-python3.9.dbg...                                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB     100% 0:00:04
-...
-...
-nis.cpython-39-x86_64-linux-gnu.so.dbg...       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.5/23.5 kB   100% 0:00:00
-_testbuffer.cpython-39-x86_64-linux-gnu.so.d... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 77.9/77.9 kB   100% 0:00:00
-resource.cpython-39-x86_64-linux-gnu.so.dbg...  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 22.2/22.2 kB   100% 0:00:00
-_contextvars.cpython-39-x86_64-linux-gnu.so.... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.6/11.6 kB   100% 0:00:00
-audioop.cpython-39-x86_64-linux-gnu.so.dbg...   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 81.7/81.7 kB   100% 0:00:00
-_multibytecodec.cpython-39-x86_64-linux-gnu.... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.9/78.9 kB   100% 0:00:00
-[PYTHON] Download debugging information - OK
-
-[PYTHON_TIED] Download debugging information - OK
-
-───────────────────────────────────── Kernel Section ──────────────────────────────────────────────
-
-Method: DebugInfoD                                                                                                                           
-vmlinux-5.10.0-17-amd64.dbg...                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 643.2/643.2 MB 100% 0:02:03
-[KERNEL] Download debugging information - OK
-
-[KERNEL_TIED] Download debugging information - OK
-Find Debugging Information For Kernel - OK
-
-──────────────────────────────── Shared Libraries Section ─────────────────────────────────────────
-
-Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50/50 100% 0:00:01
+Searching Python Symbols - OK
+Searching Java symbols - OK
+Searching Kernel Symbols - OK
+Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48/48 100% 0:00:01
 Searching Shared Libraries - OK
-Method: DebugInfoD
-libk5crypto.so.3.1.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.3/211.3 kB 100% 0:00:00
-libkrb5support.so.0.1.dbg...                    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.8/74.8 kB   100% 0:00:00
-...
-...
-libsqlite3.so.0.8.6.dbg...                      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB     100% 0:00:03
-libssl.so.1.1.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 646.4/646.4 kB 100% 0:00:00
-libutil-2.31.so.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.1/16.1 kB   100% 0:00:00
-libmpdec.so.2.5.1.dbg...                        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 259.8/259.8 kB 100% 0:00:00
-libm-2.31.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB     100% 0:00:01
-librt-2.31.so.dbg...                            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.4/73.4 kB   100% 0:00:00
-libuuid.so.1.3.0.dbg...                         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.3/34.3 kB   100% 0:00:00
-libdb-5.3.so.dbg...                             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 MB     100% 0:00:03
-[SHARED_LIB] Download debugging information - OK
-libtinfo6.debug.dbg...                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 kB 100% 0:00:00
-libncursesw6.debug.dbg...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 kB 100% 0:00:00
-[SHARED_LIB_TIED] Download debugging information - OK
-Umounting img - OK
+
+───────────────────────────── Library-Debug Matching Section ──────────────────────────────────────
+
+Method: DebugInfoD                                                                                                                           
+
+Download debugging information - OK
+
+Download dwz information - OK
+Unmounting img - OK
 
 ───────────────────────────────────── Result Section ──────────────────────────────────────────────
 
@@ -496,6 +466,9 @@ Python interpreters statistics:
 Python interpreters have been found                               :     OK
 Added python interpreters                                         :     46
 Added debugging information for python interpreters               :     46
+
+Kernel statistics:
+WARNING: Java symbols have been found                             :     NO
 
 Kernel statistics:
 Kernel symbols have been found                                    :     OK
@@ -529,10 +502,11 @@ Created symbol database for /home/user/natch_quickstart/test1/libs/src/5675f6cc6
 Created symbol database for /home/user/natch_quickstart/test1/libs/src/118b90161526d181807818c459baee841993795b/libdl-2.31.so
 Created symbol database for /home/user/natch_quickstart/test1/libs/src/2e5abcee94f3bcbed7bba094f341070a2585a2ba/libc-2.31.so
 
-Your config file '/home/user/natch_quickstart/test1//module.cfg' for modules was updated
+Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was updated
 ```
 
-Отлично, автоматизированная настройка и создание базовых скриптов завершены успешно, всё готово к записи сценария, о чём *Natch* сообщил нам дополнительно:
+Автоматизированная настройка и создание базовых скриптов завершены успешно, всё готово к записи сценария, о чём *Natch* сообщил нам дополнительно:
+
 ```text
 Configuration file natch.cfg was created.
 You can edit it before using Natch.
@@ -543,7 +517,9 @@ Settings completed! Now you can launch emulator and enjoy! :)
 	Natch in replay mode: 'run_replay.sh'
 	Qemu without Natch: 'run_qemu.sh'
 ```
-В папке проекта появится файл настроек `natch.cfg` -- его мы будем редактировать для ручной настройки, кроме того после записи сценария появится (в соответствующей папке) еще один файл настроек `taint.cfg`, который тоже можно редактировать. Также в папке проекта находится файл `natch.log` -- в нём логируются основные результаты работы программ, входящих в комплект поставки *Natch*.
+В папке проекта появится конфигурационный файл `natch.cfg` -- его мы будем редактировать для ручной настройки, кроме того после записи сценария появится
+(в соответствующей папке) еще один конфигурационный файл `taint.cfg`, который тоже можно редактировать. Также в папке проекта находится файл `natch.log` --
+в нём логируются основные результаты работы программ, входящих в комплект поставки *Natch*.
 
 ##### <a name="additional_settings"></a>2.3.1.3.2. Дополнительная ручная настройка
 

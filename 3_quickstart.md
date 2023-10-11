@@ -659,6 +659,11 @@ test1+sample_redis.tar.zst completed
 list=sample.txt
 ```
 
+
+можно продемонстрировать работу скриптов append... и change_settings - добавить в модуль конфиг тест_семпл и убрать порт 5555
+
+
+
 #### <a name="snatch_analysis"></a>2.3.1.6. Анализ с использованием Snatch
 
 Установка!!!!

@@ -604,7 +604,7 @@ Network json log file: "/home/user/natch_quickstart/test1/sample_redis/network.j
 
 Сценарий работы с redis записан.
 
-### <a name="replay_scenario"></a>3.2.4.Воспроизведение сценария и сбор данных для анализа
+### <a name="replay_scenario"></a>3.2.4. Воспроизведение сценария и сбор данных для анализа
 
 Для воспроизведения нужно запустить скрипт `run_replay.sh`.
 ```text

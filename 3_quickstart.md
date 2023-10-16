@@ -437,9 +437,9 @@ Map files found: 0
 ```
 Users info part
 [sudo] password for user: 
-Mounting img - OK                                                                                                                                           
-Files copied from the guest system: 2                                                                                                                       
-Umounting img - OK 
+Mounting img - OK
+Files copied from the guest system: 2
+Umounting img - OK
 ```
 
 Финальным этапом будет предложено получить отладочную информацию для загруженных модулей, модулей, которые от них зависят, для ядра и установленных интерпретаторов.
@@ -466,7 +466,7 @@ Searching Shared Libraries - OK
 
 ───────────────────────────── Library-Debug Matching Section ──────────────────────────────────────
 
-Method: DebugInfoD                                                                                                                           
+Method: DebugInfoD
 
 Download debugging information - OK
 
@@ -475,7 +475,7 @@ Unmounting img - OK
 
 ───────────────────────────────────── Result Section ──────────────────────────────────────────────
 
-Module config statistics:                                                                                                                          
+Module config statistics:
 In module config there were modules                               :     2
 Binaries files in qcow2 found                                     :     2
 

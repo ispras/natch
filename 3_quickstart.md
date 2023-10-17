@@ -662,11 +662,11 @@ Detected module /home/user/natch_quickstart/test1/libs/src/e9d2c06479b13dd3cfa78
 =========== Statistics ===========
 
 Tainted files             : 0
-Tainted packets           : 4
-Tainted processes         : 2
+Tainted packets           : 147
+Tainted processes         : 3
 Tainted modules           : 3
 Tainted file reads        : 0
-Tainted memory accesses   : 678
+Tainted memory accesses   : 21026
 
 Compressing data. Please wait..
 

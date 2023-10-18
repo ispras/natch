@@ -97,7 +97,7 @@ natch_run.py image [-h] [-k KERNEL] [-o {Linux, FreeBSD, Win7, Win8, Win10}]
 ### <a name="natch_append_modules"></a>5.2.1. Пополнение конфигурационного файла module.cfg
 
 При работе с инструментом может возникнуть желание дополнить список модулей, указанных при настройке проекта. 
-Для этого можно использовать скрипт `append_module_config.py`, расположенный в папке `utils` (полный путь: /usr/bin/natch/bin/natch_scripts/utils).
+Для этого можно использовать скрипт `append_module_config.py`, расположенный в папке `utils` (полный путь: `/usr/bin/natch/bin/natch_scripts/utils`).
 
 ```bash
 append_module_config.py [-h] [-d WORKDIR] -D MODULEDIR -i IMAGE

@@ -718,7 +718,17 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 
 Подробнее о возможностях *SNatch* написано в [соответствующем](6_snatch.md#snatch) разделе.
 
-### 3.2.6. Просмотр покрытия кода в IDA Pro
+### 3.2.6. Просмотр сетевого трафика в Wireshark
+
+Анализировать трафик в Wireshark можно прямо из интерфейса *SNatch* с помощью раздела *Traffic*. Здесь можно увидеть интерфейсы и сессии, клик по каждой записи будет открывать Wireshark с соответствующими данными.
+
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_traffic.png><figcaption>_Информация о трафике_</figcaption>
+
+Так же можно открывать только помеченный трафик, трафик, относящийся к сценарию, а так же весь трафик с помощью соответствующих кнопок.
+
+<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/wireshark.png><figcaption>_Исследование трафика в Wireshark_</figcaption>
+
+### 3.2.7. Просмотр покрытия кода в IDA Pro
 
 С помощью плагина к *IDA Pro* можно смотреть:
 
@@ -738,17 +748,6 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 <img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/coverage.png><figcaption>_Пример покрытия по ассемблерным инструкциям_</figcaption>
 
 Демонстрация покрытия по декомпилированному коду в настоящий момент не поддерживается.
-
-### 3.2.7. Просмотр сетевого трафика в Wireshark
-
-Анализировать трафик в Wireshark можно прямо из интерфейса *SNatch* с помощью раздела *Traffic*. Здесь можно увидеть интерфейсы и сессии, клик по каждой записи будет открывать Wireshark с соответствующими данными.
-
-<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_traffic.png><figcaption>_Информация о трафике_</figcaption>
-
-Так же можно открывать только помеченный трафик, трафик, относящийся к сценарию, а так же весь трафик с помощью соответствующих кнопок.
-
-<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/wireshark.png><figcaption>_Исследование трафика в Wireshark_</figcaption>
-
 
 ### 3.2.8. Изменение настроек проекта дополнительными скриптами
 

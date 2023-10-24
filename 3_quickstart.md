@@ -694,7 +694,7 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 ```
 Создадим проект на основе собранных данных (необходимо указывать tar.zst-архив, формируемый *Natch* в каталоге проекта по результатам выполнения `run_replay.sh`):
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_new_proj_modal.png"><figcaption>_Создание Snatch проекта_</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_new_project.png"><figcaption>_Создание Snatch проекта_</figcaption>
 
 Через некоторое время процесс загрузки архива завершится и станут доступны различные виды аналитик (*их число и возможности постоянно нарастают*).
 

@@ -564,13 +564,13 @@ redis-server --port 5555 --protected-mode no
 ```text
 user@natch1:~/natch_quickstart$ redis-cli -h localhost -p 49152
 
-localhost:15555> select 0
+localhost:49152> select 0
 OK
-localhost:15555> set a b
+localhost:49152> set a b
 OK
-localhost:15555> get a
+localhost:49152> get a
 "b"
-localhost:15555> exit
+localhost:49152> exit
 ```
 **Важное замечание**: *весь записываемый сценарий включает в себя в том числе этап загрузки ОС, но помеченные данные появятся практически в самом конце,
 когда мы обратимся к redis-серверу. Соответственно, для существенного сокращения времени на сбор данных (последующее выполнение ./run_replay.sh)

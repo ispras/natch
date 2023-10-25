@@ -388,7 +388,7 @@ Now tuning will be launched.
 
 Tuning started. Please wait a little...
 Generating config file: task.cfg
-Trying to find 19 kernel-specific parameters
+Trying to find 20 kernel-specific parameters
 [01/20] Parameter - task_struct->pid            : Found
 [02/20] Parameter - task_struct->comm           : Found
 [03/20] Parameter - task_struct->group_leader   : Found
@@ -425,6 +425,7 @@ Map files found: 0
 ```
 
 Далее скрипт попробует скопировать из образа системые файлы (/etc/passwd и /etc/group) для чего попросит ввести пароль администратора.
+Так как на этом этапе будет происходить монтирование образа, удостоверьтесь, что в системе не работают другие виртуальные машины.
 
 ```
 Users info part
@@ -440,7 +441,6 @@ Debug info part
 Do you want to get debug info for system modules? (requires sudo) [Y/n] y
 ```
 Для более информативных результатов следует согласиться. На данном этапе потребуется пароль администратора. Будет произведено монтирование образа, поиск библиотек и скачивание отладочных символов.
-Перед запуском удостоверьтесь, что в системе не работают другие виртуальные машины.
 ```text
 [sudo] password for user:
 Mounting img - OK

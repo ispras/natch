@@ -534,12 +534,12 @@ Settings completed! Now you can launch emulator and enjoy! :)
 
 Конфигурационный файл `natch.cfg` генерируется таким образом, что дополнительные опции представлены в нем в закомментированном виде.
 
-В качестве примера ручной настройки соберем покрытие кода. Для этого в конфигурационном файле `natch.cfg` предусмотрена секция `Coverage`.
+В качестве примера ручной настройки соберем покрытие кода по базовым блокам для просмотра в *IDA Pro*. 
+Для этого в конфигурационном файле `natch.cfg` предусмотрена секция `Coverage`.
 Необходимо раскомментировать не только параметры секции, но и название секции в квадратных скобках.
 
 Раскомментируем секцию `Coverage` (подробнее об предназначении секций см. пункт [Основной конфигурационный файл](4_configs.md#main_config) документации):
 
-Сбор покрытия по базовым блокам для просмотра покрытия в *IDA Pro*:
 ```ini
 [Coverage]
 file=coverage
@@ -694,7 +694,7 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 ```
 Создадим проект на основе собранных данных (необходимо указывать tar.zst-архив, формируемый *Natch* в каталоге проекта по результатам выполнения `run_replay.sh`):
 
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/snatch/snatch_new_proj_modal.png"><figcaption>_Создание Snatch проекта_</figcaption>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/snatch_new_project.png"><figcaption>_Создание Snatch проекта_</figcaption>
 
 Через некоторое время процесс загрузки архива завершится и станут доступны различные виды аналитик (*их число и возможности постоянно нарастают*).
 

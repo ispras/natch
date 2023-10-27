@@ -5,9 +5,9 @@
 
 [1. Что такое Natch](#natch_base)
 
-[2. Начало работы с Natch](#begin)
+[2. Установка и настройка Natch](#setup_natch)
 
-[3. Установка Natch](#setup_natch)
+[3. Начало работы с Natch](#begin)
 
 [4. Конфигурационные файлы Natch](#natch_config_main)
 

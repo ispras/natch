@@ -13,7 +13,8 @@
 <br>
 <br>
 <br>
-<center><h1> Natch v.2.4 <br> Руководство пользователя </h1></center>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/logo.svg">
+<center><h1> Руководство пользователя <br> (версия 2.4) </h1></center>
  
 
 <div style="page-break-after:always;">

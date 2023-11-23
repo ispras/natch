@@ -57,11 +57,11 @@ sudo apt-get install python3-module-pip
 
 Для установки *Natch* скачайте дистрибутив и используйте команду:
 ```
-sudo rpm -ivh natch_2.4_alt10.rpm
+sudo apt-get install natch_2.4_alt10.rpm
 ```
 Для удаления *Natch* из системы используйте команду:
 ```
-sudo rpm -e --allmatches --nodeps natch
+sudo apt-get --yes --purge remove natch
 ```
 
 ___

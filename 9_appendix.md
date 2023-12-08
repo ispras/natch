@@ -265,7 +265,7 @@
 
 # <a name="app_releases"></a>Приложение 7. История релизов Natch
 
-[**Natch v.2.4**](https://nextcloud.ispras.ru/index.php/s/zxMra4pdpBRkCgd)
+[**Natch v.2.4**](https://nextcloud.ispras.ru/index.php/s/zxMra4pdpBRkCgd) (октябрь 2023)
 
 * SNatch
     * Интерфейс SNatch теперь и на русском языке
@@ -284,7 +284,7 @@
         * выходные файлы анализа теперь в собственном каталоге, архив не перезаписывается
     * Исправлен ряд багов
 
-[**Natch v.2.3.1**](https://nextcloud.ispras.ru/index.php/s/NALSzi9xGSaftsN)
+[**Natch v.2.3.1**](https://nextcloud.ispras.ru/index.php/s/NALSzi9xGSaftsN) (июнь 2023)
 
 * SNatch
     * Улучшен PDF отчет
@@ -292,7 +292,7 @@
     * Расширен перехват системных вызовов
     * Улучшена поддержка DWARF
 
-[**Natch v.2.3**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3)
+[**Natch v.2.3**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.3) (июнь 2023)
 
 * SNatch
     * Добавлен граф вызовов Python функций
@@ -330,7 +330,7 @@
         * доработан скрипт change_settings.py
     * Исправлен ряд багов
 
-[**Natch v.2.2**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.2)
+[**Natch v.2.2**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.2) (март 2023)
 
 * SNatch
     * Добавлен раздел Ресурсы, включающий информацию о модулях, файлах и сокетах 
@@ -364,14 +364,14 @@
     * Исправлен ряд багов
 
 
-[**Natch v.2.1.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1.1)
+[**Natch v.2.1.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1.1) (декабрь 2022)
 
 * Исправлен баг с построением графа процессов
 * Улучшения в распространении помеченных данных
 * Доработан раздел Modules в SNatch
 
 
-[**Natch v.2.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1)
+[**Natch v.2.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1) (ноябрь 2022)
 
 [(reserve) Natch v.2.1_ova](https://nextcloud.ispras.ru/index.php/s/natch_v.2.1_vbox)
 
@@ -396,7 +396,7 @@
 * Документация теперь доступна на github, а так же в виде PDF
 
 
-[**Natch v.2.0**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0)
+[**Natch v.2.0**](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0) (сентябрь 2022)
 
 [(reserve) Natch v.2.0_ova](https://nextcloud.ispras.ru/index.php/s/natch_v.2.0_vbox)
 
@@ -414,7 +414,7 @@
 * Запущен внешний баг-трекер
 
 
-[**Natch v.1.3.2**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.3.2)
+[**Natch v.1.3.2**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.3.2) (июль 2022)
 
 * Улучшение и рефакторинг механизма распознавания модулей
 * Поддержка набора инструкций SSE4.2 при отслеживании помеченных данных
@@ -424,7 +424,7 @@
 * Небольшие изменения в настройке и конфигурационном файле Natch
 
 
-[**Natch v.1.3.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.3.1)
+[**Natch v.1.3.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.3.1) (май 2022)
 
 * Исправлена ошибка сбора покрытия для Ida 7.0
 * Исправлена ошибка сохранения лога для помеченных параметров функций
@@ -432,7 +432,7 @@
 * Название снапшота вынесено в начало скрипта запуска Natch в режиме воспроизведения
 
 
-[**Natch v.1.3**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.3)
+[**Natch v.1.3**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.3) (апрель 2022)
 
 * Добавлена поддержка отладочной информации
 * Добавлена поддержка map файлов, сгенерированных компилятором gcc
@@ -444,14 +444,14 @@
 * Обновлено ядро эмулятора Qemu до версии 6.2
 
 
-[**Natch v.1.2.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.2.1)
+[**Natch v.1.2.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.2.1) (февраль 2022)
 
 * Исправлена ошибка работы утилиты qemu-img в VirtualBox под Windows 10
 * Исправлена ошибка с генерацией имени оверлея в скрипте для генерации командных строк
 * Добавлена возможность задавать поля скрипта перед его запуском
 
 
-[**Natch v.1.2**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.2)
+[**Natch v.1.2**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.2) (февраль 2022)
 
 * Скрипт для генерации командных строк
 * Выгрузка данных о покрытии кода в IDA Pro
@@ -461,7 +461,7 @@
 * Мелкие изменения в конфигурационном файле инструмента
 
 
-[**Natch v.1.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.1)
+[**Natch v.1.1**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.1) (декабрь 2021)
 
 * Возможность настраивать Natch с помощью конфигурационного файла
 * Логирование входящих сетевых пакетов
@@ -471,7 +471,7 @@
 * Исправление списка процессов: уничтожение завершившихся
 
 
-[**Natch v.1.0**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.0)
+[**Natch v.1.0**](https://nextcloud.ispras.ru/index.php/s/natch_v.1.0) (октябрь 2021)
 
 * Пометка сетевого трафика (сетевая карта e1000)
 * Пометка файлов

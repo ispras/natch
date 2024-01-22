@@ -195,3 +195,19 @@ docker run -v /home/user/natch_quickstart/:/mnt/ --network=host -it -u user dock
 cd /mnt
 /bin/natch/bin/natch_scripts/natch_run.py test_image_debian.qcow2
 ```
+
+## 8.4. Получение map-файлов для объекта оценки
+
+Получение map-файлов для исполняемого файла возможно с помощью сторонних инструментов. Это может быть актуально в тех случаях, когда сборочный конвейер недоступен. Например, для генерации map-файлы можно применить бесплатную версию дизассемблера [IDA Pro](https://hex-rays.com/ida-free/). Для этого необходимо скачать установочный комплект по указанной ссылке и возможно доустановить библиотеки Qt `apt install -y qt5-default`.
+
+После установки IDA необходимо запустить её, открыть интересующий нас исполняемый файл.
+
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map1.png"><figcaption>_Загрузка бинарного файла в IDA Pro_</figcaption>
+
+Пройти процедуру генерации map-файла.
+
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map2.png"><figcaption>_Генерация map-файла_</figcaption>
+
+Обязательным пунктом является только *Segmentation information*, остальные по желанию (хотя, например, локальные имена дизассемблера вряд ли сделают вывод понятнее).
+
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida_map3.png"><figcaption>_Выбор опций map-файла_</figcaption>

@@ -13,6 +13,8 @@ Natch (Network Application Tainting Can Help) - это инструмент дл
 
 Результат работы инструмента представлен множеством интерактивных аналитик, которые собраны в веб-интерфейсе *SNatch*.
 
+[Телеграм-канал поддержки Natch](https://t.me/ispras_natch)
+
 1. [Что такое Natch](1_natch.md)
 
 1. [Установка и настройка Natch](2_setup.md)

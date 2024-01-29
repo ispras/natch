@@ -31,7 +31,7 @@ config=task.cfg
 # Section for loading modules
 [Modules]
 config=module.cfg
-log=taint.log
+log=taint_txt.log
 params_log=params.log
 
 # Natch working mode

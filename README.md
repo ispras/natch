@@ -1,5 +1,4 @@
-
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/logo.svg" width=30%>
+<img src="https://raw.githubusercontent.com/ispras/natch/main/images/logo_new.png" width=9%>
 
 **Natch v.2.4**
 

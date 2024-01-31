@@ -4,9 +4,12 @@ SCRIPTS_DIR="$(dirname $(readlink -e "$0"))"
 
 $SCRIPTS_DIR/preparation.py
 
+readonly PWD=$(pwd)
 cd $SCRIPTS_DIR/..
 
-pandoc -B scripts/titul.md scripts/toc.md -V colorlinks --css=scripts/style.css [^Rt]*.md -o $(pwd)/natch_docs.pdf \
+pandoc -B scripts/titul.md scripts/toc.md -V colorlinks \
+        --css=scripts/style.css [^Rt]*.md \
+        -o $PWD/natch_docs.pdf \
         --pdf-engine=weasyprint \
         --metadata pagetitle="Natch documentation" \
         --metadata lang="Ru" \

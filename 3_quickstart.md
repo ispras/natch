@@ -737,15 +737,15 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 
 Анализ покрытия по базовым блокам выполняется с использованием *IDA Pro* (протестировано на версиях 7.0, 7.2), общий алгоритм действий описан в пункте [Анализ покрытия бинарного кода](7_additional.md#functional_coverage). В ходе его выполнения может потребоваться ручное сопоставление модуля, для которого собрано покрытие, с модулем, загруженным в *IDA Pro*. Наиболее явная причина -- несовпадение имён исполняемого файла и файла, распознанного *Natch*. Пример такого несовпадения приведён на рисунке ниже (пример уже не относится к redis):
 
-<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida1.png><figcaption>_Пример несовпадения имен модулей_</figcaption>
+<img src=https://raw.githubusercontent.com/ispras/natch/release/images/quickstart/ida1.png><figcaption>_Пример несовпадения имен модулей_</figcaption>
 
 После выполнения маппинга в представленном выше меню в ручном режиме мы увидим приблизительно следующие сведения о покрытии:
 
-<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/ida2.png><figcaption>_Загруженный проект_</figcaption>
+<img src=https://raw.githubusercontent.com/ispras/natch/release/images/quickstart/ida2.png><figcaption>_Загруженный проект_</figcaption>
 
 Также при выборе функции можно увидеть покрытие непосредственно по ассемблерным инструкциям (голубой цвет):
 
-<img src=https://raw.githubusercontent.com/ispras/natch/main/images/quickstart/coverage.png><figcaption>_Пример покрытия по ассемблерным инструкциям_</figcaption>
+<img src=https://raw.githubusercontent.com/ispras/natch/release/images/quickstart/coverage.png><figcaption>_Пример покрытия по ассемблерным инструкциям_</figcaption>
 
 Демонстрация покрытия по декомпилированному коду в настоящий момент не поддерживается.
 

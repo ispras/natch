@@ -304,7 +304,7 @@ on=true
 
 В архиве с тестовым примером (см. раздел [Получение образа и тестовых примеров](3_quickstart.md#test_sample)) находится скрипт automation.sh, скрипты автозаписи сценариев для тестовых примеров (run_record_sample1.exp и run_record_sample2.exp), а также python-скрипт snatch.py. Необходимо сохранить все файлы в одном каталоге, и запустить скрипт automation.sh. Он выполняет следующие действия:
 
-* Проверяет наличие требующихся пакетов (expect, redis-tools, selenium), и устанавливает их в случае отсутствия.
+* Устанавливает требующиеся пакеты (expect, selenium и др.).
 * Удаляет последний проект, созданный при автоматизированном выполнении.
 * Создает новый проект в подкаталоге `autotest`. Создание нового проекта описано в разделе [Автоматизированная настройка](3_quickstart.md#autoconfig).
 
@@ -349,7 +349,7 @@ on=true
 ISP RAS Natch - Automation Sample.
 
 The script automatically performs the following:
-1. Checks requirements and install the absent packages.
+1. Installs the required packages.
 2. Cleans up the previous autotest project.
 3. Creates a new project (natch_run.py).
 4. For both existing samples:

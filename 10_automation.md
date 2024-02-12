@@ -2,7 +2,7 @@
 </div>
 
 
-# 10. Автоматизация процессов
+# <a name="auto"></a>10. Автоматизация процессов
 
 В этом разделе представлено API для получения информации из SNatch, а также показано как можно автоматизировать выполнение сценариев
 работы *Natch* от создания проекта до получения финального PDF-отчета на примере наших тестовых сценариев.
@@ -11,9 +11,10 @@
 
 API реализовано бэкэндом SNatch, поэтому чтобы им пользоваться, необходимо запустить скрипт `snatch_run.py`, как и при браузерном использовании.
 
-### 10.1.1 ci_create_project
+### 10.1.1. ci_create_project
 
-- POST запрос ci_create_project для создания проекта (аналогично проекту в браузерной версии, впоследствии может открываться и из браузера). Сопровождается обязательным параметром file, и необязательными project_name и async.
+- POST запрос ci_create_project для создания проекта (аналогично проекту в браузерной версии, впоследствии может открываться и из браузера).Сопровождается обязательным параметром file, и необязательными project_name и async.
+
 Пример запроса:
 ```bash
 curl -F "project_name=test_proj_name" -F "async=true" -F "file=@/home/snatch_traces/example.tar.zst" -X POST http://localhost:8000/ci_create_project/
@@ -23,6 +24,7 @@ curl -F "project_name=test_proj_name" -F "async=true" -F "file=@/home/snatch_tra
 - file —  путь к архиву, полученному от Natch
 - project_name — имя для создаваемого проекта ("default_name" по умолчанию)
 - async — для асинхронного создания проекта (по умолчанию False). Если установлен в True, то ответ на запрос вернется сразу и будет содержать дополнительное поле task_id для отслеживания процесса создания. В этом случае пользователь должен самостоятельно определить, в какой момент создание проекта было завершено, чтобы иметь возможность запрашивать его данные. Для состояния False процесс создания проекта будет синхронным, и ответ вернется по его завершении.
+
 Пример ответа:
 ```json
 {"status": "200", "project_id": "b9d7d69a-8783-464c-9f1d-5a72ac74678a", "task_id": "c9596e03-e007-4bac-9d81-837094d54e2b"}
@@ -36,12 +38,15 @@ curl -F "project_name=test_proj_name" -F "async=true" -F "file=@/home/snatch_tra
 ### 10.1.2. ci_get_status
 
 - GET запрос ci_get_status для уточнения статуса задачи создания проекта при использовании асинхронного подхода. Сопровождается обязательным параметром task_id.
+
 Пример запроса:
 ```bash
 curl -X GET -G http://localhost:8000/ci_get_status/ -d task_id=c9596e03-e007-4bac-9d81-837094d54e2b
 ```
 Параметры:
+
 - task_id — идентификатор задачи, полученный в ответном сообщении запроса ci_create_project.
+
 Пример ответа:
 ```json
 {"status": "200", "state": "SUCCESS", "result": null}
@@ -52,9 +57,29 @@ curl -X GET -G http://localhost:8000/ci_get_status/ -d task_id=c9596e03-e007-4ba
 - state — описывает состояние выполняемой задачи, и может принимать значения ["REVOKED", "PROGRESS", ..., "SUCCESS"]. Из этих состояний наибольший интерес представляет "PROGRESS", который гласит о корректном процессе выполнения задачи, и "SUCCESS", который обозначает корректное завершение задачи.
 - result — содержит сопроводительное сообщение о состоянии задачи.
 
-### 10.1.3. ci_get_content
+### 10.1.3. ci_get_proj_list
+
+- GET запрос ci_get_proj_list для запроса списка созданных в SNatch проектов.
+
+Пример запроса:
+```bash
+curl -X GET -G http://localhost:8000/ci_get_proj_list/
+```
+
+Пример ответа:
+
+```json
+{"status": "200", "proj_list": [{"title": "test_project", "proj_id": "bc5f666f-e5d4-41f8-93ce-e9b99bb5c0d1", "description": ""}]}
+```
+Параметры:
+
+- status — принимает значение "200" для корректного запроса и "400" для ошибочного.
+- proj_list — содержит список созданных (как с помощью автоматизации так и через пользовательский UI) проектов. Каждый элемент списка содержит следующие поля: title — имя проекта; proj_id — идентификатор проекта; description - дополнительная информация о проекте (задаётся через UI).
+
+### 10.1.4. ci_get_content
 
 - GET запрос ci_get_content для получения содержимого проекта. Сопровождается обязательными параметрами project_id и type.
+
 Пример запроса:
 ```bash
 curl -X GET -G http://localhost:8000/ci_get_content/ -d project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a -d type=callgraph
@@ -63,6 +88,7 @@ curl -X GET -G http://localhost:8000/ci_get_content/ -d project_id=b9d7d69a-8783
 
 - project_id — идентификатор проекта, полученный в ответе запроса ci_create_project.
 - type — тип запрашиваемого содержимого. Может принимать одно из значений:  [callgraph, interp_callgraph, resources, process_tree, files, process_info, process_timeline].
+
 Пример ответа:
 ```json
 {"status": "200", "content": {"graph_list": [{"pname": "gpugi", "proc": 10, "cg_array": [{"0x24e8": ... }}
@@ -73,6 +99,7 @@ curl -X GET -G http://localhost:8000/ci_get_content/ -d project_id=b9d7d69a-8783
 - content — запрашиваемое содержимое в json-формате.
 
 Пример ответа на некорректный запрос:
+
 ```json
 {"status": "400", "msg": "Can not return content for provided type. Please make sure that type is one of the following: callgraph, interp_callgraph, resources, process_tree, files, process_info, process_timeline."}
 ```
@@ -81,9 +108,10 @@ curl -X GET -G http://localhost:8000/ci_get_content/ -d project_id=b9d7d69a-8783
 - status — статус запроса, в случае ошибки всегда будет принимать значение "400".
 - msg — сопроводительное сообщение об ошибке.
 
-### 10.1.4. ci_delete_project
+### 10.1.5. ci_delete_project
 
 - POST запрос ci_delete_project для удаления проекта. Сопровождается необязательным параметром project_id, содержащим id для удаляемого проекта. Если значение id = 0 или не указано, то удалятся все проекты.
+
 Пример запроса:
 ```bash
 curl -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localhost:8000/ci_delete_project/

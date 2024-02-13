@@ -1,4 +1,4 @@
-<img src="images/logo/logo.png" width=10%>
+<img src="docs/images/logo/logo.png" width=10%>
 
 **Natch v.3.0**
 

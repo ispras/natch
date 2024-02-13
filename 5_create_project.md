@@ -30,7 +30,7 @@
 
 Описание команды и ее параметров представлено ниже:
 ```text
-natch_run.py image [-h] [-k KERNEL] [-o {Linux, FreeBSD, Win7, Win8, Win10}] [-c CONFIG]
+natch_run.py image [-h] [-k KERNEL] [-o {Linux, FreeBSD, Win7, Win8, Win8.1, Win10}] [-c CONFIG]
 ```
 Пример запуска скрипта:
 ```bash

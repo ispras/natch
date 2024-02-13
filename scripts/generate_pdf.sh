@@ -37,7 +37,7 @@ pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/s
 #       --verbose > gen.html \
 #       -N
 
-if [[ -d .git ]]; then
+if [[ -d ../.git ]]; then
        git reset --hard > /dev/null
 fi
 

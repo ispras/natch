@@ -5,9 +5,9 @@ SCRIPTS_DIR="$(dirname $(readlink -e "$0"))"
 #$SCRIPTS_DIR/preparation.py
 
 CUR_DIR=$(pwd)
-cd $SCRIPTS_DIR/..
+cd $SCRIPTS_DIR/../docs
 
-pandoc -B scripts/titul.md scripts/toc.md -V colorlinks --css=scripts/style.css \
+pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/style.css \
 		1_natch.md \
 		2_setup.md \
 		3_quickstart.md \

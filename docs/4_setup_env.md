@@ -58,7 +58,7 @@ sudo apt install qemu qemu-kvm libvirt-daemon libvirt-clients bridge-utils virt-
 
 Далее необходимо добавить своего пользователя в группу `libvirt`, так как только `root` и пользователи этой группы могут использовать виртуальные машины KVM:
 ```bash
-sudo gpasswd -a $user libvirt
+sudo gpasswd -a $USER libvirt
 ```
 
 Затем необходимо убедиться, что сервис `libvirt` запущен и работает:

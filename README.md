@@ -1,10 +1,10 @@
-<img src="https://raw.githubusercontent.com/ispras/natch/main/images/logo_new.png" width=10%>
+<img src="docs/images/logo/logo.png" width=10%>
 
-**Natch v.2.4**
+**Natch v.3.0**
 
 [Телеграм-канал поддержки Natch](https://t.me/ispras_natch)
 ____
-_В связи с переходом на новую версию аппаратных ключей инструмента лицензирования Sentinel до окончания действия всех выданных лицензий будут поддерживаться два варианта дистрибутива. Если у вас старые ключи Sentinel, то следует брать дистрибутив из папки Sentinel, если вы новый пользователь *Natch* - дистрибутив для вас в папке Sentinel_new. Так же рекомендуется переустановить окружение (aksusbd_*current_version*\_amd64.deb для Ubuntu/Debian/Astra, haspd-_*current_version*\_.x86_64.rpm для Alt), пакет находится в папке с дистрибутивом._
+_В связи с переходом на новую версию аппаратных ключей инструмента лицензирования Sentinel до окончания действия всех выданных лицензий будут поддерживаться два варианта дистрибутива. Если у вас старые ключи Sentinel, то следует брать дистрибутив из папки Sentinel, если вы новый пользователь *Natch* - дистрибутив для вас в папке Sentinel_new. Так же рекомендуется переустановить окружение (aksusbd\_*current_version*\_amd64.deb для Ubuntu/Debian/Astra), пакет находится в папке с дистрибутивом. Для Alt необходимо выполнить epm play aksusbd._
 ____
 
 Natch (Network Application Tainting Can Help) - это инструмент для определения поверхности атаки, основанный на полносистемном эмуляторе Qemu.
@@ -13,30 +13,58 @@ Natch (Network Application Tainting Can Help) - это инструмент дл
 
 Результат работы инструмента представлен множеством интерактивных аналитик, которые собраны в веб-интерфейсе *SNatch*.
 
-1. [Что такое Natch](1_natch.md)
 
-1. [Установка и настройка Natch](2_setup.md)
 
-1. [Начало работы с Natch](3_quickstart.md)
 
-1. [Конфигурационные файлы Natch](4_configs.md)
 
-1. [Запуск Natch](5_launch.md)
 
-1. [Анализ поверхности атаки с помощью SNatch](6_snatch.md)
 
-1. [Дополнительные возможности Natch](7_additional.md)
+[1. Что такое Natch](docs/1_natch.md)
 
-1. [Примеры использования Natch](8_applications.md)
+[2. Установка и настройка Natch](docs/2_setup.md)
 
-1. [Приложения](9_appendix.md)
+[3. Пошаговое руководство по работе с Natch](docs/3_quickstart.md)
 
-1. [FAQ](2_quickstart.md#faq)
+[4. Настройка окружения для работы с Natch](docs/4_setup_env.md)
 
-1. [Требования и ограничения](9_appendix.md#app_requirements)
+[5. Создание проекта](docs/5_create_project.md)
 
-1. [Релизы](9_appendix.md#app_releases)
+[6. Определение источников пометки](docs/6_taint_source.md)
 
-1. [Видеозаписи вебинаров](https://nextcloud.ispras.ru/index.php/s/natch_webinars)
+[7. Запись и воспроизведение сценариев](docs/7_scenario_work.md)
 
-1. [Практическое применение Natch](trophies.md)
+[8. Анализ поверхности атаки с помощью SNatch](docs/8_snatch.md)
+
+[9. Дополнительные возможности Natch](docs/9_additional.md)
+
+[10. Автоматизация процессов](docs/10_automation.md)
+
+[11. Полезные утилиты и скрипты Natch](docs/11_utils.md)
+
+[12. Примеры использования Natch](docs/12_applications.md)
+
+[13. FAQ](docs/13_faq.md)
+
+[Приложение 1. Настройка окружения для использования лицензированного Natch](docs/14_app_license.md)
+
+[Приложение 2. Командная строка эмулятора QEMU](docs/15_app_qemu_cmdline.md)
+
+[Приложение 3. Конфигурационные файлы Natch](docs/16_app_configs.md)
+
+[Приложение 4. Формат списка исполняемых модулей](docs/17_app_module_cfg.md)
+
+[Приложение 5. Формат файла с покрытием кода](docs/18_app_coverage.md)
+
+[Приложение 6. Команды монитора QEMU для работы с Natch](docs/19_app_natch_cmds.md)
+
+[Приложение 7. Требования и ограничения Natch](docs/20_app_requirements.md)
+
+[Приложение 8. Рекомендации по подготовке объекта оценки](docs/21_app_oo_preparation.md)
+
+[Приложение 9. История релизов Natch](docs/22_app_releases.md)
+
+-----
+
+[Видеозаписи вебинаров](https://nextcloud.ispras.ru/index.php/s/natch_webinars)
+
+[Практическое применение Natch](trophies.md)

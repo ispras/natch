@@ -5,7 +5,7 @@ import sys
 import fileinput
 
 script_dir, filename = os.path.split(os.path.abspath(__file__))
-path = os.path.join(script_dir, '..')
+path = os.path.join(script_dir, '../docs')
 
 manuals = []
 

@@ -25,11 +25,12 @@ pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/s
 		15_app_qemu_cmdline.md \
 		16_app_configs.md \
 		17_app_module_cfg.md \
-		18_app_coverage.md \
-		19_app_natch_cmds.md \
-		20_app_requirements.md \
-		21_app_oo_preparation.md \
-		22_app_releases.md \
+		18_app_graphs.md \
+		19_app_coverage.md \
+		20_app_natch_cmds.md \
+		21_app_requirements.md \
+		22_app_oo_preparation.md \
+		23_app_releases.md \
 		-o $CUR_DIR/natch_docs.pdf \
         --pdf-engine=weasyprint \
         --metadata pagetitle="Natch documentation" \

@@ -53,15 +53,17 @@ Natch (Network Application Tainting Can Help) - это инструмент дл
 
 [Приложение 4. Формат списка исполняемых модулей](docs/17_app_module_cfg.md)
 
-[Приложение 5. Формат файла с покрытием кода](docs/18_app_coverage.md)
+[Приложение 5. Графы взаимодействия помеченных процессов и модулей](docs/18_app_graphs.md)
 
-[Приложение 6. Команды монитора QEMU для работы с Natch](docs/19_app_natch_cmds.md)
+[Приложение 6. Формат файла с покрытием кода](docs/19_app_coverage.md)
 
-[Приложение 7. Требования и ограничения Natch](docs/20_app_requirements.md)
+[Приложение 7. Команды монитора QEMU для работы с Natch](docs/20_app_natch_cmds.md)
 
-[Приложение 8. Рекомендации по подготовке объекта оценки](docs/21_app_oo_preparation.md)
+[Приложение 8. Требования и ограничения Natch](docs/21_app_requirements.md)
 
-[Приложение 9. История релизов Natch](docs/22_app_releases.md)
+[Приложение 9. Рекомендации по подготовке объекта оценки](docs/22_app_oo_preparation.md)
+
+[Приложение 10. История релизов Natch](docs/23_app_releases.md)
 
 -----
 

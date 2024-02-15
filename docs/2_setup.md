@@ -26,7 +26,7 @@
 
 [Дистрибутив Natch v.3.0](https://nextcloud.ispras.ru/index.php/s/BT6xeiz4ATQLqoy)
 
-[Предыдущие релизы](22_app_releases.md#app_releases)
+[Предыдущие релизы](23_app_releases.md#app_releases)
 
 
 ## 2.2. Установка инструмента Natch

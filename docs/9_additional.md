@@ -159,7 +159,7 @@ Call stack:
 
 Пример запуска скрипта:
 ```bash
-sudo ./debug_info.py <path_to_system_img> <path_to_module_config> <path_to_cov64> <module_number> <path_to_workdir>
+sudo ./cov2lcov.py <path_to_system_img> <path_to_module_config> <path_to_cov64> <module_number> <path_to_workdir>
 ```
 Обратите внимание на необходимость запуска скрипта с правами суперпользователя.
 

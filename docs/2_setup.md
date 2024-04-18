@@ -43,7 +43,7 @@
 Для установки *Natch* скачайте соответствующий вашей ОС дистрибутив и используйте команду (пример для ubuntu20):
 
 ```bash
-sudo dpkg -i natch_2.4_ubuntu20.deb
+sudo dpkg -i natch_x.x_ubuntu20.deb
 ```
 Для удаления *Natch* из системы используйте команду:
 
@@ -61,7 +61,7 @@ sudo apt-get install python3-module-pip
 
 Для установки *Natch* скачайте дистрибутив и используйте команду:
 ```
-sudo apt-get install natch_2.4_alt10.rpm
+sudo apt-get install natch_x.x_alt10.rpm
 ```
 Для удаления *Natch* из системы используйте команду:
 ```
@@ -70,7 +70,7 @@ sudo apt-get --yes --purge remove natch
 
 ___
 
-При установке *Natch* бинарные файлы распаковываются в ``/usr/bin/natch/``.
+При установке *Natch* бинарные файлы распаковываются в ``/usr/bin/natch-bin/``.
 
 ### 2.2.2. Установка зависимостей (кроме Alt)
 
@@ -78,7 +78,7 @@ ___
 папке установки инструмента:
 
 ```bash
-/usr/bin/natch/bin/natch_scripts/setup_requirements.sh
+/usr/bin/natch-bin/bin/natch_scripts/setup_requirements.sh
 ```
 Во время выполнения скрипта потребуется пароль администратора.
 

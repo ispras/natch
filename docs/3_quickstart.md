@@ -69,39 +69,77 @@ redis-cli -h localhost -p 49152
 
 ## <a name="config_natch_test_image"></a>3.2. Создание проекта для работы с тестовым образом
 
-Работа с *Natch* начинается с создания проекта (рабочей директории), которая осуществляется с помощью интерактивного скрипта.
+Все основные функции *Natch* доступны через команду `natch` в командной строке. Запуск этой команды без параметров
+отобразит справочную информацию о версии и доступных действиях:
+
+```bash
+---------------------------------------------------------------------------
+            Welcome to Natch - an attack surface detection tool!
+---------------------------------------------------------------------------
+Natch_v.3.1
+Copyright (c) 2020-2024 ISP RAS
+
+based on QEMU emulator v.7.2.0
+Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Telegram: https://t.me/ispras_natch
+E-mail: natch@ispras.ru
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Documentation: https://github.com/ispras/natch
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         Natch version
+
+main commands:
+  {create,cr,record,replay,edit,modules,change,settings}
+                        use <cmd_name> -h/--help for additional information
+    create (cr)         create project
+    record              record scenario
+    replay              replay scenario
+
+    edit                edit Natch config files
+    change              change some project settings
+
+    modules             add/update modules in the project (requires sudo)
+
+    settings            Natch shell settings
+
+```
+
+Работа с *Natch* начинается с создания проекта (рабочей директории).
 Помимо этого, процесс настройки созданного проекта может включать ручной этап, который предполагает внесение изменений в
-конфигурационные файлы инструмента.
+конфигурационные файлы проекта.
 Предназначение файлов конфигурации и их параметров описано в разделе [Конфигурационные файлы Natch](16_app_configs.md#app_configs).
 
 ### 3.2.1. Создание проекта
 
-Создание проекта выполняется `natch_run.py` (подробнее в разделе [Создание проекта](5_create_project.md#create_project)). Приведем вопросы скрипта и ответы на них.
+Создание проекта выполняется командой `natch create` (подробнее в разделе [Создание проекта](5_create_project.md#create_project)),
+которая имеет два обязательных параметра -- название будущего проекта и путь к образу исследуемой системы.
+В процессе выполнения команды будет задан ряд вопросов.
 
-Запустим скрипт:
+Запустим команду:
 ```text
-user@natch1:~/natch_quickstart$ /usr/bin/natch/bin/natch_scripts/natch_run.py Natch_testing_materials/test_image_debian.qcow2
+user@natch1:~/natch_quickstart$ natch create test1 Natch_testing_materials/test_image_debian.qcow2
+
+Directory for project files /home/user/natch_quickstart/test1 was created
 
 Image: /home/user/natch_quickstart/Natch_testing_materials/test_image_debian.qcow2
 OS: Linux
 
 Attention! To successfully create a project you will need a root password
 ```
-Скрипт выдаст предупреждение о том, что в процессе настройки потребуется пароль администратора. Требование обязательное,
+Команда выдаст предупреждение о том, что в процессе настройки потребуется пароль администратора. Требование обязательное,
 при его отсутствии дальнейшая работа не будет иметь смысла.
 
-Вводим имя проекта -- будет создан каталог с таким именем:
-```text
-Enter path to directory for project (optional): test1
-Directory for project files '/home/user/natch_quickstart/test1' was created
-```
-
-Скрипт проверит наличие и доступность утилиты `natch-qemu-img`, которая будет необходима в дальнейшей настройке и работе. В случае успеха увидим:
+Будет проверено наличие и доступность утилиты `natch-qemu-img`, которая будет необходима в дальнейшей настройке и работе. В случае успеха увидим:
 ```text
 Checking natch-qemu-img utility...
 Utility natch-qemu-img is ok
 ```
-Если что-то пошло не так, скрипт прекратит работу.
+Если что-то пошло не так, создание проекта будет прервано.
 
 Сколько памяти выдать гостевой виртуальной машине (постфикс указывать обязательно. G или M):
 ```text
@@ -125,10 +163,10 @@ Write the ports you want separated by commas (e.g. 7777, 8888, etc) 5555
 Your pair of ports for connecting: 5555 <=> 49152
 ```
 
-Теперь скрипт задаст ряд вопросов, реакция на которые будет не сразу. Произойдет сбор сведений, а затем
+Далее последует ряд вопросов, реакция на которые будет не сразу. Произойдет сбор сведений, а затем
 наступит автоматическая фаза, где в соответствии с выбранными характеристиками будут происходить действия.
 
-Первый из вопросов касается конфигурационного файла для модулей. Мы согласимся на его создание и
+Первый из вопросов касается конфигурационного файла для модулей. Согласимся на его создание и
 нам нужно будет указать путь к каталогу на хосте, содержащем копии бинарных файлов, размещенных в гостевой ОС.
 Находятся они в папках `Sample1_bins` и `Sample2_bins` в тестовых материалах.
 Так как будет проделан пример с `redis`, то следует указать путь к папке `Sample2_bins`.
@@ -155,7 +193,7 @@ Do you want to get debug info for system modules? [Y/n] y
 Generate config file task.cfg? (recommended) [Y/n] y
 ```
 
-Последнее, что надо ввести пользователю - пароль администратора. Перед запросом появится информация о найденных модулях,
+Последнее, что надо ввести пользователю -- пароль администратора. Перед запросом появится информация о найденных модулях,
 если они были загружены.
 
 ```text
@@ -172,7 +210,7 @@ The steps above require a root password
 
 ```
 
-Далее скрипт уходит в автоматическую работу, которая может занять продолжительное время.
+Дальнейшие действия выполняются автоматически, процесс может занять продолжительное время.
 На этом этапе произойдет монтирование образа, поиск системных библиотек и интерпретаторов,
 скачивание отладочной информации для них. Затем будет формироваться конфигурационный файл `task.cfg`,
 для чего потребуется запуск эмулятора. Последним этапом будет формирование базы символов для
@@ -183,13 +221,17 @@ The steps above require a root password
 ```text
 ─────────────────────────────── Libraries Searching Section ───────────────────────────────────────
 
+Host Config Section
 Reading module config - OK
 Searching Binary Files...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
 Searching Binary Files - OK
-Searching Python Symbols - OK
-Searching Java symbols - OK
+
+Additional Section
 Searching Kernel Symbols - OK
-Searching Shared Libraries...                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48/48 100% 0:00:01
+Searching Python, Java, C# Symbols - OK
+
+Shared Libraries Section
+Searching Shared Libraries For...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48/48 100% 0:00:01
 Searching Shared Libraries - OK
 
 ───────────────────────────── Library-Debug Matching Section ──────────────────────────────────────
@@ -199,6 +241,8 @@ Method [1/2]: Default System Location Analysis
 WARNING: Folder '/mnt/point6602537/usr/lib/debug' does not exist! Method is skipped!
 Searching Debugging Information...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  0/78   0% 0:00:00
 Method [2/2]: DebugInfoD
+Checking available DebugInfoD servers...         Checking available DebugInfoD servers - OK
+
 Searching Debugging Information...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78/78 100% 0:10:06
 Libraries with servers response...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78/78 100% 0:10:06
 Searching Debugging Information - OK
@@ -207,6 +251,8 @@ Method [1/2]: Default System Location Analysis
 WARNING: Folder '/mnt/point6602537/usr/lib/debug' does not exist! Method is skipped!
 WARNING: Folder '/mnt/point6602537/usr/lib/debug' does not exist! Method is skipped!
 Method [2/2]: DebugInfoD
+Checking available DebugInfoD servers...         Checking available DebugInfoD servers - OK
+
 Searching Tieddebug Information...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
 Libraries with servers response...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
 Searching tieddebug information - OK
@@ -214,30 +260,32 @@ Umounting img - OK
 
 ───────────────────────────────────── Result Section ──────────────────────────────────────────────
 
-Module config statistics:
-In module config there were modules                               :     2
-Binaries files in qcow2 found                                     :     2
 
-Python interpreters statistics:
-Python interpreters have been found                               :     OK
-Added python interpreters                                         :     46
-Added debugging information for python interpreters               :     46
+HOST statistics:
+Images have been found                                            :     OK
+Added images                                                      :     2
+Added debugging information                                       :     0
+Added tied information                                            :     0
 
-Kernel statistics:
-WARNING: Java symbols have been found                             :     NO
-
-Kernel statistics:
-Kernel symbols have been found                                    :     OK
-Added kernel symbols                                              :     1
+KERNEL statistics:
+Images have been found                                            :     OK
+Added images                                                      :     1
 Added debugging information for kernel                            :     1
 
-Shared library Statistics:
-Added shared libraries                                            :     31
-Added debugging information for shared libraries                  :     31
-Added debugging information for tied files                        :     2
+PYTHON statistics:
+Images have been found                                            :     OK
+Added images                                                      :     46
+Added debugging information                                       :     46
+Added tied information                                            :     0
+
+SHARED_LIBRARY statistics:
+Images have been found                                            :     OK
+Added images                                                      :     31
+Added debugging information                                       :     31
+Added tied information                                            :     2
 ld-linux-* is always skipped and isn't counted in calculations
 
-Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was updated
+Your config file '/home/user/natch_quickstart/test1/module.cfg' was updated
 
 Tuning process will be started soon. Please, do not close the emulator
 Three...
@@ -245,38 +293,27 @@ Two..
 One.
 Go!
 Natch monitor - type 'help' for more information
-Natch v.3.0
+(natch)
+Natch v.3.1
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...
 [Tasks] No such file 'task.cfg'. It will be created.
+Checking config file '/home/user/natch_quickstart/test1/module.cfg'...
 Now tuning will be launched.
 
 Tuning started. Please wait a little...
 Generating config file: task.cfg
-Trying to find 20 kernel-specific parameters
-[01/20] Parameter - task_struct->pid            : Found
-[02/20] Parameter - task_struct->comm           : Found
-[03/20] Parameter - task_struct->group_leader   : Found
-[04/20] Parameter - task_struct->parent         : Found
-[05/20] Parameter - mount fields                : Found
-[06/20] Parameter - files_struct fields         : Found
-[07/20] Parameter - file->f_pos                 : Found
-[08/20] Parameter - vm_area_struct size         : Found
-[09/20] Parameter - vm_area_struct->vm_start    : Found
-[10/20] Parameter - vm_area_struct->vm_end      : Found
-[11/20] Parameter - vm_area_struct->vm_flags    : Found
-[12/20] Parameter - mm->map_count               : Found
-[13/20] Parameter - mm_struct fields            : Found
-[14/20] Parameter - task_struct->mm             : Found
-[15/20] Parameter - mm->arg_start               : Found
-[16/20] Parameter - task_struct->state          : Found
-[17/20] Parameter - socket struct fields        : Found
-[18/20] Parameter - task_struct->exit_state     : Found
-[19/20] Parameter - cred->uid                   : Found
-[20/20] Parameter - task_struct->cred           : Found
-Detected 43096 system events
-Detected 20 of 20 kernel-specific parameters. Creating config file...
+Trying to find 7 kernel-specific parameters
+[01/07] Parameter - task, files and mm struct   : Found
+[02/07] Parameter - args                        : Found
+[03/07] Parameter - mount                       : Found
+[04/07] Parameter - file read position          : Found
+[05/07] Parameter - exit_state                  : Found
+[06/07] Parameter - socket                      : Found
+[07/07] Parameter - uid                         : Found
+
+Detected 7 of 7 kernel-specific parameters. Creating config file...
 
 Tuning completed successfully!
 
@@ -300,17 +337,13 @@ Created symbol database for /home/user/natch_quickstart/test1/libs/src/2e5abcee9
 Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was updated
 ```
 
-Cоздание проекта завершено успешно, скрипты для запуска *Natch* сгенерированы, всё готово к записи сценария, о чём *Natch* сообщит нам дополнительно:
+Cоздание проекта завершено успешно, всё готово к записи сценария:
 
 ```text
 Configuration file natch.cfg was created.
 You can edit it before using Natch.
 
-Settings completed! Now you can launch emulator and enjoy! :)
-
-	Natch in record mode: 'run_record.sh'
-	Natch in replay mode: 'run_replay.sh'
-	Qemu without Natch: 'run_qemu.sh'
+Settings completed! Now you can launch *Natch* and enjoy! :)
 
 File 'settings_test1.ini' was saved here: /home/user/natch_quickstart/
 You can use it for creating other projects
@@ -333,6 +366,7 @@ You can use it for creating other projects
 В качестве примера ручной настройки соберем покрытие кода по базовым блокам для просмотра в *IDA Pro*.
 Для этого в конфигурационном файле `natch.cfg` предусмотрена секция `Coverage`.
 Необходимо раскомментировать не только параметры секции, но и название секции в квадратных скобках.
+Для редактирования следует перейти в рабочую директорию и ввести команду `natch edit main`.
 
 Раскомментируем секцию `Coverage` (подробнее об предназначении секций в разделе [Основной конфигурационный файл](16_app_configs.md#main_config)).
 
@@ -345,11 +379,12 @@ taint=true
 ## <a name="record_scenario"></a>3.3. Запись сценария работы
 
 Все настройки выполнены, можно переходить к записи сценария. Рассмотрим в качестве примера сценарий с redis-сервером (Sample2_bins).
-Для записи сценария предусмотрен скрипт `run_record.sh`, запустим его:
+Для записи сценария нужно перейти в рабочую директорию и запустить команду `natch record <name>`.
+
 ```bash
-user@natch1:~/natch_quickstart/test1$ ./run_record.sh
+user@natch1:~/natch_quickstart/test1$ natch record sample_redis
 ```
-Скрипт запросит название сценария, введем `sample_redis`. Далее запустится эмулятор.
+В результате запустится эмулятор.
 
 Введём логин и пароль учетной записи пользователя - `user/user` и запустим redis-сервер:
 ```
@@ -369,11 +404,11 @@ localhost:49152> get a
 localhost:49152> exit
 ```
 **Важное замечание**: *весь записываемый сценарий включает в себя и этап загрузки ОС, но помеченные данные появятся практически в самом конце,
-когда мы обратимся к redis-серверу. Соответственно, для существенного сокращения времени на сбор данных (последующее выполнение `run_replay.sh`)
+когда мы обратимся к redis-серверу. Соответственно, для существенного сокращения времени на сбор данных (последующее выполнение `natch replay`)
 нам необходимо сделать снапшот в точке, максимально приближенной к началу поступления помеченных данных в системе. То есть сейчас, когда от порождения
 помеченных данных нас отделяет повторная отправка в redis уже знакомых нам команд*.
 
-Нажмем `Ctrl+Alt+G`, выйдем в монитор QEMU (bash-терминал хостовой ОС в котором мы запустили `run_record.sh`) и выполним команду генерации снапшота:
+Нажмем `Ctrl+Alt+G`, выйдем в монитор QEMU (bash-терминал хостовой ОС в котором мы запустили `natch record`) и выполним команду генерации снапшота:
 ```
 savevm <name>
 ```
@@ -383,12 +418,10 @@ savevm <name>
 
 Используем имя `ready`. Сохранение состояния займёт несколько секунд, в зависимости от размера образа и производительности компьютера в целом.
 ```text
-user@natch1:~/natch_quickstart/test1$ ./run_record.sh
-Enter scenario name: sample_redis
-
+user@natch1:~/natch_quickstart/test1$ natch record sample_redis
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.0
+Natch v.3.1
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...
@@ -411,17 +444,19 @@ Network json log file: "/home/user/natch_quickstart/test1/sample_redis/network.j
 
 Для каждого вновь записанного сценария будет появляться своя папка с индивидуальными настройками.
 
+Настройки можно редактировать с помощью команды `natch edit taint`, где будет предложено выбрать нужный сценарий.
+
 ## <a name="replay_scenario"></a>3.4. Воспроизведение сценария и сбор данных для анализа
 
-Для воспроизведения нужно запустить скрипт `run_replay.sh`.
+Для воспроизведения нужно выполнить команду `natch replay`.
 ```text
-user@natch1:~/natch_quickstart/test1/$ ./run_replay.sh
+user@natch1:~/natch_quickstart/test1/$ natch replay
 ```
-Скрипт может принимать два параметра: название сценария и имя снапшота. В нашем случае команда могла бы выглядеть так:
+Команда может принимать два параметра: название сценария и имя снапшота. В нашем случае команда могла бы выглядеть так:
 ```text
-user@natch1:~/natch_quickstar/test1/$ ./run_replay.sh sample_redis ready
+user@natch1:~/natch_quickstar/test1/$ natch replay sample_redis ready
 ```
-Если используются параметры, то они оба являются обязательными. Однако, запускать скрипт можно без параметров, он сам или загрузит нужный сценарий (если он единственный)
+Если используются параметры, то они оба являются обязательными. Однако, запускать replay можно без параметров, он сам или загрузит нужный сценарий (если он единственный)
 или предложит выбрать из списка существующих, точно так же произойдет с выбором снапшота.
 
 Начнём воспроизведение сценария, а точнее его фрагмента, который выполнялся после создания снапшота. Это будет несколько медленнее, чем базовое выполнение.
@@ -432,7 +467,7 @@ user@natch1:~/natch_quickstar/test1/$ ./run_replay.sh sample_redis ready
 Snapshot to load: ready
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.0
+Natch v.3.1
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...

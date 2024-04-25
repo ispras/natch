@@ -21,7 +21,7 @@
 light=false|true
 ```
 
-Описание секции в разделе [Основной конфигурационный файл natch.cfg](16_app_configs.md#main_config).
+Описание секции в разделе [Основной конфигурационный файл natch.cfg](17_app_configs.md#main_config).
 
 ## <a name="taint_log"></a>10.2. Подробная трасса помеченных данных
 

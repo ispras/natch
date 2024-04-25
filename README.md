@@ -23,47 +23,49 @@ Natch (Network Application Tainting Can Help) - это инструмент дл
 
 [2. Установка и настройка Natch](docs/2_setup.md)
 
-[3. Пошаговое руководство по работе с Natch](docs/3_quickstart.md)
+[3. Командный интерфейс Natch](docs/3_natch_cmd.md)
 
-[4. Настройка окружения для работы с Natch](docs/4_setup_env.md)
+[4. Пошаговое руководство по работе с Natch](docs/4_quickstart.md)
 
-[5. Создание проекта](docs/5_create_project.md)
+[5. Настройка окружения для работы с Natch](docs/5_setup_env.md)
 
-[6. Определение источников пометки](docs/6_taint_source.md)
+[6. Создание проекта](docs/6_create_project.md)
 
-[7. Запись и воспроизведение сценариев](docs/7_scenario_work.md)
+[7. Определение источников пометки](docs/7_taint_source.md)
 
-[8. Анализ поверхности атаки с помощью SNatch](docs/8_snatch.md)
+[8. Запись и воспроизведение сценариев](docs/8_scenario_work.md)
 
-[9. Дополнительные возможности Natch](docs/9_additional.md)
+[9. Анализ поверхности атаки с помощью SNatch](docs/9_snatch.md)
 
-[10. Автоматизация процессов](docs/10_automation.md)
+[10. Дополнительные возможности Natch](docs/10_additional.md)
 
-[11. Полезные утилиты и скрипты Natch](docs/11_utils.md)
+[11. Автоматизация процессов](docs/11_automation.md)
 
-[12. Примеры использования Natch](docs/12_applications.md)
+[12. Полезные утилиты и скрипты Natch](docs/12_utils.md)
 
-[13. FAQ](docs/13_faq.md)
+[13. Примеры использования Natch](docs/13_applications.md)
 
-[Приложение 1. Настройка окружения для использования лицензированного Natch](docs/14_app_license.md)
+[14. FAQ](docs/14_faq.md)
 
-[Приложение 2. Командная строка эмулятора QEMU](docs/15_app_qemu_cmdline.md)
+[Приложение 1. Настройка окружения для использования лицензированного Natch](docs/15_app_license.md)
 
-[Приложение 3. Конфигурационные файлы Natch](docs/16_app_configs.md)
+[Приложение 2. Командная строка эмулятора QEMU](docs/16_app_qemu_cmdline.md)
 
-[Приложение 4. Формат списка исполняемых модулей](docs/17_app_module_cfg.md)
+[Приложение 3. Конфигурационные файлы Natch](docs/17_app_configs.md)
 
-[Приложение 5. Графы взаимодействия помеченных процессов и модулей](docs/18_app_graphs.md)
+[Приложение 4. Формат списка исполняемых модулей](docs/18_app_module_cfg.md)
 
-[Приложение 6. Формат файла с покрытием кода](docs/19_app_coverage.md)
+[Приложение 5. Графы взаимодействия помеченных процессов и модулей](docs/19_app_graphs.md)
 
-[Приложение 7. Команды монитора QEMU для работы с Natch](docs/20_app_natch_cmds.md)
+[Приложение 6. Формат файла с покрытием кода](docs/20_app_coverage.md)
 
-[Приложение 8. Требования и ограничения Natch](docs/21_app_requirements.md)
+[Приложение 7. Команды монитора QEMU для работы с Natch](docs/21_app_natch_cmds.md)
 
-[Приложение 9. Рекомендации по подготовке объекта оценки](docs/22_app_oo_preparation.md)
+[Приложение 8. Требования и ограничения Natch](docs/22_app_requirements.md)
 
-[Приложение 10. История релизов Natch](docs/23_app_releases.md)
+[Приложение 9. Рекомендации по подготовке объекта оценки](docs/23_app_oo_preparation.md)
+
+[Приложение 10. История релизов Natch](docs/24_app_releases.md)
 
 -----
 

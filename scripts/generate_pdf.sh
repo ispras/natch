@@ -2,7 +2,7 @@
 
 SCRIPTS_DIR="$(dirname $(readlink -e "$0"))"
 
-$SCRIPTS_DIR/preparation.py
+# $SCRIPTS_DIR/preparation.py
 
 CUR_DIR=$(pwd)
 cd $SCRIPTS_DIR/../docs
@@ -39,8 +39,8 @@ pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/s
 #       --verbose > gen.html \
 #       -N
 
-if [[ -d ../.git ]]; then
-      git reset --hard > /dev/null
-fi
+# if [[ -d ../.git ]]; then
+#       git reset --hard > /dev/null
+# fi
 
 

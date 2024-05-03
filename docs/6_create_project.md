@@ -162,7 +162,6 @@ natch create <workdir> <image> -o Linux
 ```ini
 [Settings]
 version = 6
-workdir = test
 ram = 4G
 text_mode = false
 ports_forwarding = true
@@ -178,7 +177,6 @@ tuning = true
 Пройдемся по параметрам:
 
  - `version` -- версия конфигурационного файла `natch.cfg`
- - `workdir` -- рабочая директория проекта
  - `ram` -- количество выделенной машине оперативной памяти
  - `text_mode` -- режим работы эмулятора (текстовый или графический)
  - `port_forwarding` -- необходимость проброса портов

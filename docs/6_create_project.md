@@ -194,7 +194,7 @@ tuning = true
 
 Использовать конфигурационный файл с настройками проекта можно так:
 ```bash
-natch_create <workdir> <image> -c settings_test.ini
+natch create <workdir> <image> -c settings_test.ini
 ```
 
 Единственное что попросит у вас скрипт -- пароль администратора. Остальная работа будет проделана автоматически.

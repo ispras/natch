@@ -207,7 +207,7 @@ ISP RAS Natch - Automation Sample.
 The script automatically performs the following:
 1. Installs the required packages.
 2. Cleans up the previous autotest project.
-3. Creates a new project (natch_run.py).
+3. Creates a new project (natch create).
 4. For both existing samples:
  ∟ Records a test scenario (run_record_*.exp).
  ∟ Replays it (run_replay.sh).
@@ -227,18 +227,17 @@ Enter path to Snatch directory: /
 
 На данном этапе требуется ввести полный путь к директории *SNatch*.
 По нажатии Enter появляется запрос sudo. После ввода пароля следует установка требующихся компонент.
-Затем появляется запрос sudo для создания проекта, после чего запускается создание проекта в `natch_run.py`:
+Затем появляется запрос sudo для создания проекта, после чего запускается создание проекта командой `natch create`:
 
 ```
-spawn /usr/bin/natch/bin/natch_scripts/natch_run.py /vms/test_image/test_image_debian.qcow2
+spawn natch create autotest /vms/test_image/test_image_debian.qcow2
+
+Directory for project files /vms/test_image/autotest was created
 
 Image: /vms/test_image/test_image_debian.qcow2
 OS: Linux
 
 Attention! To successfully create a project you will need a root password
-
-Enter path to directory for project (optional): autotest
-Directory for project files /vms/test_image/autotest was created
 
 Checking natch-qemu-img utility...
 Utility natch-qemu-img is ok
@@ -283,7 +282,7 @@ Settings completed! Now you can launch emulator and enjoy! :)
 	Qemu without Natch: 'run_qemu.sh'
 ```
 
-По завершении работы `natch_run.py` для виртуальной машины создается diff файл:
+По завершении работы `natch create` для виртуальной машины создается diff файл:
 ```
 Formatting '/vms/test_image/autotest/sample1/test_image_debian.diff', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=21474836480 backing_file=/vms/test_image/test_image_debian.qcow2 backing_fmt=qcow2 lazy_refcounts=off refcount_bits=16
 ```
@@ -297,7 +296,7 @@ Formatting '/vms/test_image/autotest/sample1/test_image_debian.diff', fmt=qcow2 
 ```
 Natch monitor - type 'help' for more information
 (natch)
-Natch_v.3.0
+Natch_v.3.1
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...

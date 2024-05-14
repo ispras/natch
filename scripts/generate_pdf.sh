@@ -10,27 +10,28 @@ cd $SCRIPTS_DIR/../docs
 pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/style.css \
 		1_natch.md \
 		2_setup.md \
-		3_quickstart.md \
-		4_setup_env.md \
-		5_create_project.md \
-		6_taint_source.md \
-		7_scenario_work.md \
-		8_snatch.md \
-		9_additional.md \
-		10_automation.md \
-		11_utils.md \
-		12_applications.md \
-		13_faq.md \
-		14_app_license.md \
-		15_app_qemu_cmdline.md \
-		16_app_configs.md \
-		17_app_module_cfg.md \
-		18_app_graphs.md \
-		19_app_coverage.md \
-		20_app_natch_cmds.md \
-		21_app_requirements.md \
-		22_app_oo_preparation.md \
-		23_app_releases.md \
+		3_natch_cmd.md \
+		4_quickstart.md \
+		5_setup_env.md \
+		6_create_project.md \
+		7_taint_source.md \
+		8_scenario_work.md \
+		9_snatch.md \
+		10_additional.md \
+		11_automation.md \
+		12_utils.md \
+		13_applications.md \
+		14_faq.md \
+		15_app_license.md \
+		16_app_qemu_cmdline.md \
+		17_app_configs.md \
+		18_app_module_cfg.md \
+		19_app_graphs.md \
+		20_app_coverage.md \
+		21_app_natch_cmds.md \
+		22_app_requirements.md \
+		23_app_oo_preparation.md \
+		24_app_releases.md \
 		-o $CUR_DIR/natch_docs.pdf \
         --pdf-engine=weasyprint \
         --metadata pagetitle="Natch documentation" \
@@ -39,7 +40,7 @@ pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/s
 #       -N
 
 if [[ -d ../.git ]]; then
-       git reset --hard > /dev/null
+    git reset --hard > /dev/null
 fi
 
 

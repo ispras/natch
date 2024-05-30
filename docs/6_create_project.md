@@ -170,7 +170,7 @@ natch create <workdir> <image> -o Linux
 
 ```ini
 [Settings]
-version = 6
+version = 7
 ram = 4G
 text_mode = false
 ports_forwarding = true

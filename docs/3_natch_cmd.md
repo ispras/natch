@@ -2,6 +2,47 @@
 </div>
 
 # <a name="natch_cmd"></a>3. Командный интерфейс Natch
+```
+usage: natch [-h] [-v] {create,cr,record,replay,kvm,tuning,info,delete,edit,set,modules,settings} ...
+
+⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿      Welcome to Natch -- the attack surface detection tool!                   ⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠟⣿⣿⣿⣿⣿⣿⣿⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⠏⠀⣿⣿⣿⣿⣿⣿⣿  Telegram: https://t.me/ispras_natch                             ⣿⣿⣿⣿⣿
+⡿⠛⠉⠉⠉⢩⠃⠀⢠⣿⣿⣿⣿⣿⣿⣿  E-mail: natch@ispras.ru                                         ⣿⣿⣿⣿⣿
+⠀⠀⠀⠀⠀⠈⠓⠶⠞⠈⢻⣿⣿⣿⣿⣿⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⣿⣿⣿⣿⣿
+⠀⠀⠀⠀⡀⠀⠀⠀⠀⢀⠀⢿⣿⣿⣿⣿  Documentation: https://github.com/ispras/natch                  ⣿⣿⣿⣿⣿
+⠀⠀⠀⠘⠿⠂⡀⠀⡀⠻⠃⢸⣿⣿⣿⣿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿⣿⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠈⠋⠁⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉
+Natch_v.3.2
+Copyright (c) 2020-2024 ISP RAS
+
+based on QEMU emulator v.7.2.0
+Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
+
+Available builds: x86_64, aarch64
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         Natch version
+
+main commands:
+  {create,cr,record,replay,kvm,tuning,info,delete,edit,set,modules,settings}
+                        use <cmd_name> -h/--help for additional information
+    create (cr)         create project
+    record              record scenario (only for project)
+    replay              replay scenario (only for project)
+    kvm                 launch QEMU kvm without Natch (only for x86_64)
+    tuning              launch tuning (only for project)
+    info                info about project (only for project)
+    delete              delete scenario (only for project)
+    edit                edit Natch config files (only for project)
+    set                 change some project settings (only for project)
+    modules             add/update/copy modules in the project (requires sudo)
+    settings            Natch shell settings
+```
 
 Для работы с инструментом *Natch* предусмотрен пул команд, объединенных под названием `natch`.
 
@@ -10,9 +51,13 @@
 - ``create``
 - ``record``
 - ``replay``
+- ``kvm``
+- ``tuning``
+- ``info``
+- ``delete``
 - ``edit``
+- ``set``
 - ``modules``
-- ``change``
 - ``settings``
 
 Представленные команды могут иметь параметры или субкоманды, поэтому для получения информации
@@ -26,9 +71,10 @@ optional arguments:
   -h, --help    show this help message and exit
 
 Natch configs editing:
-  {main,taint}  use <cmd_name> -h/--help for additional information
+  {main,taint,debug}  use <cmd_name> -h/--help for additional information
     main        edit main config natch.cfg
     taint       edit scenario config taint.cfg
+    debug       edit config debug_info.cfg
 
 
 ```
@@ -41,6 +87,7 @@ Natch configs editing:
 
 Кроме того, имеется ряд необязательных параметров:
 
+- `-a/--arch` -- выбор архитектуры (x86_64, aarch64)
 - `-k/--kernel` -- путь до ядра
 - `-o/--os_name` -- выбор гостевой ОС (Linux, FreeBSD, Win7, Win8, Win8.1, Win10)
 - `-c/--config` -- путь до файла конфигурации для автоматического создания проекта

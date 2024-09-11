@@ -216,7 +216,7 @@ natch change -m 8G -p 2222,8888,4343 -t no
 - `extract` -- извлечение файлов из образа в хостовую систему
 - `copy` -- загрузка в образ файлов из хостовой системы
 
-Команды `add` и `update` можно только из рабочей директории проекта.
+Команды `add` и `update` можно запускать только из рабочей директории проекта.
 
 #### Команда `natch modules add` 
 
@@ -251,8 +251,15 @@ natch modules update [-h]
 
 #### Команда `natch modules extract`
 
+```
+natch modules extract [-h] -i IMAGE -p PATHS [PATHS ...] -D DEST [-e] [-d] [-l LOG]
+```
+
 #### Команда `natch modules copy`
 
+```
+natch modules copy [-h] -i IMAGE -p PATHS [PATHS ...] -D DEST [-e] [-d] [-l LOG]
+```
 
 Для работы команд `natch modules` потребуется пароль администратора для монтирования образа. 
 

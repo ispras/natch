@@ -27,6 +27,7 @@ main commands:
     info                info about project (only for project)
     delete              delete scenario (only for project)
     edit                edit Natch config files (only for project)
+    coverage            get coverage for code (only for project)
     set                 change some project settings (only for project)
     modules             add/update/copy modules in the project (requires sudo)
     settings            Natch shell settings
@@ -44,6 +45,7 @@ main commands:
 - ``info``
 - ``delete``
 - ``edit``
+- ``coverage``
 - ``set``
 - ``modules``
 - ``settings``

@@ -18,7 +18,7 @@
 # Natch settings
 
 [Version]
-version=6
+version=7
 
 # Section for path to work directory
 [OutputData]
@@ -34,23 +34,9 @@ config=module.cfg
 log=taint_txt.log
 params_log=params.log
 
-# Natch working mode
-[Mode]
-light=false
-
-# Section for enable generating graphs
-[TaintedTask]
-task_graph=true
-module_graph=false
-
 # Enable network logging
 [NetLog]
 on=true
-
-# Section for getting coverage
-[Coverage]
-file=coverage.cov64
-taint=true
 
 # Section for enabling additional plugins
 [Plugins]
@@ -81,23 +67,9 @@ attempts=50
 - Полe *log*: содержит название файла, в который в процессе работы будет записываться подробный лог помеченных данных (подробнее в разделе [Подробная трасса помеченных данных](10_additional.md#taint_log)).
 - Полe *params_log*: содержит название файла, в который в процессе работы будет записываться лог с помеченными параметрами функций (подробнее в разделе [Получение областей помеченной памяти для функций](10_additional.md#taint_params_log)).
 
-**Секция Mode**
-
-- Поле *light*: принимает логическое значение, при установке в true включается облегченный режим работы *Natch*, по умолчанию выключен (подробнее в разделе [Облегченный режим работы Natch](10_additional.md#natch_light)).
-
-**Секция TaintedTask**
-
-- Поле *task_graph*: принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф задач и потоков помеченных данных.
-- Поле *module_graph*: принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф модулей и потоков помеченных данных.
-
 **Секция NetLog**
 
 - Поле *on*: принимает логическое значение, при установке в true данные о сетевом трафике и его содержимое сохраняются в файлы для дальнейшего анализа.
-
-**Секция Coverage**
-
-- Поле *file*: указывается имя файла, куда будет записана операция о покрытии кода.
-- Поле *taint*: определяет режим сбора покрытия кода (подробнее в пункте [Анализ покрытия бинарного кода](10_additional.md#functional_coverage)).
 
 **Секция Plugins**
 
@@ -114,6 +86,10 @@ attempts=50
 Содержание файла конфигурации *taint.cfg* приведен ниже.
 
 ```ini
+# Natch working mode
+[Mode]
+light=false
+
 [Taint]
 # Threshold value for tainting. Should be in decimal number system [1..255]
 threshold=255
@@ -134,10 +110,24 @@ list=file1.txt;file2.txt
 [USB]
 on=true
 
+# Section for enable generating graphs
+[TaintedTask]
+task_graph=true
+module_graph=true
+
+# Section for getting coverage
+[Coverage]
+file=coverage.cov64
+taint=true
+
 # Section for collecting arguments of functions
 [FunctionArgs]
 config=func.cfg
 ```
+
+**Секция Mode**
+
+- Поле *light*: принимает логическое значение, при установке в true включается облегченный режим работы *Natch*, по умолчанию выключен (подробнее в разделе [Облегченный режим работы Natch](10_additional.md#natch_light)).
 
 **Секция Taint**
 
@@ -159,6 +149,16 @@ config=func.cfg
 **Секция USB**
 
 - Поле *on*: принимает логическое значение, при установке в true будет включено отслеживание помеченных данных. Если это не требуется, следует установить значение false.
+
+**Секция TaintedTask**
+
+- Поле *task_graph*: принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф задач и потоков помеченных данных.
+- Поле *module_graph*: принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф модулей и потоков помеченных данных.
+
+**Секция Coverage**
+
+- Поле *file*: указывается имя файла, куда будет записана операция о покрытии кода.
+- Поле *taint*: определяет режим сбора покрытия кода (подробнее в пункте [Анализ покрытия бинарного кода](10_additional.md#functional_coverage)).
 
 **Секция FunctionArgs**
 

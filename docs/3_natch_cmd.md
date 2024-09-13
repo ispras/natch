@@ -249,7 +249,7 @@ natch modules update [-h]
 
 На выходе получим новый `module.cfg` и обновленные каталоги с информацией о модулях.
 
-####<a name="natch_cmd_modules_extract">Команда `natch modules extract`
+#### <a name="natch_cmd_modules_extract">Команда `natch modules extract`
 
 ```
 natch modules extract [-h] -i IMAGE -p PATHS [PATHS ...] -D DEST [-e] [-d] [-l LOG]

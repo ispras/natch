@@ -171,12 +171,12 @@ make
 ### 5.1.3. Перенос прототипа объекта оценки из образа ВМ на хост
 
 *Natch* использует файлы объекта оценки для получения из них отладочных символов.
-Чтобы выгрузить нужные файлов из виртуальной машины, можно использовать скрипт `copy_files.py`
-(подробнее в разделе [Копирование файлов из гостевой системы](12_utils.md#copy_files)):
+Чтобы выгрузить нужные файлы из виртуальной машины, можно использовать команду `natch modules extract`
+(подробнее в разделе [Командный интерфейс Natch](3_natch_cmd.md#natch_cmd_modules_extract)):
 
 ```bash
 mkdir wget-1.21.2
-sudo /usr/bin/natch/bin/natch_scripts/guest_system/copy_files.py lubuntu.qcow2 wget-1.21.2 /home/user/wget-1.21.2
+natch modules extract -i lubuntu.qcow2 -p /home/user/wget-1.21.2 -d wget-1.21.2 -e
 ```
 
 ### 5.1.4. Тестирование виртуализированной среды функционирования ОО

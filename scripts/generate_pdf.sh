@@ -19,7 +19,6 @@ pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/s
 		9_snatch.md \
 		10_additional.md \
 		11_automation.md \
-		12_utils.md \
 		13_applications.md \
 		14_faq.md \
 		15_app_license.md \

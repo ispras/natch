@@ -207,7 +207,7 @@ natch change -m 8G -p 2222,8888,4343 -t no
 Если такие изменения не требуются -- нужно нажать клавишу *ESC*.
 
 
-## 3.11. natch modules
+## <a name="natch_cmd_modules">3.11. natch modules
 
 Команда `modules` отвечает за работу с модулями в проекте и образе. Имеет субкоманды:
 
@@ -218,13 +218,13 @@ natch change -m 8G -p 2222,8888,4343 -t no
 
 Команды `add` и `update` можно запускать только из рабочей директории проекта.
 
-#### Команда `natch modules add` 
+#### Команда `natch modules add`
 
 ```
 natch modules add [-h] (--host-dir HOST_DIR | --guest-dir GUEST_DIR)
 ```
 
-Имеет взаимоисключающие параметры `--host-dir` и `--guest-dir`. 
+Имеет взаимоисключающие параметры `--host-dir` и `--guest-dir`.
 Оба параметра ожидают путь к директории с модулями, только в случае с `--host-dir` директория должна
 находиться в хостовой машине, а при указании `--guest-dir` -- в гостевой.
 
@@ -249,7 +249,7 @@ natch modules update [-h]
 
 На выходе получим новый `module.cfg` и обновленные каталоги с информацией о модулях.
 
-#### Команда `natch modules extract`
+####<a name="natch_cmd_modules_extract">Команда `natch modules extract`
 
 ```
 natch modules extract [-h] -i IMAGE -p PATHS [PATHS ...] -D DEST [-e] [-d] [-l LOG]

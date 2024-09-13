@@ -41,7 +41,7 @@ Natch (Network Application Tainting Can Help) -- это инструмент д�
 
 [11. Автоматизация процессов](docs/11_automation.md)
 
-[12. Полезные утилиты и скрипты Natch](docs/12_utils.md)
+
 
 [13. Примеры использования Natch](docs/13_applications.md)
 

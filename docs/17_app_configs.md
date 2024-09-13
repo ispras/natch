@@ -83,7 +83,7 @@ attempts=50
 
 ## <a name="taint_config"></a>Конфигурационный файл для помеченных данных taint.cfg
 
-Содержание файла конфигурации *taint.cfg* приведен ниже.
+Содержание файла конфигурации *taint.cfg* приведено ниже.
 
 ```ini
 # Natch working mode
@@ -174,13 +174,58 @@ config=func.cfg
 
 ## <a name="api_config"></a>Конфигурационный файл для управления отладочной информацией debug_info.cfg
 
-В поставку инструмента входит скрипт `debug_info.py` (находится в папке `guest_system/debuginfo_collector`),
-позволяющий получить символьную информацию из системных библиотек, работавших с исследуемыми приложениями.
-В процессе выполнения скрипта для каждого исполняемого файла происходит поиск необходимых для него разделяемых библиотек.
-Для всех найденных библиотек загружается отладочная информация, если она доступна.
-На выходе получается новый конфигурационный файл `module.cfg`, дополненный найденными библиотеками с отладочной информацией.
+Содержимое файла конфигурации *debug_info.cfg* представлено ниже.
 
-Для запуска данного скрипта, потребуется заранее сгенерированный конфигурационный файл `debug_info.cfg`, содержащий в себе следующие секции:
+```ini
+# Debug Info configuration
+
+[Version]
+version=1
+
+[Common]
+# Sets max download attempts for debug information
+attempts=30
+mount=True
+debug=False
+
+# Section for paths to module configs
+[Configs]
+path=/home/user/project/module.cfg
+
+# Section for path to directory with debug symbols
+# [UserFolder]
+# path=your/path/to/directory
+
+# Section for sets DebugInfoD servers for debugging symbol search
+[DebugInfoD]
+# servers=['https://example1.com', 'https://example2.com']
+
+# Section for Repository settings
+[PackageAnalysis]
+# Path for exporting generated list of packages needing debug information.
+# WARNING: This option disables debug package loading.
+# path_to_save_pkg_list=your/path/to/destonation/file
+
+# Section for additional symbols search
+[Symbols]
+kernel=True
+python=True
+csharp=True
+java=True
+
+# Section for Containerization Tool
+[ContTools]
+docker_path=/var/lib/docker
+# local_podman_path=/home/user/.local/share/containers
+root_podman_path=/var/lib/containers/
+```
+
+Конфигуратор отладочной информации позволяет настроить способы ее получения, указать определенные сервера
+или локальные пути хранения символов.
+
+**Секция Version**
+
+Является обязательной и содержит сверсию текущего конфигурационного файла.
 
 **Секция Common**
 

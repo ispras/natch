@@ -192,10 +192,6 @@ debug=False
 [Configs]
 path=/home/user/project/module.cfg
 
-# Section for path to directory with debug symbols
-# [UserFolder]
-# path=your/path/to/directory
-
 # Section for sets DebugInfoD servers for debugging symbol search
 [DebugInfoD]
 # servers=['https://example1.com', 'https://example2.com']
@@ -212,6 +208,10 @@ kernel=True
 python=True
 csharp=True
 java=True
+
+# Section for path to directory with debug symbols
+# [UserFolder]
+# path=your/path/to/directory
 
 # Section for Containerization Tool
 [ContTools]

@@ -162,7 +162,7 @@ load                          13563000904             2024-06-03 15:59:14
 
 ## 3.7. natch delete
 
-## 3.8. natch edit
+## <a name="natch_cmd_edit">3.8. natch edit
 
 Команда `edit` предназначена для более удобного редактирования конфигурационных файлов проекта --
 главного (natch.cfg), конфигурационных файлов сценариев (taint.cfg), а также файла параметров
@@ -239,7 +239,7 @@ natch modules add --guest-dir /home/user/Sample1
 
 На выходе получим новый `module.cfg` и обновленные каталоги с информацией о модулях.
 
-#### Команда `natch modules update`
+#### <a name="natch_cmd_modules_update">Команда `natch modules update`
 
 ```
 natch modules update [-h]

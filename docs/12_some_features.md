@@ -18,7 +18,7 @@
 Кроме того, информация о сборе отладочных символов находится в конфигурационном файле
 `debug_info.cfg` (Подробнее в разделе [Конфигурационный файл для управления отладочной информацией debug_info.cfg](17_app_configs.md#debug_config)),
 который может быть отредактирован в любой момент после создания проекта
-с помощью команды `natch edit debug` ([natch edit](3_natch_cmd.md#natch_cmd_edit)).
+с помощью команды ([`natch edit debug`](3_natch_cmd.md#natch_cmd_edit)).
 В этом случае после редактирования следует выполнить команду `natch modules update`
 ([`natch modules update`](3_natch_cmd.md#natch_cmd_modules_update)).
 

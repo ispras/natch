@@ -23,7 +23,7 @@
 
 Установить rpm пакет `aksusbd` и перезапустить службу:
 ```bash
-    epm play aksusbd
+    apt-get update && apt-get install eepm && epm play aksusbd
     sudo systemctl restart aksusbd
 ```
 

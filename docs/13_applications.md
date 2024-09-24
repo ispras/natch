@@ -58,9 +58,15 @@ qemu-system-x86_64 \
 Внутри виртуальной машины нужно настроить ip-адрес и маршрутизацию в соответствии с конфигурацией сети.
 
 После создания проектов командой `natch create` нужно откорректировать параметры запуска эмулятора в файле
-`qemu_opts.ini`:
+`qemu_opts.ini`.
 
-Опции `-netdev user,id=net0 -device e1000,netdev=net0` нужно заменить следующие, как в скрипте выше:
+Опции
+```
+-netdev user,id=net0
+-device e1000,netdev=net0
+```
+
+нужно заменить следующие, как в скрипте выше:
 
 ```bash
 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no

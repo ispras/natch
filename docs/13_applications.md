@@ -99,21 +99,21 @@ natch kvm -i test_image_debian.qcow2
 
 Дальше нужно проделать следующее:
 
-1. Залогиниться `root:root`
+- Залогиниться `root:root`
 
-2. Установить неграфическую цель "по умолчанию": `systemctl set-default multi-user.target`
+- Установить неграфическую цель "по умолчанию": `systemctl set-default multi-user.target`
 
-3. Открыть конфигурацию grub: `vim /etc/default/grub`
+- Открыть конфигурацию grub: `vim /etc/default/grub`
 
-4. Изменить следующие строки (в скачанном образе эти строки уже раскомментированы):
+- Изменить следующие строки (в скачанном образе эти строки уже раскомментированы):
 
-- раскомментировать: `GRUB_TERMINAL=console`
-- установить значение: `GRUB_CMDLINE_LINUX_DEFAULT="nomodeset"`
-- установить значение: `GRUB_CMDLINE_LINUX="console=ttyS0"`
+  * раскомментировать: `GRUB_TERMINAL=console`
+  * установить значение: `GRUB_CMDLINE_LINUX_DEFAULT="nomodeset"`
+  * установить значение: `GRUB_CMDLINE_LINUX="console=ttyS0"`
 
-5. Сохранить, после этого выполнить: `update-grub`
+- Сохранить, после этого выполнить: `update-grub`
 
-6. Завершить работу: `shutdown 0`
+- Завершить работу: `shutdown 0`
 
 Приведенные команды представлены в виде примера настройки образа. В тестовом образе уже все настроено.
 

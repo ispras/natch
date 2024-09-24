@@ -59,7 +59,9 @@ qemu-system-x86_64 \
 
 После создания проектов командой `natch create` нужно откорректировать параметры запуска эмулятора в файле
 `qemu_opts.ini`:
+
 Опции `-netdev user,id=net0 -device e1000,netdev=net0` нужно заменить следующие, как в скрипте выше:
+
 ```bash
 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no
 -device e1000,netdev=net0,mac=50:54:00:00:00:43

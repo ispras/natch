@@ -289,9 +289,9 @@ Output directory 'output_test' has been deleted
 
 Имеет следующие субкоманды:
 
--- `main`
--- `taint`
--- `debug`
+- `main`
+- `taint`
+- `debug`
 
 Запускаться эти команды должны из директории с проектом.
 

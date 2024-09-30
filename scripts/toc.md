@@ -9,7 +9,7 @@
 
 [3. Командный интерфейс Natch](#natch_cmd)
 
-[4. Пошаговое руководство по работе с Natch](#natch_stepbystep)
+[4. Запуск тестовых примеров Natch](#natch_stepbystep)
 
 [5. Настройка окружения для работы с Natch](#setup_env)
 

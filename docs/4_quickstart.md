@@ -1,9 +1,10 @@
 <div style="page-break-before:always;">
 </div>
 
-# <a name="natch_stepbystep"></a>4. Пошаговое руководство по работе с Natch
+# <a name="natch_stepbystep"></a>4. Запуск тестовых примеров Natch
 
-В этом разделе представлен пошаговый разбор работы с *Natch*, а так же немного затронут инструмент *SNatch*
+В этом разделе представлен пошаговый разбор работы с тестовыми примерами *Natch*,
+а так же немного затронут инструмент *SNatch*
 (подробности в разделе [Анализ поверхности атаки с помощью SNatch](9_snatch.md#snatch)).
 
 Для работы с инструментом *Natch* нужны входные данные, а именно, подготовленный образ системы с собранным в нем объектом оценки, а так же бинарные файлы самого объекта оценки.
@@ -72,41 +73,34 @@ redis-cli -h localhost -p 49152
 Все основные функции *Natch* доступны через команду `natch` в командной строке. Запуск этой команды без параметров
 отобразит справочную информацию о версии и доступных действиях:
 
-```bash
----------------------------------------------------------------------------
-            Welcome to Natch - an attack surface detection tool!
----------------------------------------------------------------------------
-Natch_v.3.1
+```
+Natch_v.3.2
 Copyright (c) 2020-2024 ISP RAS
 
 based on QEMU emulator v.7.2.0
 Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Telegram: https://t.me/ispras_natch
-E-mail: natch@ispras.ru
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Documentation: https://github.com/ispras/natch
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Available builds: x86_64, aarch64
 
 optional arguments:
   -h, --help            show this help message and exit
   -v, --version         Natch version
 
 main commands:
-  {create,cr,record,replay,edit,modules,change,settings}
+  {create,cr,record,replay,kvm,tuning,info,delete,edit,set,modules,settings}
                         use <cmd_name> -h/--help for additional information
     create (cr)         create project
-    record              record scenario
-    replay              replay scenario
-
-    edit                edit Natch config files
-    change              change some project settings
-
-    modules             add/update modules in the project (requires sudo)
-
+    record              record scenario (only for project)
+    replay              replay scenario (only for project)
+    kvm                 launch QEMU kvm without Natch (only for x86_64)
+    tuning              launch tuning (only for project)
+    info                info about project (only for project)
+    delete              delete scenario (only for project)
+    edit                edit Natch config files (only for project)
+    coverage            get coverage for code (only for project)
+    set                 change some project settings (only for project)
+    modules             add/update/copy modules in the project (requires sudo)
     settings            Natch shell settings
-
 ```
 
 Подробно [командный интерфейс Natch](3_natch_cmd.md#natch_cmd) описан в соответствуюшем разделе.

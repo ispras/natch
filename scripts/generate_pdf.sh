@@ -11,7 +11,7 @@ pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/s
 		1_natch.md \
 		2_setup.md \
 		3_natch_cmd.md \
-		4_quickstart.md \
+		4_launch_test_samples.md \
 		5_setup_env.md \
 		6_create_project.md \
 		7_taint_source.md \

@@ -105,7 +105,7 @@ main commands:
 
 Подробно [командный интерфейс Natch](3_natch_cmd.md#natch_cmd) описан в соответствуюшем разделе.
 
-Работа с *Natch* начинается с создания проекта (рабочей директории).
+Работа с тестовыми примерами *Natch* начинается с создания проекта (рабочей директории).
 Помимо этого, процесс настройки созданного проекта может включать ручной этап, который предполагает внесение изменений в
 конфигурационные файлы проекта.
 Предназначение файлов конфигурации и их параметров описано в разделе [Конфигурационные файлы Natch](17_app_configs.md#app_configs).
@@ -120,30 +120,39 @@ main commands:
 user@natch1:~/natch_quickstart$ natch create test1 Natch_testing_materials/test_image_debian.qcow2
 
 Directory for project files /home/user/natch_quickstart/test1 was created
-
-Image: /home/user/natch_quickstart/Natch_testing_materials/test_image_debian.qcow2
 OS: Linux
 
-Attention! To successfully create a project you will need a root password
-```
-Команда выдаст предупреждение о том, что в процессе настройки потребуется пароль администратора. Требование обязательное,
-при его отсутствии дальнейшая работа не будет иметь смысла.
+Image: /home/user/natch_quickstart/Natch_testing_materials/test_image_debian.qcow2
 
-Будет проверено наличие, а так же доступность утилиты `natch-qemu-img`, которая потребуется в дальнейшей настройке и работе. В случае успеха увидим:
+-> Attention! To create a project you will need a root password
+```
+
+Команда выдаст предупреждение о том, что в процессе настройки потребуется пароль администратора.
+
+Далее будет проверено наличие, а так же доступность утилиты `natch-qemu-img`,
+которая потребуется в дальнейшей настройке и работе. В случае успеха увидим:
 ```text
 Checking natch-qemu-img utility...
 Utility natch-qemu-img is ok
 ```
 Если что-то пошло не так, создание проекта будет прервано.
 
+Для поиска исполняемых модулей, скачивания отладочной информации и некоторых других файлов потребуется
+монтировать образ. Однако, от этой опции можно отказаться, в этом случае часть функционала будет недоступна.
+
+```text
+-> Attention! Some options need to mount your image
+Do you agree to mount image? [Y/n] y
+```
+
 Укажите сколько памяти выдать гостевой виртуальной машине (постфикс указывать обязательно. G или M):
 ```text
 Common options
 Enter RAM size with suffix G or M (e.g. 4G or 256M): 4G
 ```
-Далее можно выбрать режим работы эмулятора -- графический или текстовый. По умолчанию графический.
+Далее можно выбрать режим работы эмулятора -- графический, текстовый или vnc. По умолчанию графический.
 ```text
-Do you want to run emulator in graphic mode? [Y/n] y
+Select mode you want to run emulator: graphic [G/g] (default), text [T/t] or vnc [V/v] g
 ```
 
 Если сценарий предполагает передачу помеченных данных по сети (далее мы рассматриваем в качестве основного как раз сценарий №2 --
@@ -167,18 +176,24 @@ Your pair of ports for connecting: 5555 <=> 49152
 Так как будет проделан пример с `redis`, то следует указать путь к папке `Sample2_bins`.
 Если для другого вашего сценария бинарные файлы отсутствуют, можно отказаться создавать конфигурационный файл модулей.
 
+**Обновление!** С версии 3.2 можно указывать путь к модулям в гостевой системе, таким образом, можно заранее не выкачивать
+бинарные файлы в хостовую систему, но только если было дано согласие на монтирование образа.
+
 ```text
 Modules part
 Do you want to create module config? [Y/n] y
-Enter path to binaries dir: /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins
+Select way to point directory with modules - from HOST [H/h] system (default) or GUEST [G/g] system: h
+Enter path to binaries dir (or 'exit' to skip): /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins
 ```
 
 Затем будет предложено скачать отладочные символы для системных модулей. Соглашаемся, так следует поступать в
-большинстве случаев.
+большинстве случаев. В версии 3.2 появляется дополнительный вопрос, предлагающий использовать расширенные настройки
+поиска и скачивания отладочной информации. Откажемся.
 
 ```text
 Debug info part
 Do you want to get debug info for system modules? [Y/n] y
+Do you want to set additional parameters? (many questions) [y/N] n
 ```
 
 Финальный вопрос касается генерации конфигурационного файла, содержащего смещения структур ядра исследуемой ОС.
@@ -188,22 +203,7 @@ Do you want to get debug info for system modules? [Y/n] y
 Generate config file task.cfg? (recommended) [Y/n] y
 ```
 
-Последнее, что надо ввести пользователю -- пароль администратора. Перед запросом появится информация о найденных модулях,
-если они были загружены.
-
-```text
-Waiting for module config generating
-Module config is completed
-
-Your config file module.cfg for modules was created
-ELF files found: 2
-Map files found: 0
-
-The steps above require a root password
-
-[sudo] password for user:
-
-```
+Последнее, что надо ввести пользователю -- пароль администратора.
 
 Дальнейшие действия выполняются автоматически, процесс может занять продолжительное время.
 На этом этапе произойдет монтирование образа, поиск системных библиотек и интерпретаторов,
@@ -344,40 +344,30 @@ You can edit it before using Natch.
 
 Settings completed! Now you can launch Natch and enjoy! :)
 
+
 File 'settings_test1.ini' was saved here: /home/user/natch_quickstart/
 You can use it for creating other projects
+
+Checking the project's completeness...
+/home/user/natch_quickstart/test1/natch.cfg                 +
+/home/user/natch_quickstart/test1/qemu_opts.ini             +
+/home/user/natch_quickstart/test1/service_info.ini          +
+/home/user/natch_quickstart/test1/module.cfg                +
+Everything is fine!
 ```
 
 В папке проекта появится конфигурационный файл `natch.cfg`, содержащий общие настройки проекта, которые можно редактировать,
 кроме того после записи сценария появится (в соответствующей папке) еще один конфигурационный файл `taint.cfg`,
-который тоже можно редактировать. Также в папке проекта находится файл `natch.log` --
-в нём логируются основные результаты работы программ, входящих в комплект поставки *Natch*.
+который тоже можно редактировать. Также в папке проекта находится файл `natch.log`, содержащий журнал происходивших событий.
 
 Кроме того, в месте запуска команды `natch create` сохранится файл `settings_test1.ini`, который можно будет использовать для
 полностью автоматического создания проекта-клона, либо файл можно отредактировать и создать проект с нужными
 характеристиками. Подробнее в разделе [Создание проекта с помощью конфигурационного файла](6_create_project.md#natch_save_settings).
 
-### <a name="additional_settings"></a>4.2.2. Дополнительная ручная настройка
-
-Конфигурационный файл `natch.cfg` генерируется таким образом, что дополнительные опции представлены в нем в закомментированном виде.
-
-В качестве примера ручной настройки соберем покрытие кода по базовым блокам для просмотра в *IDA Pro*.
-Для этого в конфигурационном файле `natch.cfg` предусмотрена секция `Coverage`.
-Необходимо раскомментировать не только параметры секции, но и название секции в квадратных скобках.
-Для редактирования следует перейти в рабочую директорию и ввести команду `natch edit main`.
-При первом запуске этой команды будет предложено выбрать текстовый редактор, который в дальнейшем будет редактором по умолчанию.
-
-Раскомментируем секцию `Coverage` (подробнее об предназначении секций в разделе [Основной конфигурационный файл](17_app_configs.md#main_config)).
-
-```ini
-[Coverage]
-file=coverage
-taint=true
-```
 
 ## <a name="record_scenario"></a>4.3. Запись сценария работы
 
-Все настройки выполнены, можно переходить к записи сценария. Рассмотрим в качестве примера сценарий с redis-сервером (Sample2_bins).
+Можно переходить к записи сценария. Рассмотрим в качестве примера сценарий с redis-сервером (Sample2_bins).
 Для записи сценария нужно перейти в рабочую директорию и запустить команду `natch record <name>`.
 
 ```bash

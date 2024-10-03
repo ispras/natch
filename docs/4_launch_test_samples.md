@@ -423,10 +423,10 @@ Everything is fine!
 ## <a name="record_scenario"></a>4.3. Запись сценария работы
 
 Можно переходить к записи сценария. Рассмотрим в качестве примера сценарий с redis-сервером (Sample2_bins).
-Для записи сценария нужно перейти в рабочую директорию и запустить команду `natch record <name>`.
+Для записи сценария нужно перейти в рабочую директорию и запустить команду `natch record -s <name>`.
 
 ```bash
-user@natch1:~/natch_quickstart/test1$ natch record sample_redis
+user@natch1:~/natch_quickstart/test1$ natch record -s sample_redis
 ```
 В результате запустится эмулятор.
 

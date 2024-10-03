@@ -145,5 +145,5 @@ cat /proc/cpuinfo | grep -m1 flags | awk '/avx/ && /sse/ && /sse4_1/ && /sse4_2/
 `natch-qemu-x86_64: ../plugins_isp/sources/common_plugins/utils/kernel_struct_utils.c:282: parse_param_recursive: Assertion '0' failed`
 
 **Решение**: вероятнее всего не был успешно завершен тюнинг для вашей гостевой ОС. Вы можете выполнить тюнинг отдельно для уже созданного проекта.
-См. [natch tuning](3_natch_cmd.md#36-natch-tuning). В случае проблем с тюнингом вашей гостевой ОС, обратитесь в техническую поддержку.
+См. [natch tuning](3_natch_cmd.md#natch_cmd_tuning). В случае проблем с тюнингом вашей гостевой ОС, обратитесь в техническую поддержку.
 

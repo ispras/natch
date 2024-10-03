@@ -214,51 +214,105 @@ Generate config file task.cfg? (recommended) [Y/n] y
 Все это время в консоль будут выводиться сообщения примерно следующего вида:
 
 ```text
+────────────────────────────── Module Configuration Section ───────────────────────────────────────
+
+Mounting Image - OK
+
+[Parsing received folder...]
+Status: Found: 2
+
+[Searching Host Images In Guest OS...]
+Status: Found: 2
+
+[Searching Debugging Information...]
+Status: Found: 0 | Skipped: 2
+
+USER statistics:
+Images have been found                                            :     OK
+Added images                                                      :     2
+Added debugging information                                       :     0
+Added tied information                                            :     0
+
+
+ld-linux-* is always skipped and isn't counted in calculations
+Your config file module.cfg was created
+Umounting Image - OK
+Mounting Image - OK
+
 ─────────────────────────────── Libraries Searching Section ───────────────────────────────────────
 
-Host Config Section
-Reading module config - OK
-Searching Binary Files...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-Searching Binary Files - OK
+>>> Host Config Section >>>
 
-Additional Section
-Searching Kernel Symbols - OK
-Searching Python, Java, C# Symbols - OK
+[Reading Module Config...]
+Status: Found: 2
 
-Shared Libraries Section
-Searching Shared Libraries For...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48/48 100% 0:00:01
-Searching Shared Libraries - OK
+>>> Additional Section >>>
 
+[Searching Python, Java, C# Symbols...]
+Status: Found: 47
+
+
+─────────────────────────────────────────── OS ────────────────────────────────────────────────────
 ───────────────────────────── Library-Debug Matching Section ──────────────────────────────────────
 
+────────────────────────────── Searching Additional Symbols ───────────────────────────────────────
+>>> Shared Libraries Section >>>
+
+[Searching Shared Libraries For...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ 46/48  96% 0:00:03
+Status: Found: 46 | Skipped: 2
+
+[Preparing Found Shared Libraries...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 31/31 100% 0:00:00
+Status: Found: 31
+
+>>> Kernel Section >>>
+
+[Searching Kernel Symbols...]
+Status: Found: 1
 ──────────────────────────────────── Debugging Symbols ────────────────────────────────────────────
-Method [1/2]: Default System Location Analysis
-WARNING: Folder '/mnt/point6602537/usr/lib/debug' does not exist! Method is skipped!
-Searching Debugging Information...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  0/78   0% 0:00:00
-Method [2/2]: DebugInfoD
-WARNING: DebugInfoD server 'https://debuginfod.debian.net/' was skipped
-WARNING: DebuginfoD server statuses:
-├── https://debuginfod.debian.net/: Error ('ClientConnectorError' object has no attribute 'status')
-└── https://debuginfod.elfutils.org/: Available
+>>> Method [1/2]: Default System Location Analysis >>>
 
+[Searching Debugging Information...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  0/78   0% 0:00:00
+Status: Found: 0 | Skipped: 78
+WARNING: Folder '/mnt/point3788669/usr/lib/debug' does not exist!
+Default System Location Analysis method was skipped!
+>>> Method [2/2]: DebugInfoD >>>
 Checking available DebugInfoD servers - OK
-Searching Debugging Information...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78/78 100% 0:10:06
-Libraries with servers response...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78/78 100% 0:10:06
-Searching Debugging Information - OK
+
+[Searching Debugging Information...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ 75/78  96% 0:05:32
+Response:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78/78 100% 0:05:32
+Status: Found: 75 | Skipped: 3
 ───────────────────────────────────── Tieddebug Symbols ───────────────────────────────────────────
-Method [1/2]: Default System Location Analysis
-WARNING: Folder '/mnt/point6602537/usr/lib/debug' does not exist! Method is skipped!
-WARNING: Folder '/mnt/point6602537/usr/lib/debug' does not exist! Method is skipped!
-Method [2/2]: DebugInfoD
-Checking available DebugInfoD servers...
+
+>>> Method [1/1]: DebugInfoD >>>
 Checking available DebugInfoD servers - OK
-Searching Tieddebug Information...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-Libraries with servers response...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-Searching tieddebug information - OK
-Umounting img - OK
 
+[Searching Tieddebug Information...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0/1   0% 0:00:01
+Response:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1/1 100% 0:00:01
+Status: Found: 0 | Skipped: 1
+
+────────────────────────────────────────── DOCKER ─────────────────────────────────────────────────
+
+WARNING: Docker not found at path: /mnt/point3788669/var/lib/docker! DOCKER analysis will be skipped!
+
+
+────────────────────────────────────── ROOT_PODMAN ────────────────────────────────────────────────
+
+
+WARNING: Podman not found at path: /mnt/point3788669/var/lib/containers/! ROOT_PODMAN analysis will be skipped!
+
+
+──────────────────────────────── Removing Non-OS Images ───────────────────────────────────────────
+
+
+──────────────────────────────── Clear Resources Section ──────────────────────────────────────────
+
+Umounting Image - OK
 ───────────────────────────────────── Result Section ──────────────────────────────────────────────
-
 
 HOST statistics:
 Images have been found                                            :     OK
@@ -303,16 +357,17 @@ Now tuning will be launched.
 
 Tuning started. Please wait a little...
 Generating config file: task.cfg
-Trying to find 7 kernel-specific parameters
-[01/07] Parameter - task, files and mm struct   : Found
-[02/07] Parameter - args                        : Found
-[03/07] Parameter - mount                       : Found
-[04/07] Parameter - file read position          : Found
-[05/07] Parameter - exit_state                  : Found
-[06/07] Parameter - socket                      : Found
-[07/07] Parameter - uid                         : Found
+Trying to find 8 kernel-specific parameters
+[01/08] Parameter - task, files and mm struct   : Found
+[02/08] Parameter - args                        : Found
+[03/08] Parameter - mount                       : Found
+[05/08] Parameter - f_count                     : Found
+[05/08] Parameter - exit_state                  : Found
+[06/08] Parameter - file read position          : Found
+[07/08] Parameter - socket                      : Found
+[08/08] Parameter - uid                         : Found
 
-Detected 7 of 7 kernel-specific parameters. Creating config file...
+Detected 8 of 8 kernel-specific parameters. Creating config file...
 
 Tuning completed successfully!
 

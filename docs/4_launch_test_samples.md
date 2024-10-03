@@ -347,7 +347,7 @@ One.
 Go!
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.1
+Natch v.3.2
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...
@@ -459,10 +459,10 @@ savevm <name>
 
 Используем имя `ready`. Сохранение состояния займёт несколько секунд, в зависимости от размера образа и производительности компьютера в целом.
 ```text
-user@natch1:~/natch_quickstart/test1$ natch record sample_redis
+user@natch1:~/natch_quickstart/test1$ natch record -s sample_redis
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.1
+Natch v.3.2
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...
@@ -493,11 +493,12 @@ Network json log file: "/home/user/natch_quickstart/test1/sample_redis/network.j
 ```text
 user@natch1:~/natch_quickstart/test1/$ natch replay
 ```
-Команда может принимать два параметра: название сценария и имя снапшота. В нашем случае команда могла бы выглядеть так:
+Команда может принимать ряд параметров (см. [natch replay](3_natch_cmd.md#natch_cmd_replay)).
+В нашем случае команда могла бы выглядеть так:
 ```text
-user@natch1:~/natch_quickstar/test1/$ natch replay sample_redis ready
+user@natch1:~/natch_quickstar/test1/$ natch replay -s sample_redis -S ready
 ```
-Если используются параметры, то они оба являются обязательными. Однако, запускать replay можно без параметров, он сам или загрузит нужный сценарий (если он единственный)
+Запускать replay можно без параметров, он сам или загрузит нужный сценарий (если он единственный)
 или предложит выбрать из списка существующих, точно так же произойдет с выбором снапшота.
 
 Начнём воспроизведение сценария, а точнее его фрагмента, который выполнялся после создания снапшота. Это будет несколько медленнее, чем базовое выполнение.
@@ -508,7 +509,7 @@ user@natch1:~/natch_quickstar/test1/$ natch replay sample_redis ready
 Snapshot to load: ready
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.1
+Natch v.3.2
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...

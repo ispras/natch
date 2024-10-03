@@ -123,7 +123,7 @@ natch record -s sample
 
 Подробнее о записи сценария в разделе [Запись сценария](8_scenario_work.md#record).
 
-## 3.4. natch replay
+## <a name="natch_cmd_replay">3.4. natch replay
 
 Команда `replay` служит для воспроизведения ранее записанных сценариев.
 Запускаться должна из директории с проектом.

@@ -361,7 +361,7 @@ Trying to find 8 kernel-specific parameters
 [01/08] Parameter - task, files and mm struct   : Found
 [02/08] Parameter - args                        : Found
 [03/08] Parameter - mount                       : Found
-[05/08] Parameter - f_count                     : Found
+[04/08] Parameter - f_count                     : Found
 [05/08] Parameter - exit_state                  : Found
 [06/08] Parameter - file read position          : Found
 [07/08] Parameter - socket                      : Found

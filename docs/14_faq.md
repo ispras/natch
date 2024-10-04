@@ -147,3 +147,16 @@ cat /proc/cpuinfo | grep -m1 flags | awk '/avx/ && /sse/ && /sse4_1/ && /sse4_2/
 **Решение**: вероятнее всего не был успешно завершен тюнинг для вашей гостевой ОС. Вы можете выполнить тюнинг отдельно для уже созданного проекта.
 См. [natch tuning](3_natch_cmd.md#natch_cmd_tuning). В случае проблем с тюнингом вашей гостевой ОС, обратитесь в техническую поддержку.
 
+-----------------------------------------------------------------------------------
+
+**Проблема**: Наш исследуемый продукт развернут в контейнере Podman. Во время создания проекта на этапе ROOT_PODMAN возникают строчки:
+```
+[Filling Docker Layers...]
+Status: Found: 0
+WARNING: [Errno 2] No such file or directory:
+'/mnt/point3202315/var/lib/containers/storage/overlay-containers/containers.json' ROOT_PODMAN analysis will be skipped!
+```
+
+**Решение**: Создайте проект заново, а на этапе `Do you want to set additional parameters?` введите Y.
+Затем, если вы используете Podman под рутом, введите Y на этапе `Do you want to analyze Root Podman`; если же вы используете Podman под обычным пользователем, введите Y на этапе `Do you want to analyze Local Podman`.
+На следующем шаге введите путь к podman директории, содержащей containers.json. В случае local Podman на Astra Linux это /home/YourUser/.local/share/containers/.

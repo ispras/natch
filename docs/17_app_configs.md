@@ -18,7 +18,7 @@
 # Natch settings
 
 [Version]
-version=7
+version=8
 
 # Section for path to work directory
 [OutputData]

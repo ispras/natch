@@ -185,12 +185,12 @@ natch create <workdir> <image> -o Linux
 
 ```ini
 [Settings]
-version = 7
+version = 8
 arch = x86_64
 mount = True
 ram = 4G
 emu_mode = graphic
-ports_forwarding = True
+port_forwarding = True
 source_ports = True
 ports_str = 5555
 module_config = True

@@ -129,6 +129,7 @@ curl -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localh
 - project_id — идентификатор удаленного проекта.
 
 
+
 ## <a name="automation"></a>11.2. Автоматизированное выполнение
 
 После обновления *Natch* ранее записанные сценарии могут не работать. Перезапись тестовых сценариев может быть достаточно трудоёмка.
@@ -146,7 +147,7 @@ curl -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localh
 ### 11.2.1. Реализация автоматизации
 
 В архиве с тестовым примером (см. раздел [Получение образа и тестовых примеров](4_launch_test_samples.md#test_suite) находится скрипт `automation.sh`,
-скрипты автозаписи сценариев для тестовых примеров (`run_record_sample1.exp` и `run_record_sample2.exp`), а также Python-скрипт `snatch.py`.
+шаблоны записи сценариев для тестовых примеров (`run_record_sample1.exp` и `run_record_sample2.exp`), а также Python-скрипт `snatch.py` и вспомогательный скрипт `wait4release.sh`.
 Необходимо сохранить все файлы в одном каталоге и запустить скрипт `automation.sh`.
 
 Скрипт выполняет следующие действия:
@@ -157,8 +158,13 @@ curl -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localh
 
 Далее, для каждого из двух примеров:
 
-* Записывает тестовый сценарий, используя скрипт `run_record_sampleX.exp`. Запись сценария вручную описана в разделе [Запись сценария](8_scenario_work.md#record).
+* Модифицирует конфигурационный файл qemu_opts.ini, содержащий настройки QEMU.
+* На основе шаблона записи сценария создает expect скрипт `record_sampleX.exp` для записи тестового сценария.
+* Используя созданный скрипт, записывает тестовый сценарий. Запись сценария вручную описана в разделе [Запись сценария](8_scenario_work.md#record).
+* Обновляет конфигурационный файл taint.cfg для пометки данных, которые необходимо отслеживать.
 * Выполняет воспроизведение записанного сценария. Воспроизведение сценария детально описано в разделе [Воспроизведение сценария](8_scenario_work.md#replay).
+* Вспомогательный скрипт `wait4release.sh` используется для ожидания завершения работы natch и проверки используемого для диагностики порта.
+* Выполняет распаковку поверхности атаки. Описание используемой команды смотрите в пункте [natch coverage](3_natch_cmd.md#310-natch-coverage)
 
 После выполнения скрипта в подкаталоге `autotest` появляются архивы `autotest+sample1.tar.zst` и `autotest+sample2.tar.zst` для дальнейшего анализа.
 
@@ -178,10 +184,13 @@ curl -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localh
 
 #### automation.sh:
 
+* В функции `introAndPrompts` в параметре `path2binaries` указывается путь к бинарным файлам. В `place4binaries` указывается `h` в случае расположения бинарных файлов на хосте, `g` - на гостевом образе (виртуальной машине).
 * В функции `checkRequirements` отредактируйте параметры `requirements` и `pip_requirements`, указав через пробел пакеты, которые требуется проверить/установить на хост.
+* В функции `createProject` можно добавить дополнительные параметры для запуска `natch create` в параметре `natchRun`.
 * В функции `recAndReplay` измените параметр `samples`, указав через пробел названия тестовых сценариев.
 * Эти названия тестовых сценариев соответствуют названиям в именах скриптов `run_record_<scenarioname>.exp`, которые также должны быть созданы.
-* В функции `genTaintCfg` отредактируйте генерируемый `taint.cfg` файл (см. раздел [Конфигурационный файл для помеченных данных](17_app_configs.md#taint_config)),
+* В функции `preRecordConfiguration` отредактируйте путь к `rootFS`, а также перенправляемые порты в `forwPorts`.
+* В функции `preReplayConfiguration` отредактируйте генерируемый `taint.cfg` файл (см. раздел [Конфигурационный файл для помеченных данных](17_app_configs.md#taint_config)),
 в котором указываются помечаемые файлы, сокеты, протоколы, порты и т.д.
 
 Также необходимо иметь в виду следующее:
@@ -195,30 +204,33 @@ curl -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localh
 Записываемый сценарий, который вы планируете в дальнейшем анализировать, должен начинаться с `# When snapshot is saved, everything is ready to record a scenario`.
 Используйте любое руководство по `expect` для получения подробной информации о реализации.
 * Для пробрасывания порта из хоста в образ используйте `hostfwd` параметр у `-netdev` строки запуска *Natch* (см. пример в `run_record_sample2.exp`).
-* Когда сценарий записан, и ваш скрипт функционирует корректно, вы можете отключить вывод из виртуальной машины. Для этого нужно раскомментировать строку `#log_user 0`
+* Когда сценарий записан, и ваш скрипт функционирует корректно, вы можете отключить вывод из виртуальной машины. Для этого нужно раскомментировать строку `#log_user 0`, которая добавляется в создаваемый скрипт записи сценария в функции `preRecordConfiguration` скрипта `automation.sh`.
 
 ### 11.2.3. Пример автоматической проверки
 
 Выполните скрипт `automation.sh`. При этом появляется описание действий, выполняемых скриптом. Также определяется образ qcow2, который расположен в каталоге со скриптом:
 
 ```
-ISP RAS Natch - Automation Sample.
+ISP RAS Natch - Automation Sample
 
-The script automatically performs the following:
-1. Installs the required packages.
+It automatically performs the following:
+1. Installs the required packages (only for the first time).
 2. Cleans up the previous autotest project.
 3. Creates a new project (natch create).
 4. For both existing samples:
- ∟ Records a test scenario (run_record_*.exp).
- ∟ Replays it (run_replay.sh).
+ ∟ Prepares a required configuration (qemu_opts.ini, an expect script for making the record).
+ ∟ Records a predefined scenario (natch record).
+ ∟ Configuring the tainting (taint.cfg).
+ ∟ Replays the recorded scenario (natch replay).
+ ∟ Extracts coverage (natch extract coverage).
 5. The generated archives are added to Snatch DB using Snatch CI API.
 6. The content of the projects is tested by the available options of Snatch CI API.
-7. The PDF reports for the projects are generated by Snatch via browser.
-The PDF reports are saved to ~/Downloads
+7. The PDF reports for the projects are generated by Snatch via browser and saved to ~/Downloads
 
-Image name: test_image_debian
-QCOW2 image: /vms/test_image/test_image_debian.qcow2
-Project dir: /vms/test_image/autotest
+Image name:     test_image_debian
+QCOW2 image:    /vms/test_image/test_image_debian.qcow2
+Project dir:    /vms/test_image/autotest
+Modules dir:    /home/user (on guest)
 
 The script must know the Snatch directory which contains snatch_*.sh.
 Warning! Installation (snatch_setup.sh) must be executed before running the further actions.
@@ -231,75 +243,125 @@ Enter path to Snatch directory: /
 
 ```
 spawn natch create autotest /vms/test_image/test_image_debian.qcow2
-
 Directory for project files /vms/test_image/autotest was created
-
-Image: /vms/test_image/test_image_debian.qcow2
 OS: Linux
 
-Attention! To successfully create a project you will need a root password
+Image: /vms/test_image/test_image_debian.qcow2
+
+-> Attention! To create a project you will need a root password
+
 
 Checking natch-qemu-img utility...
 Utility natch-qemu-img is ok
 
+-> Attention! Some options need to mount your image
+Do you agree to mount image? [Y/n] Y
+
 Common options
 Enter RAM size with suffix G or M (e.g. 4G or 256M): 4G
-Do you want to run emulator in graphic mode? [Y/n] Y
+Select mode you want to run emulator: graphic [G/g] (default), text [T/t] or vnc [V/v] 
 
 Network option
-Do you want to use ports forwarding? [Y/n] N
+Do you want to use port forwarding? [Y/n] N
 
 Modules part
 Do you want to create module config? [Y/n] Y
-Enter path to binaries dir: .
+Select way to point directory with modules - from HOST [H/h] system (default) or GUEST [G/g] system: g
+Enter path to binaries dir in guest system (or 'exit' to skip): /home/user
 
 Debug info part
 Do you want to get debug info for system modules? [Y/n] Y
+Do you want to set additional parameters? (many questions) [y/N] N
 
 Generate config file task.cfg? (recommended) [Y/n] Y
 
-Waiting for module config generating
-Module config is completed
-
-Your config file module.cfg for modules was created
-ELF files found: 4
-Map files found: 0
-
 The steps above require a root password
 
-[sudo] password for user:
-Mounting img - OK
-Files copied from the guest system: 2
-Umounting img - OK
-Mounting img - OK
+[sudo] password for user: 
+Mounting Image - OK                                                                                                   
+                                                                                                                      
+[Copying files to host system...]                                                                                     
+Status: Found: 2                                                                                                      
+Umounting Image - OK                                                                                                  
+
+
+──────────────────────────────────────────── Module Configuration Section ────────────────────────────────────────────
+
+
+Mounting Image - OK                                                                                                   
+                                                                                                                      
+[Parsing received folder...]                                                                                          
+Status: Found: 2279                                                                                                   
+                                                                                                                      
+[Searching Debugging Information...]                                                                                  
+Status: Found: 2 | Skipped: 5                                                                                         
+                                                                                                                      
+USER statistics:                                                                                                      
+Images have been found                                            :     OK                                            
+Added images                                                      :     7                                             
+Added debugging information                                       :     2                                             
+Added tied information                                            :     0                                             
+                                                                                                                      
+                                                                                                                      
+ld-linux-* is always skipped and is not counted in calculations                                                        
+Your config file module.cfg was created                                                                               
+Umounting Image - OK                                                                                                  
+Mounting Image - OK        
 
 ...
 
-Settings completed! Now you can launch emulator and enjoy! :)
+Your config file '/vms/test_image/autotest/module.cfg' for modules was updated                               
 
-	Natch in record mode: 'run_record.sh'
-	Natch in replay mode: 'run_replay.sh'
-	Qemu without Natch: 'run_qemu.sh'
+Configuration file natch.cfg was created.
+You can edit it before using Natch.
+
+Settings completed! Now you can launch Natch and enjoy! :)
+
+
+File 'settings_autotest.ini' was saved here: /vms/test_image
+You can use it for creating other projects
+
+Checking the projects completeness...
+/vms/test_image/autotest/natch.cfg                 +
+/vms/test_image/autotest/qemu_opts.ini             +
+/vms/test_image/autotest/service_info.ini          +
+/vms/test_image/autotest/module.cfg                +
+Everything is fine!
+
 ```
 
-По завершении работы `natch create` для виртуальной машины создается diff файл:
+Следом появляется сообщение о создании архивной копии qemu_opts.ini. В одном проекте мы будем записывать два независимых сценария, и поэтому хотим начинать настройку опций QEMU с чистого конфигурационного файла, сгенерированного при создании проекта.
+
+Далее создается скрипт записи:
+
 ```
-Formatting '/vms/test_image/autotest/sample1/test_image_debian.diff', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=21474836480 backing_file=/vms/test_image/test_image_debian.qcow2 backing_fmt=qcow2 lazy_refcounts=off refcount_bits=16
+Created the record script /vms/test_image/autotest/record_sample1.exp
 ```
 
-Следом появляется сообщение ```Recording a sample1 scenario...```. На этом этапе запускается скрипт `run_record_sample1.exp`.
+После чего стартует запись сценария: ```Recording a sample1 scenario...```. На этом этапе запускается скрипт `record_sample1.exp`.
 Этот скрипт загружает виртуальную машину и автоматически записывается тестовый сценарий для первого примера.
 
 
-По завершении работы expect-скрипта активность возвращается к `automation.sh` и возникает сообщение ```Replaying the sample1 scenario...```, а затем:
+По завершении работы expect-скрипта активность возвращается к `automation.sh` и появляется сообщение о том, что была выполнена настройка `taint.cfg`: 
 
 ```
-Natch monitor - type 'help' for more information
-(natch)
-Natch_v.3.1
+taint.cfg: set tainting curl.txt
+```
+
+
+Затем запускается воспроизведение записанного сценария:
+
+```
+Replaying the sample1 scenario...
+spawn natch replay -s sample1 -S autosave
+
+Natch_v.3.2
 (c) 2020-2024 ISP RAS
 
+Waiting for the icount 13142751405 to be reached...
+Start icount 13142751405 has been reached
 Reading Natch config file...
+Checking config file '/vms/test_image/autotest/module.cfg'...
 Natch is working in NORMAL mode
 
 Network logging enabled
@@ -310,44 +372,56 @@ Config is loaded.
 File monitor storage /vms/test_image/autotest/output_sample1/filemon.log created successfully
 Module binary log file /vms/test_image/autotest/output_sample1/log_m_b.log created successfully
 Modules: started reading binaries
-Modules: finished with 82 of 82 binaries for analysis
+Modules: finished with 87 of 87 binaries for analysis
 thread_monitor: identification method is set to a complex developed at isp approach
 Started thread monitoring
 Tasks: config file is open.
 Network json log file: "/vms/test_image/autotest/output_sample1/tnetwork.json"
 Taint log storage file /vms/test_image/autotest/output_sample1/taint.log created successfully
 Binary call_stack log file /vms/test_image/autotest/output_sample1/log_cs_b.log created successfully
-Tainting file: curl.txt
-Detected module /vms/test_image/autotest/libs/54ce98cf6f65914636ace17148725666/vmlinux-5.10.0-17-amd64 execution
-Detected module /vms/test_image/autotest/libs/9b8f02224b6497f2fd72ebf18d1949a3/libc-2.31.so execution
-Detected module /vms/test_image/Sample1_bins/test_sample execution
-Detected module /vms/test_image/Sample1_bins/test_sample_2 execution
+Tainting file: curl.txt 
+(natch) Detected module /vms/test_image/autotest/debug_info/guest_system/lib/54ce98cf6f65914636ace1714872566n
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/126d561af479fb6bad3ace2334af40f1/libc-2n
+./test_sample
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/0b0c82f0b1cea7f0db918daf79e6f5b6/test_sn
+I am a just function
+res = 47270
+value is even
+I am a just function
+Address for curl: www.google.com
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/7e29edbe29acf0ed4457899b90f65de5/test_sn
 File /home/user/Sample1/curl.txt is opened, handle = 0x0000000000000003
 File /home/user/Sample1/curl.txt is opened, handle = 0x0000000000000001
-Detected module /vms/test_image/autotest/libs/2e93e13b373621a7d3aaddacd6701fa8/libssl.so.1.1 execution
-Detected module /vms/test_image/autotest/libs/6841efca9a812a58ac478ca5f8233952/libpthread-2.31.so execution
-Detected module /vms/test_image/autotest/libs/cb5e1aed69e5825344104409380618b7/libffi.so.7.1.0 execution
-Detected module /vms/test_image/autotest/libs/37c74ba908b7557fdc1301b97e4599e2/libkeyutils.so.1.9 execution
-Detected module /vms/test_image/autotest/libs/5ca6b88c0086c158c365ccdaee252ea7/libdl-2.31.so execution
-Detected module /vms/test_image/autotest/libs/c321937f4b7676d21947a671f6512a9f/libresolv-2.31.so execution
-Detected module /vms/test_image/autotest/libs/d861ebb9591e1df1a976daed3647b3da/libkrb5support.so.0.1 execution
-Detected module /vms/test_image/autotest/libs/66c3bc8b77614fd5412317f9b504eca0/libcom_err.so.2.1 execution
-Detected module /vms/test_image/autotest/libs/fe8eadb6d18a039846578f3c06ff4de7/libk5crypto.so.3.1 execution
-Detected module /vms/test_image/autotest/libs/b39a79b8f3c07df3c91e50a2fb8ed970/libkrb5.so.3.3 execution
-Detected module /vms/test_image/autotest/libs/4f9f1f95098b2baaba560f5e1ff6f9a3/libgssapi_krb5.so.2.2 execution
-Detected module /vms/test_image/autotest/libs/83c9488ccb57383a628a199f9e7b17cb/libcrypto.so.1.1 execution
-Detected module /vms/test_image/autotest/libs/8e12a00fd2769b5130e11cf3a773289f/libz.so.1.2.11 execution
-Detected module /vms/test_image/autotest/libs/855da59f8deb05d1edb1391aa41a5545/libdb-5.3.so execution
-File /home/user/Sample1/curl.txt is opened, handle = 0x0000000000000001
-
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/cb5e1aed69e5825344104409380618b7/libffin
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/855da59f8deb05d1edb1391aa41a5545/libdb-n
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/2e93e13b373621a7d3aaddacd6701fa8/libssln
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/791f890164e45876863a379f3cc80d7d/libpthn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/37c74ba908b7557fdc1301b97e4599e2/libkeyn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/380061e32442beddc07979d12fc4a1e8/libdl-n
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/d9e8cb528c03d87895f5af76e7da7341/libresn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/d861ebb9591e1df1a976daed3647b3da/libkrbn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/66c3bc8b77614fd5412317f9b504eca0/libcomn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/fe8eadb6d18a039846578f3c06ff4de7/libk5cn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/b39a79b8f3c07df3c91e50a2fb8ed970/libkrbn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/4f9f1f95098b2baaba560f5e1ff6f9a3/libgssn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/83c9488ccb57383a628a199f9e7b17cb/libcryn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/8e12a00fd2769b5130e11cf3a773289f/libz.sn
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0File /home/user/Sample1/curl.txt is ope1
+100 23962    0 23962    0     0   164k      0 --:--:-- --:--:-- --:--:--  164k
+result file: curl.txt
+user@debian:~/Sample1$ 
 ============ Statistics ============
 
 Tainted files             : 1
-Tainted packets           : 20
+Tainted packets           : 21
 Tainted processes         : 3
 Tainted modules           : 3
 Tainted file reads        : 0
-Tainted memory accesses   : 33166
+Tainted memory accesses   : 37518
+
+====================================
 
 
 Compressing data. Please wait..
@@ -355,7 +429,65 @@ Compressing data. Please wait..
 autotest+sample1.tar.zst completed
 ```
 
-Далее последние шаги, начиная с создания diff файла, повторяются снова для второго примера. По завершении процедуры для обоих примеров появляется сообщение:
+После чего выполняется поиск поверхности атаки, результаты которого добавляются в созданный архив:
+
+```
+Extract coverage for sample1
+spawn natch coverage extract -s sample1
+[sudo] password for user: 
+Mounting Image - OK                                                                                                   
+                                                                                                                      
+[Reading Module Config...]                                                                                            
+Status: Found: 7                                                                                                      
+                                                                                                                      
+[Searching Images By Numbers...]                                                                                      
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7/7 100% 0:00:00
+Status: Found: 7                                                                                                      
+                                                                                                                      
+[Parsing Cov64 Modules...]                                                                                            
+Status: Found: 43 | Skipped: 40                                                                                       
+                                                                                                                      
+[Parsing Cov64 BBs...]                                                                                                
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45462/45462 100% 0:00:00
+Status: Found: 45462                                                                                                  
+                                                                                                                      
+[Parsing VmiDbs...]                                                                                                   
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7/7 100% 0:00:01
+Status: Found: 7                                                                                                      
+                                                                                                                      
+[Filling Info For Images...]                                                                                          
+WARNING: Image ../debug_info/guest_system/lib/80f502f2064bc93c4c673ace7eed5208/redis-check-rdb: Coverage for was not  
+found!                                                                                                                
+WARNING: Image ../debug_info/guest_system/lib/6ec6d8037c4dfc1ea5e9fbae56d98d33/redis-benchmark: Coverage for was not  
+found!                                                                                                                
+WARNING: Image ../debug_info/guest_system/lib/4e4fc92774670e5c02c60d937d19688c/redis-cli: Coverage for was not found! 
+WARNING: Image ../debug_info/guest_system/lib/260ebb825b267c3f6d01a8840240299c/lua: Coverage for was not found!       
+WARNING: Image ../debug_info/guest_system/lib/68b38b1fc4ba765d9cdf4e68f0332e38/luac: Coverage for was not found!      
+Progress:    ━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/7  29% 0:00:00
+Status: Found: 2 | Skipped: 5                                                                                         
+                                                                                                                      
+[Generating Lcov...]                                                                                                  
+Status: Found: 2                                                                                                      
+Umounting Image - OK                                                                                                  
+Found 2 entries.
+Found common filename prefix "/vms/test_image/autotest/output_sample1/source_files/home/user"
+Generating output.
+Processing file Sample1/test_sample_2.c
+  lines=11 hit=11 functions=2 hit=2
+Processing file Sample1/test_sample.c
+  lines=41 hit=38 functions=6 hit=6
+Overall coverage rate:
+  lines......: 94.2% (49 of 52 lines)
+  functions......: 100.0% (8 of 8 functions)
+
+Compressing data. Please wait..
+
+Archive autotest+sample1.tar.zst updated!
+
+```
+
+
+Далее скрипт возвращает нам сгенерированный при создании проекта qemu_opts.ini, включает перенаправление порта, требующееся для второго сценария, и шаги, начиная с создания скрипта записи, повторяются снова для второго примера. По завершении процедуры для обоих примеров появляется сообщение:
 
 ```
 These are the archives we will test in Snatch:
@@ -371,41 +503,38 @@ Snatch started.
 Creating a project sample1
 The project sample1 has been created.
 Checking content...
-   ∟ callgraph size: 194862 bytes
+   ∟ callgraph size: 159031 bytes
    ∟ interp_callgraph size: 0 bytes
-   ∟ resources size: 4643 bytes
-   ∟ process_tree size: 2729 bytes
-   ∟ files size: 6752 bytes
-   ∟ process_info size: 6902 bytes
-   ∟ process_timeline size: 8942 bytes
+   ∟ resources size: 20390 bytes
+   ∟ process_tree size: 3129 bytes
+   ∟ files size: 10176 bytes
+   ∟ process_info size: 7789 bytes
+   ∟ process_timeline size: 11051 bytes
 The content check for the project sample1 has been finished.
 Creating a project sample2
 The project sample2 has been created.
 Checking content...
-   ∟ callgraph size: 194434 bytes
+   ∟ callgraph size: 191650 bytes
    ∟ interp_callgraph size: 0 bytes
-   ∟ resources size: 3546 bytes
-   ∟ process_tree size: 1298 bytes
-   ∟ files size: 2485 bytes
-   ∟ process_info size: 3099 bytes
-   ∟ process_timeline size: 4071 bytes
+   ∟ resources size: 2707 bytes
+   ∟ process_tree size: 1446 bytes
+   ∟ files size: 0 bytes
+   ∟ process_info size: 3352 bytes
+   ∟ process_timeline size: 4868 bytes
 The content check for the project sample2 has been finished.
+
 ```
 
 После чего запускается `snatch.py`. Он открывает браузер, открывается проект, выполняется переход на Module Graph для его активации, а затем генерируется и сохраняется PDF отчет.
 Действия повторяются для второго проекта.
 
 ```
-[WDM] - Downloading: 19.9kB [00:00, 11.2MB/s]
-[WDM] - Downloading: 100%|███████████████████████████████████████████████| 3.10M/3.10M [00:00<00:00, 7.11MB/s]
 Snatch opened in browser.
-Report /home/user/Downloads/report-sample1-24-1-2024.pdf (342.62 KB) has been generated.
-Report /home/user/Downloads/report-sample2-24-1-2024.pdf (414.53 KB) has been generated.
+Report /home/user/Downloads/report-sample2-16-10-2024.pdf (417.7 KB) has been generated.
+Report /home/user/Downloads/report-sample1-16-10-2024.pdf (364.14 KB) has been generated.
 ```
 
-В результате в каталоге Downloads мы получили PDF отчеты для двух тестовых приложений.
+В результате в каталоге Downloads мы получаем PDF отчеты для двух тестовых приложений.
 
 Следует обратить особое внимание, что автоматизация намеренно не очищает базу данных уже загруженных ранее проектов в *SNatch*,
 так что, если вы ранее уже загружали свои проекты в него, они не пропадут. Более того, для них также будут сгенерированы отчеты.
-
-

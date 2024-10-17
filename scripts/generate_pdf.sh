@@ -28,7 +28,7 @@ pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/s
 		18_app_module_cfg.md \
 		19_app_graphs.md \
 		20_app_coverage.md \
-		21_app_natch_cmds.md \
+		21_app_cmd_line.md \
 		22_app_requirements.md \
 		23_app_oo_preparation.md \
 		24_app_releases.md \

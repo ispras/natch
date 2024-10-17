@@ -164,7 +164,7 @@ curl -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localh
 * Обновляет конфигурационный файл taint.cfg для пометки данных, которые необходимо отслеживать.
 * Выполняет воспроизведение записанного сценария. Воспроизведение сценария детально описано в разделе [Воспроизведение сценария](8_scenario_work.md#replay).
 * Вспомогательный скрипт `wait4release.sh` используется для ожидания завершения работы natch и проверки используемого для диагностики порта.
-* Выполняет распаковку поверхности атаки. Описание используемой команды смотрите в пункте [natch coverage](3_natch_cmd.md#310-natch-coverage)
+* Выполняет распаковку поверхности атаки. Описание используемой команды смотрите в пункте [natch coverage](3_natch_cmd.md#natch_cmd_coverage)
 
 После выполнения скрипта в подкаталоге `autotest` появляются архивы `autotest+sample1.tar.zst` и `autotest+sample2.tar.zst` для дальнейшего анализа.
 
@@ -184,7 +184,7 @@ curl -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localh
 
 #### automation.sh:
 
-* В функции `introAndPrompts` в параметре `path2binaries` указывается путь к бинарным файлам. В `place4binaries` указывается `h` в случае расположения бинарных файлов на хосте, `g` - на гостевом образе (виртуальной машине).
+* В функции `introAndPrompts` в параметре `path2binaries` указывается путь к бинарным файлам. В `place4binaries` указывается `h` в случае расположения бинарных файлов на хосте, `g` -- на гостевом образе (виртуальной машине).
 * В функции `checkRequirements` отредактируйте параметры `requirements` и `pip_requirements`, указав через пробел пакеты, которые требуется проверить/установить на хост.
 * В функции `createProject` можно добавить дополнительные параметры для запуска `natch create` в параметре `natchRun`.
 * В функции `recAndReplay` измените параметр `samples`, указав через пробел названия тестовых сценариев.
@@ -259,7 +259,7 @@ Do you agree to mount image? [Y/n] Y
 
 Common options
 Enter RAM size with suffix G or M (e.g. 4G or 256M): 4G
-Select mode you want to run emulator: graphic [G/g] (default), text [T/t] or vnc [V/v] 
+Select mode you want to run emulator: graphic [G/g] (default), text [T/t] or vnc [V/v]
 
 Network option
 Do you want to use port forwarding? [Y/n] N
@@ -277,40 +277,40 @@ Generate config file task.cfg? (recommended) [Y/n] Y
 
 The steps above require a root password
 
-[sudo] password for user: 
-Mounting Image - OK                                                                                                   
-                                                                                                                      
-[Copying files to host system...]                                                                                     
-Status: Found: 2                                                                                                      
-Umounting Image - OK                                                                                                  
+[sudo] password for user:
+Mounting Image - OK
+
+[Copying files to host system...]
+Status: Found: 2
+Umounting Image - OK
 
 
-──────────────────────────────────────────── Module Configuration Section ────────────────────────────────────────────
+──────────────────────── Module Configuration Section ────────────────────────
 
 
-Mounting Image - OK                                                                                                   
-                                                                                                                      
-[Parsing received folder...]                                                                                          
-Status: Found: 2279                                                                                                   
-                                                                                                                      
-[Searching Debugging Information...]                                                                                  
-Status: Found: 2 | Skipped: 5                                                                                         
-                                                                                                                      
-USER statistics:                                                                                                      
-Images have been found                                            :     OK                                            
-Added images                                                      :     7                                             
-Added debugging information                                       :     2                                             
-Added tied information                                            :     0                                             
-                                                                                                                      
-                                                                                                                      
-ld-linux-* is always skipped and is not counted in calculations                                                        
-Your config file module.cfg was created                                                                               
-Umounting Image - OK                                                                                                  
-Mounting Image - OK        
+Mounting Image - OK
+
+[Parsing received folder...]
+Status: Found: 2279
+
+[Searching Debugging Information...]
+Status: Found: 2 | Skipped: 5
+
+USER statistics:
+Images have been found                                            :     OK
+Added images                                                      :     7
+Added debugging information                                       :     2
+Added tied information                                            :     0
+
+
+ld-linux-* is always skipped and is not counted in calculations
+Your config file module.cfg was created
+Umounting Image - OK
+Mounting Image - OK
 
 ...
 
-Your config file '/vms/test_image/autotest/module.cfg' for modules was updated                               
+Your config file '/vms/test_image/autotest/module.cfg' for modules was updated
 
 Configuration file natch.cfg was created.
 You can edit it before using Natch.
@@ -330,7 +330,9 @@ Everything is fine!
 
 ```
 
-Следом появляется сообщение о создании архивной копии qemu_opts.ini. В одном проекте мы будем записывать два независимых сценария, и поэтому хотим начинать настройку опций QEMU с чистого конфигурационного файла, сгенерированного при создании проекта.
+Следом появляется сообщение о создании архивной копии qemu_opts.ini. В одном проекте мы будем записывать
+два независимых сценария, и поэтому хотим начинать настройку опций QEMU с чистого конфигурационного файла,
+сгенерированного при создании проекта.
 
 Далее создается скрипт записи:
 
@@ -342,7 +344,7 @@ Created the record script /vms/test_image/autotest/record_sample1.exp
 Этот скрипт загружает виртуальную машину и автоматически записывается тестовый сценарий для первого примера.
 
 
-По завершении работы expect-скрипта активность возвращается к `automation.sh` и появляется сообщение о том, что была выполнена настройка `taint.cfg`: 
+По завершении работы expect-скрипта активность возвращается к `automation.sh` и появляется сообщение о том, что была выполнена настройка `taint.cfg`:
 
 ```
 taint.cfg: set tainting curl.txt
@@ -379,7 +381,7 @@ Tasks: config file is open.
 Network json log file: "/vms/test_image/autotest/output_sample1/tnetwork.json"
 Taint log storage file /vms/test_image/autotest/output_sample1/taint.log created successfully
 Binary call_stack log file /vms/test_image/autotest/output_sample1/log_cs_b.log created successfully
-Tainting file: curl.txt 
+Tainting file: curl.txt
 (natch) Detected module /vms/test_image/autotest/debug_info/guest_system/lib/54ce98cf6f65914636ace1714872566n
 Detected module /vms/test_image/autotest/debug_info/guest_system/lib/126d561af479fb6bad3ace2334af40f1/libc-2n
 ./test_sample
@@ -411,7 +413,7 @@ Detected module /vms/test_image/autotest/debug_info/guest_system/lib/8e12a00fd27
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0File /home/user/Sample1/curl.txt is ope1
 100 23962    0 23962    0     0   164k      0 --:--:-- --:--:-- --:--:--  164k
 result file: curl.txt
-user@debian:~/Sample1$ 
+user@debian:~/Sample1$
 ============ Statistics ============
 
 Tainted files             : 1
@@ -434,41 +436,41 @@ autotest+sample1.tar.zst completed
 ```
 Extract coverage for sample1
 spawn natch coverage extract -s sample1
-[sudo] password for user: 
-Mounting Image - OK                                                                                                   
-                                                                                                                      
-[Reading Module Config...]                                                                                            
-Status: Found: 7                                                                                                      
-                                                                                                                      
-[Searching Images By Numbers...]                                                                                      
+[sudo] password for user:
+Mounting Image - OK
+
+[Reading Module Config...]
+Status: Found: 7
+
+[Searching Images By Numbers...]
 Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7/7 100% 0:00:00
-Status: Found: 7                                                                                                      
-                                                                                                                      
-[Parsing Cov64 Modules...]                                                                                            
-Status: Found: 43 | Skipped: 40                                                                                       
-                                                                                                                      
-[Parsing Cov64 BBs...]                                                                                                
+Status: Found: 7
+
+[Parsing Cov64 Modules...]
+Status: Found: 43 | Skipped: 40
+
+[Parsing Cov64 BBs...]
 Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45462/45462 100% 0:00:00
-Status: Found: 45462                                                                                                  
-                                                                                                                      
-[Parsing VmiDbs...]                                                                                                   
+Status: Found: 45462
+
+[Parsing VmiDbs...]
 Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7/7 100% 0:00:01
-Status: Found: 7                                                                                                      
-                                                                                                                      
-[Filling Info For Images...]                                                                                          
-WARNING: Image ../debug_info/guest_system/lib/80f502f2064bc93c4c673ace7eed5208/redis-check-rdb: Coverage for was not  
-found!                                                                                                                
-WARNING: Image ../debug_info/guest_system/lib/6ec6d8037c4dfc1ea5e9fbae56d98d33/redis-benchmark: Coverage for was not  
-found!                                                                                                                
-WARNING: Image ../debug_info/guest_system/lib/4e4fc92774670e5c02c60d937d19688c/redis-cli: Coverage for was not found! 
-WARNING: Image ../debug_info/guest_system/lib/260ebb825b267c3f6d01a8840240299c/lua: Coverage for was not found!       
-WARNING: Image ../debug_info/guest_system/lib/68b38b1fc4ba765d9cdf4e68f0332e38/luac: Coverage for was not found!      
+Status: Found: 7
+
+[Filling Info For Images...]
+WARNING: Image ../debug_info/guest_system/lib/80f502f2064bc93c4c673ace7eed5208/redis-check-rdb: Coverage for was not
+found!
+WARNING: Image ../debug_info/guest_system/lib/6ec6d8037c4dfc1ea5e9fbae56d98d33/redis-benchmark: Coverage for was not
+found!
+WARNING: Image ../debug_info/guest_system/lib/4e4fc92774670e5c02c60d937d19688c/redis-cli: Coverage for was not found!
+WARNING: Image ../debug_info/guest_system/lib/260ebb825b267c3f6d01a8840240299c/lua: Coverage for was not found!
+WARNING: Image ../debug_info/guest_system/lib/68b38b1fc4ba765d9cdf4e68f0332e38/luac: Coverage for was not found!
 Progress:    ━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/7  29% 0:00:00
-Status: Found: 2 | Skipped: 5                                                                                         
-                                                                                                                      
-[Generating Lcov...]                                                                                                  
-Status: Found: 2                                                                                                      
-Umounting Image - OK                                                                                                  
+Status: Found: 2 | Skipped: 5
+
+[Generating Lcov...]
+Status: Found: 2
+Umounting Image - OK
 Found 2 entries.
 Found common filename prefix "/vms/test_image/autotest/output_sample1/source_files/home/user"
 Generating output.
@@ -487,7 +489,9 @@ Archive autotest+sample1.tar.zst updated!
 ```
 
 
-Далее скрипт возвращает нам сгенерированный при создании проекта qemu_opts.ini, включает перенаправление порта, требующееся для второго сценария, и шаги, начиная с создания скрипта записи, повторяются снова для второго примера. По завершении процедуры для обоих примеров появляется сообщение:
+Далее скрипт возвращает нам сгенерированный при создании проекта qemu_opts.ini, включает перенаправление порта,
+требующееся для второго сценария, и шаги, начиная с создания скрипта записи, повторяются снова для второго примера.
+По завершении процедуры для обоих примеров появляется сообщение:
 
 ```
 These are the archives we will test in Snatch:
@@ -525,7 +529,8 @@ The content check for the project sample2 has been finished.
 
 ```
 
-После чего запускается `snatch.py`. Он открывает браузер, открывается проект, выполняется переход на Module Graph для его активации, а затем генерируется и сохраняется PDF отчет.
+После чего запускается `snatch.py`. Он открывает браузер, открывается проект, выполняется переход на `Module Graph`
+для его активации, а затем генерируется и сохраняется PDF отчет.
 Действия повторяются для второго проекта.
 
 ```

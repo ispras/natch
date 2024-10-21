@@ -4,4 +4,4 @@
 
 2. **Иванниковские чтения 2024**
    * [Семинар по Natch и презентация релиза 3.1](https://www.youtube.com/watch?v=l2u-HbCo06E&list=PPSV)
-  
+

@@ -19,7 +19,7 @@ def replace(file):
 
 
 for filename in os.listdir(path):
-    if filename[0].isnumeric():
+    if filename[0].isnumeric() or filename.startswith('app'):
         manuals.append(filename)
 
 for file in manuals:

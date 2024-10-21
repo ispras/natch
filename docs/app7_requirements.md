@@ -1,7 +1,7 @@
 <div style="page-break-before:always;">
 </div>
 
-# <a name="app_requirements"></a>Приложение 8. Требования и ограничения Natch
+# <a name="app_requirements"></a>Приложение 7. Требования и ограничения Natch
 
 ## Требования к хостовой системе
 

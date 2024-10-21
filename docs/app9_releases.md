@@ -2,7 +2,7 @@
 </div>
 
 
-# <a name="app_releases"></a>Приложение 10. История релизов Natch
+# <a name="app_releases"></a>Приложение 9. История релизов Natch
 
 
 [**Natch v.3.2**](https://nextcloud.ispras.ru/index.php/s/bpYd3zNGH5MSq8P) (октябрь 2024)

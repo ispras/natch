@@ -19,24 +19,23 @@ pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/s
 		9_snatch.md \
 		10_additional.md \
 		11_automation.md \
-		13_applications.md \
-		14_faq.md \
-		15_app_license.md \
-		16_app_qemu_cmdline.md \
-		17_app_configs.md \
-		18_app_module_cfg.md \
-		19_app_graphs.md \
-		20_app_coverage.md \
-		21_app_cmd_line.md \
-		22_app_requirements.md \
-		23_app_oo_preparation.md \
-		24_app_releases.md \
+		12_applications.md \
+		13_faq.md \
+		app1_license.md \
+		app2_configs.md \
+		app3_module_cfg.md \
+		app4_graphs.md \
+		app5_coverage.md \
+		app6_cmd_line.md \
+		app7_requirements.md \
+		app8_oo_preparation.md \
+		app9_releases.md \
 		-o $CUR_DIR/natch_docs.pdf \
         --pdf-engine=weasyprint \
         --metadata pagetitle="Natch documentation" \
         --metadata lang="Ru" \
-#       --verbose > gen.html \
-#       -N
+      --verbose > gen.html \
+      -N
 
 if [[ -d ../.git ]]; then
     git reset --hard > /dev/null

@@ -34,8 +34,8 @@ pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/s
         --pdf-engine=weasyprint \
         --metadata pagetitle="Natch documentation" \
         --metadata lang="Ru" \
-      --verbose > gen.html \
-      -N
+    #   --verbose > gen.html \
+    #   -N
 
 if [[ -d ../.git ]]; then
     git reset --hard > /dev/null

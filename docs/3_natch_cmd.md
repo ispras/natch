@@ -237,12 +237,17 @@ NAME                          ICOUNT                  DATE
 init                          0                       2024-06-03 15:57:57
 load                          13563000904             2024-06-03 15:59:14
 
+The last icount for this scenario: 13888364825
+
 ----- hello -------------------------------------------------------------
 Snapshot list:
 NAME                          ICOUNT                  DATE
 init                          0                       2024-06-04 18:00:46
 temp_snap                     8251101826              2024-06-04 18:01:23
 very_very_long_name           11708689459             2024-06-04 18:01:37
+
+The last icount for this scenario: 11818629758
+
 ```
 
 Пример:
@@ -255,6 +260,8 @@ Snapshot list:
 NAME                          ICOUNT                  DATE
 init                          0                       2024-06-03 15:57:57
 load                          13563000904             2024-06-03 15:59:14
+
+The last icount for this scenario: 13888364825
 ```
 
 ## 3.8. natch delete

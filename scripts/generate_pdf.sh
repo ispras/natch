@@ -7,37 +7,16 @@ $SCRIPTS_DIR/preparation.py
 CUR_DIR=$(pwd)
 cd $SCRIPTS_DIR/../docs
 
+files=$(echo [1-9{1}][_]*.md)" "$(echo [1-9][0-9]*.md)" "$(echo [app]*.md)
+
 pandoc -B ../scripts/titul.md ../scripts/toc.md -V colorlinks --css=../scripts/style.css \
-		1_natch.md \
-		2_setup.md \
-		3_natch_cmd.md \
-		4_quickstart.md \
-		5_setup_env.md \
-		6_create_project.md \
-		7_taint_source.md \
-		8_scenario_work.md \
-		9_snatch.md \
-		10_additional.md \
-		11_automation.md \
-		12_utils.md \
-		13_applications.md \
-		14_faq.md \
-		15_app_license.md \
-		16_app_qemu_cmdline.md \
-		17_app_configs.md \
-		18_app_module_cfg.md \
-		19_app_graphs.md \
-		20_app_coverage.md \
-		21_app_natch_cmds.md \
-		22_app_requirements.md \
-		23_app_oo_preparation.md \
-		24_app_releases.md \
+		$files \
 		-o $CUR_DIR/natch_docs.pdf \
         --pdf-engine=weasyprint \
         --metadata pagetitle="Natch documentation" \
         --metadata lang="Ru" \
-#       --verbose > gen.html \
-#       -N
+    #   --verbose > gen.html \
+    #   -N
 
 if [[ -d ../.git ]]; then
     git reset --hard > /dev/null

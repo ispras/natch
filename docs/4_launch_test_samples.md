@@ -1,9 +1,10 @@
 <div style="page-break-before:always;">
 </div>
 
-# <a name="natch_stepbystep"></a>4. Пошаговое руководство по работе с Natch
+# <a name="natch_stepbystep"></a>4. Запуск тестовых примеров Natch
 
-В этом раздела представлен пошаговый разбор работы с *Natch*, а так же немного затронут инструмент *SNatch*
+В этом разделе представлен пошаговый разбор работы с тестовыми примерами *Natch*,
+а так же немного затронут инструмент *SNatch*
 (подробности в разделе [Анализ поверхности атаки с помощью SNatch](9_snatch.md#snatch)).
 
 Для работы с инструментом *Natch* нужны входные данные, а именно, подготовленный образ системы с собранным в нем объектом оценки, а так же бинарные файлы самого объекта оценки.
@@ -72,49 +73,42 @@ redis-cli -h localhost -p 49152
 Все основные функции *Natch* доступны через команду `natch` в командной строке. Запуск этой команды без параметров
 отобразит справочную информацию о версии и доступных действиях:
 
-```bash
----------------------------------------------------------------------------
-            Welcome to Natch - an attack surface detection tool!
----------------------------------------------------------------------------
-Natch_v.3.1
+```
+Natch_v.3.2
 Copyright (c) 2020-2024 ISP RAS
 
 based on QEMU emulator v.7.2.0
 Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Telegram: https://t.me/ispras_natch
-E-mail: natch@ispras.ru
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Documentation: https://github.com/ispras/natch
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Available builds: x86_64, aarch64
 
 optional arguments:
   -h, --help            show this help message and exit
   -v, --version         Natch version
 
 main commands:
-  {create,cr,record,replay,edit,modules,change,settings}
+  {create,cr,record,replay,kvm,tuning,info,delete,edit,set,modules,settings}
                         use <cmd_name> -h/--help for additional information
     create (cr)         create project
-    record              record scenario
-    replay              replay scenario
-
-    edit                edit Natch config files
-    change              change some project settings
-
-    modules             add/update modules in the project (requires sudo)
-
+    record              record scenario (only for project)
+    replay              replay scenario (only for project)
+    kvm                 launch QEMU kvm without Natch (only for x86_64)
+    tuning              launch tuning (only for project)
+    info                info about project (only for project)
+    delete              delete scenario (only for project)
+    edit                edit Natch config files (only for project)
+    coverage            get coverage for code (only for project)
+    set                 change some project settings (only for project)
+    modules             add/update/copy modules in the project (requires sudo)
     settings            Natch shell settings
-
 ```
 
 Подробно [командный интерфейс Natch](3_natch_cmd.md#natch_cmd) описан в соответствуюшем разделе.
 
-Работа с *Natch* начинается с создания проекта (рабочей директории).
+Работа с тестовыми примерами *Natch* начинается с создания проекта (рабочей директории).
 Помимо этого, процесс настройки созданного проекта может включать ручной этап, который предполагает внесение изменений в
 конфигурационные файлы проекта.
-Предназначение файлов конфигурации и их параметров описано в разделе [Конфигурационные файлы Natch](17_app_configs.md#app_configs).
+Предназначение файлов конфигурации и их параметров описано в разделе [Конфигурационные файлы Natch](app2_configs.md#app_configs).
 
 ### 4.2.1. Создание проекта
 
@@ -126,30 +120,39 @@ main commands:
 user@natch1:~/natch_quickstart$ natch create test1 Natch_testing_materials/test_image_debian.qcow2
 
 Directory for project files /home/user/natch_quickstart/test1 was created
-
-Image: /home/user/natch_quickstart/Natch_testing_materials/test_image_debian.qcow2
 OS: Linux
 
-Attention! To successfully create a project you will need a root password
-```
-Команда выдаст предупреждение о том, что в процессе настройки потребуется пароль администратора. Требование обязательное,
-при его отсутствии дальнейшая работа не будет иметь смысла.
+Image: /home/user/natch_quickstart/Natch_testing_materials/test_image_debian.qcow2
 
-Будет проверено наличие, а так же доступность утилиты `natch-qemu-img`, которая потребуется в дальнейшей настройке и работе. В случае успеха увидим:
+-> Attention! To create a project you will need a root password
+```
+
+Команда выдаст предупреждение о том, что в процессе настройки потребуется пароль администратора.
+
+Далее будет проверено наличие, а так же доступность утилиты `natch-qemu-img`,
+которая потребуется в дальнейшей настройке и работе. В случае успеха увидим:
 ```text
 Checking natch-qemu-img utility...
 Utility natch-qemu-img is ok
 ```
 Если что-то пошло не так, создание проекта будет прервано.
 
+Для поиска исполняемых модулей, скачивания отладочной информации и некоторых других файлов потребуется
+монтировать образ. Однако, от этой опции можно отказаться, в этом случае часть функционала будет недоступна.
+
+```text
+-> Attention! Some options need to mount your image
+Do you agree to mount image? [Y/n] y
+```
+
 Укажите сколько памяти выдать гостевой виртуальной машине (постфикс указывать обязательно. G или M):
 ```text
 Common options
 Enter RAM size with suffix G or M (e.g. 4G or 256M): 4G
 ```
-Далее можно выбрать режим работы эмулятора -- графический или текстовый. По умолчанию графический.
+Далее можно выбрать режим работы эмулятора -- графический, текстовый или vnc. По умолчанию графический.
 ```text
-Do you want to run emulator in graphic mode? [Y/n] y
+Select mode you want to run emulator: graphic [G/g] (default), text [T/t] or vnc [V/v] g
 ```
 
 Если сценарий предполагает передачу помеченных данных по сети (далее мы рассматриваем в качестве основного как раз сценарий №2 --
@@ -173,43 +176,34 @@ Your pair of ports for connecting: 5555 <=> 49152
 Так как будет проделан пример с `redis`, то следует указать путь к папке `Sample2_bins`.
 Если для другого вашего сценария бинарные файлы отсутствуют, можно отказаться создавать конфигурационный файл модулей.
 
+**Обновление!** С версии 3.2 можно указывать путь к модулям в гостевой системе, таким образом, можно заранее не выкачивать
+бинарные файлы в хостовую систему, но только если было дано согласие на монтирование образа.
+
 ```text
 Modules part
 Do you want to create module config? [Y/n] y
-Enter path to binaries dir: /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins
+Select way to point directory with modules - from HOST [H/h] system (default) or GUEST [G/g] system: h
+Enter path to binaries dir (or 'exit' to skip): /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins
 ```
 
-Затем будет предложено скачать отладочные символы для системных модулей. Соглашаемся, в общем, так следует поступать в
-большинстве случаев.
+Затем будет предложено скачать отладочные символы для системных модулей. Соглашаемся, так следует поступать в
+большинстве случаев. В версии 3.2 появляется дополнительный вопрос, предлагающий использовать расширенные настройки
+поиска и скачивания отладочной информации. Откажемся.
 
 ```text
 Debug info part
 Do you want to get debug info for system modules? [Y/n] y
+Do you want to set additional parameters? (many questions) [y/N] n
 ```
 
 Финальный вопрос касается генерации конфигурационного файла, содержащего смещения структур ядра исследуемой ОС.
-Без этого файла работа инструмента невозможна. Соглашаемся.
+Этот файл необходим для работы инструмента, и ранее сгенерированного у нас нет, так что соглашаемся.
 
 ```text
 Generate config file task.cfg? (recommended) [Y/n] y
 ```
 
-Последнее, что надо ввести пользователю -- пароль администратора. Перед запросом появится информация о найденных модулях,
-если они были загружены.
-
-```text
-Waiting for module config generating
-Module config is completed
-
-Your config file module.cfg for modules was created
-ELF files found: 2
-Map files found: 0
-
-The steps above require a root password
-
-[sudo] password for user:
-
-```
+Последнее, что надо ввести пользователю -- пароль администратора.
 
 Дальнейшие действия выполняются автоматически, процесс может занять продолжительное время.
 На этом этапе произойдет монтирование образа, поиск системных библиотек и интерпретаторов,
@@ -220,51 +214,105 @@ The steps above require a root password
 Все это время в консоль будут выводиться сообщения примерно следующего вида:
 
 ```text
+────────────────────────────── Module Configuration Section ───────────────────────────────────────
+
+Mounting Image - OK
+
+[Parsing received folder...]
+Status: Found: 2
+
+[Searching Host Images In Guest OS...]
+Status: Found: 2
+
+[Searching Debugging Information...]
+Status: Found: 0 | Skipped: 2
+
+USER statistics:
+Images have been found                                            :     OK
+Added images                                                      :     2
+Added debugging information                                       :     0
+Added tied information                                            :     0
+
+
+ld-linux-* is always skipped and isn't counted in calculations
+Your config file module.cfg was created
+Umounting Image - OK
+Mounting Image - OK
+
 ─────────────────────────────── Libraries Searching Section ───────────────────────────────────────
 
-Host Config Section
-Reading module config - OK
-Searching Binary Files...                       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-Searching Binary Files - OK
+>>> Host Config Section >>>
 
-Additional Section
-Searching Kernel Symbols - OK
-Searching Python, Java, C# Symbols - OK
+[Reading Module Config...]
+Status: Found: 2
 
-Shared Libraries Section
-Searching Shared Libraries For...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48/48 100% 0:00:01
-Searching Shared Libraries - OK
+>>> Additional Section >>>
 
+[Searching Python, Java, C# Symbols...]
+Status: Found: 47
+
+
+─────────────────────────────────────────── OS ────────────────────────────────────────────────────
 ───────────────────────────── Library-Debug Matching Section ──────────────────────────────────────
 
+────────────────────────────── Searching Additional Symbols ───────────────────────────────────────
+>>> Shared Libraries Section >>>
+
+[Searching Shared Libraries For...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ 46/48  96% 0:00:03
+Status: Found: 46 | Skipped: 2
+
+[Preparing Found Shared Libraries...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 31/31 100% 0:00:00
+Status: Found: 31
+
+>>> Kernel Section >>>
+
+[Searching Kernel Symbols...]
+Status: Found: 1
 ──────────────────────────────────── Debugging Symbols ────────────────────────────────────────────
-Method [1/2]: Default System Location Analysis
-WARNING: Folder '/mnt/point6602537/usr/lib/debug' does not exist! Method is skipped!
-Searching Debugging Information...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  0/78   0% 0:00:00
-Method [2/2]: DebugInfoD
-WARNING: DebugInfoD server 'https://debuginfod.debian.net/' was skipped
-WARNING: DebuginfoD server statuses:
-├── https://debuginfod.debian.net/: Error ('ClientConnectorError' object has no attribute 'status')
-└── https://debuginfod.elfutils.org/: Available
+>>> Method [1/2]: Default System Location Analysis >>>
 
+[Searching Debugging Information...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  0/78   0% 0:00:00
+Status: Found: 0 | Skipped: 78
+WARNING: Folder '/mnt/point3788669/usr/lib/debug' does not exist!
+Default System Location Analysis method was skipped!
+>>> Method [2/2]: DebugInfoD >>>
 Checking available DebugInfoD servers - OK
-Searching Debugging Information...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78/78 100% 0:10:06
-Libraries with servers response...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78/78 100% 0:10:06
-Searching Debugging Information - OK
+
+[Searching Debugging Information...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ 75/78  96% 0:05:32
+Response:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78/78 100% 0:05:32
+Status: Found: 75 | Skipped: 3
 ───────────────────────────────────── Tieddebug Symbols ───────────────────────────────────────────
-Method [1/2]: Default System Location Analysis
-WARNING: Folder '/mnt/point6602537/usr/lib/debug' does not exist! Method is skipped!
-WARNING: Folder '/mnt/point6602537/usr/lib/debug' does not exist! Method is skipped!
-Method [2/2]: DebugInfoD
-Checking available DebugInfoD servers...
+
+>>> Method [1/1]: DebugInfoD >>>
 Checking available DebugInfoD servers - OK
-Searching Tieddebug Information...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-Libraries with servers response...               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:00:00
-Searching tieddebug information - OK
-Umounting img - OK
 
+[Searching Tieddebug Information...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0/1   0% 0:00:01
+Response:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1/1 100% 0:00:01
+Status: Found: 0 | Skipped: 1
+
+────────────────────────────────────────── DOCKER ─────────────────────────────────────────────────
+
+WARNING: Docker not found at path: /mnt/point3788669/var/lib/docker! DOCKER analysis will be skipped!
+
+
+────────────────────────────────────── ROOT_PODMAN ────────────────────────────────────────────────
+
+
+WARNING: Podman not found at path: /mnt/point3788669/var/lib/containers/! ROOT_PODMAN analysis will be skipped!
+
+
+──────────────────────────────── Removing Non-OS Images ───────────────────────────────────────────
+
+
+──────────────────────────────── Clear Resources Section ──────────────────────────────────────────
+
+Umounting Image - OK
 ───────────────────────────────────── Result Section ──────────────────────────────────────────────
-
 
 HOST statistics:
 Images have been found                                            :     OK
@@ -299,7 +347,7 @@ One.
 Go!
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.1
+Natch v.3.2
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...
@@ -309,16 +357,17 @@ Now tuning will be launched.
 
 Tuning started. Please wait a little...
 Generating config file: task.cfg
-Trying to find 7 kernel-specific parameters
-[01/07] Parameter - task, files and mm struct   : Found
-[02/07] Parameter - args                        : Found
-[03/07] Parameter - mount                       : Found
-[04/07] Parameter - file read position          : Found
-[05/07] Parameter - exit_state                  : Found
-[06/07] Parameter - socket                      : Found
-[07/07] Parameter - uid                         : Found
+Trying to find 8 kernel-specific parameters
+[01/08] Parameter - task, files and mm struct   : Found
+[02/08] Parameter - args                        : Found
+[03/08] Parameter - mount                       : Found
+[04/08] Parameter - f_count                     : Found
+[05/08] Parameter - exit_state                  : Found
+[06/08] Parameter - file read position          : Found
+[07/08] Parameter - socket                      : Found
+[08/08] Parameter - uid                         : Found
 
-Detected 7 of 7 kernel-specific parameters. Creating config file...
+Detected 8 of 8 kernel-specific parameters. Creating config file...
 
 Tuning completed successfully!
 
@@ -350,44 +399,34 @@ You can edit it before using Natch.
 
 Settings completed! Now you can launch Natch and enjoy! :)
 
+
 File 'settings_test1.ini' was saved here: /home/user/natch_quickstart/
 You can use it for creating other projects
+
+Checking the project's completeness...
+/home/user/natch_quickstart/test1/natch.cfg                 +
+/home/user/natch_quickstart/test1/qemu_opts.ini             +
+/home/user/natch_quickstart/test1/service_info.ini          +
+/home/user/natch_quickstart/test1/module.cfg                +
+Everything is fine!
 ```
 
 В папке проекта появится конфигурационный файл `natch.cfg`, содержащий общие настройки проекта, которые можно редактировать,
 кроме того после записи сценария появится (в соответствующей папке) еще один конфигурационный файл `taint.cfg`,
-который тоже можно редактировать. Также в папке проекта находится файл `natch.log` --
-в нём логируются основные результаты работы программ, входящих в комплект поставки *Natch*.
+который тоже можно редактировать. Также в папке проекта находится файл `natch.log`, содержащий журнал происходивших событий.
 
 Кроме того, в месте запуска команды `natch create` сохранится файл `settings_test1.ini`, который можно будет использовать для
 полностью автоматического создания проекта-клона, либо файл можно отредактировать и создать проект с нужными
 характеристиками. Подробнее в разделе [Создание проекта с помощью конфигурационного файла](6_create_project.md#natch_save_settings).
 
-### <a name="additional_settings"></a>4.2.2. Дополнительная ручная настройка
-
-Конфигурационный файл `natch.cfg` генерируется таким образом, что дополнительные опции представлены в нем в закомментированном виде.
-
-В качестве примера ручной настройки соберем покрытие кода по базовым блокам для просмотра в *IDA Pro*.
-Для этого в конфигурационном файле `natch.cfg` предусмотрена секция `Coverage`.
-Необходимо раскомментировать не только параметры секции, но и название секции в квадратных скобках.
-Для редактирования следует перейти в рабочую директорию и ввести команду `natch edit main`.
-При первом запуске этой команды будет предложено выбрать текстовый редактор, который в дальнейшем будет редактором по умолчанию.
-
-Раскомментируем секцию `Coverage` (подробнее об предназначении секций в разделе [Основной конфигурационный файл](17_app_configs.md#main_config)).
-
-```ini
-[Coverage]
-file=coverage
-taint=true
-```
 
 ## <a name="record_scenario"></a>4.3. Запись сценария работы
 
-Все настройки выполнены, можно переходить к записи сценария. Рассмотрим в качестве примера сценарий с redis-сервером (Sample2_bins).
-Для записи сценария нужно перейти в рабочую директорию и запустить команду `natch record <name>`.
+Можно переходить к записи сценария. Рассмотрим в качестве примера сценарий с redis-сервером (Sample2_bins).
+Для записи сценария нужно перейти в рабочую директорию и запустить команду `natch record -s <name>`.
 
 ```bash
-user@natch1:~/natch_quickstart/test1$ natch record sample_redis
+user@natch1:~/natch_quickstart/test1$ natch record -s sample_redis
 ```
 В результате запустится эмулятор.
 
@@ -418,15 +457,12 @@ localhost:49152> exit
 savevm <name>
 ```
 
-Обратите внимание, что для появления приглашения `(natch)`, перед вводом команды следует нажать клавишу `Enter`.
-Но даже если вы сразу без приглашения введете команду, ничего страшного, она сработает.
-
 Используем имя `ready`. Сохранение состояния займёт несколько секунд, в зависимости от размера образа и производительности компьютера в целом.
 ```text
-user@natch1:~/natch_quickstart/test1$ natch record sample_redis
+user@natch1:~/natch_quickstart/test1$ natch record -s sample_redis
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.1
+Natch v.3.2
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...
@@ -445,7 +481,7 @@ Network json log file: "/home/user/natch_quickstart/test1/sample_redis/network.j
 Сценарий работы с `redis` записан.
 
 Теперь в папке с нашим проектом (`test1`) появилась директория с названием сценария `sample_redis`. В ней размещены логи сетевых операций, файл журнала, оверлей диска,
-и, самое главное для пользователя -- [конфигурационный файл помеченных данных](17_app_configs.md#taint_config) `taint.cfg`. На данный момент все настройки по умолчанию нам подходят.
+и, самое главное для пользователя -- [конфигурационный файл помеченных данных](app2_configs.md#taint_config) `taint.cfg`. На данный момент все настройки по умолчанию нам подходят.
 
 Для каждого вновь записанного сценария будет появляться своя папка с индивидуальными настройками.
 
@@ -457,11 +493,12 @@ Network json log file: "/home/user/natch_quickstart/test1/sample_redis/network.j
 ```text
 user@natch1:~/natch_quickstart/test1/$ natch replay
 ```
-Команда может принимать два параметра: название сценария и имя снапшота. В нашем случае команда могла бы выглядеть так:
+Команда может принимать ряд параметров (см. [natch replay](3_natch_cmd.md#natch_cmd_replay)).
+В нашем случае команда могла бы выглядеть так:
 ```text
-user@natch1:~/natch_quickstar/test1/$ natch replay sample_redis ready
+user@natch1:~/natch_quickstar/test1/$ natch replay -s sample_redis -S ready
 ```
-Если используются параметры, то они оба являются обязательными. Однако, запускать replay можно без параметров, он сам или загрузит нужный сценарий (если он единственный)
+Запускать replay можно без параметров, он сам или загрузит нужный сценарий (если он единственный)
 или предложит выбрать из списка существующих, точно так же произойдет с выбором снапшота.
 
 Начнём воспроизведение сценария, а точнее его фрагмента, который выполнялся после создания снапшота. Это будет несколько медленнее, чем базовое выполнение.
@@ -472,7 +509,7 @@ user@natch1:~/natch_quickstar/test1/$ natch replay sample_redis ready
 Snapshot to load: ready
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.1
+Natch v.3.2
 (c) 2020-2024 ISP RAS
 
 Reading Natch config file...
@@ -576,10 +613,11 @@ user@natch1:~/natch_quickstart$ ./snatch/snatch_start.sh
 ## 4.7. Изменение настроек проекта
 
 В рассмотренном сценарии нам не пришлось изменять конфигурационный файл сценария, потому что порт был установлен при настройке проекта. Однако, это может потребоваться.
-Конфигурационный файл `taint.cfg` находится в папке со сценарием и содержит следующие секции: *Taint*, *Ports*, *TaintFile*, *USB*, *FunctionArgs*.
+Конфигурационный файл `taint.cfg` находится в папке со сценарием и содержит следующие секции:
+*Mode*, *Taint*, *Ports*, *TaintFile*, *USB*, *TaintedTask*, *Coverage*, *FunctionArgs*.
 Появляется папка со сценарием, как мы уже знаем, после записи сценария.
 
-Попробуем записать сценарий для первого тестового примера. Запустим уже знакомую команду `natch record sample_test`, дождемся загрузки ОС.
+Попробуем записать сценарий для первого тестового примера. Запустим уже знакомую команду `natch record -s sample_test`, дождемся загрузки ОС.
 Для выполнения сценария следует перейти в папку `Sample1`, на этом моменте не забыть сохранить состояние машины `savevm ready`, вернуться в эмулятор и
 запустить программу `./test_sample`.
 Дожидаемся завершения программы и работу эмулятора можно завершать.
@@ -627,7 +665,7 @@ Tainted memory accesses   : 2275
 Так же в папке с проектом появится новая директория `output_sample_test` и архив `test1+sample_test.tar.zst`.
 
 Помимо команды для добавления модулей в конфигурационный файл, существует еще возможность обновить содержимое `module.cfg` (команда `natch modules update`).
-Кроме того, можно внести некоторые изменения в настройки проекта, используя группу команд `natch change`.
+Кроме того, можно внести некоторые изменения в настройки проекта, используя группу команд `natch set`.
 
 Ознакомиться с подробным описанием возможностей команды `natch` можно в разделе [Командный интерфейс Natch](3_natch_cmd.md#natch_cmd).
 

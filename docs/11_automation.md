@@ -87,7 +87,7 @@ curl -X GET -G http://localhost:8000/ci_get_content/ -d project_id=b9d7d69a-8783
 Параметры:
 
 - project_id — идентификатор проекта, полученный в ответе запроса ci_create_project.
-- type — тип запрашиваемого содержимого. Может принимать одно из значений:  [callgraph, interp_callgraph, resources, process_tree, files, process_info, process_timeline].
+- type — тип запрашиваемого содержимого. Может принимать одно из значений:  [callgraph, interp_callgraph, resources, process_tree, files, process_info, process_timeline, attack_surface].
 
 Пример ответа:
 ```json
@@ -101,7 +101,7 @@ curl -X GET -G http://localhost:8000/ci_get_content/ -d project_id=b9d7d69a-8783
 Пример ответа на некорректный запрос:
 
 ```json
-{"status": "400", "msg": "Can not return content for provided type. Please make sure that type is one of the following: callgraph, interp_callgraph, resources, process_tree, files, process_info, process_timeline."}
+{"status": "400", "msg": "Can not return content for provided type. Please make sure that type is one of the following: callgraph, interp_callgraph, resources, process_tree, files, process_info, process_timeline, attack_surface."}
 ```
 Параметры:
 
@@ -238,8 +238,8 @@ Enter path to Snatch directory: /
 ```
 
 На данном этапе требуется ввести полный путь к директории *SNatch*.
-По нажатии Enter появляется запрос sudo. После ввода пароля следует установка требующихся компонент.
-Затем появляется запрос sudo для создания проекта, после чего запускается создание проекта командой `natch create`:
+По нажатии Enter появляется запрос пароля суперпользователя. Он будет сохранен в файл sudo.pwd в текущую директорию, и в дальнейшем запрашиваться не будет. После ввода пароля следует установка требующихся компонент.
+Затем запускается создание проекта командой `natch create`:
 
 ```
 spawn natch create autotest /vms/test_image/test_image_debian.qcow2
@@ -514,6 +514,7 @@ Checking content...
    ∟ files size: 10176 bytes
    ∟ process_info size: 7789 bytes
    ∟ process_timeline size: 11051 bytes
+   ∟ attack_surface size: 54750 bytes
 The content check for the project sample1 has been finished.
 Creating a project sample2
 The project sample2 has been created.
@@ -525,6 +526,7 @@ Checking content...
    ∟ files size: 0 bytes
    ∟ process_info size: 3352 bytes
    ∟ process_timeline size: 4868 bytes
+   ∟ attack_surface size: 74223 bytes
 The content check for the project sample2 has been finished.
 
 ```

@@ -252,14 +252,14 @@ ARG cgidname=user
 
 RUN groupadd $cgidname && useradd -m -g $cgidname -G sudo -p $cuidname -s /usr/bin/bash $cuidname
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-ENV PATH="${PATH}:/bin/natch/bin"
+ENV PATH="${PATH}:/bin/natch-bin/bin"
 
 COPY natch_Ubuntu20_amd64.deb /home/user
 
 RUN apt install /home/user/natch_X.X_ubuntu2004.deb
 
 USER $cuidname
-RUN /bin/natch/bin/natch_scripts/setup_requirements.sh
+RUN /bin/natch-bin/bin/natch_scripts/setup_requirements.sh
 ```
 
 Создадим образ контейнера на основе `Dockerfile`:

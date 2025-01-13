@@ -66,6 +66,92 @@ list=sample.txt;hello.txt
 
 При необходимости отслеживать трафик по всем портам, в полях *dst/src* секции *[Ports]* следует указать значение -1. Если хотя бы в одном поле будет -1, будет отслеживаться весь трафик.
 
+### 7.2.1. Более сложная фильтрация трафика
+
+Если нужно избежать пометки заголовков пакетов, или помечать небольшую часть полезной нагрузки,
+или фильтровать пакеты не только по порту, нужно использовать параметр *json* в секции *[Ports]*.
+
+Этот файл содержит массив записей, описывающий пометку фрагментов пакетов. Каждая запись должна иметь такие поля:
+
+- Поле `icount`. Шаг сценария, во время которого был получен пакет.
+- Поле `id`. Номер пакета, если на одном шаге сценария пришло несколько пакетов.
+- Поле `offset`. Смещение помечаемого фрагмента пакета.
+- Поле `size`. Размер помечаемого фрагмента пакета.
+
+Все записи должны быть отсортированы по *icount* + *id*. Если для одного пакета нужно
+пометить несколько фрагментов, должно быть несколько записей в файле, по одной на фрагмент.
+
+Значения *icount* и *id* можно получить из файла *network.json*, где они перечислены в том же порядке,
+как и пакеты в файле *network.pcap*.
+
+Удобнее всего генерировать *json* файл для пометки с помощью скрипта, читающего содержимое пакетов
+и их метаданные из *network.json*. Ниже приведён пример такого скрипта.
+Он генерирует конфигурационный файл для пометки полезной нагрузки (без заголовков) TCP-пакетов, приходящих
+на порт 8000.
+
+Скрипт создаёт файл с названием, переданным в качестве третьего параметра.
+Этот файл должен быть размещён в каталоге сценария (где лежит *taint.cfg*) и прописан
+в качестве параметра *json* секции *[Ports]*.
+
+```python
+#!/usr/bin/python3
+import sys
+import json
+import dpkt
+
+filtered = []
+
+#########################
+
+def taint_tcp_payload(eth, meta):
+    offset = eth.__hdr_len__ + eth.ip.__hdr_len__ + len(eth.ip.opts) + eth.ip.tcp.__hdr_len__ + len(eth.ip.tcp.opts)
+    filtered.append({'icount': meta['icount'], 'id': meta['id'], 'offset': offset, 'size': len(eth.ip.tcp.data)})
+
+#########################
+
+if len(sys.argv) < 4:
+    print(f'usage: {sys.argv[0]} network.pcap network.json filtered.json')
+    exit()
+
+pcap = []
+with open(sys.argv[1], 'rb') as f:
+    pcap = dpkt.pcap.Reader(f).readpkts()
+
+jsdata = []
+with open(sys.argv[2], 'r') as file:
+    jsdata = json.load(file)
+
+if len(pcap) != len(jsdata):
+    print('Error: Len of pcap and json differ')
+    exit()
+
+# перебор всех существующих пакетов
+
+for i in range(len(pcap)):
+    js = jsdata[i]
+    ts, buf = pcap[i]
+
+    # обработка только непустых TCP-пакетов
+    eth = dpkt.ethernet.Ethernet(buf)
+    if not isinstance(eth.data, dpkt.ip.IP):
+        continue
+    ip = eth.data
+    if not isinstance(ip.data, dpkt.tcp.TCP):
+        continue
+    tcp = ip.data
+    if not tcp.data or len(tcp.data) == 0:
+        continue
+
+    # выбираем нужные пакеты и добавляем к списку отфильтрованных
+    if tcp.dport == 8000:
+        taint_tcp_payload(eth, js)
+
+# вывод конфига для Natch
+
+with open(sys.argv[3], 'w') as file:
+    file.write(json.dumps(filtered, indent=4))
+```
+
 ## <a name="taint_sockets"></a>7.3. Пометка сокетов
 
 На данный момент поддерживается только для Linux.

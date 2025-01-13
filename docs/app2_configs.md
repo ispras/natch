@@ -102,6 +102,7 @@ ip_protocol=6
 # ports are supported for tcp only yet
 dst=22;80;3500;5432
 src=22;80;3500;5432
+#json=filtered.json
 
 # Section for add tainted files
 [TaintFile]
@@ -145,6 +146,7 @@ config=func.cfg
 - Поле `ip_protocol` -- описывает тип протокола 4 уровня. Если не указано, пакеты по этому полю не фильтруются.
 - Поле `src` -- фильтр по Source Port в заголовке TCP, порты перечисляются через точку с запятой.
 - Поле `dst` -- фильтр по Destination Port в заголовке TCP, порты перечисляются через точку с запятой.
+- Поле `json` -- имя json-файла с выбранными для пометки пакетами и их фрагментами.
 
 **Секция TaintFile**
 

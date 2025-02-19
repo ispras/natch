@@ -12,8 +12,6 @@
 
 Предполагается, что *Natch* и зависимости уже установлены в системе, но если это не так, перейдите в раздел [Установка и настройка Natch](2_setup.md#setup_natch).
 
-Нижеописанные действия были проделаны на примере хостовой ОС Ubuntu 20.
-
 
 ## <a name="test_suite">4.1. Получение образа и тестовых примеров
 
@@ -74,8 +72,8 @@ redis-cli -h localhost -p 49152
 отобразит справочную информацию о версии и доступных действиях:
 
 ```
-Natch_v.3.2
-Copyright (c) 2020-2024 ISP RAS
+Natch_v.3.3
+Copyright (c) 2020-2025 ISP RAS
 
 based on QEMU emulator v.7.2.0
 Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
@@ -150,9 +148,9 @@ Do you agree to mount image? [Y/n] y
 Common options
 Enter RAM size with suffix G or M (e.g. 4G or 256M): 4G
 ```
-Далее можно выбрать режим работы эмулятора -- графический, текстовый или vnc. По умолчанию графический.
+Далее можно выбрать режим работы эмулятора -- графический, текстовый, vnc или ssh. По умолчанию графический.
 ```text
-Select mode you want to run emulator: graphic [G/g] (default), text [T/t] or vnc [V/v] g
+Select mode you want to run emulator: graphic [G/g] (default), text [T/t], vnc [V/v] or ssh [S/s]: g
 ```
 
 Если сценарий предполагает передачу помеченных данных по сети (далее мы рассматриваем в качестве основного как раз сценарий №2 --
@@ -182,7 +180,7 @@ Your pair of ports for connecting: 5555 <=> 49152
 ```text
 Modules part
 Do you want to create module config? [Y/n] y
-Select way to point directory with modules - from HOST [H/h] system (default) or GUEST [G/g] system: h
+Select way to point directory with modules: from HOST [H/h] system (default) or GUEST [G/g] system: h
 Enter path to binaries dir (or 'exit' to skip): /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins
 ```
 
@@ -347,8 +345,8 @@ One.
 Go!
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.2
-(c) 2020-2024 ISP RAS
+Natch v.3.3
+(c) 2020-2025 ISP RAS
 
 Reading Natch config file...
 [Tasks] No such file 'task.cfg'. It will be created.
@@ -357,15 +355,17 @@ Now tuning will be launched.
 
 Tuning started. Please wait a little...
 Generating config file: task.cfg
-Trying to find 8 kernel-specific parameters
-[01/08] Parameter - task, files and mm struct   : Found
-[02/08] Parameter - args                        : Found
-[03/08] Parameter - mount                       : Found
-[04/08] Parameter - f_count                     : Found
-[05/08] Parameter - exit_state                  : Found
-[06/08] Parameter - file read position          : Found
-[07/08] Parameter - socket                      : Found
-[08/08] Parameter - uid                         : Found
+Trying to find 10 kernel-specific parameters
+[01/10] Parameter - task, files and mm struct   : Found
+[02/10] Parameter - files lock                  : Found
+[03/10] Parameter - args                        : Found
+[04/10] Parameter - mount                       : Found
+[05/10] Parameter - mmap lock                   : Found
+[06/10] Parameter - f_count                     : Found
+[07/10] Parameter - exit_state                  : Found
+[08/10] Parameter - file read position          : Found
+[09/10] Parameter - socket                      : Found
+[10/10] Parameter - uid                         : Found
 
 Detected 8 of 8 kernel-specific parameters. Creating config file...
 
@@ -462,8 +462,8 @@ savevm <name>
 user@natch1:~/natch_quickstart/test1$ natch record -s sample_redis
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.2
-(c) 2020-2024 ISP RAS
+Natch v.3.3
+(c) 2020-2025 ISP RAS
 
 Reading Natch config file...
 Network logging enabled
@@ -509,8 +509,8 @@ user@natch1:~/natch_quickstar/test1/$ natch replay -s sample_redis -S ready
 Snapshot to load: ready
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.2
-(c) 2020-2024 ISP RAS
+Natch v.3.3
+(c) 2020-2025 ISP RAS
 
 Reading Natch config file...
 Network logging enabled

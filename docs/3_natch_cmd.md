@@ -4,8 +4,8 @@
 # <a name="natch_cmd"></a>3. Командный интерфейс Natch
 
 ```
-Natch_v.3.2
-Copyright (c) 2020-2024 ISP RAS
+Natch_v.3.3
+Copyright (c) 2020-2025 ISP RAS
 
 based on QEMU emulator v.7.2.0
 Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers

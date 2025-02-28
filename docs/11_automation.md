@@ -184,7 +184,7 @@ curl -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localh
 
 #### automation.sh:
 
-* В функции `introAndPrompts` в параметре `path2binaries` указывается путь к бинарным файлам. В `place4binaries` указывается `h` в случае расположения бинарных файлов на хосте, `g` -- на гостевом образе (виртуальной машине).
+* В функции `introAndPrompts` в параметре `path2binaries` указывается путь к бинарным файлам. В `place4binaries` указывается `h` в случае расположения бинарных файлов на хосте, `g` - на гостевом образе (виртуальной машине).
 * В функции `checkRequirements` отредактируйте параметры `requirements` и `pip_requirements`, указав через пробел пакеты, которые требуется проверить/установить на хост.
 * В функции `createProject` можно добавить дополнительные параметры для запуска `natch create` в параметре `natchRun`.
 * В функции `recAndReplay` измените параметр `samples`, указав через пробел названия тестовых сценариев.
@@ -347,7 +347,7 @@ Created the record script /vms/test_image/autotest/record_sample1.exp
 По завершении работы expect-скрипта активность возвращается к `automation.sh` и появляется сообщение о том, что была выполнена настройка `taint.cfg`:
 
 ```
-taint.cfg: set tainting curl.txt
+taint.cfg: set tainting sample.txt
 ```
 
 
@@ -357,8 +357,8 @@ taint.cfg: set tainting curl.txt
 Replaying the sample1 scenario...
 spawn natch replay -s sample1 -S autosave
 
-Natch_v.3.2
-(c) 2020-2024 ISP RAS
+Natch_v.3.3
+(c) 2020-2025 ISP RAS
 
 Waiting for the icount 13142751405 to be reached...
 Start icount 13142751405 has been reached
@@ -381,7 +381,7 @@ Tasks: config file is open.
 Network json log file: "/vms/test_image/autotest/output_sample1/tnetwork.json"
 Taint log storage file /vms/test_image/autotest/output_sample1/taint.log created successfully
 Binary call_stack log file /vms/test_image/autotest/output_sample1/log_cs_b.log created successfully
-Tainting file: curl.txt
+Tainting file: sample.txt
 (natch) Detected module /vms/test_image/autotest/debug_info/guest_system/lib/54ce98cf6f65914636ace1714872566n
 Detected module /vms/test_image/autotest/debug_info/guest_system/lib/126d561af479fb6bad3ace2334af40f1/libc-2n
 ./test_sample
@@ -392,8 +392,8 @@ value is even
 I am a just function
 Address for curl: www.google.com
 Detected module /vms/test_image/autotest/debug_info/guest_system/lib/7e29edbe29acf0ed4457899b90f65de5/test_sn
-File /home/user/Sample1/curl.txt is opened, handle = 0x0000000000000003
-File /home/user/Sample1/curl.txt is opened, handle = 0x0000000000000001
+File /home/user/Sample1/sample.txt is opened, handle = 0x0000000000000003
+File /home/user/Sample1/sample.txt is opened, handle = 0x0000000000000001
 Detected module /vms/test_image/autotest/debug_info/guest_system/lib/cb5e1aed69e5825344104409380618b7/libffin
 Detected module /vms/test_image/autotest/debug_info/guest_system/lib/855da59f8deb05d1edb1391aa41a5545/libdb-n
 Detected module /vms/test_image/autotest/debug_info/guest_system/lib/2e93e13b373621a7d3aaddacd6701fa8/libssln
@@ -410,9 +410,9 @@ Detected module /vms/test_image/autotest/debug_info/guest_system/lib/83c9488ccb5
 Detected module /vms/test_image/autotest/debug_info/guest_system/lib/8e12a00fd2769b5130e11cf3a773289f/libz.sn
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0File /home/user/Sample1/curl.txt is ope1
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0File /home/user/Sample1/sample.txt is ope1
 100 23962    0 23962    0     0   164k      0 --:--:-- --:--:-- --:--:--  164k
-result file: curl.txt
+result file: sample.txt
 user@debian:~/Sample1$
 ============ Statistics ============
 
@@ -531,8 +531,7 @@ The content check for the project sample2 has been finished.
 
 ```
 
-После чего запускается `snatch.py`. Он открывает браузер, открывается проект, выполняется переход на `Module Graph`
-для его активации, а затем генерируется и сохраняется PDF отчет.
+После чего запускается `snatch.py`. Он открывает браузер, открывается проект, выполняется переход на `Process Graph`, потом на `Module Graph` для их активации, а затем генерируется и сохраняется PDF отчет.
 Действия повторяются для второго проекта.
 
 ```

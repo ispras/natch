@@ -58,7 +58,7 @@
 
 4. Откроется главная страница ``Sentinel Admin Control Center``, на которой нужно перейти в раздел ``Configuration``, в нем найти раздел ``Access to Remote License Managers``.
 
-5. Убедиться, что в полях ``Allow Access to Remote Licenses`` и ``Broadcast Search to Remote Licenses`` стоят галочки.
+5. Убедиться, что в поле ``Allow Access to Remote Licenses`` стоит галочка. В поле ``Broadcast Search to Remote Licenses`` галочка стоять не должна.
 
 6. В поле ``Remote License Search Parameters`` ввести ``license.intra.ispras.ru`` и нажать кнопку ``Submit``.
 

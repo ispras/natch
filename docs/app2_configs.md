@@ -119,7 +119,7 @@ module_graph=true
 
 # Section for getting coverage
 [Coverage]
-file=coverage.cov64
+file=coverage
 taint=true
 
 # Section for collecting arguments of functions

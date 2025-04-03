@@ -357,7 +357,7 @@ taint.cfg: set tainting sample.txt
 Replaying the sample1 scenario...
 spawn natch replay -s sample1 -S autosave
 
-Natch_v.3.3
+Natch_v.3.3.1
 (c) 2020-2025 ISP RAS
 
 Waiting for the icount 13142751405 to be reached...

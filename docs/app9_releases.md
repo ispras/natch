@@ -5,6 +5,11 @@
 # <a name="app_releases"></a>Приложение 9. История релизов Natch
 
 
+[**Natch v.3.3.1**](https://nextcloud.ispras.ru/index.php/s/MXzosqi7HGDbJmT) (апрель 2025)
+
+* Исправление выявленных дефектов
+
+
 [**Natch v.3.3**](https://nextcloud.ispras.ru/index.php/s/9TcYb2GoFpaZtE7) (март 2025)
 
 * **SNatch**

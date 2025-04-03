@@ -1,6 +1,6 @@
 <img src="docs/images/logo/logo.png" width=10%>
 
-**Natch v.3.3**
+**Natch v.3.3.1**
 
 [Телеграм-канал поддержки Natch](https://t.me/ispras_natch)
 ____

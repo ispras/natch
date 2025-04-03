@@ -72,7 +72,7 @@ redis-cli -h localhost -p 49152
 отобразит справочную информацию о версии и доступных действиях:
 
 ```
-Natch_v.3.3
+Natch_v.3.3.1
 Copyright (c) 2020-2025 ISP RAS
 
 based on QEMU emulator v.7.2.0

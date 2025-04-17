@@ -176,7 +176,7 @@ make
 
 ```bash
 mkdir wget-1.21.2
-natch modules extract -i lubuntu.qcow2 -p /home/user/wget-1.21.2 -d wget-1.21.2 -e
+natch modules extract -i lubuntu.qcow2 -p /home/user/wget-1.21.2 -D wget-1.21.2 -e
 ```
 
 С версии *Natch 3.2* файлы объекта оценки могут быть извлечены автоматически на этапе конфигурирования проекта.

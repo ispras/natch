@@ -1,4 +1,4 @@
-** ITSEC 2025 **
+**ITSEC 2025**
    * [Исследование поверхности атаки, скрывающейся за публичным API](https://www.itsecexpo.ru/2025/program/api_security)
 
 **Heisenbug 2025 (весна)**

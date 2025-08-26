@@ -31,6 +31,7 @@ main commands:
     set                 change some project settings (only for project)
     modules             add/update/copy modules in the project (requires sudo)
     settings            Natch shell settings
+    check               check your system parameters
 ```
 
 Для работы с инструментом *Natch* предусмотрен пул команд, объединенных под названием `natch`.
@@ -563,4 +564,10 @@ natch modules copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_t
 архитектур -- `x86_64` и `aarch64`.
 
 
+## 3.14. natch ckeck
+
+Команда `check` предназначена для получения информации о параметрах вашей системы для оценки соответствия ее для использования *Natch*.
+
+Представлена информация об установленной оперативной памяти и рекомендованный размер для работы с *Natch*, тактовая частота процессора и
+оценка соответствия, а так же определна доступность графической среды.
 

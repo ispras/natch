@@ -566,7 +566,7 @@ natch modules copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_t
 архитектур -- `x86_64` и `aarch64`.
 
 
-## 3.14. natch ckeck
+## 3.14. natch check
 
 Команда `check` предназначена для получения информации о параметрах вашей системы для оценки соответствия ее для использования *Natch*.
 

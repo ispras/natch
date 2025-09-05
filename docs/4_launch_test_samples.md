@@ -22,7 +22,7 @@
 
 Команда для скачивания тестового комплекта с помощью *curl* выглядит так:
 ```bash
-curl -o materials.zip 'https://nextcloud.ispras.ru/index.php/s/testing_natch/download'
+curl -L -o materials.zip https://nextcloud.ispras.ru/index.php/s/testing_natch/download
 ```
 
 После скачивания обучающих материалов их следует распаковать.

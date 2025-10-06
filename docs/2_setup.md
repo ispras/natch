@@ -25,7 +25,7 @@
 В пакете представлен защищенный бинарный дистрибутив, требующий наличия аппаратного ключа (персональный "черный" ключ,
 сетевой "красный" ключ или иные версии ключа) с лицензией c идентификатором "6".
 
-[Дистрибутив Natch v.3.3](https://nextcloud.ispras.ru/index.php/s/9TcYb2GoFpaZtE7)
+[Дистрибутив Natch v.3.4](https://nextcloud.ispras.ru/index.php/s/Y9fSdo7LJ5SRJHf)
 
 [Предыдущие релизы](app9_releases.md#app_releases)
 

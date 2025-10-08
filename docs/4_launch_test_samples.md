@@ -72,7 +72,7 @@ redis-cli -h localhost -p 49152
 отобразит справочную информацию о версии и доступных действиях:
 
 ```
-Natch_v.3.3.1
+Natch_v.3.4
 Copyright (c) 2020-2025 ISP RAS
 
 based on QEMU emulator v.7.2.0
@@ -99,6 +99,7 @@ main commands:
     set                 change some project settings (only for project)
     modules             add/update/copy modules in the project (requires sudo)
     settings            Natch shell settings
+    check               check your system parameters
 ```
 
 Подробно [командный интерфейс Natch](3_natch_cmd.md#natch_cmd) описан в соответствуюшем разделе.
@@ -462,7 +463,7 @@ savevm <name>
 user@natch1:~/natch_quickstart/test1$ natch record -s sample_redis
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.3
+Natch v.3.4
 (c) 2020-2025 ISP RAS
 
 Reading Natch config file...
@@ -509,7 +510,7 @@ user@natch1:~/natch_quickstar/test1/$ natch replay -s sample_redis -S ready
 Snapshot to load: ready
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.3
+Natch v.3.4
 (c) 2020-2025 ISP RAS
 
 Reading Natch config file...

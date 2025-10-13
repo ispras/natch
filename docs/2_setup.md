@@ -57,13 +57,13 @@ sudo dpkg -i natch_x.x_ubuntu24.deb
 При возникновении ошибки *dpkg: depencency problems prevent configuration of natch* выполните команду:
 
 ```
-sudo apt --fix-broken install -y.
+sudo apt install -f.
 ```
 
 Для обновления *Natch* предварительно требуется удаление установленной версии. Для удаления *Natch* из системы используйте команду:
 
 ```
-sudo apt-get --yes --purge remove natch
+sudo apt-get --purge remove natch
 ```
 
 **Установка для Alt**
@@ -80,7 +80,7 @@ sudo apt-get install natch_x.x_alt11.rpm
 ```
 Для обновления *Natch* предварительно требуется удаление установленной версии. Для удаления *Natch* из системы используйте команду:
 ```
-sudo apt-get --yes --purge remove natch
+sudo apt-get --purge remove natch
 ```
 
 **Установка для РЕД ОС**
@@ -170,12 +170,12 @@ sudo dpkg -i snatch_x.x_ubuntu24.deb
 При возникновении ошибки *dpkg: depencency problems prevent configuration of natch* выполните команду:
 
 ```
-sudo apt --fix-broken install -y.
+sudo apt install -f.
 ```
 
 Для обновления *SNatch* предварительно требуется удаление установленной версии. Для удаления *SNatch* из системы используйте команду:
 ```
-sudo apt-get --yes --purge remove snatch
+sudo apt-get --purge remove snatch
 ```
 
 **Установка для Alt**
@@ -193,7 +193,7 @@ sudo apt-get install snatch_x.x_alt11.rpm
 
 Для обновления *SNatch* предварительно требуется удаление установленной версии. Для удаления *SNatch* из системы используйте команду:
 ```
-sudo apt-get --yes --purge remove snatch
+sudo apt-get --purge remove snatch
 ```
 
 **Установка для РЕД ОС**

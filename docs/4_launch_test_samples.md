@@ -346,7 +346,7 @@ One.
 Go!
 Natch monitor - type 'help' for more information
 (natch)
-Natch v.3.3
+Natch v.3.4
 (c) 2020-2025 ISP RAS
 
 Reading Natch config file...

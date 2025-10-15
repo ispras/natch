@@ -135,20 +135,19 @@ curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -F "project_id=b9d7d69a-87
 
 После обновления *Natch* ранее записанные сценарии могут не работать. Перезапись тестовых сценариев может быть достаточно трудоёмка.
 Здесь на помощь приходит автоматизация. Также она будет полезна при необходимости встраивания *Natch* в CI/CD.
-Средствами `bash` и `expect` возможно автоматизировать создание проекта, запись сценария и его последующее воспроизведение,
-а также создание проекта в *SNatch* и проверку его содержания. Затем при помощи `Selenium` *SNatch* запускается в браузере и генерируется PDF отчет.
+Средствами `bash` и `expect` возможно автоматизировать создание проекта, запись сценария и его последующее воспроизведение, а с помощью `python` - создание проекта в *SNatch* и проверку его содержания. Затем при помощи `Selenium` *SNatch* запускается в браузере и генерируется PDF отчет.
 
 Автоматизация записи сценария возможна при использовании консольных действий на Linux (через telnet) или Windows 10-11 (при использовании ssh).
 
 **Важно!** Перед использованием автоматизации убедитесь в том, что
 
 * *Natch* установлен и установка зависимостей была выполнена.
-* *SNatch*, соответствующий установленной версии *Natch*, установлен, и `snatch_setup.sh` уже выполнялся ранее.
+* *SNatch*, соответствующий установленной версии *Natch*, установлен. Для Alt и РЕД ОС также должно быть выполнено конфигурирование и первый запуск.
 
 ### 11.2.1. Реализация автоматизации
 
 В архиве с тестовым примером (см. раздел [Получение образа и тестовых примеров](4_launch_test_samples.md#test_suite) находится скрипт `automation.sh`,
-шаблоны записи сценариев для тестовых примеров (`run_record_sample1.exp` и `run_record_sample2.exp`), а также Python-скрипт `snatch.py` и вспомогательный скрипт `wait4release.sh`.
+шаблоны записи сценариев для тестовых примеров (`run_record_sample1.exp` и `run_record_sample2.exp`), а также Python-скрипты в каталоге `snatch` и вспомогательный скрипт `wait4release.sh`.
 Необходимо сохранить все файлы в одном каталоге и запустить скрипт `automation.sh`.
 
 Скрипт выполняет следующие действия:
@@ -172,10 +171,9 @@ curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -F "project_id=b9d7d69a-87
 Затем:
 
 * Выполняется запуск предварительно установленного *SNatch*.
+* *SNatch* открывается в браузере, выполняется создание учетной записи, а затем вход с использованием этой учетной записи.
 * Средствами SNatch CI API (см. раздел [SNatch CI/CD](11_automation.md#snatch_cicd)) сгенерированные архивы загружаются в базу данных *SNatch* (создаются проекты).
-В случае ошибки блокировки базы данных *SNatch* (возможно при высокой нагрузке), попытки создания продолжаются до тех пор, пока не происходит ее разблокировка.
-* После загрузки проверяется содержимое проектов (Call Graph, Interpreter Call Graph, Resources, Process Tree, Files, Process Info, Process Timeline), и выводится статистика,
-содержащая размер в байтах каждого из полученного вывода JSON.
+* После загрузки проверяются различные аналитики содержимого проектов: Call Graph, Interpreter Call Graph, Resources, Process Tree, Files, Process Info, Process Timeline. Также выводится краткая информация, содержащая размер в байтах каждого из полученного вывода JSON и начало блока данных.
 * *SNatch* открывается в браузере, где поочередно открывается каждый проект, выполняется переход на Module Graph для активации этого графа в отчете,
 а затем генерируется сам PDF отчет, который в конце сохраняется в каталоге ~/Downloads. Этими действиями управляет `snatch.py` на основе *Selenium*.
 
@@ -207,6 +205,12 @@ curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -F "project_id=b9d7d69a-87
 * Для пробрасывания порта из хоста в образ используйте `hostfwd` параметр у `-netdev` строки запуска *Natch* (см. пример в `run_record_sample2.exp`).
 * Когда сценарий записан, и ваш скрипт функционирует корректно, вы можете отключить вывод из виртуальной машины. Для этого нужно раскомментировать строку `#log_user 0`, которая добавляется в создаваемый скрипт записи сценария в функции `preRecordConfiguration` скрипта `automation.sh`.
 
+#### snatch/snatch.py:
+
+* Отредактировать название и путь к файлу лога можно в строке `logfile =`
+* По умолчанию, тесты запускаются в Firefox. Можно использовать Chrome, для этого нужно заменить значение FF на CHROME в строке `useBrowser =`
+
+
 ### 11.2.3. Пример автоматической проверки
 
 Выполните скрипт `automation.sh`. При этом появляется описание действий, выполняемых скриптом. Также определяется образ qcow2, который расположен в каталоге со скриптом:
@@ -224,22 +228,18 @@ It automatically performs the following:
  ∟ Configuring the tainting (taint.cfg).
  ∟ Replays the recorded scenario (natch replay).
  ∟ Extracts coverage (natch extract coverage).
-5. The generated archives are added to Snatch DB using Snatch CI API.
-6. The content of the projects is tested by the available options of Snatch CI API.
-7. The PDF reports for the projects are generated by Snatch via browser and saved to ~/Downloads
+5. Opens Snatch to create an account and try login.
+6. The generated archives are added to Snatch DB using Snatch CI API.
+7. The content of the projects is tested by the available options of Snatch CI API.
+8. The PDF reports for the projects are generated by Snatch via browser and saved to Downloads directory
 
 Image name:     test_image_debian
 QCOW2 image:    /vms/test_image/test_image_debian.qcow2
 Project dir:    /vms/test_image/autotest
 Modules dir:    /home/user (on guest)
 
-The script must know the Snatch directory which contains snatch_*.sh.
-Warning! Installation (snatch_setup.sh) must be executed before running the further actions.
-Enter path to Snatch directory: /
 ```
-
-На данном этапе требуется ввести полный путь к директории *SNatch*.
-По нажатии Enter появляется запрос пароля суперпользователя. Он будет сохранен в файл sudo.pwd в текущую директорию, и в дальнейшем запрашиваться не будет. После ввода пароля следует установка требующихся компонент.
+По запросу требуется ввести пароль суперпользователя. После этого начнется поиск и установка требующихся пакетов. Пароль сохраняется в файл sudo.pwd в текущую директорию, и в дальнейшем запрашиваться не будет. После ввода пароля следует установка требующихся компонент.
 Затем запускается создание проекта командой `natch create`:
 
 ```
@@ -358,7 +358,7 @@ taint.cfg: set tainting sample.txt
 Replaying the sample1 scenario...
 spawn natch replay -s sample1 -S autosave
 
-Natch_v.3.3.1
+Natch_v.3.4
 (c) 2020-2025 ISP RAS
 
 Waiting for the icount 13142751405 to be reached...
@@ -495,44 +495,42 @@ Archive autotest+sample1.tar.zst updated!
 По завершении процедуры для обоих примеров появляется сообщение:
 
 ```
-These are the archives we will test in Snatch:
-/vms/test_image/autotest/autotest+sample1.tar.zst
-/vms/test_image/autotest/autotest+sample2.tar.zst
-```
-
-
-Затем запускается *SNatch*, сгенерированные архивы добавляются в него и проходят проверку:
-
-```
 Snatch started.
-Creating a project sample1
-The project sample1 has been created.
-Checking content...
-   ∟ callgraph size: 159031 bytes
-   ∟ interp_callgraph size: 0 bytes
-   ∟ resources size: 20390 bytes
-   ∟ process_tree size: 3129 bytes
-   ∟ files size: 10176 bytes
-   ∟ process_info size: 7789 bytes
-   ∟ process_timeline size: 11051 bytes
-   ∟ attack_surface size: 54750 bytes
-The content check for the project sample1 has been finished.
-Creating a project sample2
-The project sample2 has been created.
-Checking content...
-   ∟ callgraph size: 191650 bytes
-   ∟ interp_callgraph size: 0 bytes
-   ∟ resources size: 2707 bytes
-   ∟ process_tree size: 1446 bytes
-   ∟ files size: 0 bytes
-   ∟ process_info size: 3352 bytes
-   ∟ process_timeline size: 4868 bytes
-   ∟ attack_surface size: 74223 bytes
-The content check for the project sample2 has been finished.
+```
+
+После чего запускается `snatch.py`. Он открывает *SNatch* в браузере, выполняется регистрация учетной записи с произвольным именем пользователя и паролем. Учетные данные выводятся в консоль и записываются в файл `snatch.creds`, в лог и отчет. Браузер закрывается. 
+
+Сгенерированные архивы загружаются в Snatch и проходят проверку:
+
+```
+INFO [upload:30] Uploading /vms/_test/autotest/autotest+sample1.tar.zst to Snatch
+INFO [upload:53] Upload OK, project_id: 07c497e0-4c2c-472e-8d34-2fbab688ad52
+INFO [upload:89] Obtained the callgraph data:
+Length: 229950 bytes
+Data: [{"pname": "swapper/0", "proc": 1, "cg_array": [{"0x2c95f4": {"children": [{"0x2c91c0": {"children":...
+WARNING [upload:85] interp_callgraph data is blank
+INFO [upload:89] Obtained the resources data:
+Length: 17165 bytes
+Data: [{"resources": {"modules": [{"name": "/boot/vmlinuz-5.10.0-17-amd64", "taint": False, "symbolless": ...
+INFO [upload:89] Obtained the process_tree data:
+Length: 2699 bytes
+Data: {"name": ".", "children": [{"proc": 0, "name": "unknown", "children": [], "uids": [], "pid": 0, "arg...
+INFO [upload:89] Obtained the files data:
+Length: 10002 bytes
+Data: [{"name": "/dev/ttyS0", "tainted": 1, "list": [{"proc": 15, "name": "curl", "uids": [{"uid": 1000, "...
+INFO [upload:89] Obtained the process_info data:
+Length: 6062 bytes
+Data: {"processes": {"0": {"proc": 0, "name": "unknown", "parents": "", "cont_name": "", "root": 0, "taint...
+INFO [upload:89] Obtained the process_timeline data:
+Length: 8711 bytes
+Data: {"0": [{"name": "unknown", "start": 0, "end": 1, "root": 0, "tainted": 0, "info": {"name": "unknown"...
+INFO [upload:89] Obtained the attack_surface data:
+Length: 9169 bytes
+Data: [{"files": [], "name": "test_sample", "proc": 7, "tag": "", "root": 0, "tainted": 1, "binaries": [{"...
 
 ```
 
-После чего запускается `snatch.py`. Он открывает браузер, открывается проект, выполняется переход на `Process Graph`, потом на `Module Graph` для их активации, а затем генерируется и сохраняется PDF отчет.
+Снова запускается *SNatch* в браузере, открывается первый проект, выполняется переход на `Process Graph`, потом на `Module Graph` для их активации, а затем генерируется и сохраняется PDF отчет.
 Действия повторяются для второго проекта.
 
 ```
@@ -543,5 +541,4 @@ Report /home/user/Downloads/report-sample1-16-10-2024.pdf (364.14 KB) has been g
 
 В результате в каталоге Downloads мы получаем PDF отчеты для двух тестовых приложений.
 
-Следует обратить особое внимание, что автоматизация намеренно не очищает базу данных уже загруженных ранее проектов в *SNatch*,
-так что, если вы ранее уже загружали свои проекты в него, они не пропадут. Более того, для них также будут сгенерированы отчеты.
+Следует обратить особое внимание, что автоматизация намеренно не очищает базу данных уже загруженных ранее проектов в *SNatch*, так что, если вы ранее уже загружали свои проекты в него, они не пропадут. Более того, для них также будут сгенерированы отчеты.

@@ -57,7 +57,7 @@ sudo dpkg -i natch_x.x_ubuntu24.deb
 При возникновении ошибки *dpkg: depencency problems prevent configuration of natch* выполните команду:
 
 ```
-sudo apt install -f.
+sudo apt install -f
 ```
 
 Для обновления *Natch* предварительно требуется удаление установленной версии. Для удаления *Natch* из системы используйте команду:
@@ -170,7 +170,7 @@ sudo dpkg -i snatch_x.x_ubuntu24.deb
 При возникновении ошибки *dpkg: depencency problems prevent configuration of natch* выполните команду:
 
 ```
-sudo apt install -f.
+sudo apt install -f
 ```
 
 Для обновления *SNatch* предварительно требуется удаление установленной версии. Для удаления *SNatch* из системы используйте команду:

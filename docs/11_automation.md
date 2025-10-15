@@ -9,16 +9,16 @@
 
 ## <a name="snatch_cicd">11.1. SNatch CI/CD
 
-API реализовано бэкэндом SNatch, поэтому чтобы им пользоваться, необходимо запустить скрипт `snatch_run.py`, как и при браузерном использовании.
-При установке *SNatch* с помощью скрипта `snatch_setup.py` на последнем этапе создаётся пользователь БД ci_bot, для которого в консоль выводится токен (также сохраняется в файл в корне `ci_token.txt`). Это отдельный пользователь для выполнения CI операций, который имеет доступ только к своим проектам. Для выполнения авторизации при запросе требуется использовать ключ `-H "Authorization: Token <YOUR_TOKEN_GOES_HERE>"`. Если возникает необходимость в авторизации пользователем созданным из GUI, то можно использовать ключ `-u "<login>:<password>"`
+API реализовано бэкэндом SNatch, поэтому чтобы им пользоваться, необходимо запустить скрипт `/usr/bin/snatch/snatch_start.sh`, как и при браузерном использовании.
+Для выполнения авторизации при запросе требуется использовать ключ `-u "<login>:<password>"`, используя учетные данные созданного в веб-браузере пользователя.
 
 ### 11.1.1. ci_create_project
 
-- POST запрос ci_create_project для создания проекта (аналогично проекту в браузерной версии, впоследствии может открываться и из браузера).Сопровождается обязательным параметром file, и необязательными project_name и async.
+- POST запрос ci_create_project для создания проекта (аналогично проекту в браузерной версии, впоследствии может открываться и из браузера). Сопровождается обязательным параметром file, и необязательными project_name и async.
 
 Пример запроса:
 ```bash
-curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -F "project_name=test_proj_name" -F "async=true" -F "file=@/home/snatch_traces/example.tar.zst" -X POST http://localhost:8000/ci_create_project/
+curl -u "<login>:<password>" -F "project_name=test_proj_name" -F "async=true" -F "file=@/home/snatch_traces/example.tar.zst" -X POST http://localhost:8000/ci_create_project/
 ```
 Параметры:
 
@@ -42,7 +42,7 @@ curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -F "project_name=test_proj
 
 Пример запроса:
 ```bash
-curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -X GET -G http://localhost:8000/ci_get_status/ -d task_id=c9596e03-e007-4bac-9d81-837094d54e2b
+curl -u "<login>:<password>" -X GET -G http://localhost:8000/ci_get_status/ -d task_id=c9596e03-e007-4bac-9d81-837094d54e2b
 ```
 Параметры:
 
@@ -64,7 +64,7 @@ curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -X GET -G http://localhost
 
 Пример запроса:
 ```bash
-curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -X GET -G http://localhost:8000/ci_get_proj_list/
+curl -u "<login>:<password>" -X GET -G http://localhost:8000/ci_get_proj_list/
 ```
 
 Пример ответа:
@@ -83,7 +83,7 @@ curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -X GET -G http://localhost
 
 Пример запроса:
 ```bash
-curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -X GET -G http://localhost:8000/ci_get_content/ -d project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a -d type=callgraph
+curl -u "<login>:<password>" -X GET -G http://localhost:8000/ci_get_content/ -d project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a -d type=callgraph
 ```
 Параметры:
 
@@ -115,7 +115,7 @@ curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -X GET -G http://localhost
 
 Пример запроса:
 ```bash
-curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localhost:8000/ci_delete_project/
+curl -u "<login>:<password>" -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"  -X POST http://localhost:8000/ci_delete_project/
 ```
 Параметры:
 

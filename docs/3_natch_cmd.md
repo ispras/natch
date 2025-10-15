@@ -31,6 +31,7 @@ main commands:
     set                 change some project settings (only for project)
     modules             add/update/copy modules in the project (requires sudo)
     settings            Natch shell settings
+    check               check your system parameters
 ```
 
 Для работы с инструментом *Natch* предусмотрен пул команд, объединенных под названием `natch`.
@@ -49,6 +50,7 @@ main commands:
 - ``set``
 - ``modules``
 - ``settings``
+- ``check``
 
 Представленные команды могут иметь параметры или субкоманды, поэтому для получения информации
 следует использовать параметр `-h/--help`, например:
@@ -96,6 +98,7 @@ Natch configs editing:
 - `-k/--kernel` -- путь до ядра
 - `-o/--os_name` -- выбор гостевой ОС (Linux, FreeBSD, Win7, Win8, Win8.1, Win10)
 - `-c/--config` -- путь до файла конфигурации для автоматического создания проекта
+- `--old` -- текстовая версия мастера создания проекта
 - `-h/--help` -- справка по команде
 
 Пример:
@@ -178,6 +181,7 @@ natch replay --start login --end get_info
 - `--mode` -- режим работы эмулятора (`graphic`, `text`)
 - `-d/--debug` -- отладочный вывод командной строки на экран и в файл `debug_qemu_cmdline.ini`
 - `--args` -- произвольные аргументы, указываются в кавычках
+- `--tcg` -- запуск эмулятора без *Natch*-плагинов в режиме бинарной трансляции
 - `-h/--help` -- справка по команде
 
 Примеры:
@@ -562,4 +566,10 @@ natch modules copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_t
 архитектур -- `x86_64` и `aarch64`.
 
 
+## 3.14. natch check
+
+Команда `check` предназначена для получения информации о параметрах вашей системы для оценки соответствия ее для использования *Natch*.
+
+Представлена информация об установленной оперативной памяти и рекомендованный размер для работы с *Natch*, тактовая частота процессора и
+оценка соответствия.
 

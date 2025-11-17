@@ -287,3 +287,16 @@ docker run --privileged -v /home/user/natch_quickstart/:/mnt/ --network=host -it
 natch create test_project /mnt/test_image_debian.qcow2 -a x86_64
 ```
 
+Если планируется длительная работа с *Natch*, вместо использования опции `-a x86_64` можно установить архитектуру по умолчанию:
+```bash
+natch settings arch
+```
+
+В текстовом режиме работы эмулятора, можно подключиться к нему снаружи, например, так:
+```bash
+nc -N 0.0.0.0 7799
+```
+
+
+
+

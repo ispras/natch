@@ -234,23 +234,24 @@ VNC (например, с помощью Remote Desktop Viewer) и оттуда 
 режиме. В предыдущем разделе описано, как можно её настроить.
 
 Для создания контейнера нужен файл `Dockerfile` с представленным ниже содержимым.
-В этом же каталоге должен находиться пакет *Natch* для Ubuntu 20.04 --
-`natch_X.X_ubuntu2004.deb`.
+В этом же каталоге должен находиться пакет *Natch* для Ubuntu 24.04 --
+`natch_X.X.ym|xe_ubuntu2404.deb`.
 ```bash
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
-#Set Timezone or get hang during the docker build...
+# Set Timezone or get hang during the docker build...
 ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt update
-RUN apt install -y vim git cmake make clang zlib1g-dev unzip curl python3-pip
-RUN apt install -y mc sudo
-RUN apt install -y qemu-system libguestfs-tools zstd
-RUN apt install -y netcat
-RUN apt install -y nano
-RUN apt install -y unzip
-RUN apt install -y libsdl2-2.0-0
+RUN apt install -y sudo
+
+# Dev stuff
+RUN apt install -y mc nano vim git cmake make clang zlib1g-dev unzip curl python3-pip
+RUN apt install -y libguestfs-tools libsdl2-2.0-0
+
+# Avoid "supermin: failed to find a suitable kernel (host_cpu=x86_64)"
+RUN apt install -y linux-image-generic
 
 ARG cuidname=user
 ARG cgidname=user
@@ -259,32 +260,43 @@ RUN groupadd $cgidname && useradd -m -g $cgidname -G sudo -p $cuidname -s /usr/b
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 ENV PATH="${PATH}:/bin/natch-bin/bin"
 
-COPY natch_Ubuntu20_amd64.deb /home/user
+COPY natch_*.deb /tmp
 
-RUN apt install /home/user/natch_X.X_ubuntu2004.deb
-
-USER $cuidname
-RUN /bin/natch-bin/bin/natch_scripts/setup_requirements.sh
+RUN apt-get install -y /tmp/natch_*.deb || \
+    apt-get install -f -y && \
+    rm /tmp/natch_*.deb
 ```
 
 Создадим образ контейнера на основе `Dockerfile`:
 ```bash
-sudo docker build -t docker /home/user/natch_quickstart
+docker build -t natch /home/user/natch_quickstart
 ```
 
 Последний параметр этой командой строки -- это каталог, где лежит `Dockerfile`.
 
 Теперь запустим созданный контейнер:
 ```bash
-docker run -v /home/user/natch_quickstart/:/mnt/ --network=host -it -u user docker
+docker run --privileged -v /home/user/natch_quickstart/:/mnt/ --network=host -it -u user natch
 ```
 
 В папке `/home/user/natch_quickstart/` должен быть нужный для работы образ и объект оценки,
 потому что она будет подмонтирована в каталог `/mnt` внутри контейнера.
 
-Теперь можно запускать *Natch*:
+Теперь можно создать каталог для проекта, перейти в него и запустить *Natch*:
 ```bash
-cd /mnt
-natch create project_name test_image_debian.qcow2
+natch create test_project /mnt/test_image_debian.qcow2 -a x86_64
 ```
+
+Если планируется длительная работа с *Natch*, вместо использования опции `-a x86_64` можно установить архитектуру по умолчанию:
+```bash
+natch settings arch
+```
+
+В текстовом режиме работы эмулятора, можно подключиться к нему снаружи, например, так:
+```bash
+nc -N 0.0.0.0 7799
+```
+
+
+
 

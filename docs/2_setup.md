@@ -141,6 +141,13 @@ Remember the PostgreSQL credentials:
  Password: zc03c03OwmEN80dHY
 ==========================================
 ```
+
+Затем будет выведено сообщение про созданного суперпользователя для выполнения CI API запросов:
+```
+Please, note that the this token is used to perform CI API requests (it is also saved to /usr/bin/snatch/ci_token.txt).
+5e298a9ef020bef92dbe0c6a8cf3cd63ea621f84
+```
+
 [Конфигурирование БД на Alt и РЕД ОС](2_setup.md#snatch_configure)
 
 
@@ -236,6 +243,12 @@ Remember the PostgreSQL credentials:
  Username: snatch_user
  Password: zc03c03OwmEN80dHY
 ==========================================
+```
+
+Затем будет выведено сообщение про созданного суперпользователя для выполнения CI API запросов:
+```
+Please, note that the this token is used to perform CI API requests (it is also saved to /usr/bin/snatch/ci_token.txt).
+5e298a9ef020bef92dbe0c6a8cf3cd63ea621f84
 ```
 
 ### <a name="snatch_start"></a>**Запуск SNatch**

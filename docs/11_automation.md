@@ -10,7 +10,9 @@
 ## <a name="snatch_cicd">11.1. SNatch CI/CD
 
 API реализовано бэкэндом SNatch, поэтому чтобы им пользоваться, необходимо запустить скрипт `/usr/bin/snatch/snatch_start.sh`, как и при браузерном использовании.
-Для выполнения авторизации при запросе требуется использовать ключ `-u "<login>:<password>"`, используя учетные данные созданного в веб-браузере пользователя.
+Для выполнения авторизации при запросе возможно использовать один из двух вариантов:
+1. Базовая аутентификация, при которой требуется использовать ключ `-u "<login>:<password>"`, используя учетные данные созданного в веб-браузере пользователя.
+2. Bearer-токен. При установке *SNatch* на последнем этапе создаётся пользователь БД ci_bot, для которого в консоль выводится токен (он также сохраняется в файл `/usr/bin/snatch/ci_token.txt`). Это отдельный пользователь для выполнения CI операций, который имеет доступ только к своим проектам. Для выполнения авторизации при запросе требуется использовать ключ `-H "Authorization: Token <YOUR_TOKEN_GOES_HERE>"`.
 
 ### 11.1.1. ci_create_project
 
@@ -20,6 +22,11 @@ API реализовано бэкэндом SNatch, поэтому чтобы и
 ```bash
 curl -u "<login>:<password>" -F "project_name=test_proj_name" -F "async=true" -F "file=@/home/snatch_traces/example.tar.zst" -X POST http://localhost:8000/ci_create_project/
 ```
+или
+```bash
+curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -F "project_name=test_proj_name" -F "async=true" -F "file=@/home/snatch_traces/example.tar.zst" -X POST http://localhost:8000/ci_create_project/
+```
+
 Параметры:
 
 - file —  путь к архиву, полученному от Natch

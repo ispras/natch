@@ -116,7 +116,45 @@ curl -u "<login>:<password>" -X GET -G http://localhost:8000/ci_get_content/ -d 
 - status — статус запроса, в случае ошибки всегда будет принимать значение "400".
 - msg — сопроводительное сообщение об ошибке.
 
-### 11.1.5. ci_delete_project
+### 11.1.5. ci_get_user
+
+- GET запрос ci_get_user для получения списка пользователей.
+
+Пример запроса:
+```bash
+curl -X GET -G http://localhost:8000/ci_get_users/ -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>"
+```
+
+Пример ответа:
+```json
+[{"id": 1, "username": "ci_bot"}, {"id": 2, "username": "test"}, {"id": 3, "username": "alexey"}]
+```
+
+### 11.1.6. ci_user_reset_password
+
+- POST запрос ci_user_reset_password для сброса пароля пользователю. При этом пользователю можно установить как желаемый пароль, так и использовать сгенерированный произвольный пароль.
+
+Пример запроса для установки желаемого пароля:
+```bash
+curl -X POST http://localhost:8000/ci_user_reset_password/ -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -H "Content-Type: application/json" -d '{ "user_id": 3, "password": "NewSecurePass123" }'
+```
+
+Пример ответа:
+```json
+{"status":"ok","user_id":3,"new_password":"NewSecurePass123"}
+```
+
+Пример запроса для установки произвольного пароля:
+```bash
+curl -X POST http://localhost:8000/ci_user_reset_password/ -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -H "Content-Type: application/json" -d '{ "user_id": 3, "password": "" }'
+```
+
+Пример ответа:
+```json
+{"status":"ok","user_id":3,"new_password":"5FIoIZnabuHg"}
+```
+
+### 11.1.7. ci_delete_project
 
 - POST запрос ci_delete_project для удаления проекта. Сопровождается необязательным параметром project_id, содержащим id для удаляемого проекта. Если значение id = 0 или не указано, то удалятся все проекты.
 

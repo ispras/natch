@@ -64,7 +64,7 @@
 - `-a/--arch` -- выбор архитектуры (x86_64, aarch64)
 - `-k/--kernel` -- путь к ядру (опция kernel эмулятора QEMU, если ядро ОС не загружается из образа системы)
 - `-o/--os-name` -- название операционной системы, для которой будет использован инструмент
-  (по умолчанию Linux, предоставляется выбор из следующих вариантов: Linux, FreeBSD, Win7, Win8, Win8.1, Win10)
+  (по умолчанию Linux, предоставляется выбор из следующих вариантов: Linux, FreeBSD, Win8, Win8.1, Win10)
 - `-c/--config` -- путь к конфигурационному файлу, с помощью которого можно автоматически
   создать проект с заданными характеристиками (подробнее в разделе
   [Создание проекта с помощью конфигурационного файла](6_create_project.md#natch_save_settings))
@@ -74,7 +74,7 @@
 
 Описание команды и ее параметров представлено ниже:
 ```text
-usage: Natch create [-h] [-k KERNEL] [-o {Linux,FreeBSD,Win7,Win8,Win8.1,Win10}] [-c CONFIG] workdir image
+usage: Natch create [-h] [-k KERNEL] [-o {Linux,FreeBSD,Win8,Win8.1,Win10}] [-c CONFIG] workdir image
 
 positional arguments:
   workdir               path to project workdir
@@ -86,7 +86,7 @@ optional arguments:
                         emulated architecture
   -k KERNEL, --kernel KERNEL
                         path to kernel
-  -o {Linux,FreeBSD,Win7,Win8,Win8.1,Win10}, --os_name {Linux,FreeBSD,Win7,Win8,Win8.1,Win10}
+  -o {Linux,FreeBSD,Win8,Win8.1,Win10}, --os_name {Linux,FreeBSD,Win7,Win8,Win8.1,Win10}
                         supporting guest OS
   -c CONFIG, --config CONFIG
                         path to project settings

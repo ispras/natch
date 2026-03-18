@@ -271,7 +271,6 @@ Please, note that the this token is used to perform CI API requests (it is also 
 ```
 SNatch is up and running.
 ```
-На РЕД ОС может также понадобиться запуск скрипта */usr/bin/snatch/snatch_start.sh*, если вы увидите сообщение об этом при попытке загрузки архива.
 
 ___
 

@@ -136,26 +136,28 @@ ___
 
 * установка пакета в соответствии с хостовой ОС, включает установку зависимых пакетов
 
-После установки *SNatch* автоматически выполняется проверка свободного дискового пространства в директории $HOME/snatch/media/, которая используется для хранения проектных данных. Вы увидите сообщение с результатами проверки:
+После установки *SNatch* автоматически выполняется проверка свободного дискового пространства в директории $HOME/snatch/media/, которая используется по умолчанию для хранения проектных данных. Вы увидите сообщение с результатами проверки:
 ```
-62G available in /home/user/snatch/media/ where SNatch stores an unpacked data for analysis. It can be okay for very short scenarios, but for the longer scenarios the hundreds of GB could be required.
+62Гб доступно в /home/$USER/snatch/media/, где SNatch хранит распакованные данные проектов для анализа.
+Этого достаточно для обычных сценариев, однако для объемных сценариев могут потребоваться сотни гигабайт свободного места.
+Вы можете изменить заданный по умолчанию каталог с помощью скрипта /usr/bin/snatch/changedatadir.sh.
 ```
 
 * конфигурирование базы данных (встроена в установку пакета на всех ОС кроме Alt и РЕД ОС).
 
 После конфигурирования в терминале будут выведены учетные данные для подключения к БД (произвольный пароль генерируется автоматически):
 ```
-Remember the PostgreSQL credentials:
+Учётные данные для прямого доступа к БД PostgreSQL:
 ==========================================
- DB name: snatch_db
- Username: snatch_user
- Password: zc03c03OwmEN80dHY
+ Имя БД: snatch_db
+ Пользователь: snatch_user
+ Пароль: zc03c03OwmEN80dHY
 ==========================================
 ```
 
 Затем будет выведено сообщение про созданного суперпользователя для выполнения CI API запросов:
 ```
-Please, note that the this token is used to perform CI API requests (it is also saved to /usr/bin/snatch/ci_token.txt).
+Внимание! Этот токен может быть использован для CI API запросов (он также сохранён в /usr/bin/snatch/ci_token.txt).
 5e298a9ef020bef92dbe0c6a8cf3cd63ea621f84
 ```
 
@@ -239,7 +241,7 @@ sudo dnf remove snatch
 
 После установки вы увидите сообщение:
 ```
-To finish SNatch setup run /usr/bin/snatch/configure.sh
+Для завершения настройки SNatch запустите /usr/bin/snatch/configure.sh
 ```
 
 Запустите скрипт *configure.sh*. 
@@ -248,17 +250,17 @@ To finish SNatch setup run /usr/bin/snatch/configure.sh
 
 На всех ОС будет выполнено создание и конфигурирование БД, после чего появится сообщение, содержащее учетные данные для подключения к БД (произвольный пароль генерируется автоматически) и команду для запуска Snatch:
 ```
-Remember the PostgreSQL credentials:
+Учётные данные для прямого доступа к БД PostgreSQL:
 ==========================================
- DB name: snatch_db
- Username: snatch_user
- Password: zc03c03OwmEN80dHY
+ Имя БД: snatch_db
+ Пользователь: snatch_user
+ Пароль: zc03c03OwmEN80dHY
 ==========================================
 ```
 
 Затем будет выведено сообщение про созданного суперпользователя для выполнения CI API запросов:
 ```
-Please, note that the this token is used to perform CI API requests (it is also saved to /usr/bin/snatch/ci_token.txt).
+Внимание! Этот токен может быть использован для CI API запросов (он также сохранён в /usr/bin/snatch/ci_token.txt).
 5e298a9ef020bef92dbe0c6a8cf3cd63ea621f84
 ```
 
@@ -274,7 +276,7 @@ Please, note that the this token is used to perform CI API requests (it is also 
 
 Для первого запуска SNatch на Alt и РЕД ОС используйте скрипт */usr/bin/snatch/run.sh*. Это потребует прав суперпользователя для запуска зависимых служб. По завершении вы увидите сообщение:
 ```
-SNatch is up and running.
+SNatch запущен. Откройте http://localhost:8000 в вашем браузере.
 ```
 
 ___

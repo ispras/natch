@@ -1,0 +1,5 @@
+# Documentation build dependencies
+
+sphinx
+myst-parser
+sphinx-rtd-theme

@@ -1,17 +1,28 @@
-# Sphinx configuration
+import sys
+from pathlib import Path
 
 project = "Natch"
 copyright = "ISPRAS"
 author = "ISPRAS"
 
+# sys.path.insert(0, str(Path(__file__).parent / "_ext"))
+
 extensions = [
-"myst_parser",
+    "myst_parser",
+#     # "html_anchors",
 ]
+
+myst_enable_extensions = [
+    "html_image",  # Позволяет Sphinx распознавать и копировать HTML-картинки
+]
+
+# Sphinx configuration
+
 
 # Markdown support
 
 source_suffix = {
-".md": "markdown",
+    ".md": "markdown",
 }
 
 # Allow Markdown headings to be referenced.
@@ -24,9 +35,9 @@ templates_path = ["_templates"]
 html_static_path = ["_static"]
 
 exclude_patterns = [
-"_build",
-"Thumbs.db",
-".DS_Store",
+    "_build",
+    "Thumbs.db",
+    ".DS_Store",
 ]
 
 # HTML theme

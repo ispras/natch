@@ -1,9 +1,11 @@
 <div style="page-break-before:always;">
 </div>
 
-# <a name="natch_cmd"></a>3. Командный интерфейс Natch
+<a name="natch_cmd"></a>
 
-```
+# 3. Командный интерфейс Natch
+
+```text
 Natch_v.3.4
 Copyright (c) 2020-2025 ISP RAS
 
@@ -38,7 +40,7 @@ main commands:
 
 Главная команда `natch` имеет следующие субкоманды:
 
-- ``create``
+- [``create``](#natch-create)
 - ``record``
 - ``replay``
 - ``kvm``
@@ -55,7 +57,7 @@ main commands:
 Представленные команды могут иметь параметры или субкоманды, поэтому для получения информации
 следует использовать параметр `-h/--help`, например:
 
-```
+```text
 user@user: natch edit -h
 usage: natch edit [-h] {main,taint} ...
 
@@ -102,7 +104,7 @@ Natch configs editing:
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch create test_sample Natch_testing_materials/test_image_debian.qcow2
 ```
 
@@ -120,13 +122,15 @@ natch create test_sample Natch_testing_materials/test_image_debian.qcow2
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch record -s sample
 ```
 
 Подробнее о записи сценария в разделе [Запись сценария](8_scenario_work.md#record).
 
-## <a name="natch_cmd_replay">3.4. natch replay
+<a name="natch_cmd_replay"></a>
+
+## 3.4. natch replay
 
 Команда `replay` служит для воспроизведения ранее записанных сценариев.
 Запускаться должна из директории с проектом.
@@ -154,7 +158,7 @@ natch record -s sample
 Узнать диапазон `icount`-ов в сценарии можно с помощью команды `natch info -s <name>`.
 
 Примеры:
-```
+```text
 natch replay
 natch replay -s sample
 natch replay --start login --end get_info
@@ -185,7 +189,7 @@ natch replay --start login --end get_info
 - `-h/--help` -- справка по команде
 
 Примеры:
-```
+```text
 natch kvm -i Natch_testing_materials/test_image_debian.qcow2
 natch kvm -s
 natch kvm --args "-vnc 127.0.0.1:0"
@@ -197,8 +201,9 @@ natch kvm --args "-vnc 127.0.0.1:0"
 Параметр `-m` доступен только при запуске команды вне рабочей директории, в противном
 случае настройки памяти берутся из настроек проекта.
 
+<a name="natch_cmd_tuning"></a>
 
-## <a name="natch_cmd_tuning">3.6. natch tuning
+## 3.6. natch tuning
 
 Команда `tuning` служит для извлечения смещений структур ядра исследуемой системы и создания или перезаписи
 конфигурационного файла `task.cfg`.
@@ -212,7 +217,7 @@ natch kvm --args "-vnc 127.0.0.1:0"
 - `-h/--help` -- справка по команде
 
 Если в вашем проекте уже имеется файл `task.cfg`, вы увидите следующий диалог:
-```
+```text
 You already have task.cfg
 Do you want to do tuning again? [Y/n]
 ```
@@ -223,8 +228,9 @@ Do you want to do tuning again? [Y/n]
 Команда может быть полезна, если вы используете проект, созданный на более старой версии *Natch*, и
 существующий конфигурационный файл не соответствует текущей версии инструмента.
 
+<a name="natch_cmd_info"></a>
 
-## <a name="natch_cmd_info">3.7. natch info
+## 3.7. natch info
 
 Команда `info` предоставляет информацию о существующих в проекте сценариях и сохраненных снапшотах для каждого из них.
 
@@ -237,7 +243,7 @@ Do you want to do tuning again? [Y/n]
 
 Пример:
 
-```
+```text
 natch info
 
 Existing scenarios:
@@ -263,7 +269,7 @@ The last icount for this scenario: 11818629758
 
 Пример:
 
-```
+```text
 natch info -s sample
 
 ----- sample ------------------------------------------------------------
@@ -288,7 +294,7 @@ The last icount for this scenario: 13888364825
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch delete -s test
 
 Are you sure? [y/N] y
@@ -300,8 +306,9 @@ Output directory 'output_test' has been deleted
 При наличии директории с выходными файлами для *SNatch* (если выполнялось воспроизведение сценария),
 также будет предложено удалить и ее.
 
+<a name="natch_cmd_edit"></a>
 
-## <a name="natch_cmd_edit">3.9. natch edit
+## 3.9. natch edit
 
 Команда `edit` предназначена для более удобного редактирования конфигурационных файлов проекта.
 Имеет следующие субкоманды:
@@ -328,7 +335,7 @@ Output directory 'output_test' has been deleted
 
 Пример:
 
-```
+```text
 natch edit main
 ```
 
@@ -337,7 +344,9 @@ natch edit main
 которая описана ниже.
 
 
-## <a name="natch_cmd_coverage">3.10. natch coverage
+<a name="natch_cmd_coverage"></a>
+
+## 3.10. natch coverage
 
 Команда `coverage` на данный момент является экспериментальной. Предназначена для
 работы с исходными кодами исследуемого ПО и получения покрытия кода.
@@ -369,7 +378,7 @@ natch edit main
 Архив обновится автоматически.
 
 Пример:
-```
+```text
 natch coverage extract -s sample
 ```
 
@@ -399,7 +408,7 @@ natch coverage extract -s sample
 
 Пример:
 
-```
+```text
 natch set memory 8G
 ```
 
@@ -416,7 +425,7 @@ natch set memory 8G
 новым списком.
 
 Примеры:
-```
+```text
 natch set port 8888,5555     # пробросятся порты 8888 и 5555
 natch set port 0             # проброшенные порты будут сброшены, установится порт по умолчанию: 80
 ```
@@ -436,7 +445,7 @@ natch set port 0             # проброшенные порты будут с
 Параметр `-p/--port` для `vnc` необязательный, по умолчанию порт 0.
 
 Примеры:
-```
+```text
 natch set mode graphic
 natch set mode vnc -p 5910
 ```
@@ -450,8 +459,9 @@ natch set mode vnc -p 5910
 
 Выполнение вышеописанных команд приведет к изменению параметров запуска эмулятора (`qemu_opts.ini`).
 
+<a name="natch_cmd_modules"></a>
 
-## <a name="natch_cmd_modules">3.12. natch modules
+## 3.12. natch modules
 
 Команда `modules` отвечает за работу с модулями в проекте и образе. Имеет субкоманды:
 
@@ -464,7 +474,7 @@ natch set mode vnc -p 5910
 
 Для работы команд `natch modules` потребуется пароль администратора для монтирования образа.
 
-#### `natch modules add`
+### `natch modules add`
 
 Команда `add` служит для дополнения проекта новыми модулями.
 
@@ -480,11 +490,12 @@ natch set mode vnc -p 5910
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch modules add --guest-dir /home/user/Sample1
 ```
+<a name="natch_cmd_modules_update"></a>
 
-#### <a name="natch_cmd_modules_update">`natch modules update`
+### `natch modules update`
 
 Команда `update` служит для обновления текущих модулей в проекте.
 
@@ -499,11 +510,13 @@ natch modules add --guest-dir /home/user/Sample1
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch modules update
 ```
 
-#### <a name="natch_cmd_modules_extract">`natch modules extract`
+<a name="natch_cmd_modules_extract"></a>
+
+### `natch modules extract`
 
 Команда `extract` служит для извлечения файлов из образа в хостовую систему.
 Такая необходимость может возникать при подготовке объекта оценки к анализу.
@@ -523,12 +536,12 @@ natch modules update
 Директория для сохранения файлов из образа будет создана автоматически.
 
 Пример:
-```
+```text
 natch modules extract -i Natch_testing_materials/test_image_debian.qcow2 -p /home/user/Sample1 -D bins -e
 ```
 
 
-#### `natch modules copy`
+### `natch modules copy`
 
 Команда `copy` служит для загрузки в образ файлов из хостовой системы.
 Является обратной команде `extract`.
@@ -544,7 +557,7 @@ natch modules extract -i Natch_testing_materials/test_image_debian.qcow2 -p /hom
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch modules copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_testing_materials/Sample2_bins -D /home/user/Sample2 -e
 ```
 

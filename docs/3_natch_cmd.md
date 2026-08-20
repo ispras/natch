@@ -40,7 +40,7 @@ main commands:
 
 Главная команда `natch` имеет следующие субкоманды:
 
-- [``create``](#cmd_create)
+- [``create``](#natch-create)
 - [``record``](#cmd_record)
 - [``replay``](#cmd_replay)
 - [``kvm``](#cmd_kvm)

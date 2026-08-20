@@ -501,7 +501,7 @@ Network json log file: "/home/user/natch_quickstart/test1/sample_redis/network.j
 ```text
 user@natch1:~/natch_quickstart/test1/$ natch replay
 ```
-Команда может принимать ряд параметров (см. [natch replay](3_natch_cmd.md#natch_cmd_replay)).
+Команда может принимать ряд параметров (см. [natch replay](3_natch_cmd.md#cmd_replay)).
 В нашем случае команда могла бы выглядеть так:
 ```text
 user@natch1:~/natch_quickstar/test1/$ natch replay -s sample_redis -S ready

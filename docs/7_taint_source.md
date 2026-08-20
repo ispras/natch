@@ -1,7 +1,7 @@
 <div style="page-break-before:always;">
 </div>
 
-(taint_source)=
+<a name="taint_source"></a>
 
 # 7. Определение источников пометки
 

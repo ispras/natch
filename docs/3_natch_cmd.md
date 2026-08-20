@@ -40,7 +40,7 @@ main commands:
 
 Главная команда `natch` имеет следующие субкоманды:
 
-- [``create``](#natch-create)
+- [``create``](#cmd_create)
 - [``record``](#cmd_record)
 - [``replay``](#cmd_replay)
 - [``kvm``](#cmd_kvm)
@@ -86,7 +86,7 @@ Natch configs editing:
 Архитектуру по умолчанию можно изменить в любой момент с помощью команды `natch settings arch`,
 описанной ниже.
 
-(cmd_create)=
+<a name="cmd_create"></a>
 
 ## 3.2. natch create
 

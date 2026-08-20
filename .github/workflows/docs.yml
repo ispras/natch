@@ -33,6 +33,7 @@ jobs:
       - name: Build HTML documentation
         run: |
           sphinx-build -b html docs docs/_build/html
+          # -W
 
       - name: Upload documentation
         uses: actions/upload-pages-artifact@v3

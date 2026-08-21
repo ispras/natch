@@ -3,7 +3,7 @@
 
 <a name="natch_cmd"></a>
 
-# 3. Командный интерфейс Natch
+# Командный интерфейс Natch
 
 ```text
 Natch_v.3.4
@@ -73,7 +73,7 @@ Natch configs editing:
 
 ```
 
-## 3.1. Первый запуск Natch
+## Первый запуск Natch
 
 С версии 3.2 инструмент поставляется с поддержкой двух архитектур: x86_64 и aarch64.
 
@@ -88,7 +88,7 @@ Natch configs editing:
 
 <a name="cmd_create"></a>
 
-## 3.2. natch create
+## natch create
 
 Команда `create` применятся для создания Natch-проекта.
 
@@ -113,7 +113,7 @@ natch create test_sample Natch_testing_materials/test_image_debian.qcow2
 
 <a name="cmd_record"></a>
 
-## 3.3. natch record
+## natch record
 
 Команда `record` служит для записи сценария.
 Запускаться должна из директории с проектом.
@@ -133,7 +133,7 @@ natch record -s sample
 
 <a name="cmd_replay"></a>
 
-## 3.4. natch replay
+## natch replay
 
 Команда `replay` служит для воспроизведения ранее записанных сценариев.
 Запускаться должна из директории с проектом.
@@ -171,7 +171,7 @@ natch replay --start login --end get_info
 
 <a name="cmd_kvm"></a>
 
-## 3.5. natch kvm
+## natch kvm
 
 Команда `kvm` предназначена для запуска эмулятора в режиме аппаратной виртуализации.
 
@@ -207,7 +207,7 @@ natch kvm --args "-vnc 127.0.0.1:0"
 
 <a name="cmd_tuning"></a>
 
-## 3.6. natch tuning
+## natch tuning
 
 Команда `tuning` служит для извлечения смещений структур ядра исследуемой системы и создания или перезаписи
 конфигурационного файла `task.cfg`.
@@ -234,7 +234,7 @@ Do you want to do tuning again? [Y/n]
 
 <a name="cmd_info"></a>
 
-## 3.7. natch info
+## natch info
 
 Команда `info` предоставляет информацию о существующих в проекте сценариях и сохраненных снапшотах для каждого из них.
 
@@ -287,7 +287,7 @@ The last icount for this scenario: 13888364825
 
 <a name="cmd_delete"></a>
 
-## 3.8. natch delete
+## natch delete
 
 Команда `delete` удаляет сценарии и связанные с ними файлы из рабочей директории.
 
@@ -314,7 +314,7 @@ Output directory 'output_test' has been deleted
 
 <a name="cmd_edit"></a>
 
-## 3.9. natch edit
+## natch edit
 
 Команда `edit` предназначена для более удобного редактирования конфигурационных файлов проекта.
 Имеет следующие субкоманды:
@@ -329,20 +329,20 @@ Output directory 'output_test' has been deleted
 
 <a name="cmd_edit_main"></a>
 
-### `natch edit main`
+### natch edit main
 
 Команда `main` предназначения для редактирования главного конфигурационного файла -- `natch.cfg`.
 
 <a name="cmd_edit_taint"></a>
 
-### `natch edit taint`
+### natch edit taint
 
 Команда `taint` предназначения для редактирования конфигурационных файлов сценариев `taint.cfg`.
 Если сценариев в проекте несколько -- будет отображено меню для выбора нужного сценария.
 
 <a name="cmd_edit_debug"></a>
 
-### `natch edit debug`
+### natch edit debug
 
 Команда `debug` предназначения для редактирования конфигурационного файла с параметрами
 получения отладочной информации `debug_info.cfg`.
@@ -364,7 +364,7 @@ natch edit main
 
 <a name="cmd_coverage"></a>
 
-## 3.10. natch coverage
+## natch coverage
 
 Команда `coverage` на данный момент является экспериментальной. Предназначена для
 работы с исходными кодами исследуемого ПО и получения покрытия кода.
@@ -374,7 +374,7 @@ natch edit main
 
 <a name="cmd_coverage_extract"></a>
 
-### `natch coverage extract`
+### natch coverage extract
 
 Команда `extract` извлекает из образа системы исходные коды исследуемого ПО, а также
 строит отображение покрытия в html на основе этих кодов и покрытия кода, собранного ранее.
@@ -411,7 +411,7 @@ natch coverage extract -s sample
 
 <a name="cmd_set"></a>
 
-## 3.11. natch set
+## natch set
 
 Команда `set` служит для внесения изменений в настройки проекта. Имеет субкоманды:
 
@@ -423,7 +423,7 @@ natch coverage extract -s sample
 
 <a name="cmd_set_memory"></a>
 
-### `natch set memory`
+### natch set memory
 
 Команда `memory` предназначена для изменения выделяемой виртуальной машине оперативной памяти.
 
@@ -442,7 +442,7 @@ natch set memory 8G
 
 <a name="cmd_set_port"></a>
 
-### `natch set port`
+### natch set port
 
 
 Команда `port` служит для изменения отслеживаемых портов, проброса портов в виртуальную машину или
@@ -469,7 +469,7 @@ natch set port 0             # проброшенные порты будут с
 
 <a name="cmd_set_mode"></a>
 
-### `natch set mode`
+### natch set mode
 
 Команда `mode` служит для перевода эмулятора между режимами: графическим, текстовым или vnc.
 
@@ -498,7 +498,7 @@ natch set mode vnc -p 5910
 
 <a name="cmd_modules"></a>
 
-## 3.12. natch modules
+## natch modules
 
 Команда `modules` отвечает за работу с модулями в проекте и образе. Имеет субкоманды:
 
@@ -513,7 +513,7 @@ natch set mode vnc -p 5910
 
 <a name="cmd_modules_add"></a>
 
-### `natch modules add`
+### natch modules add
 
 Команда `add` служит для дополнения проекта новыми модулями.
 
@@ -534,7 +534,7 @@ natch modules add --guest-dir /home/user/Sample1
 ```
 <a name="cmd_modules_update"></a>
 
-### `natch modules update`
+### natch modules update
 
 Команда `update` служит для обновления текущих модулей в проекте.
 
@@ -555,7 +555,7 @@ natch modules update
 
 <a name="cmd_modules_extract"></a>
 
-### `natch modules extract`
+### natch modules extract
 
 Команда `extract` служит для извлечения файлов из образа в хостовую систему.
 Такая необходимость может возникать при подготовке объекта оценки к анализу.
@@ -581,7 +581,7 @@ natch modules extract -i Natch_testing_materials/test_image_debian.qcow2 -p /hom
 
 <a name="cmd_modules_copy"></a>
 
-### `natch modules copy`
+### natch modules copy
 
 Команда `copy` служит для загрузки в образ файлов из хостовой системы.
 Является обратной команде `extract`.
@@ -603,7 +603,7 @@ natch modules copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_t
 
 <a name="cmd_settings"></a>
 
-## 3.13. natch settings
+## natch settings
 
 Команда `settings` предназначена для изменения общих настроек инструмента.
 Имеет субкоманды:
@@ -620,7 +620,7 @@ natch modules copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_t
 
 <a name="cmd_check"></a>
 
-## 3.14. natch check
+## natch check
 
 Команда `check` предназначена для получения информации о параметрах вашей системы для оценки соответствия ее для использования *Natch*.
 

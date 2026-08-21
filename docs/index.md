@@ -7,6 +7,7 @@
 Результаты анализа могут быть загружены в **SNatch** для интерактивного анализа и построения отчётов.
 
 ```{toctree}
+:numbered:
 :maxdepth: 1
 :caption: Начало работы
 
@@ -17,6 +18,7 @@
 ```
 
 ```{toctree}
+:numbered:
 :maxdepth: 1
 :caption: Работа с Natch
 
@@ -31,6 +33,7 @@
 ```
 
 ```{toctree}
+:numbered:
 :maxdepth: 1
 :caption: Справочная информация
 

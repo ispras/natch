@@ -9,6 +9,7 @@ author = "ISPRAS"
 
 extensions = [
     "myst_parser",
+    "sphinx_multitoc_numbering",
 #     # "html_anchors",
 ]
 

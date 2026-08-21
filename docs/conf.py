@@ -10,11 +10,12 @@ author = "ISPRAS"
 extensions = [
     "myst_parser",
     "sphinx_multitoc_numbering",
-#     # "html_anchors",
+    "sphinx_design",
 ]
 
 myst_enable_extensions = [
     "html_image",  # Позволяет Sphinx распознавать и копировать HTML-картинки
+    "colon_fence",
 ]
 
 # Sphinx configuration

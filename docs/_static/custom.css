@@ -1,0 +1,15 @@
+.wy-side-nav-search > a img {
+    max-height: 150px;
+    width: auto;
+    margin: 8px 0;
+}
+
+.wy-nav-content {
+    /* max-width: none; */
+    max-width: 1400px;
+}
+
+.wy-nav-content-wrap {
+    background: #fff;
+}
+

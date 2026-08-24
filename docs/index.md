@@ -3,7 +3,7 @@
 **Natch** (**N**etwork **A**pplication **T**ainting **C**an **H**elp) — инструмент для определения поверхности атаки, основанный на полносистемном эмуляторе QEMU.
 
 **Natch** предназначен для поиска поверхности атаки: приложений, программных модулей и функций, участвующих в обработке заданных входных данных.
-Инструмент оснащен графической подсистемой **SNatch** для интерактивного анализа и построения отчетов.
+Инструмент оснащен графической подсистемой **SNatch** для интерактивного анализа результатов и построения отчетов.
 
 
 
@@ -11,14 +11,14 @@
 ::::{grid} 3
 :gutter: 2
 
-:::{grid-item-card} 🚀 Начало работы
+:::{grid-item-card} {octicon}`rocket` Начало работы
 
 * [Что такое Natch](1_natch)
 * [Установка и настройка Natch](2_setup)
 * [Запуск тестовых примеров](3_launch_test_samples)
 * [Настройка окружения для работы с Natch](4_setup_env)
 :::
-:::{grid-item-card} ⚙️ Работа с Natch
+:::{grid-item-card} {octicon}`terminal` Работа с Natch
 
 - [Командный интерфейс Natch](5_natch_cmd)
 - [Создание проекта](6_create_project)
@@ -29,7 +29,7 @@
 - [Автоматизация процессов](11_automation)
 - [Примеры использования Natch](12_applications)
 :::
-:::{grid-item-card} ℹ️ Справочная информация
+:::{grid-item-card} {octicon}`question` Справочная информация
 
 * [Часто задаваемые вопросы (FAQ)](13_faq)
 * [Системные требования и ограничения Natch](14_requirements)
@@ -38,7 +38,7 @@
 ::::
 
 
-## 📂 Приложения
+## {octicon}`book` Приложения
 
 ::::{grid}
 
@@ -58,15 +58,15 @@
 
 ::::
 
-## 📚 Дополнительные материалы
+## {octicon}`briefcase` Дополнительные материалы
 ::::{grid}
 
-:::{grid-item} 
+:::{grid-item}
 
-* [🎬 Видеозаписи вебинаров](https://nextcloud.ispras.ru/index.php/s/3LEqid57bn8PYGx)
-* [📢 Выступления на конференциях](conferences)
-* [🏆 Практическое применение Natch](trophies)
-* [📝 Научные публикации](publications)
+* [{octicon}`device-camera-video` Видеозаписи вебинаров](https://nextcloud.ispras.ru/index.php/s/3LEqid57bn8PYGx)
+* [{octicon}`megaphone` Выступления на конференциях](conferences)
+* [{octicon}`star` Практическое применение Natch](trophies)
+* [{octicon}`mortar-board` Научные публикации](publications)
 :::
 
 ::::

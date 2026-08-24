@@ -11,14 +11,14 @@
 ::::{grid} 3
 :gutter: 2
 
-:::{grid-item-card} {octicon}`rocket` Начало работы
+:::{grid-item-card} <H2>{octicon}`rocket` Начало работы</H2>
 
 * [Что такое Natch](1_natch)
 * [Установка и настройка Natch](2_setup)
 * [Запуск тестовых примеров](3_launch_test_samples)
 * [Настройка окружения для работы с Natch](4_setup_env)
 :::
-:::{grid-item-card} {octicon}`terminal` Работа с Natch
+:::{grid-item-card} <H2>{octicon}`terminal` Работа с Natch</H2>
 
 - [Командный интерфейс Natch](5_natch_cmd)
 - [Создание проекта](6_create_project)
@@ -29,7 +29,7 @@
 - [Автоматизация процессов](11_automation)
 - [Примеры использования Natch](12_applications)
 :::
-:::{grid-item-card} {octicon}`question` Справочная информация
+:::{grid-item-card} <H2>{octicon}`question` Справочная информация</H2>
 
 * [Часто задаваемые вопросы (FAQ)](13_faq)
 * [Системные требования и ограничения Natch](14_requirements)
@@ -38,7 +38,7 @@
 ::::
 
 
-## {octicon}`book` Приложения
+### {octicon}`paperclip` Приложения
 
 ::::{grid}
 
@@ -58,7 +58,7 @@
 
 ::::
 
-## {octicon}`briefcase` Дополнительные материалы
+### {octicon}`briefcase` Дополнительные материалы
 ::::{grid}
 
 :::{grid-item}

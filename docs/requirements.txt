@@ -5,3 +5,4 @@ myst-parser
 sphinx-rtd-theme
 sphinx-multitoc-numbering
 sphinx-design
+sphinx-multiversion

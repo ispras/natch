@@ -4,10 +4,14 @@ on:
   push:
     branches:
       - main
+    tags:
+      - 'natch_docs_v.3.4.[1-9]*'
+      - 'natch_docs_v.3.[5-9]*'
+      - 'natch_docs_v.[4-9]*'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -17,8 +21,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Complete History
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Скачиваем всю историю и теги, это критично для sphinx-multiversion
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -30,10 +36,55 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r docs/requirements.txt
 
-      - name: Build HTML documentation
+      - name: Load Extant Versions From Storage
         run: |
-          sphinx-build -b html docs docs/_build/html
-          # -W
+          # Пытаемся стянуть текущий рабочий сайт из gh-pages во временную папку,
+          # чтобы не потерять уже собранные ранее версии релизов.
+          git clone --branch gh-pages https://github.com{{ github.repository }}.git old_site || true
+
+      - name: Build Multi-Version HTML
+        run: |
+          # sphinx-multiversion собирает каждую версию в docs/_build/html/<имя_ветки_или_тега>
+          sphinx-multiversion docs docs/_build/html
+
+      - name: Merge and Create Root Redirect
+        run: |
+          # 1. Если у нас есть сохраненные старые релизы, копируем их обратно в папку сборки
+          if [ -d "old_site" ]; then
+            echo "Восстановление ранее собранных версий из кэша..."
+            cp -r old_site/* docs/_build/html/ || true
+            rm -rf docs/_build/html/.git
+          fi
+
+          # 2. Пересобираем текущую версию поверх (чтобы обновить main или текущий тег)
+          sphinx-multiversion docs docs/_build/html
+
+          # 3. Делаем так, чтобы при заходе на https://ispras.github.io/natch/
+          # пользователя сразу перенаправляло на документацию ветки main
+          cat <<EOF > docs/_build/html/index.html
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <title>Redirecting to main documentation</title>
+              <meta charset="utf-8">
+              <meta http-meta http-equiv="refresh" content="0; url=./main/index.html">
+              <link rel="canonical" href="./main/index.html">
+            </head>
+            <body>
+              <p>Redirecting to <a href="./main/index.html">main documentation</a>...</p>
+            </body>
+          </html>
+          EOF
+
+      - name: Save Versions Back to Storage Branch
+        uses: Actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          directory: docs/_build/html
+          force: true
+          message: "Добавление/обновление версий документации [skip ci]"
+
 
       - name: Upload documentation
         uses: actions/upload-pages-artifact@v3

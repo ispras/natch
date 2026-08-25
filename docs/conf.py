@@ -1,4 +1,4 @@
-import sys
+# import sys
 from pathlib import Path
 
 project = "Natch"
@@ -14,21 +14,15 @@ extensions = [
 ]
 
 myst_enable_extensions = [
-    "html_image",  # Позволяет Sphinx распознавать и копировать HTML-картинки
+    "html_image",
     "colon_fence",
 ]
-
-# Sphinx configuration
-
-
-# Markdown support
 
 source_suffix = {
     ".md": "markdown",
 }
 
 # Allow Markdown headings to be referenced.
-
 myst_heading_anchors = 3
 
 # Templates and static files
@@ -42,6 +36,19 @@ exclude_patterns = [
     "Thumbs.db",
     ".DS_Store",
 ]
+
+# settins for sphinx-multiversion
+
+smv_branch_whitelist = r'^main$'
+
+# only for 3.4.1 and above
+smv_tag_whitelist = r'^natch_docs_v\.(3\.4\.[1-9]\d*|3\.[5-9]\d*\.\d+|[4-9]\d*\.\d+\.\d+)$'
+
+smv_released_pattern = r'^tags/.*$'
+
+master_doc = 'index'
+
+
 
 # HTML theme
 

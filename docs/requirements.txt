@@ -1,6 +1,6 @@
 # Documentation build dependencies
 
-sphinx
+sphinx>=8.0,<9.0
 myst-parser
 sphinx-rtd-theme
 sphinx-multitoc-numbering

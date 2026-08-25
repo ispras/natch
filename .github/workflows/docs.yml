@@ -3,7 +3,7 @@ name: Documentation
 on:
   push:
     branches:
-      - test_beautiful_docs
+      - main
   workflow_dispatch:
 
 permissions:

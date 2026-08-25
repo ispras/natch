@@ -37,6 +37,12 @@ exclude_patterns = [
     ".DS_Store",
 ]
 
+html_sidebars = {
+    '**': [
+        'versioning.html',
+    ],
+}
+
 # settins for sphinx-multiversion
 
 smv_branch_whitelist = r'^main$'

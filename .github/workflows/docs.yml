@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-    tags:
-      - 'natch_docs_v.3.4.[1-9]*'
-      - 'natch_docs_v.3.[5-9]*'
-      - 'natch_docs_v.[4-9]*'
+    # tags:
+    #   - 'natch_docs_v.3.4.[1-9]*'
+    #   - 'natch_docs_v.3.[5-9]*'
+    #   - 'natch_docs_v.[4-9]*'
   workflow_dispatch:
 
 permissions:

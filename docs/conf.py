@@ -38,13 +38,18 @@ exclude_patterns = [
 ]
 
 
-html_sidebars = {
-    '**': [
-        'searchbox.html',
-        'globaltoc.html',
-        'versions.html',
+# Принудительно внедряем наш шаблон версий в разметку темы Read the Docs
+html_context = {
+    'extra_nav_items': [
+        # Этот трюк заставляет Sphinx отрендерить наш шаблон внутри сайдбара
+        '<!--include_versioning-->',
     ]
 }
+
+# Переопределяем встроенный шаблон темы, чтобы подключить наш файл
+def setup(app):
+    app.config.html_context['extra_nav_items'] = ['versioning.html']
+
 
 
 # settins for sphinx-multiversion

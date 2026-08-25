@@ -37,11 +37,15 @@ exclude_patterns = [
     ".DS_Store",
 ]
 
+
 html_sidebars = {
     '**': [
-        'versioning.html',
-    ],
+        'searchbox.html',
+        'globaltoc.html',
+        'versions.html',
+    ]
 }
+
 
 # settins for sphinx-multiversion
 

@@ -1,20 +1,23 @@
 <div style="page-break-before:always;">
 </div>
 
+<a name="auto"></a>
 
-# <a name="auto"></a>11. Автоматизация процессов
+# Автоматизация процессов
 
 В этом разделе представлено API для получения информации из SNatch, а также показано как можно автоматизировать выполнение сценариев
 работы *Natch* от создания проекта до получения финального PDF-отчета на примере наших тестовых сценариев.
 
-## <a name="snatch_cicd">11.1. SNatch CI/CD
+<a name="snatch_cicd"></a>
+
+## SNatch CI/CD
 
 API реализовано бэкэндом SNatch, поэтому чтобы им пользоваться, необходимо запустить скрипт `/usr/bin/snatch/snatch_start.sh`, как и при браузерном использовании.
 Для выполнения авторизации при запросе возможно использовать один из двух вариантов:
 1. Базовая аутентификация, при которой требуется использовать ключ `-u "<login>:<password>"`, используя учетные данные созданного в веб-браузере пользователя.
 2. Bearer-токен. При установке *SNatch* на последнем этапе создаётся пользователь БД ci_bot, для которого в консоль выводится токен (он также сохраняется в файл `/usr/bin/snatch/ci_token.txt`). Это отдельный пользователь для выполнения CI операций, который имеет доступ только к своим проектам. Для выполнения авторизации при запросе требуется использовать ключ `-H "Authorization: Token <YOUR_TOKEN_GOES_HERE>"`.
 
-### 11.1.1. ci_create_project
+### ci_create_project
 
 - POST запрос ci_create_project для создания проекта (аналогично проекту в браузерной версии, впоследствии может открываться и из браузера). Сопровождается обязательным параметром file, и необязательными project_name и async.
 
@@ -43,7 +46,7 @@ curl -H "Authorization: Token <YOUR_TOKEN_GOES_HERE>" -F "project_name=test_proj
 - project_id — идентификатор созданного проекта, по которому можно обращаться при запросе содержимого.
 - task_id — идентификатор задачи создания проекта. Возвращается, если в запросе использовался параметр "async=true". Используется для уточнения статуса задачи.
 
-### 11.1.2. ci_get_status
+### ci_get_status
 
 - GET запрос ci_get_status для уточнения статуса задачи создания проекта при использовании асинхронного подхода. Сопровождается обязательным параметром task_id.
 
@@ -65,7 +68,7 @@ curl -u "<login>:<password>" -X GET -G http://localhost:8000/ci_get_status/ -d t
 - state — описывает состояние выполняемой задачи, и может принимать значения ["REVOKED", "PROGRESS", ..., "SUCCESS"]. Из этих состояний наибольший интерес представляет "PROGRESS", который гласит о корректном процессе выполнения задачи, и "SUCCESS", который обозначает корректное завершение задачи.
 - result — содержит сопроводительное сообщение о состоянии задачи.
 
-### 11.1.3. ci_get_proj_list
+### ci_get_proj_list
 
 - GET запрос ci_get_proj_list для запроса списка созданных в SNatch проектов.
 
@@ -84,7 +87,7 @@ curl -u "<login>:<password>" -X GET -G http://localhost:8000/ci_get_proj_list/
 - status — принимает значение "200" для корректного запроса и "400" для ошибочного.
 - proj_list — содержит список созданных (как с помощью автоматизации так и через пользовательский UI) проектов. Каждый элемент списка содержит следующие поля: title — имя проекта; proj_id — идентификатор проекта; description - дополнительная информация о проекте (задаётся через UI).
 
-### 11.1.4. ci_get_content
+### ci_get_content
 
 - GET запрос ci_get_content для получения содержимого проекта. Сопровождается обязательными параметрами project_id и type.
 
@@ -99,7 +102,7 @@ curl -u "<login>:<password>" -X GET -G http://localhost:8000/ci_get_content/ -d 
 
 Пример ответа:
 ```json
-{"status": "200", "content": {"graph_list": [{"pname": "gpugi", "proc": 10, "cg_array": [{"0x24e8": ... }}
+{"status": "200", "content": {"graph_list": [{"pname": "gpugi", "proc": 10, "cg_array": [{"0x24e8": "..."}]}] }}
 ```
 Параметры:
 
@@ -116,7 +119,7 @@ curl -u "<login>:<password>" -X GET -G http://localhost:8000/ci_get_content/ -d 
 - status — статус запроса, в случае ошибки всегда будет принимать значение "400".
 - msg — сопроводительное сообщение об ошибке.
 
-### 11.1.5. ci_get_user
+### ci_get_user
 
 - GET запрос ci_get_user для получения списка пользователей.
 
@@ -130,7 +133,7 @@ curl -X GET -G http://localhost:8000/ci_get_users/ -H "Authorization: Token <YOU
 [{"id": 1, "username": "ci_bot"}, {"id": 2, "username": "test"}, {"id": 3, "username": "alexey"}]
 ```
 
-### 11.1.6. ci_user_reset_password
+### ci_user_reset_password
 
 - POST запрос ci_user_reset_password для сброса пароля пользователю. При этом пользователю можно установить как желаемый пароль, так и использовать сгенерированный произвольный пароль.
 
@@ -154,7 +157,7 @@ curl -X POST http://localhost:8000/ci_user_reset_password/ -H "Authorization: To
 {"status":"ok","user_id":3,"new_password":"5FIoIZnabuHg"}
 ```
 
-### 11.1.7. ci_delete_project
+### ci_delete_project
 
 - POST запрос ci_delete_project для удаления проекта. Сопровождается необязательным параметром project_id, содержащим id для удаляемого проекта. Если значение id = 0 или не указано, то удалятся все проекты.
 
@@ -174,9 +177,9 @@ curl -u "<login>:<password>" -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a
 - status — принимает значение "200" для корректного запроса и "400" для ошибочного.
 - project_id — идентификатор удаленного проекта.
 
+<a name="automation"></a>
 
-
-## <a name="automation"></a>11.2. Автоматизированное выполнение
+## Автоматизированное выполнение
 
 После обновления *Natch* ранее записанные сценарии могут не работать. Перезапись тестовых сценариев может быть достаточно трудоёмка.
 Здесь на помощь приходит автоматизация. Также она будет полезна при необходимости встраивания *Natch* в CI/CD.
@@ -189,7 +192,7 @@ curl -u "<login>:<password>" -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a
 * *Natch* установлен и установка зависимостей была выполнена.
 * *SNatch*, соответствующий установленной версии *Natch*, установлен. Для Alt и РЕД ОС также должно быть выполнено конфигурирование и первый запуск.
 
-### 11.2.1. Реализация автоматизации
+### Реализация автоматизации
 
 В архиве с тестовым примером (см. раздел [Получение образа и тестовых примеров](4_launch_test_samples.md#test_suite) находится скрипт `automation.sh`,
 шаблоны записи сценариев для тестовых примеров (`run_record_sample1.exp` и `run_record_sample2.exp`), а также Python-скрипты в каталоге `snatch` и вспомогательный скрипт `wait4release.sh`.
@@ -209,7 +212,7 @@ curl -u "<login>:<password>" -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a
 * Обновляет конфигурационный файл taint.cfg для пометки данных, которые необходимо отслеживать.
 * Выполняет воспроизведение записанного сценария. Воспроизведение сценария детально описано в разделе [Воспроизведение сценария](8_scenario_work.md#replay).
 * Вспомогательный скрипт `wait4release.sh` используется для ожидания завершения работы natch и проверки используемого для диагностики порта.
-* Выполняет распаковку поверхности атаки. Описание используемой команды смотрите в пункте [natch coverage](3_natch_cmd.md#natch_cmd_coverage)
+* Выполняет распаковку поверхности атаки. Описание используемой команды смотрите в пункте [natch coverage](3_natch_cmd.md#cmd_coverage)
 
 После выполнения скрипта в подкаталоге `autotest` появляются архивы `autotest+sample1.tar.zst` и `autotest+sample2.tar.zst` для дальнейшего анализа.
 
@@ -222,11 +225,11 @@ curl -u "<login>:<password>" -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a
 * *SNatch* открывается в браузере, где поочередно открывается каждый проект, выполняется переход на Module Graph для активации этого графа в отчете,
 а затем генерируется сам PDF отчет, который в конце сохраняется в каталоге ~/Downloads. Этими действиями управляет `snatch.py` на основе *Selenium*.
 
-### 11.2.2. Адаптация скриптов автоматизации
+### Адаптация скриптов автоматизации
 
 Скрипты автоматизации содержат комментарии, которые помогут вам адаптировать их под свои проекты. Для этого требуются следующие действия:
 
-#### automation.sh:
+#### automation.sh
 
 * В функции `introAndPrompts` в параметре `path2binaries` указывается путь к бинарным файлам. В `place4binaries` указывается `h` в случае расположения бинарных файлов на хосте, `g` - на гостевом образе (виртуальной машине).
 * В функции `checkRequirements` отредактируйте параметры `requirements` и `pip_requirements`, указав через пробел пакеты, которые требуется проверить/установить на хост.
@@ -242,7 +245,7 @@ curl -u "<login>:<password>" -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a
 * Скрипт ищет qcow2 образ в каталоге со скриптом. Убедитесь в том, что в каталоге только один qcow2 файл или отредактируйте параметр `qcow2Path`.
 * Имя проекта `autotest` можно изменить в параметре `projName`.
 
-#### run_record_<scenarioname>.exp:
+#### run_record_<scenarioname>.exp
 
 * Отредактируйте код, начиная с `# OS login`, причем код до `# Connect from host to the VM by telnet to save a snapshot` является подготовительным и не попадет в записываемый сценарий.
 Записываемый сценарий, который вы планируете в дальнейшем анализировать, должен начинаться с `# When snapshot is saved, everything is ready to record a scenario`.
@@ -250,17 +253,17 @@ curl -u "<login>:<password>" -F "project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a
 * Для пробрасывания порта из хоста в образ используйте `hostfwd` параметр у `-netdev` строки запуска *Natch* (см. пример в `run_record_sample2.exp`).
 * Когда сценарий записан, и ваш скрипт функционирует корректно, вы можете отключить вывод из виртуальной машины. Для этого нужно раскомментировать строку `#log_user 0`, которая добавляется в создаваемый скрипт записи сценария в функции `preRecordConfiguration` скрипта `automation.sh`.
 
-#### snatch/snatch.py:
+#### snatch/snatch.py
 
 * Отредактировать название и путь к файлу лога можно в строке `logfile =`
 * По умолчанию, тесты запускаются в Firefox. Можно использовать Chrome, для этого нужно заменить значение FF на CHROME в строке `useBrowser =`
 
 
-### 11.2.3. Пример автоматической проверки
+### Пример автоматической проверки
 
 Выполните скрипт `automation.sh`. При этом появляется описание действий, выполняемых скриптом. Также определяется образ qcow2, который расположен в каталоге со скриптом:
 
-```
+```text
 ISP RAS Natch - Automation Sample
 
 It automatically performs the following:
@@ -273,10 +276,10 @@ It automatically performs the following:
  ∟ Configuring the tainting (taint.cfg).
  ∟ Replays the recorded scenario (natch replay).
  ∟ Extracts coverage (natch extract coverage).
-5. Opens Snatch to create an account and try login.
-6. The generated archives are added to Snatch DB using Snatch CI API.
-7. The content of the projects is tested by the available options of Snatch CI API.
-8. The PDF reports for the projects are generated by Snatch via browser and saved to Downloads directory
+5. Opens SNatch to create an account and try login.
+6. The generated archives are added to SNatch DB using SNatch CI API.
+7. The content of the projects is tested by the available options of SNatch CI API.
+8. The PDF reports for the projects are generated by SNatch via browser and saved to Downloads directory
 
 Image name:     test_image_debian
 QCOW2 image:    /vms/test_image/test_image_debian.qcow2
@@ -287,7 +290,7 @@ Modules dir:    /home/user (on guest)
 По запросу требуется ввести пароль суперпользователя. После этого начнется поиск и установка требующихся пакетов. Пароль сохраняется в файл sudo.pwd в текущую директорию, и в дальнейшем запрашиваться не будет. После ввода пароля следует установка требующихся компонент.
 Затем запускается создание проекта командой `natch create`:
 
-```
+```text
 spawn natch create autotest /vms/test_image/test_image_debian.qcow2
 Directory for project files /vms/test_image/autotest was created
 OS: Linux
@@ -382,7 +385,7 @@ Everything is fine!
 
 Далее создается скрипт записи:
 
-```
+```text
 Created the record script /vms/test_image/autotest/record_sample1.exp
 ```
 
@@ -392,14 +395,14 @@ Created the record script /vms/test_image/autotest/record_sample1.exp
 
 По завершении работы expect-скрипта активность возвращается к `automation.sh` и появляется сообщение о том, что была выполнена настройка `taint.cfg`:
 
-```
+```text
 taint.cfg: set tainting sample.txt
 ```
 
 
 Затем запускается воспроизведение записанного сценария:
 
-```
+```text
 Replaying the sample1 scenario...
 spawn natch replay -s sample1 -S autosave
 
@@ -479,7 +482,7 @@ autotest+sample1.tar.zst completed
 
 После чего выполняется поиск поверхности атаки, результаты которого добавляются в созданный архив:
 
-```
+```text
 Extract coverage for sample1
 spawn natch coverage extract -s sample1
 [sudo] password for user:
@@ -539,16 +542,16 @@ Archive autotest+sample1.tar.zst updated!
 требующееся для второго сценария, и шаги, начиная с создания скрипта записи, повторяются снова для второго примера.
 По завершении процедуры для обоих примеров появляется сообщение:
 
-```
-Snatch started.
+```text
+SNatch started.
 ```
 
 После чего запускается `snatch.py`. Он открывает *SNatch* в браузере, выполняется регистрация учетной записи с произвольным именем пользователя и паролем. Учетные данные выводятся в консоль и записываются в файл `snatch.creds`, в лог и отчет. Браузер закрывается. 
 
-Сгенерированные архивы загружаются в Snatch и проходят проверку:
+Сгенерированные архивы загружаются в SNatch и проходят проверку:
 
-```
-INFO [upload:30] Uploading /vms/_test/autotest/autotest+sample1.tar.zst to Snatch
+```text
+INFO [upload:30] Uploading /vms/_test/autotest/autotest+sample1.tar.zst to SNatch
 INFO [upload:53] Upload OK, project_id: 07c497e0-4c2c-472e-8d34-2fbab688ad52
 INFO [upload:89] Obtained the callgraph data:
 Length: 229950 bytes
@@ -578,8 +581,8 @@ Data: [{"files": [], "name": "test_sample", "proc": 7, "tag": "", "root": 0, "ta
 Снова запускается *SNatch* в браузере, открывается первый проект, выполняется переход на `Process Graph`, потом на `Module Graph` для их активации, а затем генерируется и сохраняется PDF отчет.
 Действия повторяются для второго проекта.
 
-```
-Snatch opened in browser.
+```text
+SNatch opened in browser.
 Report /home/user/Downloads/report-sample2-16-10-2024.pdf (417.7 KB) has been generated.
 Report /home/user/Downloads/report-sample1-16-10-2024.pdf (364.14 KB) has been generated.
 ```

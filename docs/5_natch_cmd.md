@@ -1,9 +1,11 @@
 <div style="page-break-before:always;">
 </div>
 
-# <a name="natch_cmd"></a>3. Командный интерфейс Natch
+<a name="natch_cmd"></a>
 
-```
+# Командный интерфейс Natch
+
+```text
 Natch_v.3.4
 Copyright (c) 2020-2025 ISP RAS
 
@@ -38,24 +40,24 @@ main commands:
 
 Главная команда `natch` имеет следующие субкоманды:
 
-- ``create``
-- ``record``
-- ``replay``
-- ``kvm``
-- ``tuning``
-- ``info``
-- ``delete``
-- ``edit``
-- ``coverage``
-- ``set``
-- ``modules``
-- ``settings``
-- ``check``
+- [``create``](#cmd_create)
+- [``record``](#cmd_record)
+- [``replay``](#cmd_replay)
+- [``kvm``](#cmd_kvm)
+- [``tuning``](#cmd_tuning)
+- [``info``](#cmd_info)
+- [``delete``](#cmd_delete)
+- [``edit``](#cmd_edit)
+- [``coverage``](#cmd_coverage)
+- [``set``](#cmd_set)
+- [``modules``](#cmd_modules)
+- [``settings``](#cmd_settings)
+- [``check``](#cmd_check)
 
 Представленные команды могут иметь параметры или субкоманды, поэтому для получения информации
 следует использовать параметр `-h/--help`, например:
 
-```
+```text
 user@user: natch edit -h
 usage: natch edit [-h] {main,taint} ...
 
@@ -71,7 +73,7 @@ Natch configs editing:
 
 ```
 
-## 3.1. Первый запуск Natch
+## Первый запуск Natch
 
 С версии 3.2 инструмент поставляется с поддержкой двух архитектур: x86_64 и aarch64.
 
@@ -84,8 +86,9 @@ Natch configs editing:
 Архитектуру по умолчанию можно изменить в любой момент с помощью команды `natch settings arch`,
 описанной ниже.
 
+<a name="cmd_create"></a>
 
-## 3.2. natch create
+## natch create
 
 Команда `create` применятся для создания Natch-проекта.
 
@@ -102,13 +105,15 @@ Natch configs editing:
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch create test_sample Natch_testing_materials/test_image_debian.qcow2
 ```
 
 Подробнее о создании проекта можно узнать в разделе [Создание проекта](6_create_project.md#create_project).
 
-## 3.3. natch record
+<a name="cmd_record"></a>
+
+## natch record
 
 Команда `record` служит для записи сценария.
 Запускаться должна из директории с проектом.
@@ -120,13 +125,15 @@ natch create test_sample Natch_testing_materials/test_image_debian.qcow2
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch record -s sample
 ```
 
 Подробнее о записи сценария в разделе [Запись сценария](8_scenario_work.md#record).
 
-## <a name="natch_cmd_replay">3.4. natch replay
+<a name="cmd_replay"></a>
+
+## natch replay
 
 Команда `replay` служит для воспроизведения ранее записанных сценариев.
 Запускаться должна из директории с проектом.
@@ -154,7 +161,7 @@ natch record -s sample
 Узнать диапазон `icount`-ов в сценарии можно с помощью команды `natch info -s <name>`.
 
 Примеры:
-```
+```text
 natch replay
 natch replay -s sample
 natch replay --start login --end get_info
@@ -162,8 +169,9 @@ natch replay --start login --end get_info
 
 Подробнее о воспроизведении сценария в разделе [Воспроизведение сценария](8_scenario_work.md#replay).
 
+<a name="cmd_kvm"></a>
 
-## 3.5. natch kvm
+## natch kvm
 
 Команда `kvm` предназначена для запуска эмулятора в режиме аппаратной виртуализации.
 
@@ -185,7 +193,7 @@ natch replay --start login --end get_info
 - `-h/--help` -- справка по команде
 
 Примеры:
-```
+```text
 natch kvm -i Natch_testing_materials/test_image_debian.qcow2
 natch kvm -s
 natch kvm --args "-vnc 127.0.0.1:0"
@@ -197,8 +205,9 @@ natch kvm --args "-vnc 127.0.0.1:0"
 Параметр `-m` доступен только при запуске команды вне рабочей директории, в противном
 случае настройки памяти берутся из настроек проекта.
 
+<a name="cmd_tuning"></a>
 
-## <a name="natch_cmd_tuning">3.6. natch tuning
+## natch tuning
 
 Команда `tuning` служит для извлечения смещений структур ядра исследуемой системы и создания или перезаписи
 конфигурационного файла `task.cfg`.
@@ -212,7 +221,7 @@ natch kvm --args "-vnc 127.0.0.1:0"
 - `-h/--help` -- справка по команде
 
 Если в вашем проекте уже имеется файл `task.cfg`, вы увидите следующий диалог:
-```
+```text
 You already have task.cfg
 Do you want to do tuning again? [Y/n]
 ```
@@ -223,8 +232,9 @@ Do you want to do tuning again? [Y/n]
 Команда может быть полезна, если вы используете проект, созданный на более старой версии *Natch*, и
 существующий конфигурационный файл не соответствует текущей версии инструмента.
 
+<a name="cmd_info"></a>
 
-## <a name="natch_cmd_info">3.7. natch info
+## natch info
 
 Команда `info` предоставляет информацию о существующих в проекте сценариях и сохраненных снапшотах для каждого из них.
 
@@ -237,7 +247,7 @@ Do you want to do tuning again? [Y/n]
 
 Пример:
 
-```
+```text
 natch info
 
 Existing scenarios:
@@ -263,7 +273,7 @@ The last icount for this scenario: 11818629758
 
 Пример:
 
-```
+```text
 natch info -s sample
 
 ----- sample ------------------------------------------------------------
@@ -275,7 +285,9 @@ load                          13563000904             2024-06-03 15:59:14
 The last icount for this scenario: 13888364825
 ```
 
-## 3.8. natch delete
+<a name="cmd_delete"></a>
+
+## natch delete
 
 Команда `delete` удаляет сценарии и связанные с ними файлы из рабочей директории.
 
@@ -288,7 +300,7 @@ The last icount for this scenario: 13888364825
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch delete -s test
 
 Are you sure? [y/N] y
@@ -300,24 +312,37 @@ Output directory 'output_test' has been deleted
 При наличии директории с выходными файлами для *SNatch* (если выполнялось воспроизведение сценария),
 также будет предложено удалить и ее.
 
+<a name="cmd_edit"></a>
 
-## <a name="natch_cmd_edit">3.9. natch edit
+## natch edit
 
 Команда `edit` предназначена для более удобного редактирования конфигурационных файлов проекта.
 Имеет следующие субкоманды:
 
-- `main`
-- `taint`
-- `debug`
+- [`main`](#cmd_edit_main)
+- [`taint`](#cmd_edit_taint)
+- [`debug`](#cmd_edit_debug)
 
 Запускаться эти команды должны из директории с проектом.
 
 Все команды этой группы открывают на редактирование один из файлой конфигурации проекта или сценария.
 
+<a name="cmd_edit_main"></a>
+
+### natch edit main
+
 Команда `main` предназначения для редактирования главного конфигурационного файла -- `natch.cfg`.
+
+<a name="cmd_edit_taint"></a>
+
+### natch edit taint
 
 Команда `taint` предназначения для редактирования конфигурационных файлов сценариев `taint.cfg`.
 Если сценариев в проекте несколько -- будет отображено меню для выбора нужного сценария.
+
+<a name="cmd_edit_debug"></a>
+
+### natch edit debug
 
 Команда `debug` предназначения для редактирования конфигурационного файла с параметрами
 получения отладочной информации `debug_info.cfg`.
@@ -328,7 +353,7 @@ Output directory 'output_test' has been deleted
 
 Пример:
 
-```
+```text
 natch edit main
 ```
 
@@ -337,13 +362,19 @@ natch edit main
 которая описана ниже.
 
 
-## <a name="natch_cmd_coverage">3.10. natch coverage
+<a name="cmd_coverage"></a>
+
+## natch coverage
 
 Команда `coverage` на данный момент является экспериментальной. Предназначена для
 работы с исходными кодами исследуемого ПО и получения покрытия кода.
 Имеет субкоманды:
 
-- `extract`
+- [`extract`](#cmd_coverage_extract)
+
+<a name="cmd_coverage_extract"></a>
+
+### natch coverage extract
 
 Команда `extract` извлекает из образа системы исходные коды исследуемого ПО, а также
 строит отображение покрытия в html на основе этих кодов и покрытия кода, собранного ранее.
@@ -369,7 +400,7 @@ natch edit main
 Архив обновится автоматически.
 
 Пример:
-```
+```text
 natch coverage extract -s sample
 ```
 
@@ -378,15 +409,21 @@ natch coverage extract -s sample
 Для этого в `module.cfg` предусмотрено поле `coverage`, значение которого следует установить в `True` или `False` соответственно.
 Подробнее в приложении [Формат списка исполняемых модулей](app3_module_cfg.md#app_module_config).
 
-## 3.11. natch set
+<a name="cmd_set"></a>
+
+## natch set
 
 Команда `set` служит для внесения изменений в настройки проекта. Имеет субкоманды:
 
-- `memory`
-- `port`
-- `mode`
+- [`memory`](#cmd_set_memory)
+- [`port`](#cmd_set_port)
+- [`mode`](#cmd_set_mode)
 
 Запускаться эти команды должны из директории с проектом.
+
+<a name="cmd_set_memory"></a>
+
+### natch set memory
 
 Команда `memory` предназначена для изменения выделяемой виртуальной машине оперативной памяти.
 
@@ -399,9 +436,14 @@ natch coverage extract -s sample
 
 Пример:
 
-```
+```text
 natch set memory 8G
 ```
+
+<a name="cmd_set_port"></a>
+
+### natch set port
+
 
 Команда `port` служит для изменения отслеживаемых портов, проброса портов в виртуальную машину или
 отмены проброса.
@@ -416,7 +458,7 @@ natch set memory 8G
 новым списком.
 
 Примеры:
-```
+```text
 natch set port 8888,5555     # пробросятся порты 8888 и 5555
 natch set port 0             # проброшенные порты будут сброшены, установится порт по умолчанию: 80
 ```
@@ -424,6 +466,10 @@ natch set port 0             # проброшенные порты будут с
 Так как настройки портов влияют не только на командную строку запуска эмулятора, но и на конфигурационные
 файла сценариев, то будет предложено внести изменения и в них (нужные сценарии надо будет отменить галочкой).
 
+
+<a name="cmd_set_mode"></a>
+
+### natch set mode
 
 Команда `mode` служит для перевода эмулятора между режимами: графическим, текстовым или vnc.
 
@@ -436,7 +482,7 @@ natch set port 0             # проброшенные порты будут с
 Параметр `-p/--port` для `vnc` необязательный, по умолчанию порт 0.
 
 Примеры:
-```
+```text
 natch set mode graphic
 natch set mode vnc -p 5910
 ```
@@ -450,21 +496,24 @@ natch set mode vnc -p 5910
 
 Выполнение вышеописанных команд приведет к изменению параметров запуска эмулятора (`qemu_opts.ini`).
 
+<a name="cmd_modules"></a>
 
-## <a name="natch_cmd_modules">3.12. natch modules
+## natch modules
 
 Команда `modules` отвечает за работу с модулями в проекте и образе. Имеет субкоманды:
 
-- `add`
-- `update`
-- `extract`
-- `copy`
+- [`add`](#cmd_modules_add)
+- [`update`](#cmd_modules_update)
+- [`extract`](#cmd_modules_extract)
+- [`copy`](#cmd_modules_copy)
 
 Команды `add` и `update` можно запускать только из рабочей директории проекта.
 
 Для работы команд `natch modules` потребуется пароль администратора для монтирования образа.
 
-#### `natch modules add`
+<a name="cmd_modules_add"></a>
+
+### natch modules add
 
 Команда `add` служит для дополнения проекта новыми модулями.
 
@@ -480,11 +529,12 @@ natch set mode vnc -p 5910
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch modules add --guest-dir /home/user/Sample1
 ```
+<a name="cmd_modules_update"></a>
 
-#### <a name="natch_cmd_modules_update">`natch modules update`
+### natch modules update
 
 Команда `update` служит для обновления текущих модулей в проекте.
 
@@ -499,11 +549,13 @@ natch modules add --guest-dir /home/user/Sample1
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch modules update
 ```
 
-#### <a name="natch_cmd_modules_extract">`natch modules extract`
+<a name="cmd_modules_extract"></a>
+
+### natch modules extract
 
 Команда `extract` служит для извлечения файлов из образа в хостовую систему.
 Такая необходимость может возникать при подготовке объекта оценки к анализу.
@@ -523,12 +575,13 @@ natch modules update
 Директория для сохранения файлов из образа будет создана автоматически.
 
 Пример:
-```
+```text
 natch modules extract -i Natch_testing_materials/test_image_debian.qcow2 -p /home/user/Sample1 -D bins -e
 ```
 
+<a name="cmd_modules_copy"></a>
 
-#### `natch modules copy`
+### natch modules copy
 
 Команда `copy` служит для загрузки в образ файлов из хостовой системы.
 Является обратной команде `extract`.
@@ -544,13 +597,13 @@ natch modules extract -i Natch_testing_materials/test_image_debian.qcow2 -p /hom
 - `-h/--help` -- справка по команде
 
 Пример:
-```
+```text
 natch modules copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_testing_materials/Sample2_bins -D /home/user/Sample2 -e
 ```
 
+<a name="cmd_settings"></a>
 
-
-## 3.13. natch settings
+## natch settings
 
 Команда `settings` предназначена для изменения общих настроек инструмента.
 Имеет субкоманды:
@@ -565,8 +618,9 @@ natch modules copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_t
 Команда `arch` позволяет определить архитектуру, используемую по умолчанию. Предлагается выбор из двух доступных
 архитектур -- `x86_64` и `aarch64`.
 
+<a name="cmd_check"></a>
 
-## 3.14. natch check
+## natch check
 
 Команда `check` предназначена для получения информации о параметрах вашей системы для оценки соответствия ее для использования *Natch*.
 

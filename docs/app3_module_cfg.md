@@ -1,7 +1,9 @@
 <div style="page-break-before:always;">
 </div>
 
-# <a name="app_module_config"></a>Приложение 3. Формат списка исполняемых модулей
+<a name="app_module_config"></a>
+
+# В. Формат списка исполняемых модулей
 
 Пример конфигурационного файла `module.cfg`:
 

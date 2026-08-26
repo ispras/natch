@@ -24,7 +24,7 @@ jobs:
       - name: Checkout Complete History
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Скачиваем всю историю и теги, это критично для sphinx-multiversion
+          fetch-depth: 0 # Скачиваем всю историю и теги
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -38,20 +38,23 @@ jobs:
 
       - name: Load Extant Versions From Storage
         run: |
-          # Скачиваем текущее состояние сайта из gh-pages во временную папку
-          git clone --branch gh-pages https://github.com/${{ github.repository }}.git old_site || true
+          # 1. Скачиваем старый сайт СРАЗУ в целевую папку сборки
+          git clone --branch gh-pages https://github.com/${{ github.repository }}.git docs/_build/html || true
+          # Удаляем внутреннюю папку .git старого сайта, чтобы она не мешала нашей работе
+          rm -rf docs/_build/html/.git
 
       - name: Build Multi-Version HTML
         run: |
-          # Сборка текущих доступных версий в рамках этого запуска
+          # 2. Запускаем сборку. Sphinx запишет текущие ветку/тег поверх старых папок,
+          # сохранив при этом все ранее опубликованные версии релизов!
           sphinx-multiversion docs docs/_build/html
 
-      - name: Merge and Create Root Redirect
+      - name: Create Root Redirect
         run: |
-          # 1. Получаем абсолютно все теги из репозитория
+          # 3. Синхронизируем теги
           git fetch --tags --force
 
-          # 2. Ищем самый свежий тег, используя [0-9] вместо \d и восстановив пайпы (|)
+          # 4. Ищем последний актуальный релиз
           LATEST_RELEASE=$(
             git tag --list 'natch_docs_v*' |
             grep -E '^natch_docs_v\.(3\.4\.[1-9][0-9]*|3\.[5-9][0-9]*(\.[0-9]+)?|[4-9][0-9]*(\.[0-9]+)?)$' |
@@ -59,23 +62,14 @@ jobs:
             tail -n 1
           )
 
-          # Если тег не найден, откатываемся на main
           if [ -z "$LATEST_RELEASE" ]; then
             LATEST_RELEASE="main"
             echo "WARNING: Не найден ни один релизный тег, используем main"
           fi
 
-          echo "Последний релиз для редиректа определен как: $LATEST_RELEASE"
+          echo "Последний актуальный релиз для редиректа определен как: $LATEST_RELEASE"
 
-          # 3. Восстанавливаем ВСЕ прошлые релизы, которые были сохранены в старом кэше,
-          # НО аккуратно, используя флаг -n (не перезаписывать новые собранные папки)
-          if [ -d "old_site" ]; then
-            echo "Интеграция прошлых релизов из долгосрочного хранилища..."
-            cp -r -n old_site/* docs/_build/html/ || true
-            rm -rf docs/_build/html/.git
-          fi
-
-          # 4. Создаём правильный redirect с корневого URL на вычисленный последний релиз
+          # 5. Принудительно перезаписываем корневой index.html на актуальный релиз
           cat <<EOF > docs/_build/html/index.html
           <!DOCTYPE html>
           <html>

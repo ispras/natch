@@ -39,7 +39,7 @@ jobs:
       - name: Load Extant Versions From Storage
         run: |
           # 1. Скачиваем текущий рабочий сайт во временную папку
-          git clone --branch gh-pages https://github.com{{ github.repository }}.git old_site || true
+          git clone --branch gh-pages https://github.com/${{ github.repository }}.git old_site || true
 
       - name: Sync Git Tags Inside Container
         run: |

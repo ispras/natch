@@ -45,9 +45,10 @@ jobs:
 
       - name: Build Multi-Version HTML
         run: |
-          # 2. Запускаем сборку. Sphinx запишет текущие ветку/тег поверх старых папок,
-          # сохранив при этом все ранее опубликованные версии релизов!
           sphinx-multiversion docs docs/_build/html
+        env:
+          # Помогаем sphinx-multiversion правильно определить текущий тег/ветку в контейнере GitHub
+          SPHINX_MULTIVERSION_PRE_BUILD_REF: ${{ github.ref }}
 
       - name: Create Root Redirect
         run: |

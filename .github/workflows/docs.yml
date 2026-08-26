@@ -96,14 +96,14 @@ jobs:
 
           LATEST_RELEASE=$(
             git tag --list 'natch_docs_v*' |
-            grep -E '^natch_docs_v[0-9]+\.[0-9]+\.[0-9]+$' |
+            grep -E '^natch_docs_v.[0-9]+\.[0-9]+\.[0-9]+$' |
             sort -V |
             tail -n 1
           )
 
           # Проверяем, что релиз найден
           if [ -z "$LATEST_RELEASE" ]; then
-            echo "ERROR: Не найден ни один релизный тег natch_docs_vX.Y.Z"
+            echo "ERROR: Не найден ни один релизный тег natch_docs_v.X.Y.Z"
             exit 1
           fi
 

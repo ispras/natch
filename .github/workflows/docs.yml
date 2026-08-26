@@ -24,7 +24,7 @@ jobs:
       - name: Checkout Complete History
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Скачиваем всю историю и теги
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -38,36 +38,23 @@ jobs:
 
       - name: Load Extant Versions From Storage
         run: |
-          # 1. Скачиваем текущий рабочий сайт во временную папку
-          git clone --branch gh-pages https://github.com/${{ github.repository }}.git old_site || true
-
-      - name: Sync Git Tags Inside Container
-        run: |
-          git fetch --tags --force
-          git branch -f main origin/main || true
+          git clone --branch gh-pages https://github.com/${{ github.repository }}.git docs/_build/html || true
+          # Удаляем внутреннюю папку .git старого сайта, чтобы она не мешала нашей работе
+          rm -rf docs/_build/html/.git
 
       - name: Build Multi-Version HTML
         run: |
-          sphinx-multiversion docs current_build
+          sphinx-multiversion docs docs/_build/html
+        env:
+          # Помогаем sphinx-multiversion правильно определить текущий тег/ветку в контейнере GitHub
+          SPHINX_MULTIVERSION_PRE_BUILD_REF: ${{ github.ref }}
 
-      - name: Merge and Create Root Redirect
+      - name: Create Root Redirect
         run: |
-          mkdir -p docs/_build/html
+          # 3. Синхронизируем теги
+          git fetch --tags --force
 
-          # Переносим старые сохраненные релизы из хранилища gh-pages
-          if [ -d "old_site" ]; then
-            echo "Перенос существующих версий из хранилища..."
-            cp -r old_site/* docs/_build/html/ || true
-            rm -rf docs/_build/html/.git
-          fi
-
-          # Накладываем сверху только что собранные в текущем запуске версии (включая наш новый тег)
-          if [ -d "current_build" ]; then
-            echo "Интеграция свежих версий в общий пул..."
-            cp -r current_build/* docs/_build/html/ || true
-          fi
-
-          # Вычисляем самый свежий тег для редиректа
+          # 4. Ищем последний актуальный релиз
           LATEST_RELEASE=$(
             git tag --list 'natch_docs_v*' |
             grep -E '^natch_docs_v\.(3\.4\.[1-9][0-9]*|3\.[5-9][0-9]*(\.[0-9]+)?|[4-9][0-9]*(\.[0-9]+)?)$' |
@@ -77,12 +64,12 @@ jobs:
 
           if [ -z "$LATEST_RELEASE" ]; then
             LATEST_RELEASE="main"
-            echo "WARNING: No found release tags, use main"
+            echo "WARNING: Не найден ни один релизный тег, используем main"
           fi
 
-          echo "Финальный редирект главной страницы настроен на: $LATEST_RELEASE"
+          echo "Последний актуальный релиз для редиректа определен как: $LATEST_RELEASE"
 
-          # 8. Принудительно создаем актуальный index.html в корне сайта
+          # 5. Принудительно перезаписываем корневой index.html на актуальный релиз
           cat <<EOF > docs/_build/html/index.html
           <!DOCTYPE html>
           <html>

@@ -94,12 +94,14 @@ jobs:
           # Ищем теги вида:
           #   natch_docs_v3.4.1
 
+
           LATEST_RELEASE=$(
             git tag --list 'natch_docs_v*' |
-            grep -E '^natch_docs_v\.[0-9]+\.[0-9]+(\.[0-9]+)?$' |
+            grep -E '^natch_docs_v\.(3\.4\.[1-9][0-9]*|3\.[5-9][0-9]*\.[0-9]+|[4-9][0-9]*\.[0-9]+\.[0-9]+)$' |
             sort -V |
             tail -n 1
           )
+
 
           # Проверяем, что релиз найден
           if [ -z "$LATEST_RELEASE" ]; then

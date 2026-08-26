@@ -38,7 +38,6 @@ jobs:
 
       - name: Load Extant Versions From Storage
         run: |
-          # 1. Скачиваем старый сайт СРАЗУ в целевую папку сборки
           git clone --branch gh-pages https://github.com/${{ github.repository }}.git docs/_build/html || true
           # Удаляем внутреннюю папку .git старого сайта, чтобы она не мешала нашей работе
           rm -rf docs/_build/html/.git

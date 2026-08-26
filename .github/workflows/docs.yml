@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-    # tags:
-    #   - 'natch_docs_v.3.4.[1-9]*'
-    #   - 'natch_docs_v.3.[5-9]*'
-    #   - 'natch_docs_v.[4-9]*'
+    tags:
+      - 'natch_docs_v.3.4.[1-9]*'
+      - 'natch_docs_v.3.[5-9]*'
+      - 'natch_docs_v.[4-9]*'
   workflow_dispatch:
 
 permissions:
@@ -40,38 +40,92 @@ jobs:
         run: |
           # Пытаемся стянуть текущий рабочий сайт из gh-pages во временную папку,
           # чтобы не потерять уже собранные ранее версии релизов.
-          git clone --branch gh-pages https://github.com{{ github.repository }}.git old_site || true
+          git clone --branch gh-pages https://github.com${{ github.repository }}.git old_site || true
 
       - name: Build Multi-Version HTML
         run: |
           # sphinx-multiversion собирает каждую версию в docs/_build/html/<имя_ветки_или_тега>
           sphinx-multiversion docs docs/_build/html
 
+      # - name: Merge and Create Root Redirect
+      #   run: |
+      #     # 1. Если у нас есть сохраненные старые релизы, копируем их обратно в папку сборки
+      #     if [ -d "old_site" ]; then
+      #       echo "Восстановление ранее собранных версий из кэша..."
+      #       cp -r old_site/* docs/_build/html/ || true
+      #       rm -rf docs/_build/html/.git
+      #     fi
+
+      #     # 2. Пересобираем текущую версию поверх (чтобы обновить main или текущий тег)
+      #     sphinx-multiversion docs docs/_build/html
+
+      #     # 3. Делаем так, чтобы при заходе на https://ispras.github.io/natch/
+      #     # пользователя сразу перенаправляло на документацию ветки main
+      #     cat <<EOF > docs/_build/html/index.html
+      #     <!DOCTYPE html>
+      #     <html>
+      #       <head>
+      #         <title>Redirecting to main documentation</title>
+      #         <meta charset="utf-8">
+      #         <meta http-meta http-equiv="refresh" content="0; url=./main/index.html">
+      #         <link rel="canonical" href="./main/index.html">
+      #       </head>
+      #       <body>
+      #         <p>Redirecting to <a href="./main/index.html">main documentation</a>...</p>
+      #       </body>
+      #     </html>
+      #     EOF
+
       - name: Merge and Create Root Redirect
         run: |
-          # 1. Если у нас есть сохраненные старые релизы, копируем их обратно в папку сборки
+          # Восстанавливаем ранее собранные версии
           if [ -d "old_site" ]; then
-            echo "Восстановление ранее собранных версий из кэша..."
+            echo "Восстановление ранее собранных версий..."
             cp -r old_site/* docs/_build/html/ || true
             rm -rf docs/_build/html/.git
           fi
 
-          # 2. Пересобираем текущую версию поверх (чтобы обновить main или текущий тег)
+          # Пересобираем документацию
           sphinx-multiversion docs docs/_build/html
 
-          # 3. Делаем так, чтобы при заходе на https://ispras.github.io/natch/
-          # пользователя сразу перенаправляло на документацию ветки main
+          # Получаем все теги из репозитория
+          git fetch --tags --force
+
+          # Ищем теги вида:
+          #   natch_docs_v3.4.1
+
+          LATEST_RELEASE=$(
+            git tag --list 'natch_docs_v*' |
+            grep -E '^natch_docs_v[0-9]+\.[0-9]+\.[0-9]+$' |
+            sort -V |
+            tail -n 1
+          )
+
+          # Проверяем, что релиз найден
+          if [ -z "$LATEST_RELEASE" ]; then
+            echo "ERROR: Не найден ни один релизный тег natch_docs_vX.Y.Z"
+            exit 1
+          fi
+
+          echo "Последний релиз: $LATEST_RELEASE"
+
+          # Создаём redirect с корневого URL на последний релиз
           cat <<EOF > docs/_build/html/index.html
           <!DOCTYPE html>
           <html>
             <head>
-              <title>Redirecting to main documentation</title>
               <meta charset="utf-8">
-              <meta http-meta http-equiv="refresh" content="0; url=./main/index.html">
-              <link rel="canonical" href="./main/index.html">
+              <title>Natch documentation</title>
+              <meta http-equiv="refresh" content="0; url=./${LATEST_RELEASE}/index.html">
+              <link rel="canonical" href="./${LATEST_RELEASE}/index.html">
             </head>
             <body>
-              <p>Redirecting to <a href="./main/index.html">main documentation</a>...</p>
+              <p>
+                Redirecting to
+                <a href="./${LATEST_RELEASE}/index.html">
+                  Natch documentation ${LATEST_RELEASE}
+                </a>...
+              </p>
             </body>
           </html>
           EOF

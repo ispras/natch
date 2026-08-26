@@ -1,4 +1,4 @@
-
+<!-- {% if versions %}
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
   <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
     <span class="fa fa-book"> Версии документации</span>
@@ -30,4 +30,42 @@
     other.style.display = other.style.display === 'none' ? 'block' : 'none';
   });
 </script>
+{% endif %} -->
 
+
+{%- if current_version %}
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    {{ current_version.name }}
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+
+    {%- if versions.tags %}
+    <dl>
+      <dt>Релизы</dt>
+      {%- for item in versions.tags %}
+      <dd>
+        <a href="{{ item.url }}">{{ item.name }}</a>
+      </dd>
+      {%- endfor %}
+    </dl>
+    {%- endif %}
+
+    {%- if versions.branches %}
+    <dl>
+      <dt>Ветки</dt>
+      {%- for item in versions.branches %}
+      <dd>
+        <a href="{{ item.url }}">{{ item.name }}</a>
+      </dd>
+      {%- endfor %}
+    </dl>
+    {%- endif %}
+
+  </div>
+</div>
+{%- endif %}

@@ -11,6 +11,7 @@ extensions = [
     "myst_parser",
     "sphinx_multitoc_numbering",
     "sphinx_design",
+    "sphinx_multiversion",
 ]
 
 myst_enable_extensions = [
@@ -38,17 +39,27 @@ exclude_patterns = [
 ]
 
 
-# Принудительно внедряем наш шаблон версий в разметку темы Read the Docs
-html_context = {
-    'extra_nav_items': [
-        # Этот трюк заставляет Sphinx отрендерить наш шаблон внутри сайдбара
-        '<!--include_versioning-->',
-    ]
+html_sidebars = {
+    "**": [
+        "localtoc.html",
+        "relations.html",
+        "sourcelink.html",
+        "searchbox.html",
+    ],
 }
 
-# Переопределяем встроенный шаблон темы, чтобы подключить наш файл
-def setup(app):
-    app.config.html_context['extra_nav_items'] = ['versioning.html']
+
+# # Принудительно внедряем наш шаблон версий в разметку темы Read the Docs
+# html_context = {
+#     'extra_nav_items': [
+#         # Этот трюк заставляет Sphinx отрендерить наш шаблон внутри сайдбара
+#         '<!--include_versioning-->',
+#     ]
+# }
+
+# # Переопределяем встроенный шаблон темы, чтобы подключить наш файл
+# def setup(app):
+#     app.config.html_context['extra_nav_items'] = ['versioning.html']
 
 
 

@@ -1,23 +1,33 @@
 {% if versions %}
-<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
     <span class="fa fa-book"> Версии документации</span>
     v: {{ current_version }}
-    <span class="fa fa-caret-down"></span>
+    <span class="fa fa-caret-down" style="float: right;"></span>
   </span>
-  <div class="rst-other-versions">
-    <dl>
-      <dt>Ветки</dt>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    {% if versions.branches %}
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
       {% for version in versions.branches %}
-      <dd><a href="{{ version.url }}">{{ version.name }}</a></dd>
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="{{ version.url }}" style="color: #3498db;">{{ version.name }}</a></dd>
       {% endfor %}
     </dl>
+    {% endif %}
+    {% if versions.tags %}
     <dl>
-      <dt>Релизы</dt>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
       {% for version in versions.tags %}
-      <dd><a href="{{ version.url }}">{{ version.name }}</a></dd>
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="{{ version.url }}" style="color: #3498db;">{{ version.name }}</a></dd>
       {% endfor %}
     </dl>
+    {% endif %}
   </div>
 </div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
 {% endif %}

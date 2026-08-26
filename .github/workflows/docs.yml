@@ -40,7 +40,7 @@ jobs:
         run: |
           # Пытаемся стянуть текущий рабочий сайт из gh-pages во временную папку,
           # чтобы не потерять уже собранные ранее версии релизов.
-          git clone --branch gh-pages https://github.com{{ github.repository }}.git old_site || true
+          git clone --branch gh-pages https://github.com${{ github.repository }}.git old_site || true
 
       - name: Build Multi-Version HTML
         run: |

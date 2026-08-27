@@ -68,7 +68,6 @@ html_sidebars = {
 smv_branch_whitelist = r'^main$'
 
 # only for 3.4.1 and above
-# smv_tag_whitelist = r'^natch_docs_v\.(3\.4\.[1-9]\d*|3\.[5-9]\d*(\.\d+)?|[4-9]\d*(\.\d+)?)$'
 smv_tag_whitelist = r'^natch_docs_v\.(3\.4\.[1-9][0-9]*|3\.[5-9][0-9]*(\.[0-9]+)?|[4-9][0-9]*(\.[0-9]+)?)$'
 
 smv_released_pattern = r'^tags/.*$'

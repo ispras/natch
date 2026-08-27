@@ -62,6 +62,8 @@ jobs:
           git fetch origin --prune
           git fetch origin --tags --force
 
+          git branch -f main origin/main || true
+
           echo
           echo "Documentation tags:"
           git tag --list 'natch_docs_v.*' | sort -V

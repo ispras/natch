@@ -192,14 +192,14 @@ jobs:
               <meta http-equiv="Expires" content="0">
 
               <!-- ИСПОЛЬЗУЕМ АБСОЛЮТНЫЙ ПУТЬ С ИМЕНЕМ РЕПОЗИТОРИЯ -->
-              <meta http-equiv="refresh" content="0; url=/natch/${LATEST_RELEASE}/index.html">
-              <link rel="canonical" href="/natch/${LATEST_RELEASE}/index.html">
+              <meta http-equiv="refresh" content="0; url=${LATEST_RELEASE}/index.html">
+              <link rel="canonical" href="${LATEST_RELEASE}/index.html">
             </head>
 
             <body>
               <p>
                 Redirecting to
-                <a href="/natch/${LATEST_RELEASE}/index.html">
+                <a href="${LATEST_RELEASE}/index.html">
                   Natch documentation ${LATEST_RELEASE}
                 </a>...
               </p>

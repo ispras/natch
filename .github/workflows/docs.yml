@@ -58,8 +58,8 @@ jobs:
           git fetch origin --prune
           git fetch origin --tags --force
 
-          echo "Current ref:"
-          git describe --always --decorate
+          # echo "Current ref:"
+          # git describe --always --decorate
 
           echo
           echo "Documentation tags:"

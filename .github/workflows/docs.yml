@@ -64,7 +64,7 @@ jobs:
         run: |
           # 1. Скачиваем обновления веток
           git fetch origin main --prune
-          git branch -f main origin/main || true
+          # git branch -f main origin/main || true
 
           # Это заставит sphinx-multiversion увидеть только что запушенный тег без пуша в main.
           git fetch origin "+refs/tags/*:refs/tags/*" --force

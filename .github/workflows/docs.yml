@@ -177,7 +177,12 @@ jobs:
       # 10. Root redirect (С защитой от кэширования браузером)
       # ------------------------------------------------------------
       - name: Create Root Redirect
+      # ------------------------------------------------------------
+      # 10. Root redirect (Исправленный абсолютный путь)
+      # ------------------------------------------------------------
+      - name: Create Root Redirect
         run: |
+
           cat > final_site/index.html <<EOF
           <!DOCTYPE html>
           <html>
@@ -185,25 +190,27 @@ jobs:
               <meta charset="utf-8">
               <title>Natch documentation</title>
 
-              <!-- Запрещаем браузерам кэшировать эту страницу перенаправления -->
+              <!-- Запрещаем кэширование страницы перенаправления -->
               <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
               <meta http-equiv="Pragma" content="no-cache">
               <meta http-equiv="Expires" content="0">
 
-              <!-- Выполняем мгновенный редирект на последнюю версию -->
-              <meta http-equiv="refresh" content="0; url=./${LATEST_RELEASE}/index.html">
-              <link rel="canonical" href="./${LATEST_RELEASE}/index.html">
+              <!-- ИСПОЛЬЗУЕМ АБСОЛЮТНЫЙ ПУТЬ С ИМЕНЕМ РЕПОЗИТОРИЯ -->
+              <meta http-equiv="refresh" content="0; url=/natch/${LATEST_RELEASE}/index.html">
+              <link rel="canonical" href="/natch/${LATEST_RELEASE}/index.html">
             </head>
+
             <body>
               <p>
                 Redirecting to
-                <a href="./${LATEST_RELEASE}/index.html">
+                <a href="/natch/${LATEST_RELEASE}/index.html">
                   Natch documentation ${LATEST_RELEASE}
                 </a>...
               </p>
             </body>
           </html>
           EOF
+
 
 
       # ------------------------------------------------------------

@@ -58,82 +58,44 @@ jobs:
           git fetch origin --prune
           git fetch origin --tags --force
 
-          echo "Branches:"
-          git branch -a
+          echo "Current ref:"
+          git describe --always --decorate
 
           echo
           echo "Documentation tags:"
           git tag --list 'natch_docs_v.*' | sort -V
 
       # ------------------------------------------------------------
-      # 5. Сохраняем уже опубликованные версии
-      # ------------------------------------------------------------
-      - name: Load Existing Site
-        run: |
-          rm -rf old_site
-
-          git clone \
-            --branch gh-pages \
-            --depth 1 \
-            "https://github.com/${{ github.repository }}.git" \
-            old_site \
-            || true
-
-          if [ -d old_site ]; then
-            rm -rf old_site/.git
-          fi
-
-
-      # ------------------------------------------------------------
-      # 6. Полностью строим новые версии
+      # 5. Полная сборка всех версий
       # ------------------------------------------------------------
       - name: Build Multi-Version Documentation
         run: |
-          rm -rf new_site
+          rm -rf final_site
 
-          sphinx-multiversion docs new_site
+          sphinx-multiversion docs final_site
 
         env:
           SPHINX_MULTIVERSION_PRE_BUILD_REF: ${{ github.ref }}
 
 
       # ------------------------------------------------------------
-      # 7. Показываем, что реально построилось
+      # 6. Проверяем результат sphinx-multiversion
       # ------------------------------------------------------------
       - name: Show Built Versions
         run: |
-          echo "===== New site ====="
-          find new_site -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | sort
 
-          echo
-          echo "===== Existing site ====="
+          echo "===== GENERATED VERSION DIRECTORIES ====="
 
-          if [ -d old_site ]; then
-            find old_site -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | sort
-          else
-            echo "No previous site"
-          fi
+          find final_site \
+            -mindepth 1 \
+            -maxdepth 1 \
+            -type d \
+            -printf '%f\n' |
+            sort
 
 
       # ------------------------------------------------------------
-      # 8. Объединяем старые и новые версии
-      # ------------------------------------------------------------
-      - name: Merge Documentation Versions
-        run: |
-          rm -rf final_site
-          mkdir -p final_site
-
-          # Сначала старые опубликованные версии
-          if [ -d old_site ]; then
-            cp -a old_site/. final_site/
-          fi
-
-          # Затем новые версии поверх старых
-          cp -a new_site/. final_site/
-
-
-      # ------------------------------------------------------------
-      # 9. Находим последний релиз
+      # 7. Находим последний релиз
       # ------------------------------------------------------------
       - name: Find Latest Release
         run: |
@@ -163,22 +125,29 @@ jobs:
 
 
       # ------------------------------------------------------------
-      # 10. Проверяем, что последний релиз действительно существует
+      # 8. Проверяем, что релиз действительно собран
       # ------------------------------------------------------------
       - name: Verify Latest Release
         run: |
 
-          if [ ! -d "final_site/${LATEST_RELEASE}" ]; then
+          echo "Checking:"
+          echo "final_site/${LATEST_RELEASE}/index.html"
+
+          if [ ! -f "final_site/${LATEST_RELEASE}/index.html" ]; then
+
             echo
-            echo "ERROR:"
-            echo "Latest release is ${LATEST_RELEASE}"
-            echo "but directory final_site/${LATEST_RELEASE} does not exist."
+            echo "ERROR: Latest release was not generated!"
             echo
 
-            echo "Available versions:"
+            echo "Expected:"
+            echo "final_site/${LATEST_RELEASE}/index.html"
+
+            echo
+            echo "Available directories:"
+
             find final_site \
-              -maxdepth 1 \
               -mindepth 1 \
+              -maxdepth 1 \
               -type d \
               -printf '%f\n' |
               sort
@@ -186,9 +155,11 @@ jobs:
             exit 1
           fi
 
+          echo "OK: release exists"
+
 
       # ------------------------------------------------------------
-      # 11. Создаём root redirect
+      # 9. Root redirect
       # ------------------------------------------------------------
       - name: Create Root Redirect
         run: |
@@ -198,6 +169,7 @@ jobs:
           <html>
             <head>
               <meta charset="utf-8">
+
               <title>Natch documentation</title>
 
               <meta
@@ -224,44 +196,33 @@ jobs:
 
 
       # ------------------------------------------------------------
-      # 12. Показываем итоговую структуру
+      # 10. КРИТИЧЕСКАЯ ПРОВЕРКА
       # ------------------------------------------------------------
-      - name: Show Final Site
+      - name: Verify Final Site
         run: |
-          echo "===== FINAL SITE ====="
+
+          echo "===== FINAL SITE ROOT ====="
 
           find final_site \
-            -maxdepth 2 \
-            -type f \
-            | sort \
-            | head -200
+            -mindepth 1 \
+            -maxdepth 1 \
+            -printf '%f\n' |
+            sort
 
           echo
-          echo "===== VERSION DIRECTORIES ====="
+          echo "===== RELEASE INDEX ====="
 
-          find final_site \
-            -maxdepth 1 \
-            -mindepth 1 \
-            -type d \
-            -printf '%f\n' \
-            | sort
+          ls -lh \
+            "final_site/${LATEST_RELEASE}/index.html"
 
+          echo
+          echo "===== ROOT REDIRECT ====="
 
-      # ------------------------------------------------------------
-      # 13. Сохраняем сайт в gh-pages
-      # ------------------------------------------------------------
-      - name: Save Site to gh-pages
-        uses: Actions-js/push@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          directory: final_site
-          force: true
-          message: "Update documentation [skip ci]"
+          cat final_site/index.html
 
 
       # ------------------------------------------------------------
-      # 14. Загружаем ТОТ ЖЕ final_site как Pages artifact
+      # 11. Публикуем Pages Artifact
       # ------------------------------------------------------------
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v4

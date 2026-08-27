@@ -179,6 +179,7 @@ jobs:
       - name: Create Root Redirect
         run: |
 
+          echo $(pwd)
           cat > final_site/index.html <<EOF
           <!DOCTYPE html>
           <html>

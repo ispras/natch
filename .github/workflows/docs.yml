@@ -57,16 +57,22 @@ jobs:
       # ------------------------------------------------------------
       # 4. Явно обновляем refs
       # ------------------------------------------------------------
+      # ------------------------------------------------------------
+      # 4. Явно обновляем refs (ИСПРАВЛЕННЫЙ ВАРИАНТ)
+      # ------------------------------------------------------------
       - name: Fetch branches and tags
         run: |
-          git fetch origin --prune
-          git fetch origin --tags --force
-
+          # 1. Скачиваем обновления веток
+          git fetch origin main --prune
           git branch -f main origin/main || true
 
+          # Это заставит sphinx-multiversion увидеть только что запушенный тег без пуша в main.
+          git fetch origin "+refs/tags/*:refs/tags/*" --force
+
           echo
-          echo "Documentation tags:"
+          echo "Доступные теги локально на диске:"
           git tag --list 'natch_docs_v.*' | sort -V
+
 
 
       # ------------------------------------------------------------

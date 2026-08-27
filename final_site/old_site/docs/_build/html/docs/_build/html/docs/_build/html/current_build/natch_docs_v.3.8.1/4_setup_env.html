@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Настройка окружения для работы с Natch &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="5. Командный интерфейс Natch" href="5_natch_cmd.html" />
+    <link rel="prev" title="3. Запуск тестовых примеров Natch" href="3_launch_test_samples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Настройка окружения для работы с Natch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qemu">4.1. Подготовка виртуализованной среды в формате QEMU</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.1.1. Подготовка хостовой системы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.1.2. Сборка прототипа объекта оценки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.1.3. Перенос прототипа объекта оценки из образа ВМ на хост</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.1.4. Тестирование виртуализированной среды функционирования ОО</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Настройка окружения для работы с Natch</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/4_setup_env.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="setup_env"></a></p>
+<section id="natch">
+<h1><span class="section-number">4. </span>Настройка окружения для работы с Natch<a class="headerlink" href="#natch" title="Ссылка на этот заголовок"></a></h1>
+<p>Работа с <em>Natch</em> предполагает подготовку образа операционной системы для <a class="reference external" href="https://wiki.qemu.org/Main_Page">QEMU</a>.</p>
+<p>В этом разделе описаны все подготовительные действия, которые могут потребоваться перед работой непосредственно с инструментом.</p>
+<p><a name="create-qemu-env"></a></p>
+<section id="qemu">
+<h2><span class="section-number">4.1. </span>Подготовка виртуализованной среды в формате QEMU<a class="headerlink" href="#qemu" title="Ссылка на этот заголовок"></a></h2>
+<p>Подготовка виртуализованной среды выполнения объекта оценки (ОО) в общем случае состоит из следующих последовательных шагов:</p>
+<ul class="simple">
+<li><p>создание образа эмулируемой операционной системы в формате диска <a class="reference external" href="https://en.wikipedia.org/wiki/Qcow">qcow2</a> на основе базового дистрибутива ОС. Формат <em>qcow2</em> позволяет эффективно формировать снапшоты состояния файловой системы в произвольный момент выполнения виртулизованной среды функционирования;</p></li>
+<li><p>сборка дистрибутива ОО с требуемыми параметрами, в частности, с генерацией и сохранением отладочных символов;</p></li>
+<li><p>помещение собранного дистрибутива ОО в виртуализованную среду выполнения;</p></li>
+<li><p>подготовка команд запуска QEMU, для эмуляции аппаратной части среды функционирования, загрузку и выполнение компонентов <em>Natch</em>.</p></li>
+</ul>
+<p>Подготовка виртуализованной среды выполнения ОО в значительной степени совпадает с подготовкой среды для анализа с помощью инструмента динамического анализа помеченных данных <a class="reference external" href="https://www.ispras.ru/technologies/blesna/">Блесна</a> (разработчик - <a class="reference external" href="https://www.ispras.ru/">ИСП РАН</a>), с точностью до подготовки команд запуска QEMU.</p>
+<p>Создавать виртуализованную среду выполнения ОО рекомендуется в хостовой системе, допускающей запуск QEMU в режиме пользовательской виртуализации (ключ <code class="docutils literal notranslate"><span class="pre">-enable-kvm</span></code>) - это существенно ускорит процесс,
+скорость работы в режиме аппаратной виртуализации более чем на порядок превосходит работу в режиме полносистемной эмуляции. Проверить доступность данного режима в вашей хостовой системе
+(равно как и установить KVM-модули в вашу систему) можно, опираясь на следующую <a class="reference external" href="https://phoenixnap.com/kb/ubuntu-install-kvm">статью</a>, с помощью команды:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>kvm-ok
+</pre></div>
+</div>
+<p>Примерный алгоритм проброса виртуализации для трехуровневого стенда: <em>Windows 11+AMD Процессор (хостовая ОС  рабочей станции) -&gt; VirtualBox (хостовая ОС рабочей станции) -&gt; ubuntu+kvm+qemu (хостовая ОС Natch) -&gt; lubuntu (гостевая ОС)</em> приведён ниже.</p>
+<p>Перед установкой KVM в гостевой ОС нужно настроить среду виртуализации VirtualBox в хостовой ОС как на рисунках ниже.</p>
+<hr class="docutils" />
+<p><strong>ВНИМАНИЕ!</strong></p>
+<p>На момент 12.10.2025 по-прежнему наблюдается проблема с тем, что VirtualBox версии 7+ (7.0.8) не позволяет корректно запускать QEMU в режиме поддержки KVM. Используйте VirtualBox версии 6.1.40 (именно эту). Наиболее актуальный тикет на данную ошибку заведён <a class="reference external" href="https://www.virtualbox.org/ticket/21552">здесь</a>, пока что без ответа.</p>
+<img alt="_images/vbox_system.png" src="_images/vbox_system.png" />
+<img alt="_images/vbox_system2.png" src="_images/vbox_system2.png" />
+<p><img alt="_images/vbox_display.png" src="_images/vbox_display.png" /><figcaption><em>Настройки машины в VBox</em></figcaption></p>
+<p>Перед установкой KVM необходимо определить, поддерживает ли процессор эту функцию:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>egrep<span class="w"> </span>-c<span class="w"> </span><span class="s1">'(vmx|svm)'</span><span class="w"> </span>/proc/cpuinfo
+</pre></div>
+</div>
+<p>В результате будут следующие варианты ответа системы:</p>
+<ul class="simple">
+<li><p>0 – процессор не поддерживает функции KVM;</p></li>
+<li><p>1 и более – процессор поддерживает функции KVM.</p></li>
+</ul>
+<p>Следующий этап – установка KVM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>qemu<span class="w"> </span>qemu-kvm<span class="w"> </span>libvirt-daemon<span class="w"> </span>libvirt-clients<span class="w"> </span>bridge-utils<span class="w"> </span>virt-manager
+</pre></div>
+</div>
+<p>Этой командой будет выполнена установка утилиты <code class="docutils literal notranslate"><span class="pre">kvm</span></code>, библиотеки <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> и менеджера виртуальных машин.</p>
+<p>Далее необходимо добавить своего пользователя в группу <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>, так как только <code class="docutils literal notranslate"><span class="pre">root</span></code> и пользователи этой группы могут использовать виртуальные машины KVM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>gpasswd<span class="w"> </span>-a<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>libvirt
+</pre></div>
+</div>
+<p>Затем необходимо убедиться, что сервис <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> запущен и работает:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>libvirtd
+</pre></div>
+</div>
+<p>После выполнения этой команды выполнить: <code class="docutils literal notranslate"><span class="pre">reboot</span></code></p>
+<p>Далее, проверка установки <code class="docutils literal notranslate"><span class="pre">kvm</span></code>: <code class="docutils literal notranslate"><span class="pre">kvm-ok</span></code></p>
+<p>Если вы получили ответ:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>INFO:<span class="w"> </span>dev/kvm<span class="w"> </span>exists
+KVM<span class="w"> </span>acceleration<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>used
+</pre></div>
+</div>
+<p>Значит настройка выполнена правильно, и вы молодец :) Ваша QEMU-виртуализированная гостевая ОС будет работать быстро, что позволит быстро сформировать в ней исследуемую среду.</p>
+<p>При этом важно помнить, что анализ в любом случае необходимо выполнять без использования данного ключа, так как только полносистемная эмуляция позволяет собрать полный лог действий процессора.</p>
+<section id="id1">
+<h3><span class="section-number">4.1.1. </span>Подготовка хостовой системы<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h3>
+<p>Требования к хостовой системе приведены в разделе <a class="reference internal" href="#app7_requirements.md#app_requirements"><span class="xref myst">Требования и ограничения Natch</span></a>.</p>
+<p>Подготовим Linux-based рабочую станцию (далее - хост), поддерживающую графический режим выполнения. QEMU демонстрирует вывод эмулируемой среды выполнения в отдельном графическом окне, следовательно, нам необходим графический режим. Хост может быть реализован в формате виртуальной машины. В примерах ниже описаны действия пользователя, работающего в виртуальной машине VirtualBox (4 ядра, 8 ГБ ОЗУ)
+с установленной ОС <a class="reference external" href="https://releases.ubuntu.com/20.04/ubuntu-20.04.5-desktop-amd64.iso">Ubuntu20.04</a> (desktop-конфигурация, обновить пакеты при установке).</p>
+<p>Установим требуемое системное ПО, в т.ч. QEMU:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>curl<span class="w"> </span>qemu-system<span class="w"> </span>gcc<span class="w"> </span>g++
+</pre></div>
+</div>
+<p><em>Подсказка: данная инсталляция требуется не для запуска Natch, но для создания образов ВМ на произвольном хосте. Natch содержит в своём составе требуемую для работы версию QEMU, поэтому если вы планируете создавать образ ВМ на том же хосте, на котором уже установили Natch, отдельно QEMU можно не ставить.</em></p>
+<p>Скачаем на хост выбранный базовый дистрибутив ОС. Лучше использовать минимальный образ – уменьшение числа установленных служб, стартующих при запуске, сокращает нагрузку на процессор и ускоряет анализ объекта оценки в режиме полносистемной эмуляции. В нашем примере используется легковесный образ Ubuntu - <a class="reference external" href="https://lubuntu.net/downloads/">lubuntu</a>. Создадим каталог на хосте и скачаем туда дистрибутив:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>natch_quickstart<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>natch_quickstart
+curl<span class="w"> </span>-o<span class="w"> </span>lubuntu-18.04-alternate-amd64.iso<span class="w">  </span><span class="s1">'http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04-alternate-amd64.iso'</span>
+</pre></div>
+</div>
+<p>Проверим, работает ли эмулятор:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qemu-system-x86_64<span class="w"> </span>--version
+QEMU<span class="w"> </span>emulator<span class="w"> </span>version<span class="w"> </span><span class="m">4</span>.2.1<span class="w"> </span><span class="o">(</span>Debian<span class="w"> </span><span class="m">1</span>:4.2-3ubuntu6.19<span class="o">)</span>
+Copyright<span class="w"> </span><span class="o">(</span>c<span class="o">)</span><span class="w"> </span><span class="m">2003</span>-2019<span class="w"> </span>Fabrice<span class="w"> </span>Bellard<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>QEMU<span class="w"> </span>Project<span class="w"> </span>developers
+</pre></div>
+</div>
+<p>Для установки гостевой ОС создадим образ жесткого диска в формате <code class="docutils literal notranslate"><span class="pre">qcow2</span></code>, с именем <code class="docutils literal notranslate"><span class="pre">lubuntu.qcow2</span></code> и размером <code class="docutils literal notranslate"><span class="pre">20</span> <span class="pre">ГБайт</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qemu-img<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>qcow2<span class="w"> </span>lubuntu.qcow2<span class="w"> </span>20G
+Formatting<span class="w"> </span><span class="s1">'lubuntu.qcow2'</span>,<span class="w"> </span><span class="nv">fmt</span><span class="o">=</span>qcow2<span class="w"> </span><span class="nv">size</span><span class="o">=</span><span class="m">21474836480</span><span class="w"> </span><span class="nv">cluster_size</span><span class="o">=</span><span class="m">65536</span><span class="w"> </span><span class="nv">lazy_refcounts</span><span class="o">=</span>off<span class="w"> </span><span class="nv">refcount_bits</span><span class="o">=</span><span class="m">16</span>
+ll
+total<span class="w"> </span><span class="m">8100768</span>
+drwxrwxr-x<span class="w">  </span><span class="m">4</span><span class="w"> </span>user<span class="w"> </span>user<span class="w">       </span><span class="m">4096</span><span class="w"> </span>янв<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">20</span>:40<span class="w"> </span>./
+drwxr-xr-x<span class="w"> </span><span class="m">25</span><span class="w"> </span>user<span class="w"> </span>user<span class="w">       </span><span class="m">4096</span><span class="w"> </span>янв<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">20</span>:40<span class="w"> </span>../
+-rw-rw-r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>user<span class="w"> </span>user<span class="w">  </span><span class="m">751828992</span><span class="w"> </span>янв<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">20</span>:34<span class="w"> </span>lubuntu-18.04-alternate-amd64.iso
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>user<span class="w"> </span>user<span class="w">     </span><span class="m">196928</span><span class="w"> </span>янв<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">20</span>:08<span class="w"> </span>lubuntu.qcow2
+</pre></div>
+</div>
+<p>Создадим скрипт запуска нашей ВМ <code class="docutils literal notranslate"><span class="pre">run.sh</span></code>. Мы сохраняем его в виде отдельного файла, потому что позже скрипт потребуется редактировать. Для тех, кто сталкивается с синтаксисом QEMU впервые, рекомендуется ознакомиться с основными командами, описанными в официальной <a class="reference external" href="https://www.qemu.org/docs/master/system/invocation.html">документации QEMU</a>. Важным для ускорения работы виртуализированной среды QEMU, за счет аппаратной <a class="reference internal" href="#create-qemu-env"><span class="xref myst">виртуализации</span></a>, является установка ключей <code class="docutils literal notranslate"><span class="pre">-enable-kvm</span></code> и <code class="docutils literal notranslate"><span class="pre">-cpu</span> <span class="pre">host,nx</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
+-hda<span class="w"> </span>lubuntu.qcow2<span class="w"> </span><span class="se">\</span>
+-m<span class="w"> </span>4G<span class="w"> </span><span class="se">\</span>
+-enable-kvm<span class="w"> </span><span class="se">\</span>
+-cpu<span class="w"> </span>host,nx<span class="w"> </span><span class="se">\</span>
+-monitor<span class="w"> </span>stdio<span class="w"> </span><span class="se">\</span>
+-netdev<span class="w"> </span>user,id<span class="o">=</span>net0<span class="w"> </span><span class="se">\</span>
+-device<span class="w"> </span>e1000,netdev<span class="o">=</span>net0<span class="w"> </span><span class="se">\</span>
+-cdrom<span class="w"> </span>lubuntu-18.04-alternate-amd64.iso
+</pre></div>
+</div>
+<p>Запустим скрипт:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./run.sh
+</pre></div>
+</div>
+<p>после чего увидим графическое окно установки <em>lubuntu</em>. <em>lubuntu</em> желательно устанавливать с минимальным набором параметров для ускорения установки и уменьшения «шума» избыточных процессов и сетевых служб во время анализа.</p>
+<p><em>Подсказка: чтобы вывести курсор мыши из открытого графического окна ВМ QEMU нажмите Ctrl+Alt+G</em></p>
+<p>После завершения установки удалим из скрипта запуска <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> указание подключения cdrom – для дальнейшей работы он нам не потребуется</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#-cdrom lubuntu-18.04.3-desktop-amd64.iso</span>
+</pre></div>
+</div>
+<p>Наш образ среды функционирования готов к работе, в частности, к установке в него пресобранного <em>с символами</em> прототипа объекта оценки.</p>
+<p><a name="build_prototype"></a></p>
+</section>
+<section id="id2">
+<h3><span class="section-number">4.1.2. </span>Сборка прототипа объекта оценки<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h3>
+<p>Рекомендации по подготовке исполняемого кода приведены в разделе <a class="reference internal" href="#app8_oo_preparation.md#app_preparation"><span class="xref myst">Рекомендации по подготовке и анализу объекта оценки</span></a>.</p>
+<p>В общем случае к анализируемому исполняемому коду выставляется два требования:</p>
+<ul class="simple">
+<li><p>должна быть представлена отладочная информация в формате символов в составе исполняемых файлов, отдельно прилагаемых символов или map-файлов. Предоставление символов непосредственно в составе исполняемых файлов является основной и рекомендуемой стратегией. <em>Natch</em> умеет самостоятельно доставать информацию об отладочных символах из исполняемых файлов, собранных <em>как минимум</em> компиляторами <em>gcc</em> и <em>clang</em> с сохранением отладочной информации (ключ компилятора <code class="docutils literal notranslate"><span class="pre">-g</span></code>, также рекомендуется сборка без оптимизаций в режиме <code class="docutils literal notranslate"><span class="pre">-O0</span></code>). Для стандартных пакетов из наиболее популярных сборок операционных систем символы подгружаются автоматически;</p></li>
+<li><p>рекомендуется выполнять сборку подлежащего анализу исполняемого кода в виртуализированной среде (виртульная машина QEMU). В случае, если сборка и анализ будут выполняться в различных средах функционирования (например, сборка происходит на отдельном сборочном сервере), требуется обеспечить совместимость версий разделяемых динамических библиотек, в первую очередь <em>glibc</em>, из состава среды функционирования. На вашем хосте и в виртуализированной среде комплекты библиотек могут различаться.</p></li>
+</ul>
+<p>В качестве прототипа объекта оценки рассмотрим популярную программу <em>wget</em>.
+Для выполнения <a class="reference external" href="https://thoughtbot.com/blog/the-magic-behind-configure-make-make-install"><em>классического</em></a> подготовительного скрипта <code class="docutils literal notranslate"><span class="pre">configure</span></code>, входящего в комплект поставки <em>wget</em>, генерирующего make-файл, потребуется установить дополнительные зависимости (скрипт выведет их наименования в случае неудачного завершения), например:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>gnutls-dev<span class="w"> </span>gnutls-bin<span class="w"> </span>curl<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>g++
+</pre></div>
+</div>
+<p><em>Подсказка: поскольку мы собираем wget из исходников, потребуется комплект заголовочных файлов, доступный как раз в dev-версии пакета gnutls</em></p>
+<p>Скачаем исходные тексты <em>wget</em> из репозитория в среду функционирования:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>wget-1.21.2.tar.gz<span class="w">  </span><span class="s1">'https://ftp.gnu.org/gnu/wget/wget-1.21.2.tar.gz'</span>
+tar<span class="w"> </span>-xzf<span class="w"> </span>wget-1.21.2.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>wget-1.21.2
+</pre></div>
+</div>
+<p>Скрипт <code class="docutils literal notranslate"><span class="pre">configure</span></code> запустим с ключами, устанавливающими параметры компилятора для сохранения информации об отладочных символах. После этого запустим <code class="docutils literal notranslate"><span class="pre">make</span></code> для сборки проекта.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s1">'-g -O0'</span><span class="w"> </span>./configure
+make
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">4.1.3. </span>Перенос прототипа объекта оценки из образа ВМ на хост<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<p><em>Natch</em> использует файлы объекта оценки для получения из них отладочных символов.
+Чтобы выгрузить нужные файлы из виртуальной машины, можно использовать команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">modules</span> <span class="pre">extract</span></code>
+(подробнее в разделе <a class="reference internal" href="#3_natch_cmd.md#cmd_modules_extract"><span class="xref myst">Командный интерфейс Natch</span></a>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>wget-1.21.2
+natch<span class="w"> </span>modules<span class="w"> </span>extract<span class="w"> </span>-i<span class="w"> </span>lubuntu.qcow2<span class="w"> </span>-p<span class="w"> </span>/home/user/wget-1.21.2<span class="w"> </span>-D<span class="w"> </span>wget-1.21.2<span class="w"> </span>-e
+</pre></div>
+</div>
+<p>С версии <em>Natch 3.2</em> файлы объекта оценки могут быть извлечены автоматически на этапе конфигурирования проекта.</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">4.1.4. </span>Тестирование виртуализированной среды функционирования ОО<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p>Запускаем ВМ скриптом <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> с отключенным ранее cdrom, дожидаемся загрузки ОС ВМ, авторизуемся в ОС, пробуем выполнить обращение к произвольному сетевому ресурсу с помощью собранной нами версии <em>wget</em>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>wget-1.21.2/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>./wget<span class="w"> </span>ispras.ru
+</pre></div>
+</div>
+<p>В результате вы должны увидеть приблизительно следующую картину в графическом окне QEMU, свидетельствующую о том, что ОО корректно выполняется в среде функционирования и сетевая доступность для ВМ обеспечена:</p>
+<p><img alt="_images/check.png" src="_images/check.png" /><figcaption><em>Пример подготовленного ОО в QEMU</em></figcaption></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="3_launch_test_samples.html" class="btn btn-neutral float-left" title="3. Запуск тестовых примеров Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="5_natch_cmd.html" class="btn btn-neutral float-right" title="5. Командный интерфейс Natch" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.8.1', url='4_setup_env.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/4_setup_env.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/4_setup_env.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/4_setup_env.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6/4_setup_env.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/4_setup_env.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/4_setup_env.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/4_setup_env.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="4_setup_env.html" style="color: #3498db;">natch_docs_v.3.8.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.8.1
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/4_setup_env.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/4_setup_env.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6/4_setup_env.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/4_setup_env.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/4_setup_env.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/4_setup_env.html">natch_docs_v.3.7.1</a>
+      </dd>
+      <dd>
+        <a href="4_setup_env.html">natch_docs_v.3.8.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/4_setup_env.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

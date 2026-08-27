@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Командный интерфейс Natch &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="6. Создание проекта" href="6_create_project.html" />
+    <link rel="prev" title="4. Настройка окружения для работы с Natch" href="4_setup_env.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Командный интерфейс Natch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">5.1. Первый запуск Natch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-create">5.2. natch create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-record">5.3. natch record</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-replay">5.4. natch replay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-kvm">5.5. natch kvm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-tuning">5.6. natch tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-info">5.7. natch info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-delete">5.8. natch delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-edit">5.9. natch edit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#natch-edit-main">5.9.1. natch edit main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#natch-edit-taint">5.9.2. natch edit taint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#natch-edit-debug">5.9.3. natch edit debug</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-coverage">5.10. natch coverage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#natch-coverage-extract">5.10.1. natch coverage extract</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-set">5.11. natch set</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#natch-set-memory">5.11.1. natch set memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#natch-set-port">5.11.2. natch set port</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#natch-set-mode">5.11.3. natch set mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-modules">5.12. natch modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#natch-modules-add">5.12.1. natch modules add</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#natch-modules-update">5.12.2. natch modules update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#natch-modules-extract">5.12.3. natch modules extract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#natch-modules-copy">5.12.4. natch modules copy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-settings">5.13. natch settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch-check">5.14. natch check</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>Командный интерфейс Natch</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/5_natch_cmd.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="natch_cmd"></a></p>
+<section id="natch">
+<h1><span class="section-number">5. </span>Командный интерфейс Natch<a class="headerlink" href="#natch" title="Ссылка на этот заголовок"></a></h1>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Natch_v.3.4
+Copyright (c) 2020-2025 ISP RAS
+
+based on QEMU emulator v.7.2.0
+Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
+
+Available builds: x86_64, aarch64
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         Natch version
+
+main commands:
+  {create,cr,record,replay,kvm,tuning,info,delete,edit,set,modules,settings}
+                        use &lt;cmd_name&gt; -h/--help for additional information
+    create (cr)         create project
+    record              record scenario (only for project)
+    replay              replay scenario (only for project)
+    kvm                 launch QEMU kvm without Natch (only for x86_64)
+    tuning              launch tuning (only for project)
+    info                info about project (only for project)
+    delete              delete scenario (only for project)
+    edit                edit Natch config files (only for project)
+    coverage            get coverage for code (only for project)
+    set                 change some project settings (only for project)
+    modules             add/update/copy modules in the project (requires sudo)
+    settings            Natch shell settings
+    check               check your system parameters
+</pre></div>
+</div>
+<p>Для работы с инструментом <em>Natch</em> предусмотрен пул команд, объединенных под названием <code class="docutils literal notranslate"><span class="pre">natch</span></code>.</p>
+<p>Главная команда <code class="docutils literal notranslate"><span class="pre">natch</span></code> имеет следующие субкоманды:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cmd_create"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">create</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_record"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">record</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_replay"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">replay</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_kvm"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">kvm</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_tuning"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">tuning</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_info"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">info</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_delete"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">delete</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_edit"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">edit</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_coverage"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">coverage</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_set"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">set</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_modules"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">modules</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_settings"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">settings</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_check"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">check</span></code></span></a></p></li>
+</ul>
+<p>Представленные команды могут иметь параметры или субкоманды, поэтому для получения информации
+следует использовать параметр <code class="docutils literal notranslate"><span class="pre">-h/--help</span></code>, например:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user@user: natch edit -h
+usage: natch edit [-h] {main,taint} ...
+
+optional arguments:
+  -h, --help    show this help message and exit
+
+Natch configs editing:
+  {main,taint,debug}  use &lt;cmd_name&gt; -h/--help for additional information
+    main        edit main config natch.cfg
+    taint       edit scenario config taint.cfg
+    debug       edit config debug_info.cfg
+</pre></div>
+</div>
+<section id="id1">
+<h2><span class="section-number">5.1. </span>Первый запуск Natch<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>С версии 3.2 инструмент поставляется с поддержкой двух архитектур: x86_64 и aarch64.</p>
+<p>При первом запуске <em>Natch</em> будет предложено выбрать архитектуру по умолчанию. Далее, если вы собираетесь
+работать только с одной архитектурой, ничего предпринимать не нужно.</p>
+<p>Если необходимо использовать другую архитектуру, некоторые команды <em>Natch</em> получили параметр <code class="docutils literal notranslate"><span class="pre">-a/--arch</span></code>,
+позволяющий выбрать нужную архитектуру, независимо от определенной архитектуры по умолчанию.</p>
+<p>Архитектуру по умолчанию можно изменить в любой момент с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">settings</span> <span class="pre">arch</span></code>,
+описанной ниже.</p>
+<p><a name="cmd_create"></a></p>
+</section>
+<section id="natch-create">
+<h2><span class="section-number">5.2. </span>natch create<a class="headerlink" href="#natch-create" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">create</span></code> применятся для создания Natch-проекта.</p>
+<p>Параметры (обязательные выделены жирным шрифтом):</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">workdir</span></code></strong> – название проекта (либо название директории, которая будет создана в текущем расположении,
+либо полный путь до будущего проекта)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">image</span></code></strong> – путь к образу исследуемой системы</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-a/--arch</span></code> – выбор архитектуры (x86_64, aarch64)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-k/--kernel</span></code> – путь до ядра</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o/--os_name</span></code> – выбор гостевой ОС (Linux, FreeBSD, Win8, Win8.1, Win10)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c/--config</span></code> – путь до файла конфигурации для автоматического создания проекта</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--old</span></code> – текстовая версия мастера создания проекта</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch create test_sample Natch_testing_materials/test_image_debian.qcow2
+</pre></div>
+</div>
+<p>Подробнее о создании проекта можно узнать в разделе <a class="reference internal" href="6_create_project.html#create_project"><span class="std std-ref">Создание проекта</span></a>.</p>
+<p><a name="cmd_record"></a></p>
+</section>
+<section id="natch-record">
+<h2><span class="section-number">5.3. </span>natch record<a class="headerlink" href="#natch-record" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">record</span></code> служит для записи сценария.
+Запускаться должна из директории с проектом.</p>
+<p>Параметры (обязательные выделены жирным шрифтом):</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">-s/--scenario</span></code></strong> – имя сценария</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d/--debug</span></code> – отладочный вывод командной строки на экран и в файл <code class="docutils literal notranslate"><span class="pre">debug_qemu_cmdline.ini</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch record -s sample
+</pre></div>
+</div>
+<p>Подробнее о записи сценария в разделе <a class="reference internal" href="8_scenario_work.html#record"><span class="std std-ref">Запись сценария</span></a>.</p>
+<p><a name="cmd_replay"></a></p>
+</section>
+<section id="natch-replay">
+<h2><span class="section-number">5.4. </span>natch replay<a class="headerlink" href="#natch-replay" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">replay</span></code> служит для воспроизведения ранее записанных сценариев.
+Запускаться должна из директории с проектом.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-s/--scenario</span></code> – название сценария</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-S/--start</span></code> – icount или название снапшота, на котором следует начать сбор данных</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-E/--end</span></code> – icount или название снапшота, на котором следует закончить сбор данных</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--no-check</span></code> – отключение проверки изменения конфигурационного файла <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d/--debug</span></code> – отладочный вывод командной строки на экран и в файл <code class="docutils literal notranslate"><span class="pre">debug_qemu_cmdline.ini</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>При использовании параметров <code class="docutils literal notranslate"><span class="pre">--start/--end</span></code> следует придерживаться следующих правил:</p>
+<ul class="simple">
+<li><p>параметры <code class="docutils literal notranslate"><span class="pre">--start</span></code> и <code class="docutils literal notranslate"><span class="pre">--end</span></code> могут быть использованы как вместе, так и по отдельности</p></li>
+<li><p>если заданы оба, значение параметра <code class="docutils literal notranslate"><span class="pre">--end</span></code> не может быть меньше чем <code class="docutils literal notranslate"><span class="pre">--start</span></code> (при использовании
+названий снапшотов они приводятся к числовому эквиваленту)</p></li>
+</ul>
+<p>Если значение параметра <code class="docutils literal notranslate"><span class="pre">--start</span></code> не совпадает со значением <code class="docutils literal notranslate"><span class="pre">icount</span></code> ни одного из существующих снапшотов –
+стартовый снапшот будет определен автоматически (ближаший слева).</p>
+<p>Узнать текущий <code class="docutils literal notranslate"><span class="pre">icount</span></code> во время работы эмулятора можно с помощью команды монитора <code class="docutils literal notranslate"><span class="pre">info</span> <span class="pre">replay</span></code>.</p>
+<p>Узнать диапазон <code class="docutils literal notranslate"><span class="pre">icount</span></code>-ов в сценарии можно с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">info</span> <span class="pre">-s</span> <span class="pre">&lt;name&gt;</span></code>.</p>
+<p>Примеры:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch replay
+natch replay -s sample
+natch replay --start login --end get_info
+</pre></div>
+</div>
+<p>Подробнее о воспроизведении сценария в разделе <a class="reference internal" href="8_scenario_work.html#replay"><span class="std std-ref">Воспроизведение сценария</span></a>.</p>
+<p><a name="cmd_kvm"></a></p>
+</section>
+<section id="natch-kvm">
+<h2><span class="section-number">5.5. </span>natch kvm<a class="headerlink" href="#natch-kvm" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">kvm</span></code> предназначена для запуска эмулятора в режиме аппаратной виртуализации.</p>
+<p>При использовании архитектуры <code class="docutils literal notranslate"><span class="pre">aarch64</span></code> выполнение этой команды приведет к запуску эмулятора QEMU
+только без расширений <em>Natch</em>.</p>
+<p>Может запускаться как из директории с проектом, так и вне ее.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-i/--image</span></code> – путь к образу исследуемой системы (обязательно при запуске вне проекта)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s/--snapshot</span></code> – добавление опции <code class="docutils literal notranslate"><span class="pre">snapshot</span></code> для сохранности образа</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-a/--arch</span></code> – выбор архитектуры (x86_64, aarch64)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code> – размер оперативной памяти (по умолчанию 4G)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mode</span></code> – режим работы эмулятора (<code class="docutils literal notranslate"><span class="pre">graphic</span></code>, <code class="docutils literal notranslate"><span class="pre">text</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d/--debug</span></code> – отладочный вывод командной строки на экран и в файл <code class="docutils literal notranslate"><span class="pre">debug_qemu_cmdline.ini</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--args</span></code> – произвольные аргументы, указываются в кавычках</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--tcg</span></code> – запуск эмулятора без <em>Natch</em>-плагинов в режиме бинарной трансляции</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Примеры:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch kvm -i Natch_testing_materials/test_image_debian.qcow2
+natch kvm -s
+natch kvm --args "-vnc 127.0.0.1:0"
+</pre></div>
+</div>
+<p>Обычно используется для подготовки объекта оценки (подробнее в разделе <a class="reference internal" href="#5_setup_env.md#setup_env"><span class="xref myst">Настройка окружения для работы с Natch</span></a>)
+или для быстрого доступа к исследуемой системе.</p>
+<p>Параметр <code class="docutils literal notranslate"><span class="pre">-m</span></code> доступен только при запуске команды вне рабочей директории, в противном
+случае настройки памяти берутся из настроек проекта.</p>
+<p><a name="cmd_tuning"></a></p>
+</section>
+<section id="natch-tuning">
+<h2><span class="section-number">5.6. </span>natch tuning<a class="headerlink" href="#natch-tuning" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">tuning</span></code> служит для извлечения смещений структур ядра исследуемой системы и создания или перезаписи
+конфигурационного файла <code class="docutils literal notranslate"><span class="pre">task.cfg</span></code>.</p>
+<p>Запускаться должна из директории с проектом.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-a/--arch</span></code> – выбор архитектуры (x86_64, aarch64)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d/--debug</span></code> – отладочный вывод командной строки на экран и в файл <code class="docutils literal notranslate"><span class="pre">debug_qemu_cmdline.ini</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Если в вашем проекте уже имеется файл <code class="docutils literal notranslate"><span class="pre">task.cfg</span></code>, вы увидите следующий диалог:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You already have task.cfg
+Do you want to do tuning again? [Y/n]
+</pre></div>
+</div>
+<p>При отказе выполнение команды завершится, в случае согласия будет запущен эмулятор и следует дождаться
+завершения его работы.</p>
+<p>Команда может быть полезна, если вы используете проект, созданный на более старой версии <em>Natch</em>, и
+существующий конфигурационный файл не соответствует текущей версии инструмента.</p>
+<p><a name="cmd_info"></a></p>
+</section>
+<section id="natch-info">
+<h2><span class="section-number">5.7. </span>natch info<a class="headerlink" href="#natch-info" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">info</span></code> предоставляет информацию о существующих в проекте сценариях и сохраненных снапшотах для каждого из них.</p>
+<p>Запускаться должна из рабочей директории проекта.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-s/--scenario</span></code> – название сценария</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch info
+
+Existing scenarios:
+
+----- sample ------------------------------------------------------------
+Snapshot list:
+NAME                          ICOUNT                  DATE
+init                          0                       2024-06-03 15:57:57
+load                          13563000904             2024-06-03 15:59:14
+
+The last icount for this scenario: 13888364825
+
+----- hello -------------------------------------------------------------
+Snapshot list:
+NAME                          ICOUNT                  DATE
+init                          0                       2024-06-04 18:00:46
+temp_snap                     8251101826              2024-06-04 18:01:23
+very_very_long_name           11708689459             2024-06-04 18:01:37
+
+The last icount for this scenario: 11818629758
+</pre></div>
+</div>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch info -s sample
+
+----- sample ------------------------------------------------------------
+Snapshot list:
+NAME                          ICOUNT                  DATE
+init                          0                       2024-06-03 15:57:57
+load                          13563000904             2024-06-03 15:59:14
+
+The last icount for this scenario: 13888364825
+</pre></div>
+</div>
+<p><a name="cmd_delete"></a></p>
+</section>
+<section id="natch-delete">
+<h2><span class="section-number">5.8. </span>natch delete<a class="headerlink" href="#natch-delete" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">delete</span></code> удаляет сценарии и связанные с ними файлы из рабочей директории.</p>
+<p>Запускаться должна из рабочей директории проекта.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-s/--scenario</span></code> – название сценария</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-a/--all</span></code> – удалить все сценарии</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch delete -s test
+
+Are you sure? [y/N] y
+Scenario 'test' has been deleted
+Do you want to remove output directory? [y/N] y
+Output directory 'output_test' has been deleted
+</pre></div>
+</div>
+<p>При наличии директории с выходными файлами для <em>SNatch</em> (если выполнялось воспроизведение сценария),
+также будет предложено удалить и ее.</p>
+<p><a name="cmd_edit"></a></p>
+</section>
+<section id="natch-edit">
+<h2><span class="section-number">5.9. </span>natch edit<a class="headerlink" href="#natch-edit" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">edit</span></code> предназначена для более удобного редактирования конфигурационных файлов проекта.
+Имеет следующие субкоманды:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cmd_edit_main"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">main</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_edit_taint"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">taint</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_edit_debug"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">debug</span></code></span></a></p></li>
+</ul>
+<p>Запускаться эти команды должны из директории с проектом.</p>
+<p>Все команды этой группы открывают на редактирование один из файлой конфигурации проекта или сценария.</p>
+<p><a name="cmd_edit_main"></a></p>
+<section id="natch-edit-main">
+<h3><span class="section-number">5.9.1. </span>natch edit main<a class="headerlink" href="#natch-edit-main" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">main</span></code> предназначения для редактирования главного конфигурационного файла – <code class="docutils literal notranslate"><span class="pre">natch.cfg</span></code>.</p>
+<p><a name="cmd_edit_taint"></a></p>
+</section>
+<section id="natch-edit-taint">
+<h3><span class="section-number">5.9.2. </span>natch edit taint<a class="headerlink" href="#natch-edit-taint" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">taint</span></code> предназначения для редактирования конфигурационных файлов сценариев <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code>.
+Если сценариев в проекте несколько – будет отображено меню для выбора нужного сценария.</p>
+<p><a name="cmd_edit_debug"></a></p>
+</section>
+<section id="natch-edit-debug">
+<h3><span class="section-number">5.9.3. </span>natch edit debug<a class="headerlink" href="#natch-edit-debug" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">debug</span></code> предназначения для редактирования конфигурационного файла с параметрами
+получения отладочной информации <code class="docutils literal notranslate"><span class="pre">debug_info.cfg</span></code>.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch edit main
+</pre></div>
+</div>
+<p>При первом запуске <em>Natch</em> (начиная с версии 3.1) перед редактированием файлов будет предложено выбрать
+текстовый редактор по умолчанию. Изменить эту настройку можно с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">settings</span> <span class="pre">editor</span></code>,
+которая описана ниже.</p>
+<p><a name="cmd_coverage"></a></p>
+</section>
+</section>
+<section id="natch-coverage">
+<h2><span class="section-number">5.10. </span>natch coverage<a class="headerlink" href="#natch-coverage" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">coverage</span></code> на данный момент является экспериментальной. Предназначена для
+работы с исходными кодами исследуемого ПО и получения покрытия кода.
+Имеет субкоманды:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cmd_coverage_extract"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">extract</span></code></span></a></p></li>
+</ul>
+<p><a name="cmd_coverage_extract"></a></p>
+<section id="natch-coverage-extract">
+<h3><span class="section-number">5.10.1. </span>natch coverage extract<a class="headerlink" href="#natch-coverage-extract" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">extract</span></code> извлекает из образа системы исходные коды исследуемого ПО, а также
+строит отображение покрытия в html на основе этих кодов и покрытия кода, собранного ранее.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-s/--scenario</span></code> – название сценария</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Как упоминалось ранее, функциональность экспериментальная и сырая, поэтому алгоритм работы с ней
+на данный момент не совсем удобный. Необходимые шаги:</p>
+<ul class="simple">
+<li><p>Записать сценарий</p></li>
+<li><p>Удостовериться, что в основном конфигурационном файле активна секция <code class="docutils literal notranslate"><span class="pre">Coverage</span></code> и указан файл
+(с версии 3.2 это так по умолчанию)</p></li>
+<li><p>Выполнить воспроизведение сценария</p></li>
+<li><p>Выполнить команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">coverage</span> <span class="pre">extract</span></code></p></li>
+</ul>
+<p>Воспроизведение сценария перед выполнением команды необходимо, чтобы получить файл с покрытием.
+В директории с выходными файлами появятся папка с исходными кодами и папка <code class="docutils literal notranslate"><span class="pre">coverage</span></code> с html-страницами
+с покрытием. Для самостоятельного просмотра следует открыть в браузере <code class="docutils literal notranslate"><span class="pre">index.html</span></code>. В дальнейшем
+эта функциональность будет реализована в <em>SNatch</em> (исходные коды можно смотреть там уже сейчас).
+Архив обновится автоматически.</p>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch coverage extract -s sample
+</pre></div>
+</div>
+<p>По умолчанию покрытие собирается для всех пользовательских модулей, при желании можно включать эту
+опцию для любого модуля из конфигурационного файла модулей <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code> или выключить ее.
+Для этого в <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code> предусмотрено поле <code class="docutils literal notranslate"><span class="pre">coverage</span></code>, значение которого следует установить в <code class="docutils literal notranslate"><span class="pre">True</span></code> или <code class="docutils literal notranslate"><span class="pre">False</span></code> соответственно.
+Подробнее в приложении <a class="reference internal" href="app3_module_cfg.html#app_module_config"><span class="std std-ref">Формат списка исполняемых модулей</span></a>.</p>
+<p><a name="cmd_set"></a></p>
+</section>
+</section>
+<section id="natch-set">
+<h2><span class="section-number">5.11. </span>natch set<a class="headerlink" href="#natch-set" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">set</span></code> служит для внесения изменений в настройки проекта. Имеет субкоманды:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cmd_set_memory"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">memory</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_set_port"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">port</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_set_mode"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">mode</span></code></span></a></p></li>
+</ul>
+<p>Запускаться эти команды должны из директории с проектом.</p>
+<p><a name="cmd_set_memory"></a></p>
+<section id="natch-set-memory">
+<h3><span class="section-number">5.11.1. </span>natch set memory<a class="headerlink" href="#natch-set-memory" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">memory</span></code> предназначена для изменения выделяемой виртуальной машине оперативной памяти.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> – новый объем оперативной памяти</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Указывать объем памяти следует с постфиксом G или M без пробела.</p>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch set memory 8G
+</pre></div>
+</div>
+<p><a name="cmd_set_port"></a></p>
+</section>
+<section id="natch-set-port">
+<h3><span class="section-number">5.11.2. </span>natch set port<a class="headerlink" href="#natch-set-port" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">port</span></code> служит для изменения отслеживаемых портов, проброса портов в виртуальную машину или
+отмены проброса.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> – список портов для проброса или 0 для сброса</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Параметр <code class="docutils literal notranslate"><span class="pre">value</span></code> может иметь вид списка портов для проброса, перечисленных через запятую без пробелов,
+либо 0 для отмены проброса. Если в настройках проекта уже были проброшенные порты, они будут заменены
+новым списком.</p>
+<p>Примеры:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch set port 8888,5555     # пробросятся порты 8888 и 5555
+natch set port 0             # проброшенные порты будут сброшены, установится порт по умолчанию: 80
+</pre></div>
+</div>
+<p>Так как настройки портов влияют не только на командную строку запуска эмулятора, но и на конфигурационные
+файла сценариев, то будет предложено внести изменения и в них (нужные сценарии надо будет отменить галочкой).</p>
+<p><a name="cmd_set_mode"></a></p>
+</section>
+<section id="natch-set-mode">
+<h3><span class="section-number">5.11.3. </span>natch set mode<a class="headerlink" href="#natch-set-mode" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">mode</span></code> служит для перевода эмулятора между режимами: графическим, текстовым или vnc.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{graphic,</span> <span class="pre">text,</span> <span class="pre">vnc}</span></code> – режим работы эмулятора</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p/--port</span></code> – порт (только для vnc)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Параметр <code class="docutils literal notranslate"><span class="pre">-p/--port</span></code> для <code class="docutils literal notranslate"><span class="pre">vnc</span></code> необязательный, по умолчанию порт 0.</p>
+<p>Примеры:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch set mode graphic
+natch set mode vnc -p 5910
+</pre></div>
+</div>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">set</span> <span class="pre">mode</span></code> не имеет параметра <code class="docutils literal notranslate"><span class="pre">ssh</span></code> для исключения путаницы в параметрах запуска
+эмулятора. Если вам необходимо подключение по <code class="docutils literal notranslate"><span class="pre">ssh</span></code>, пробросьте соответствующий порт с помощью
+команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">set</span> <span class="pre">port</span></code> и самостоятельно проверьте остальные опции в файле <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code> для исключения конфликтов.
+Если до этого уже были проброшенные порты, они будут перезаписаны, так что
+для их сохранения следует указать их в списке с новым портом (например, <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">set</span> <span class="pre">port</span> <span class="pre">5555,6666,22</span></code>).</p>
+<p>Выполнение вышеописанных команд приведет к изменению параметров запуска эмулятора (<code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code>).</p>
+<p><a name="cmd_modules"></a></p>
+</section>
+</section>
+<section id="natch-modules">
+<h2><span class="section-number">5.12. </span>natch modules<a class="headerlink" href="#natch-modules" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">modules</span></code> отвечает за работу с модулями в проекте и образе. Имеет субкоманды:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cmd_modules_add"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">add</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_modules_update"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">update</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_modules_extract"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">extract</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#cmd_modules_copy"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">copy</span></code></span></a></p></li>
+</ul>
+<p>Команды <code class="docutils literal notranslate"><span class="pre">add</span></code> и <code class="docutils literal notranslate"><span class="pre">update</span></code> можно запускать только из рабочей директории проекта.</p>
+<p>Для работы команд <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">modules</span></code> потребуется пароль администратора для монтирования образа.</p>
+<p><a name="cmd_modules_add"></a></p>
+<section id="natch-modules-add">
+<h3><span class="section-number">5.12.1. </span>natch modules add<a class="headerlink" href="#natch-modules-add" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">add</span></code> служит для дополнения проекта новыми модулями.</p>
+<p>В процессе работы команды будет проанализирован каталог с новыми модулями, исследованы зависимости
+и скачана информация о библиотечных модулях (если есть), а так же перестроена символьная информация.</p>
+<p>На выходе получим новый <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code> и обновленные каталоги с информацией о модулях.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--host-dir</span> <span class="pre">|</span> <span class="pre">--guest-dir</span></code> – взаимоисключающие параметры для указания пути к директории с модулями в
+хостовой системе (host-dir) или в гостевой (guest)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch modules add --guest-dir /home/user/Sample1
+</pre></div>
+</div>
+<p><a name="cmd_modules_update"></a></p>
+</section>
+<section id="natch-modules-update">
+<h3><span class="section-number">5.12.2. </span>natch modules update<a class="headerlink" href="#natch-modules-update" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">update</span></code> служит для обновления текущих модулей в проекте.</p>
+<p>Команда делает все то же самое что <code class="docutils literal notranslate"><span class="pre">add</span></code>, но не с новыми модулями,
+а уже существующими, на случай если в образе что-то изменилось, например, добавилось локальное хранилище
+отладочной информации.</p>
+<p>На выходе получим новый <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code> и обновленные каталоги с информацией о модулях.</p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch modules update
+</pre></div>
+</div>
+<p><a name="cmd_modules_extract"></a></p>
+</section>
+<section id="natch-modules-extract">
+<h3><span class="section-number">5.12.3. </span>natch modules extract<a class="headerlink" href="#natch-modules-extract" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">extract</span></code> служит для извлечения файлов из образа в хостовую систему.
+Такая необходимость может возникать при подготовке объекта оценки к анализу.</p>
+<p>Параметры (обязательные выделены жирным шрифтом):</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">-i/--image</span></code></strong> – путь к образу гостевой операционной системы (обязательный вне проекта)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">-D/--dest</span></code></strong> – путь к директории, в которую будут сохранены копируемые файлы</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">-p/--paths</span></code></strong> – список, содержащий пути до файлов/директорий в гостевой системе</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e/--exec</span></code> – флаг, указывающий скачивать только бинарные файлы</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-l/--log</span></code> – путь к файлу, в который будет записан журнал работы</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d,</span> <span class="pre">--debug</span></code> – флаг включения диагностических сообщений</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Если команда запускается из рабочей директории проекта, указывать параметр <code class="docutils literal notranslate"><span class="pre">-i/--image</span></code> не требуется.</p>
+<p>Директория для сохранения файлов из образа будет создана автоматически.</p>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch modules extract -i Natch_testing_materials/test_image_debian.qcow2 -p /home/user/Sample1 -D bins -e
+</pre></div>
+</div>
+<p><a name="cmd_modules_copy"></a></p>
+</section>
+<section id="natch-modules-copy">
+<h3><span class="section-number">5.12.4. </span>natch modules copy<a class="headerlink" href="#natch-modules-copy" title="Ссылка на этот заголовок"></a></h3>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">copy</span></code> служит для загрузки в образ файлов из хостовой системы.
+Является обратной команде <code class="docutils literal notranslate"><span class="pre">extract</span></code>.</p>
+<p>Параметры (обязательные выделены жирным шрифтом):</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">-i/--image</span></code></strong> – путь к образу гостевой операционной системы (обязательный вне проекта)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">-D/--dest</span></code></strong> – путь к директории, в которую будут сохранены копируемые файлы</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">-p/--paths</span></code></strong> – список, содержащий пути до файлов/директорий в хостовой системе</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e/--exec</span></code> – флаг, указывающий загружать только бинарные файлы</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-l/--log</span></code> – путь к файлу, в который будет записан журнал работы</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d,</span> <span class="pre">--debug</span></code> – флаг включения диагностических сообщений</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h/--help</span></code> – справка по команде</p></li>
+</ul>
+<p>Пример:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch modules copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_testing_materials/Sample2_bins -D /home/user/Sample2 -e
+</pre></div>
+</div>
+<p><a name="cmd_settings"></a></p>
+</section>
+</section>
+<section id="natch-settings">
+<h2><span class="section-number">5.13. </span>natch settings<a class="headerlink" href="#natch-settings" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">settings</span></code> предназначена для изменения общих настроек инструмента.
+Имеет субкоманды:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">editor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arch</span></code></p></li>
+</ul>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">editor</span></code> позволяет выбрать текстовый редактор по умолчанию, с помощью которого будут открываться на
+редактирование конфигурационные файлы проекта. Отображается список установленных на машине редакторов из
+предопределенного списка (<code class="docutils literal notranslate"><span class="pre">vim</span></code>, <code class="docutils literal notranslate"><span class="pre">vi</span></code>, <code class="docutils literal notranslate"><span class="pre">gedit</span></code>, <code class="docutils literal notranslate"><span class="pre">nano</span></code>, <code class="docutils literal notranslate"><span class="pre">subl</span></code>).</p>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">arch</span></code> позволяет определить архитектуру, используемую по умолчанию. Предлагается выбор из двух доступных
+архитектур – <code class="docutils literal notranslate"><span class="pre">x86_64</span></code> и <code class="docutils literal notranslate"><span class="pre">aarch64</span></code>.</p>
+<p><a name="cmd_check"></a></p>
+</section>
+<section id="natch-check">
+<h2><span class="section-number">5.14. </span>natch check<a class="headerlink" href="#natch-check" title="Ссылка на этот заголовок"></a></h2>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">check</span></code> предназначена для получения информации о параметрах вашей системы для оценки соответствия ее для использования <em>Natch</em>.</p>
+<p>Представлена информация об установленной оперативной памяти и рекомендованный размер для работы с <em>Natch</em>, тактовая частота процессора и
+оценка соответствия.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="4_setup_env.html" class="btn btn-neutral float-left" title="4. Настройка окружения для работы с Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="6_create_project.html" class="btn btn-neutral float-right" title="6. Создание проекта" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.6', url='5_natch_cmd.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/5_natch_cmd.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/5_natch_cmd.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/5_natch_cmd.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="5_natch_cmd.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/5_natch_cmd.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/5_natch_cmd.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/5_natch_cmd.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.6
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/5_natch_cmd.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/5_natch_cmd.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="5_natch_cmd.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/5_natch_cmd.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/5_natch_cmd.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/5_natch_cmd.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/5_natch_cmd.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

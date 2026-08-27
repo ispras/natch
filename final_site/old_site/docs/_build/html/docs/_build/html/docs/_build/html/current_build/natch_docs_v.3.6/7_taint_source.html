@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. Определение источников пометки &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="8. Запись и воспроизведение сценариев" href="8_scenario_work.html" />
+    <link rel="prev" title="6. Создание проекта" href="6_create_project.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Определение источников пометки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">7.1. Пометка файлов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">7.2. Пометка входящих сетевых пакетов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#https">7.2.1. Пометка расшифрованных данных при использовании HTTPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.2.2. Более сложная фильтрация трафика</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">7.3. Пометка сокетов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usb">7.4. Пометка USB трафика</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7. </span>Определение источников пометки</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/7_taint_source.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="taint_source"></a></p>
+<section id="id1">
+<h1><span class="section-number">7. </span>Определение источников пометки<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Одной из важных особенностей <em>Natch</em> является возможность пометки данных и отслеживания их
+продвижения по системе. На данный момент можно помечать файлы, сеть (в том числе и локальную),
+трафик от USB устройств. Способы пометки описаны ниже, воспользоваться ими пользователю нужно
+после того, как создан проект и записан сценарий работы с объектом оценки. Про запись
+сценария подробно в разделе <a class="reference internal" href="8_scenario_work.html#record"><span class="std std-ref">Запись сценария</span></a>,
+или коротко в разделе <a class="reference internal" href="#4_launch_test_samples.md#record_scenario"><span class="xref myst">Запись сценария работы</span></a>
+пошагового руководства по работе с <em>Natch</em>.</p>
+<p>Для удобства редактирования конфигурационных файлов сценариев предусмотрена команда <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">edit</span> <span class="pre">taint</span></code>.
+Будет выведен список доступных сценариев, затем нужный файл откроется в выбранном пользователем
+текстовом редакторе.</p>
+<section id="id2">
+<h2><span class="section-number">7.1. </span>Пометка файлов<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p><em>Natch</em> может помечать отдельные файлы в гостевой системе, в расчет берутся операции чтения и отображения в память.</p>
+<p>Для пометки файлов в <a class="reference internal" href="app2_configs.html#taint_config"><span class="std std-ref">конфигурационном файле помеченных данных</span></a> предназначена секция <em>[TaintFile]</em>.
+В секции присутствует параметр <em>list</em>, куда можно записать список файлов для пометки.</p>
+<p>Если файлов больше одного, их необходимо разделять точкой с запятой без пробелов.</p>
+<p>Пример:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[TaintFile]</span>
+<span class="na">list</span><span class="o">=</span><span class="s">sample.txt</span><span class="c1">;hello.txt</span>
+</pre></div>
+</div>
+<p>С помощью символа „*“ в конце имени файла можно указать множество файлов для пометки.
+Например, <em>/home/*</em> – пометка всех файлов в каталоге home, <em>/dev/tty*</em> - пометка всех данных,
+вводимых в каждый из терминалов (tty1, tty2 и т.д.). Если путь начинается не с корневого каталога,
+то он охватывает одноименные пути на разных расположениях. Например, <em>Pictures/1.jpg</em> помечает файлы
+и на пути <em>/home/user/Pictures/1.jpg</em>, и на пути <em>/home/root/Pictures/1.jpg</em>.</p>
+<p>Исполняемые файлы помечаться таким способом не будут, так как они не открываются для чтения пользовательским кодом, а отображаются
+прямо в адресное пространство ядерными функциями.
+Аналогично не будет детектироваться работа драйвера жесткого диска с местом хранения заданного файла.</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.2. </span>Пометка входящих сетевых пакетов<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p><em>Natch</em> способен помечать весь сетевой трафик, который приходит в виртуальную машину извне.
+Пометить полностью локальный трафик на данный момент можно через пометку сокетов (подробнее в разделе <a class="reference internal" href="#taint_sockets"><span class="std std-ref">Пометка сокетов</span></a>).</p>
+<p>Для управления пометкой пакетов используется секция <em>[Ports]</em> конфигурационного файла <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code>
+(подробнее в разделе <a class="reference internal" href="app2_configs.html#taint_config"><span class="std std-ref">Конфигурационный файл для помеченных данных</span></a> секция <em>Ports</em>).</p>
+<p>Пакеты помечаются целиком, вместе с заголовком второго уровня.
+Для пометки можно фильтровать пакеты по протоколу 3 уровня или по выбранным портам,
+если используются протоколы TCP или UDP. Список портов можно посмотреть в <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">википедии</a>.</p>
+<p>Возможны следующие варианты работы:</p>
+<ul class="simple">
+<li><p>Помечать все входные пакеты. ip_protocol=-1 + (dst=-1 или src=-1)</p></li>
+<li><p>Помечать все UDP-пакеты. ip_protocol=17 + (dst=-1 или src=-1)</p></li>
+<li><p>Помечать все TCP-пакеты. ip_protocol=6 + (dst=-1 или src=-1)</p></li>
+<li><p>Помечать все HTTP-пакеты от внешнего веб-сервера. ip_protocol=6 + src=80</p></li>
+<li><p>Помечать все SNMP-пакеты к внутреннему серверу. ip_protocol=17 + dst=161</p></li>
+<li><p>Помечать все ICMP-пакеты. ip_protocol=1</p></li>
+<li><p>Помечать другие IP-пакеты, относящиеся к выбранному протоколу 3 уровня. ip_protocol=<em>x</em>, где <em>x</em> можно взять из <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers">таблицы</a></p></li>
+</ul>
+<p>При необходимости отслеживать трафик по всем портам, в полях <em>dst/src</em> секции <em>[Ports]</em> следует указать значение -1. Если хотя бы в одном поле будет -1, будет отслеживаться весь трафик.</p>
+<section id="https">
+<h3><span class="section-number">7.2.1. </span>Пометка расшифрованных данных при использовании HTTPS<a class="headerlink" href="#https" title="Ссылка на этот заголовок"></a></h3>
+<p>Если трафик зашифрован, то его пометка не даёт ожидаемого результата, потому что раскодирование
+данных меняет их, а пометки в таком случае сбрасываются.</p>
+<p>В Natch обрабатываются некоторые из функций декодирования, чтобы сохранить пометки.
+В дальнейшем эти возможности будут вынесены в конфигурационные файлы или скрипты.</p>
+<p>Сейчас помечаются выходные данные следующих функций, если их аргументы помечены:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inflate</span></code> из библиотеки <code class="docutils literal notranslate"><span class="pre">libz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EVP_DecryptUpdate</span></code> и <code class="docutils literal notranslate"><span class="pre">evp_EncryptDecryptUpdate</span></code> из библиотеки <code class="docutils literal notranslate"><span class="pre">libcrypto</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssl_open_app_data</span></code> из библиотеки <code class="docutils literal notranslate"><span class="pre">libthird_party_boringssl</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u_strToLower</span></code> и <code class="docutils literal notranslate"><span class="pre">u_strToUpper</span></code> из библиотеки <code class="docutils literal notranslate"><span class="pre">libicuuc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">crypto/tls.(*halfConn).decrypt</span></code> и <code class="docutils literal notranslate"><span class="pre">crypto/tls.(*halfConn).encrypt</span></code> из библиотеки языка Go</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">github.com/klauspost/compress/s2.Decode</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DigitsToUInt64</span></code> и <code class="docutils literal notranslate"><span class="pre">TranscodeToUtf8</span></code> из .NET</p></li>
+</ul>
+<p><a name="taint_filter"></a></p>
+</section>
+<section id="id4">
+<h3><span class="section-number">7.2.2. </span>Более сложная фильтрация трафика<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p>Если нужно избежать пометки заголовков пакетов, или помечать небольшую часть полезной нагрузки,
+или фильтровать пакеты не только по порту, нужно использовать параметр <em>json</em> в секции <em>[Ports]</em>.</p>
+<p>Этот файл содержит массив записей, описывающий пометку фрагментов пакетов. Каждая запись должна иметь такие поля:</p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">icount</span></code>. Шаг сценария, во время которого был получен пакет.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">id</span></code>. Номер пакета, если на одном шаге сценария пришло несколько пакетов.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">offset</span></code>. Смещение помечаемого фрагмента пакета.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">size</span></code>. Размер помечаемого фрагмента пакета.</p></li>
+</ul>
+<p>Все записи должны быть отсортированы по <em>icount</em> + <em>id</em>. Если для одного пакета нужно
+пометить несколько фрагментов, должно быть несколько записей в файле, по одной на фрагмент.</p>
+<p>Значения <em>icount</em> и <em>id</em> можно получить из файла <em>network.json</em>, где они перечислены в том же порядке,
+как и пакеты в файле <em>network.pcap</em>.</p>
+<p>Удобнее всего генерировать <em>json</em> файл для пометки с помощью скрипта, читающего содержимое пакетов
+и их метаданные из <em>network.json</em>. Ниже приведён пример такого скрипта.
+Он генерирует конфигурационный файл для пометки полезной нагрузки (без заголовков) TCP-пакетов, приходящих
+на порт 8000.</p>
+<p>Скрипт создаёт файл с названием, переданным в качестве третьего параметра.
+Этот файл должен быть размещён в каталоге сценария (где лежит <em>taint.cfg</em>) и прописан
+в качестве параметра <em>json</em> секции <em>[Ports]</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dpkt</span>
+
+<span class="n">filtered</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#########################</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">taint_tcp_payload</span><span class="p">(</span><span class="n">eth</span><span class="p">,</span> <span class="n">meta</span><span class="p">):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">eth</span><span class="o">.</span><span class="n">__hdr_len__</span> <span class="o">+</span> <span class="n">eth</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">__hdr_len__</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">eth</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">opts</span><span class="p">)</span> <span class="o">+</span> <span class="n">eth</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">tcp</span><span class="o">.</span><span class="n">__hdr_len__</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">eth</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">tcp</span><span class="o">.</span><span class="n">opts</span><span class="p">)</span>
+    <span class="n">filtered</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">'icount'</span><span class="p">:</span> <span class="n">meta</span><span class="p">[</span><span class="s1">'icount'</span><span class="p">],</span> <span class="s1">'id'</span><span class="p">:</span> <span class="n">meta</span><span class="p">[</span><span class="s1">'id'</span><span class="p">],</span> <span class="s1">'offset'</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span> <span class="s1">'size'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">eth</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">tcp</span><span class="o">.</span><span class="n">data</span><span class="p">)})</span>
+
+<span class="c1">#########################</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'usage: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> network.pcap network.json filtered.json'</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">()</span>
+
+<span class="n">pcap</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pcap</span> <span class="o">=</span> <span class="n">dpkt</span><span class="o">.</span><span class="n">pcap</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">readpkts</span><span class="p">()</span>
+
+<span class="n">jsdata</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">jsdata</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pcap</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">jsdata</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Error: Len of pcap and json differ'</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">()</span>
+
+<span class="c1"># перебор всех существующих пакетов</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pcap</span><span class="p">)):</span>
+    <span class="n">js</span> <span class="o">=</span> <span class="n">jsdata</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ts</span><span class="p">,</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">pcap</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="c1"># обработка только непустых TCP-пакетов</span>
+    <span class="n">eth</span> <span class="o">=</span> <span class="n">dpkt</span><span class="o">.</span><span class="n">ethernet</span><span class="o">.</span><span class="n">Ethernet</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eth</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dpkt</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">IP</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">ip</span> <span class="o">=</span> <span class="n">eth</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dpkt</span><span class="o">.</span><span class="n">tcp</span><span class="o">.</span><span class="n">TCP</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">tcp</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">tcp</span><span class="o">.</span><span class="n">data</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">tcp</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="c1"># выбираем нужные пакеты и добавляем к списку отфильтрованных</span>
+    <span class="k">if</span> <span class="n">tcp</span><span class="o">.</span><span class="n">dport</span> <span class="o">==</span> <span class="mi">8000</span><span class="p">:</span>
+        <span class="n">taint_tcp_payload</span><span class="p">(</span><span class="n">eth</span><span class="p">,</span> <span class="n">js</span><span class="p">)</span>
+
+<span class="c1"># вывод конфига для Natch</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">filtered</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><a name="taint_sockets"></a></p>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">7.3. </span>Пометка сокетов<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>На данный момент поддерживается только для Linux.</p>
+<p>В <em>Natch</em> реализована возможность пометки локальных сокетов. Для этого используется поле <em>list</em> (то же что и для пометки файлов) в секции <em>TaintFile</em>
+конфигурационного файла помеченных данных. Чтобы помечать сокеты, следует указать название нужного протокола в качестве имени файла.
+Поддерживаются следующие варианты: <em>TCP</em>, <em>UDP</em>, <em>TCPv6</em>, <em>UDPv6</em>, <em>UNIX</em>. Это имена, которые присваиваются файлам сокетов самим ядром Linux.</p>
+<p>По умолчанию будет выполняться пометка всех сокетов указанного протокола. Предусмотрела возможность фильтрации с помощью следующего синтаксиса:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">socket_name</span><span class="o">&gt;|</span><span class="n">parameters</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Параметры следует указывать в определенном виде.</p>
+<p>Для сетевых сокетов указывается ip адрес в традиционной форме записи IPv4 или IPv6
+(например, 127.0.0.1 и ::FFFF:10.0.2.2). Через пробел опционально указывается порт сокета.
+Подразумевается, что эти адрес и порт относятся к месту назначения, с которым данный сокет взаимодействует.
+Пометка по параметрам «слушающих» сокетов на текущий момент не реализована, поэтому при необходимости помечать сокеты,
+создаваемые сервером для каждого клиента, необходимо указать выдаваемые им системой номера портов.</p>
+<p>Для UNIX сокетов после вертикальной черты указывается соответствующее их адресу имя файла или уникальная строка.
+Указать для пометки конкретный безымянный UNIX сокет на текущий момент не представляется возможным.</p>
+<p>Ниже приведены примеры, указываемых имен файлов:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TCPv6                          # пометка всех tcpv6 сокетов
+UDPv6|2a00:1450:4010:c0b::71 0 # пометка udpv6 сокета по ip адресу и порту
+UDP|127.0.0.1                  # пометка udp сокетов по ip адресу
+TCP|173.194.220.105 80         # пометка tcp сокетов по ip адресу и порту
+UNIX|server123.sock            # пометка unix сокетов по имени
+</pre></div>
+</div>
+<p>Пример секции <em>TaintFile</em> с указанными сокетами:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[TaintFile]</span>
+<span class="na">list</span><span class="o">=</span><span class="s">TCP|173.194.220.105 80</span><span class="c1">;UDP|127.0.0.1;UNIX|server123.sock;UDPv6|2a00:1450:4010:c0f::69</span>
+</pre></div>
+</div>
+</section>
+<section id="usb">
+<h2><span class="section-number">7.4. </span>Пометка USB трафика<a class="headerlink" href="#usb" title="Ссылка на этот заголовок"></a></h2>
+<p>В <em>Natch</em> есть возможность помечать пакеты от реальных USB устройств, «проброшенных» в гостевую систему.
+При этом можно отследить весь путь данных, начиная с драйверов и ядра и заканчивая прикладным ПО.</p>
+<p>У используемого подхода есть ряд ограничений:</p>
+<ul class="simple">
+<li><p>Асинхронные устройства (мышь, клавиатура и т.п.) не поддерживаются. Можно подключать камеры, флешки, ключи шифрования.</p></li>
+<li><p>Устройство должно быть подключено с самого начала работы эмулятора. То есть, в командной строке.</p></li>
+</ul>
+<p>Для проброса USB устройств в виртуальную машину потребуется сделать ряд действий:</p>
+<ul class="simple">
+<li><p>В хостовой системе создать файл /lib/udev/rules.d/90-udev.rules с содержимым:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">"usb"</span>,<span class="w"> </span>ENV<span class="o">{</span>DEVTYPE<span class="o">}==</span><span class="s2">"usb_device"</span>,<span class="w"> </span><span class="nv">MODE</span><span class="o">=</span><span class="s2">"0666"</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Выполнить команды:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>udevadm<span class="w"> </span>control<span class="w"> </span>--reload
+sudo<span class="w"> </span>udevadm<span class="w"> </span>trigger
+</pre></div>
+</div>
+<p>Так же помимо обычной настройки конфигурационных файлов, в этом случае требуется вручную внести изменения
+в скрипты запуска инструмента.</p>
+<p>Для работы с USB устройством в файл <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code> (в конфигурацию запуска виртуальной машины) необходимо добавить строку:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">usb</span> <span class="o">-</span><span class="n">device</span> <span class="n">usb</span><span class="o">-</span><span class="n">ehci</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">ehci</span> <span class="o">-</span><span class="n">device</span> <span class="n">usb</span><span class="o">-</span><span class="n">host</span><span class="p">,</span><span class="n">hostbus</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">hostaddr</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span><span class="n">bus</span><span class="o">=</span><span class="n">ehci</span><span class="mf">.0</span>
+</pre></div>
+</div>
+<p>Где вместо <code class="docutils literal notranslate"><span class="pre">X</span></code> и <code class="docutils literal notranslate"><span class="pre">Y</span></code> у параметров <code class="docutils literal notranslate"><span class="pre">hostbus</span></code> и <code class="docutils literal notranslate"><span class="pre">hostaddr</span></code> соответственно нужно указать параметры реального USB устройства, которое будет проброшено в
+виртуальную машину.</p>
+<p>Узнать эти параметры можно с помощью команды <code class="docutils literal notranslate"><span class="pre">lsusb</span></code>.</p>
+<p>Пример вывода команды:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bus</span> <span class="mi">002</span> <span class="n">Device</span> <span class="mi">001</span><span class="p">:</span> <span class="n">ID</span> <span class="mi">1</span><span class="n">d6b</span><span class="p">:</span><span class="mi">0003</span> <span class="n">Linux</span> <span class="n">Foundation</span> <span class="mf">3.0</span> <span class="n">root</span> <span class="n">hub</span>
+<span class="n">Bus</span> <span class="mi">001</span> <span class="n">Device</span> <span class="mi">059</span><span class="p">:</span> <span class="n">ID</span> <span class="mi">05</span><span class="n">ac</span><span class="p">:</span><span class="mi">12</span><span class="n">a8</span> <span class="n">Apple</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="n">iPhone5</span><span class="o">/</span><span class="mi">5</span><span class="n">C</span><span class="o">/</span><span class="mi">5</span><span class="n">S</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">Bus</span> <span class="mi">001</span> <span class="n">Device</span> <span class="mi">056</span><span class="p">:</span> <span class="n">ID</span> <span class="mi">0951</span><span class="p">:</span><span class="mi">1665</span> <span class="n">Kingston</span> <span class="n">Technology</span> <span class="n">Digital</span> <span class="n">DataTraveler</span> <span class="n">SE9</span> <span class="mi">64</span><span class="n">GB</span>
+<span class="n">Bus</span> <span class="mi">001</span> <span class="n">Device</span> <span class="mi">055</span><span class="p">:</span> <span class="n">ID</span> <span class="mf">05e3</span><span class="p">:</span><span class="mi">0608</span> <span class="n">Genesys</span> <span class="n">Logic</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="n">Hub</span>
+</pre></div>
+</div>
+<p>В этом выводе параметр <code class="docutils literal notranslate"><span class="pre">Bus</span></code> это <code class="docutils literal notranslate"><span class="pre">hostbus</span></code>, а <code class="docutils literal notranslate"><span class="pre">Device</span></code> – <code class="docutils literal notranslate"><span class="pre">hostaddr</span></code>.</p>
+<p>Если мы хотим пробросить флешку Kingston из представленного вывода, то командная строка будет выглядеть следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">usb</span> <span class="o">-</span><span class="n">device</span> <span class="n">usb</span><span class="o">-</span><span class="n">ehci</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">ehci</span> <span class="o">-</span><span class="n">device</span> <span class="n">usb</span><span class="o">-</span><span class="n">host</span><span class="p">,</span><span class="n">hostbus</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">hostaddr</span><span class="o">=</span><span class="mi">56</span><span class="p">,</span><span class="n">bus</span><span class="o">=</span><span class="n">ehci</span><span class="mf">.0</span>
+</pre></div>
+</div>
+<p>Строка будет одинаковой как для режима записи, так и для воспроизведения, однако, в режиме воспроизведения устройство не будет подключено, поэтому
+при переподключении устройства или его отсутствии нет необходимости править параметры.</p>
+<p>После того как сценарий был записан, необходимо раскомментировать (или добавить) в <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code> секцию <code class="docutils literal notranslate"><span class="pre">USB</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">USB</span><span class="p">]</span>
+<span class="n">on</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="6_create_project.html" class="btn btn-neutral float-left" title="6. Создание проекта" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="8_scenario_work.html" class="btn btn-neutral float-right" title="8. Запись и воспроизведение сценариев" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.6', url='7_taint_source.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/7_taint_source.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/7_taint_source.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/7_taint_source.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="7_taint_source.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/7_taint_source.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/7_taint_source.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/7_taint_source.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.8.1/7_taint_source.html" style="color: #3498db;">natch_docs_v.3.8.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.6
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/7_taint_source.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/7_taint_source.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="7_taint_source.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/7_taint_source.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/7_taint_source.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/7_taint_source.html">natch_docs_v.3.7.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.8.1/7_taint_source.html">natch_docs_v.3.8.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/7_taint_source.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Что такое Natch &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="2. Установка и настройка Natch" href="2_setup.html" />
+    <link rel="prev" title="Руководство пользователя Natch" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Что такое Natch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#natch-snatch">1.1. Возможности Natch/SNatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.2. Требования к объекту оценки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1. </span>Что такое Natch</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/1_natch.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="natch_base"></a></p>
+<section id="natch">
+<h1><span class="section-number">1. </span>Что такое Natch<a class="headerlink" href="#natch" title="Ссылка на этот заголовок"></a></h1>
+<p><em>Natch</em> – это инструмент для определения поверхности атаки, основанный на полносистемном эмуляторе QEMU.
+<em>Natch</em> предназначен для поиска поверхности атаки (приложений, модулей, функций) в объекте оценки,
+который может состоять из множества библиотек, программ, контейнеров.
+Инструмент можно использовать для поиска функций для тестирования, библиотек, которые загружают
+исследуемые приложения, файлов, в которые попадают заданные входные данные.</p>
+<p>Для анализа объект оценки помещается в образ виртуальной машины (ВМ), которая запускается в эмуляторе.
+Пользователь выбирает интересующие его входные данные, а <em>Natch</em> отслеживает их распространение
+в виртуальной машине во время её работы. При этом фиксируется, какой код занимался обработкой этих данных.
+Обнаруженные участки кода средствами интроспекции соотносятся с процессами, программными модулями и функциями.
+Информация о них записывается в наборе файлов, описывающих поверхность атаки.</p>
+<p>Файлы с поверхностью атаки загружаются в инструмент <em>SNatch</em>, входящий в поставку <em>Natch</em>,
+для отображения в виде веб-страниц и генерации отчётов в pdf.</p>
+<p>Анализ объекта оценки делится на следующие этапы:</p>
+<ul class="simple">
+<li><p>Создание проекта на основе образа виртуальной машины и объекта оценки</p></li>
+<li><p>Запись сценария работы объекта оценки в виртуальной машины</p></li>
+<li><p>Выбор входных данных для отслеживания (файлы, сетевые подключения)</p></li>
+<li><p>Воспроизведение сценария и сохранение поверхности атаки</p></li>
+<li><p>Загрузка полученной поверхности атаки в <em>SNatch</em></p></li>
+<li><p>Изучение поверхности атаки с помощью интерактивных отчётов в браузере</p></li>
+<li><p>Генерация отчётов в виде pdf</p></li>
+</ul>
+<p>Шаги с записью и воспроизведением сценария необходимы по двум причинам. Первая, это борьба с замедлением виртуальной машины
+во время определения поверхности атаки.
+На записанный сценарий не будут влиять задержки от механизмов анализа,
+что очень важно для корректной работы часов реального времени и при взаимодействии с сетью.</p>
+<p>Вторая причина, это возможность повторять анализ уже записанного сценария, изменяя помечаемые входные данные.
+Так можно многократно повторять анализ, изучая разные компоненты объекта оценки.</p>
+<p>Установка <em>Natch</em> описана в разделе <a class="reference internal" href="2_setup.html#setup_natch"><span class="std std-ref">Установка и настройка Natch</span></a>,
+запуск тестовых примеров для ознакомления с инструментом – в разделе <a class="reference internal" href="#4_launch_test_samples.md#natch_stepbystep"><span class="xref myst">Запуск тестовых примеров Natch</span></a>,
+подготовка образа исследуемой системы – в разделе <a class="reference internal" href="#5_setup_env.md#setup_env"><span class="xref myst">Настройка окружения для работы с Natch</span></a>,
+описание команд для работы с инструментом – в разделе <a class="reference internal" href="#3_natch_cmd.md#natch_cmd"><span class="xref myst">Командный интерфейс Natch</span></a>,
+запись и воспроизведение сценариев работы с исследуемым ПО – в разделе <a class="reference internal" href="8_scenario_work.html#record_replay"><span class="std std-ref">Запись и воспроизведение сценариев</span></a>,
+описание источников пометки – в разделе <a class="reference internal" href="7_taint_source.html#taint_source"><span class="std std-ref">Определение источников пометки</span></a>,
+анализ и оценка результатов в <em>SNatch</em> – в разделе <a class="reference internal" href="9_snatch.html#snatch"><span class="std std-ref">Анализ поверхности атаки с помощью SNatch</span></a>.</p>
+<section id="natch-snatch">
+<h2><span class="section-number">1.1. </span>Возможности Natch/SNatch<a class="headerlink" href="#natch-snatch" title="Ссылка на этот заголовок"></a></h2>
+<ul class="simple">
+<li><p>Анализ потоков помечаемых пользовательских данных (сетевых пакетов, файлов, данных из проброшенных USB-устройств) внутри виртуальной машины</p></li>
+<li><p>Сбор информации о процессах: командная строка, исполняемые модули, запускаемые скрипты, открываемые файлы и сокеты</p></li>
+<li><p>Определение процессов, запущенных в docker-контейнерах</p></li>
+<li><p>Сохранение сетевого трафика между виртуальной машиной и внешним миром</p></li>
+<li><p>Отображение потоков помеченных данных между модулями и процессами в виде графовых диаграмм</p></li>
+<li><p>Построение стеков вызовов для функций, обрабатывающих помеченные данные</p></li>
+<li><p>Получение списка работающих в каждом процессе скриптов на Python</p></li>
+<li><p>Построение стеков вызовов для программ на Python, Java, JavaScript или C#, обрабатывающих помеченные данные</p></li>
+<li><p>Отображение вызванных функций процессов в виде флейм-диаграмм</p></li>
+<li><p>Построение дерева процессов с указанием UID для каждого из них</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2><span class="section-number">1.2. </span>Требования к объекту оценки<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<ul class="simple">
+<li><p>Работа под 64-битной ОС на основе Linux</p></li>
+<li><p>Желательно наличие отладочной информации в формате dwarf (или Go) для бинарных файлов объекта оценки</p></li>
+<li><p>Интерпретаторы и jit-компиляторы (для Python, Java, JavaScript или C#), не входящие в поставку ОС, нужно извлечь из ВМ. Интерпретаторы <em>обязательно</em> должны быть с отладочной информацией</p></li>
+</ul>
+<p>Рекомендации по подготовке объекта оценки приведены в разделе <a class="reference internal" href="#app8_oo_preparation.md#app_preparation"><span class="xref myst">Рекомендации по подготовке и анализу объекта оценки</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="index.html" class="btn btn-neutral float-left" title="Руководство пользователя Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="2_setup.html" class="btn btn-neutral float-right" title="2. Установка и настройка Natch" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.6', url='1_natch.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/1_natch.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/1_natch.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/1_natch.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="1_natch.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/1_natch.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/1_natch.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/1_natch.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.6
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/1_natch.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/1_natch.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="1_natch.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/1_natch.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/1_natch.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/1_natch.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/1_natch.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

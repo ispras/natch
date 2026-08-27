@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>А. Настройка окружения для использования лицензированного Natch &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Б. Конфигурационные файлы Natch" href="app2_configs.html" />
+    <link rel="prev" title="14. Системные требования и ограничения Natch" href="14_requirements.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">А. Настройка окружения для использования лицензированного Natch</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app1_license.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="app_license"></a></p>
+<section id="natch">
+<h1>А. Настройка окружения для использования лицензированного Natch<a class="headerlink" href="#natch" title="Ссылка на этот заголовок"></a></h1>
+<p>Для использования лицензированной версии инструмента <em>Natch</em> необходимо иметь HASP ключ или сетевую лицензию.</p>
+<p>При наличии ключа следует выполнить только пункт 1 из этого приложения. В случае с сетевой лицензией необходимо выполнить
+все нижеописанные действия.</p>
+<p>Все необходимые файлы настройки будут предоставлены пользователю, а именно, пакет aksusbd_<em>current_version</em>_amd64.deb
+(Ubuntu, Debian, Astra), файл с конфигурацией vpn <code class="docutils literal notranslate"><span class="pre">*.ovpn</span></code> и логин/пароль для подключения.</p>
+<ol class="arabic simple">
+<li><p>Установить окружение для ключей Sentinel</p></li>
+</ol>
+<p><strong>Для Ubuntu, Debian</strong></p>
+<p>Установить deb пакет <code class="docutils literal notranslate"><span class="pre">aksusbd</span></code> с помощью команды:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>aksusbd_*current_version*_amd64.deb
+</pre></div>
+</div>
+<p><strong>Для Alt</strong></p>
+<p>Установить rpm пакет <code class="docutils literal notranslate"><span class="pre">aksusbd</span></code> и перезапустить службу:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>eepm<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>epm<span class="w"> </span>play<span class="w"> </span>aksusbd
+<span class="w">    </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>aksusbd
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Создать VPN соединение (в качестве примера хостовой системы использована Ubuntu 20.04).</p></li>
+</ol>
+<p>Для этого создания VPN соединения необходимо открыть настройки операционной системы и перейти в раздел <em>Network</em>. В секции <em>VPN</em> нажать на плюсик.</p>
+<p><img alt="_images/settings.png" src="_images/settings.png" /><figcaption><em>Настройки сети</em></figcaption></p>
+<p>Появится окно для добавления новой конфигурации VPN. Нужный вариант <em>Import from file..</em>, куда следует передать входящий в поставку
+файл <em>*.ovpn</em>. В предлагаемой ОС OpenVPN установлен по умолчанию.</p>
+<p><img alt="_images/import.png" src="_images/import.png" /><figcaption><em>Импорт настроек VPN</em></figcaption></p>
+<p>После импорта файла появится окно настройки соединения, в которое необходимо вписать логин и пароль, так же входящие в поставку.
+В этом же окне следует перейти на вкладки IPv4 и IPv6 и установить флажок <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">this</span> <span class="pre">connection</span> <span class="pre">only</span> <span class="pre">for</span> <span class="pre">resources</span> <span class="pre">on</span> <span class="pre">its</span> <span class="pre">network</span></code>.
+Далее осталось нажать кнопку <em>Add</em> в верхнем правом углу и конфигурация будет создана.</p>
+<p><img alt="_images/login.png" src="_images/login.png" /><figcaption><em>Добавление конфигурации VPN</em></figcaption></p>
+<p>Осталось только включить переключатель напротив VPN и соединение будет установлено.</p>
+<p><img alt="_images/ok.png" src="_images/ok.png" /><figcaption><em>VPN готов</em></figcaption></p>
+<p>Кроме того, управлять подключением можно в трее, как показано на рисунке ниже.</p>
+<p><img alt="_images/profit.png" src="_images/profit.png" /><figcaption><em>Подключение VPN</em></figcaption></p>
+<ol class="arabic simple" start="3">
+<li><p>Открыть браузер и ввести строку <code class="docutils literal notranslate"><span class="pre">localhost:1947</span></code></p></li>
+<li><p>Откроется главная страница <code class="docutils literal notranslate"><span class="pre">Sentinel</span> <span class="pre">Admin</span> <span class="pre">Control</span> <span class="pre">Center</span></code>, на которой нужно перейти в раздел <code class="docutils literal notranslate"><span class="pre">Configuration</span></code>, в нем найти раздел <code class="docutils literal notranslate"><span class="pre">Access</span> <span class="pre">to</span> <span class="pre">Remote</span> <span class="pre">License</span> <span class="pre">Managers</span></code>.</p></li>
+<li><p>Убедиться, что в поле <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">Access</span> <span class="pre">to</span> <span class="pre">Remote</span> <span class="pre">Licenses</span></code> стоит галочка. В поле <code class="docutils literal notranslate"><span class="pre">Broadcast</span> <span class="pre">Search</span> <span class="pre">to</span> <span class="pre">Remote</span> <span class="pre">Licenses</span></code> галочка стоять не должна.</p></li>
+<li><p>В поле <code class="docutils literal notranslate"><span class="pre">Remote</span> <span class="pre">License</span> <span class="pre">Search</span> <span class="pre">Parameters</span></code> ввести <code class="docutils literal notranslate"><span class="pre">license.intra.ispras.ru</span></code> и нажать кнопку <code class="docutils literal notranslate"><span class="pre">Submit</span></code>.</p></li>
+</ol>
+<p>После всех проделанных действий инструмент готов к использованию на вашем компьютере.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="14_requirements.html" class="btn btn-neutral float-left" title="14. Системные требования и ограничения Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="app2_configs.html" class="btn btn-neutral float-right" title="Б. Конфигурационные файлы Natch" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.6', url='app1_license.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/app1_license.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/app1_license.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/app1_license.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="app1_license.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/app1_license.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/app1_license.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/app1_license.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.8.1/app1_license.html" style="color: #3498db;">natch_docs_v.3.8.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.6
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/app1_license.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/app1_license.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="app1_license.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/app1_license.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/app1_license.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/app1_license.html">natch_docs_v.3.7.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.8.1/app1_license.html">natch_docs_v.3.8.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/app1_license.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

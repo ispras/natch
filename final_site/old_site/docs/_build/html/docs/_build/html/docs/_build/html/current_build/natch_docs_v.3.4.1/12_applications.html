@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12. Примеры использования Natch &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="13. FAQ" href="13_faq.html" />
+    <link rel="prev" title="11. Автоматизация процессов" href="11_automation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">12. Примеры использования Natch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">12.1. Создание сетевого моста. Подключение эмулятора к рабочей сети</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">12.2. Соединение нескольких эмуляторов в сеть</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">12.3. Natch в режиме командной строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vnc">12.4. Запуск виртуальной машины в режиме VNC-сервера</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">12.5. Запуск Natch в контейнере</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">12. </span>Примеры использования Natch</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/12_applications.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="natch_applications"></a></p>
+<section id="natch">
+<h1><span class="section-number">12. </span>Примеры использования Natch<a class="headerlink" href="#natch" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2><span class="section-number">12.1. </span>Создание сетевого моста. Подключение эмулятора к рабочей сети<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Может возникнуть ситуация, когда компоненты анализируемой системы для корректной работы взаимодействуют с корпоративной сетью.
+Т.к. при обычном запуске qemu используется NAT, возникают сложности с настройкой vpn протокола.
+При дальнейшей настройке сетевого моста рекомендуется использовать подключение через Ethernet кабель.</p>
+<p>Определим сетевой интерфейс:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>lshw<span class="w"> </span>-class<span class="w"> </span>network
+</pre></div>
+</div>
+<p>Данная команда отобразит название интерфейса и диапазон нашей рабочей сети, что упростит понимание дальнейших действий:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modprobe<span class="w"> </span>tun<span class="w"> </span>tap
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span>add<span class="w"> </span>br0<span class="w"> </span><span class="nb">type</span><span class="w"> </span>bridge
+sudo<span class="w"> </span>ip<span class="w"> </span>tuntap<span class="w"> </span>add<span class="w"> </span>dev<span class="w"> </span>tap0<span class="w"> </span>mode<span class="w"> </span>tap
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>ens33<span class="w"> </span>master<span class="w"> </span>br0
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>tap0<span class="w"> </span>master<span class="w"> </span>br0
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>br0<span class="w"> </span>up
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>tap0<span class="w"> </span>up
+sudo<span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span>delete<span class="w"> </span><span class="m">192</span>.168.159.131/32<span class="w"> </span>dev<span class="w"> </span>ens33
+sudo<span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span>delete<span class="w"> </span><span class="m">192</span>.168.159.131<span class="w"> </span>dev<span class="w"> </span>ens33
+sudo<span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.159.131/24<span class="w"> </span>dev<span class="w"> </span>br0
+</pre></div>
+</div>
+<p>Далее определим основной шлюз сети. Если хостовая операционная система - windows, то используем „ipconfig“.
+Узнав нужный адрес, прописываем маршрут до шлюза при помощи ip route:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">192</span>.168.159.2<span class="w"> </span>dev<span class="w"> </span>br0
+sudo<span class="w"> </span>resolvectl<span class="w"> </span>dns<span class="w"> </span>br0<span class="w"> </span><span class="m">192</span>.168.159.2
+</pre></div>
+</div>
+<p>Ждём 15 секунд, если установилось интернет соединение, то вы все сделали правильно.</p>
+<p>Для корректного проброса сети в qemu vm необходимо указать измененный mac tap интерфейса.
+(Таким образом можно избежать конфликт с dhcp сервером.) Генерируем mac, оставляя первые 3 октета от нашего tap интерфейса:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">mac_address</span><span class="o">=</span><span class="s2">"fe:56:c2:</span><span class="k">$(</span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/urandom<span class="w"> </span><span class="nv">bs</span><span class="o">=</span><span class="m">512</span><span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="p">|</span><span class="w"> </span>md5sum<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-E<span class="w"> </span><span class="s1">'s/^(..)(..)(..).*$/\1:\2:\3/'</span><span class="k">)</span><span class="s2">"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$mac_address</span><span class="sb">```</span>
+
+Далее<span class="w"> </span>запустим<span class="w"> </span>qemu<span class="w"> </span>vm,<span class="w"> </span>используя<span class="w"> </span>полученный<span class="w"> </span>mac-адрес:
+<span class="sb">```</span>bash
+qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
+-hda<span class="w"> </span>ubuntu.qcow2<span class="w"> </span><span class="se">\</span>
+-m<span class="w"> </span>4G<span class="w"> </span><span class="se">\</span>
+-enable-kvm<span class="w"> </span><span class="se">\</span>
+-cpu<span class="w"> </span>host,nx<span class="w"> </span><span class="se">\</span>
+-monitor<span class="w"> </span>stdio<span class="w"> </span><span class="se">\</span>
+-netdev<span class="w"> </span>tap,id<span class="o">=</span>net0,ifname<span class="o">=</span>tap0,script<span class="o">=</span>no,downscript<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+-device<span class="w"> </span>e1000,netdev<span class="o">=</span>net0,mac<span class="o">=</span>fe:56:c2:f2:0b:e1
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">12.2. </span>Соединение нескольких эмуляторов в сеть<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Иногда анализируемая система состоит из компонентов, размещаемых на нескольких компьютерах,
+объединённых в сеть. <em>Natch</em> напрямую не поддерживает такой режим, но его можно использовать
+для каждой из отдельных виртуальных машин (или для всех одновременно):</p>
+<ul class="simple">
+<li><p><em>Natch</em> настраивается для каждой из виртуальных машин, подлежащих анализу</p></li>
+<li><p>Запускаются все обычные виртуальные машины</p></li>
+<li><p>Запускаются машины под контролем <em>Natch</em> в режиме записи сценария</p></li>
+<li><p>Выполняется сценарий для анализа</p></li>
+<li><p>Завершается работа виртуальных машин</p></li>
+<li><p>По отдельности запускается воспроизведение сценария и получение поверхности атаки для каждой машины</p></li>
+<li><p>Полученные файлы поверхности атаки по отдельности анализируются в <em>SNatch</em></p></li>
+</ul>
+<p>Таким образом, при работе с несколькими виртуальными машинами нужно сконфигурировать их сетевые адаптеры,
+чтобы они могли взаимодействовать между собой. Для этого можно использовать механизм туннелей.</p>
+<p>Сконфигурировать туннель из tap-адаптеров на хосте можно с помощью следующих команд:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modprobe<span class="w"> </span>tun<span class="w"> </span>tap
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span>add<span class="w"> </span>br0<span class="w"> </span><span class="nb">type</span><span class="w"> </span>bridge
+sudo<span class="w"> </span>ip<span class="w"> </span>tuntap<span class="w"> </span>add<span class="w"> </span>dev<span class="w"> </span>tap0<span class="w"> </span>mode<span class="w"> </span>tap
+sudo<span class="w"> </span>ip<span class="w"> </span>tuntap<span class="w"> </span>add<span class="w"> </span>dev<span class="w"> </span>tap1<span class="w"> </span>mode<span class="w"> </span>tap
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>ens33<span class="w"> </span>master<span class="w"> </span>br0
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>tap0<span class="w"> </span>master<span class="w"> </span>br0
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>tap1<span class="w"> </span>master<span class="w"> </span>br0
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>br0<span class="w"> </span>up
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>tap0<span class="w"> </span>up
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>tap1<span class="w"> </span>up
+sudo<span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span>delete<span class="w"> </span><span class="m">192</span>.168.159.131/32<span class="w"> </span>dev<span class="w"> </span>ens33
+sudo<span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span>delete<span class="w"> </span><span class="m">192</span>.168.159.131<span class="w"> </span>dev<span class="w"> </span>ens33
+sudo<span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.159.131/24<span class="w"> </span>dev<span class="w"> </span>br0
+sudo<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">192</span>.168.159.2<span class="w"> </span>dev<span class="w"> </span>br0
+sudo<span class="w"> </span>resolvectl<span class="w"> </span>dns<span class="w"> </span>br0<span class="w"> </span><span class="m">192</span>.168.159.2
+</pre></div>
+</div>
+<p>Здесь <code class="docutils literal notranslate"><span class="pre">ens33</span></code> — это реальный адаптер на хосте, который подключается к виртуальной сети.</p>
+<p>Каждый из эмуляторов нужно запускать с разными tap-адаптерами и mac-адресами.
+В командной строке ниже используется <code class="docutils literal notranslate"><span class="pre">tap0</span></code> и <code class="docutils literal notranslate"><span class="pre">mac=50:54:00:00:00:43</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
+-hda<span class="w"> </span>ubuntu_nginx.qcow2<span class="w">  </span><span class="se">\</span>
+-m<span class="w"> </span>4G<span class="w"> </span><span class="se">\</span>
+-enable-kvm<span class="w"> </span><span class="se">\</span>
+-cpu<span class="w"> </span>host,nx<span class="w"> </span><span class="se">\</span>
+-monitor<span class="w"> </span>stdio<span class="w"> </span><span class="se">\</span>
+-netdev<span class="w"> </span>tap,id<span class="o">=</span>net0,ifname<span class="o">=</span>tap0,script<span class="o">=</span>no,downscript<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+-device<span class="w"> </span>e1000,netdev<span class="o">=</span>net0,mac<span class="o">=</span><span class="m">50</span>:54:00:00:00:43
+</pre></div>
+</div>
+<p>После создания проектов командой <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code> нужно откорректировать параметры запуска эмулятора в файле
+<code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code>.</p>
+<p>Опции</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span>
+<span class="o">-</span><span class="n">device</span> <span class="n">e1000</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">net0</span>
+</pre></div>
+</div>
+<p>нужно заменить следующие, как в скрипте выше:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-netdev<span class="w"> </span>tap,id<span class="o">=</span>net0,ifname<span class="o">=</span>tap0,script<span class="o">=</span>no,downscript<span class="o">=</span>no
+-device<span class="w"> </span>e1000,netdev<span class="o">=</span>net0,mac<span class="o">=</span><span class="m">50</span>:54:00:00:00:43
+</pre></div>
+</div>
+<p>для секций <code class="docutils literal notranslate"><span class="pre">record</span></code>, <code class="docutils literal notranslate"><span class="pre">replay</span></code> и, при необходимости, <code class="docutils literal notranslate"><span class="pre">kvm</span></code>.</p>
+<p>Соответственно, для каждой из виртуальных машин tap-интерфейсы и mac-адреса должны быть разными,
+если они запускаются одновременно.</p>
+<p><a class="reference external" href="https://werewblog.wordpress.com/2015/12/31/create-a-virtual-network-with-qemukvm/comment-page-1/">Страница на английском языке с описанием аналогичного опыта.</a></p>
+</section>
+<section id="id3">
+<h2><span class="section-number">12.3. </span>Natch в режиме командной строки<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>При записи/воспроизведении сценария на сервере без графической подсистемы,
+можно использовать <em>Natch</em> в режиме командной строки.</p>
+<p>В примере используется подготовленный разработчиком <a class="reference external" href="https://nextcloud.ispras.ru/index.php/s/testing_natch">тестовый комплект</a>,
+включающий в себя минимизированный образ гостевой операционной системы Debian (размер qcow2-образа около 1.5 ГБ).</p>
+<p>Приведенный ниже способ (тюнинг GRUB, сетевые настройки и т.д.) в вашем дистрибутиве Linux может отличаться от работающего в тестовом образе.</p>
+<p>Чтобы внести необходимые изменения в настройки вашей системы, запустите <em>Natch</em> в режиме аппаратной виртуализации
+с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">kvm</span></code>. Так как у нас еще нет проекта, то команда потребует указать параметр <code class="docutils literal notranslate"><span class="pre">-i/--image</span></code>,
+следует передать свой образ:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>natch kvm -i test_image_debian.qcow2
+</pre></div>
+</div>
+<p>Дальше нужно проделать следующее:</p>
+<ul class="simple">
+<li><p>Залогиниться <code class="docutils literal notranslate"><span class="pre">root:root</span></code></p></li>
+<li><p>Установить неграфическую цель «по умолчанию»: <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">set-default</span> <span class="pre">multi-user.target</span></code></p></li>
+<li><p>Открыть конфигурацию grub: <code class="docutils literal notranslate"><span class="pre">vim</span> <span class="pre">/etc/default/grub</span></code></p></li>
+<li><p>Изменить следующие строки (в скачанном образе эти строки уже раскомментированы):</p>
+<ul>
+<li><p>раскомментировать: <code class="docutils literal notranslate"><span class="pre">GRUB_TERMINAL=console</span></code></p></li>
+<li><p>установить значение: <code class="docutils literal notranslate"><span class="pre">GRUB_CMDLINE_LINUX_DEFAULT=&quot;nomodeset&quot;</span></code></p></li>
+<li><p>установить значение: <code class="docutils literal notranslate"><span class="pre">GRUB_CMDLINE_LINUX=&quot;console=ttyS0&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p>Сохранить, после этого выполнить: <code class="docutils literal notranslate"><span class="pre">update-grub</span></code></p></li>
+<li><p>Завершить работу: <code class="docutils literal notranslate"><span class="pre">shutdown</span> <span class="pre">0</span></code></p></li>
+</ul>
+<p>Приведенные команды представлены в виде примера настройки образа. В тестовом образе уже все настроено.</p>
+<p>Если нужно снова поработать в виртуальной машине без использования <em>Natch</em>, можно
+изменить скрипт запуска эмулятора – отключить графический вывод, используя опцию <code class="docutils literal notranslate"><span class="pre">nographic</span></code>.</p>
+<p>К сожалению, на данный момент редактирование опций для запуска эмулятора вне проекта не автоматизировано,
+но есть обходной путь. Запустите команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">kvm</span></code> с опцией <code class="docutils literal notranslate"><span class="pre">-d</span></code> и завершите работу эмулятора, на выходе в месте запуска сохранится файл
+с командной строкой <code class="docutils literal notranslate"><span class="pre">debug_qemu_cmdline.ini</span></code>, в который можно вносить изменения и запускать в дальнейшем.
+Не забудьте выдать ему права на выполнение.</p>
+<p>Управлять виртуальной машиной в текстовом режиме работы можно за счет проброса монитора QEMU на свободный порт (в данном случае – 7799)
+и добавления ключей <code class="docutils literal notranslate"><span class="pre">server</span></code>,<code class="docutils literal notranslate"><span class="pre">nowait</span></code>, которые  указывают QEMU прослушивать соединения и запускать виртуальную машину, не дожидаясь подключения.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-nographic<span class="w"> </span><span class="se">\</span>
+-monitor<span class="w"> </span>tcp:0.0.0.0:7799,server,nowait<span class="w"> </span><span class="se">\</span>
+</pre></div>
+</div>
+<p>Эти опции автоматически попадут в параметры запуска <em>Natch</em> при указании соответствующего параметра
+во время создания проекта командой <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code>.</p>
+<p>Дальше нужно создать с помощью <em>Natch</em> проект, как описано в разделе <a class="reference internal" href="6_create_project.html#create_project"><span class="std std-ref">Создание проекта</span></a>.</p>
+<p>Нужно будет указать текстовый режим работы эмулятора:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Select mode you want to run emulator: graphic [G/g] (default), text [T/t] or vnc [V/v] t
+</pre></div>
+</div>
+<p>При необходимости в файл <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code> с опциями эмулятора можно добавить работу через виртуальный последовательный порт:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-serial<span class="w"> </span>stdio
+</pre></div>
+</div>
+<p>Дальше, при работе с <em>Natch</em>, если нужно подключиться к эмулятору, например, для создания
+снапшота, необходимо на хостовой машине открыть новое окно терминала и ввести команду:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nc<span class="w"> </span>-N<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="m">7799</span>
+</pre></div>
+</div>
+<p>После загрузки интерфейса управления <em>Natch</em>, выполнить команду <code class="docutils literal notranslate"><span class="pre">savevm</span> <span class="pre">ready</span></code>.</p>
+<p>Там же можно завершить работу эмулятора с помощью команды <code class="docutils literal notranslate"><span class="pre">quit</span></code>.</p>
+</section>
+<section id="vnc">
+<h2><span class="section-number">12.4. </span>Запуск виртуальной машины в режиме VNC-сервера<a class="headerlink" href="#vnc" title="Ссылка на этот заголовок"></a></h2>
+<p>Другой вариант запуска <em>Natch</em> на сервере без графического интерфейса – это использование
+встроенной возможности работы через протокол VNC. С помощью него можно работать
+с графическим интерфейсом гостевой системы, подключаясь к эмулятору удалённо.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-vnc<span class="w"> </span>:0
+</pre></div>
+</div>
+<p>С таким параметром эмулятор откроет порт для подключения через VNC-клиент.
+При этом обычное окно с графическим интерфейсом исчезнет, останется только вывод в консоль.</p>
+<p>Выбрать такой режим так же можно на этапе создания проекта (необходимо указать vnc):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Select mode you want to run emulator: graphic [G/g] (default), text [T/t] or vnc [V/v] v
+</pre></div>
+</div>
+<p>Дальше остаётся только подключиться к эмулятору по адресу <code class="docutils literal notranslate"><span class="pre">127.0.0.1:5900</span></code> через протокол
+VNC (например, с помощью Remote Desktop Viewer) и оттуда работать с гостевой системой
+как обычно. Если доступ нужен извне сервера, где запускается эмулятор, необходимо
+соответствующим образом настроить маршрутизацию и брандмауэр.</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">12.5. </span>Запуск Natch в контейнере<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Для запуска <em>Natch</em> в контейнере, нужно использовать ОС, работающую в текстовом
+режиме. В предыдущем разделе описано, как можно её настроить.</p>
+<p>Для создания контейнера нужен файл <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> с представленным ниже содержимым.
+В этом же каталоге должен находиться пакет <em>Natch</em> для Ubuntu 24.04 –
+<code class="docutils literal notranslate"><span class="pre">natch_X.X.ym|xe_ubuntu2404.deb</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>FROM<span class="w"> </span>ubuntu:24.04
+
+<span class="c1"># Set Timezone or get hang during the docker build...</span>
+ENV<span class="w"> </span><span class="nv">TZ</span><span class="o">=</span>Europe/Moscow
+RUN<span class="w"> </span>ln<span class="w"> </span>-snf<span class="w"> </span>/usr/share/zoneinfo/<span class="nv">$TZ</span><span class="w"> </span>/etc/localtime<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$TZ</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/timezone
+
+RUN<span class="w"> </span>apt<span class="w"> </span>update
+RUN<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>sudo
+
+<span class="c1"># Dev stuff</span>
+RUN<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mc<span class="w"> </span>nano<span class="w"> </span>vim<span class="w"> </span>git<span class="w"> </span>cmake<span class="w"> </span>make<span class="w"> </span>clang<span class="w"> </span>zlib1g-dev<span class="w"> </span>unzip<span class="w"> </span>curl<span class="w"> </span>python3-pip
+RUN<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libguestfs-tools<span class="w"> </span>libsdl2-2.0-0
+
+<span class="c1"># Avoid "supermin: failed to find a suitable kernel (host_cpu=x86_64)"</span>
+RUN<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>linux-image-generic
+
+ARG<span class="w"> </span><span class="nv">cuidname</span><span class="o">=</span>user
+ARG<span class="w"> </span><span class="nv">cgidname</span><span class="o">=</span>user
+
+RUN<span class="w"> </span>groupadd<span class="w"> </span><span class="nv">$cgidname</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-g<span class="w"> </span><span class="nv">$cgidname</span><span class="w"> </span>-G<span class="w"> </span>sudo<span class="w"> </span>-p<span class="w"> </span><span class="nv">$cuidname</span><span class="w"> </span>-s<span class="w"> </span>/usr/bin/bash<span class="w"> </span><span class="nv">$cuidname</span>
+RUN<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'%sudo ALL=(ALL) NOPASSWD:ALL'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sudoers
+ENV<span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">:/bin/natch-bin/bin"</span>
+
+COPY<span class="w"> </span>natch_*.deb<span class="w"> </span>/tmp
+
+RUN<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>/tmp/natch_*.deb<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-f<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>/tmp/natch_*.deb
+</pre></div>
+</div>
+<p>Создадим образ контейнера на основе <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>natch<span class="w"> </span>/home/user/natch_quickstart
+</pre></div>
+</div>
+<p>Последний параметр этой командой строки – это каталог, где лежит <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>.</p>
+<p>Теперь запустим созданный контейнер:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--privileged<span class="w"> </span>-v<span class="w"> </span>/home/user/natch_quickstart/:/mnt/<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span>-it<span class="w"> </span>-u<span class="w"> </span>user<span class="w"> </span>natch
+</pre></div>
+</div>
+<p>В папке <code class="docutils literal notranslate"><span class="pre">/home/user/natch_quickstart/</span></code> должен быть нужный для работы образ и объект оценки,
+потому что она будет подмонтирована в каталог <code class="docutils literal notranslate"><span class="pre">/mnt</span></code> внутри контейнера.</p>
+<p>Теперь можно создать каталог для проекта, перейти в него и запустить <em>Natch</em>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>natch<span class="w"> </span>create<span class="w"> </span>test_project<span class="w"> </span>/mnt/test_image_debian.qcow2<span class="w"> </span>-a<span class="w"> </span>x86_64
+</pre></div>
+</div>
+<p>Если планируется длительная работа с <em>Natch</em>, вместо использования опции <code class="docutils literal notranslate"><span class="pre">-a</span> <span class="pre">x86_64</span></code> можно установить архитектуру по умолчанию:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>natch<span class="w"> </span>settings<span class="w"> </span>arch
+</pre></div>
+</div>
+<p>В текстовом режиме работы эмулятора, можно подключиться к нему снаружи, например, так:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nc<span class="w"> </span>-N<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="m">7799</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="11_automation.html" class="btn btn-neutral float-left" title="11. Автоматизация процессов" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="13_faq.html" class="btn btn-neutral float-right" title="13. FAQ" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.4.1', url='12_applications.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/12_applications.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="12_applications.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/12_applications.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6/12_applications.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/12_applications.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/12_applications.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/12_applications.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.8.1/12_applications.html" style="color: #3498db;">natch_docs_v.3.8.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.4.1
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="12_applications.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/12_applications.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6/12_applications.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/12_applications.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/12_applications.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/12_applications.html">natch_docs_v.3.7.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.8.1/12_applications.html">natch_docs_v.3.8.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/12_applications.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

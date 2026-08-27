@@ -1,0 +1,295 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'natch_docs_v.3.4.[1-9]*'
+      - 'natch_docs_v.3.[5-9]*'
+      - 'natch_docs_v.[4-9]*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: documentation-pages
+  cancel-in-progress: false
+
+
+jobs:
+  build:
+    name: Build documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      # ------------------------------------------------------------
+      # 1. Получаем весь Git history + tags
+      # ------------------------------------------------------------
+      - name: Checkout Complete History
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ------------------------------------------------------------
+      # 2. Python
+      # ------------------------------------------------------------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # ------------------------------------------------------------
+      # 3. Dependencies
+      # ------------------------------------------------------------
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r docs/requirements.txt
+
+      # ------------------------------------------------------------
+      # 4. Явно обновляем refs
+      # ------------------------------------------------------------
+      - name: Fetch branches and tags
+        run: |
+          git fetch origin --prune
+          git fetch origin --tags --force
+
+          echo "Branches:"
+          git branch -a
+
+          echo
+          echo "Documentation tags:"
+          git tag --list 'natch_docs_v.*' | sort -V
+
+      # ------------------------------------------------------------
+      # 5. Сохраняем уже опубликованные версии
+      # ------------------------------------------------------------
+      - name: Load Existing Site
+        run: |
+          rm -rf old_site
+
+          git clone \
+            --branch gh-pages \
+            --depth 1 \
+            "https://github.com/${{ github.repository }}.git" \
+            old_site \
+            || true
+
+          if [ -d old_site ]; then
+            rm -rf old_site/.git
+          fi
+
+
+      # ------------------------------------------------------------
+      # 6. Полностью строим новые версии
+      # ------------------------------------------------------------
+      - name: Build Multi-Version Documentation
+        run: |
+          rm -rf new_site
+
+          sphinx-multiversion docs new_site
+
+        env:
+          SPHINX_MULTIVERSION_PRE_BUILD_REF: ${{ github.ref }}
+
+
+      # ------------------------------------------------------------
+      # 7. Показываем, что реально построилось
+      # ------------------------------------------------------------
+      - name: Show Built Versions
+        run: |
+          echo "===== New site ====="
+          find new_site -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | sort
+
+          echo
+          echo "===== Existing site ====="
+
+          if [ -d old_site ]; then
+            find old_site -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | sort
+          else
+            echo "No previous site"
+          fi
+
+
+      # ------------------------------------------------------------
+      # 8. Объединяем старые и новые версии
+      # ------------------------------------------------------------
+      - name: Merge Documentation Versions
+        run: |
+          rm -rf final_site
+          mkdir -p final_site
+
+          # Сначала старые опубликованные версии
+          if [ -d old_site ]; then
+            cp -a old_site/. final_site/
+          fi
+
+          # Затем новые версии поверх старых
+          cp -a new_site/. final_site/
+
+
+      # ------------------------------------------------------------
+      # 9. Находим последний релиз
+      # ------------------------------------------------------------
+      - name: Find Latest Release
+        run: |
+
+          LATEST_RELEASE=$(
+            git tag --list 'natch_docs_v.*' |
+            grep -E '^natch_docs_v\.(3\.4\.[1-9][0-9]*|3\.[5-9][0-9]*(\.[0-9]+)?|[4-9][0-9]*(\.[0-9]+)?)$' |
+            sort -V |
+            tail -n 1
+          )
+
+          # LATEST_RELEASE=$(
+          #   git tag --list 'natch_docs_v.*' |
+          #   grep -E '^natch_docs_v\.[0-9]+\.[0-9]+(\.[0-9]+)?$' |
+          #   sort -V |
+          #   tail -n 1
+          # )
+
+          if [ -z "$LATEST_RELEASE" ]; then
+            echo "WARNING: No release tag found."
+            LATEST_RELEASE="main"
+          fi
+
+          echo "Latest release: $LATEST_RELEASE"
+
+          echo "LATEST_RELEASE=$LATEST_RELEASE" >> "$GITHUB_ENV"
+
+
+      # ------------------------------------------------------------
+      # 10. Проверяем, что последний релиз действительно существует
+      # ------------------------------------------------------------
+      - name: Verify Latest Release
+        run: |
+
+          if [ ! -d "final_site/${LATEST_RELEASE}" ]; then
+            echo
+            echo "ERROR:"
+            echo "Latest release is ${LATEST_RELEASE}"
+            echo "but directory final_site/${LATEST_RELEASE} does not exist."
+            echo
+
+            echo "Available versions:"
+            find final_site \
+              -maxdepth 1 \
+              -mindepth 1 \
+              -type d \
+              -printf '%f\n' |
+              sort
+
+            exit 1
+          fi
+
+
+      # ------------------------------------------------------------
+      # 11. Создаём root redirect
+      # ------------------------------------------------------------
+      - name: Create Root Redirect
+        run: |
+
+          cat > final_site/index.html <<EOF
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+              <title>Natch documentation</title>
+
+              <meta
+                http-equiv="refresh"
+                content="0; url=./${LATEST_RELEASE}/index.html"
+              >
+
+              <link
+                rel="canonical"
+                href="./${LATEST_RELEASE}/index.html"
+              >
+            </head>
+
+            <body>
+              <p>
+                Redirecting to
+                <a href="./${LATEST_RELEASE}/index.html">
+                  Natch documentation ${LATEST_RELEASE}
+                </a>...
+              </p>
+            </body>
+          </html>
+          EOF
+
+
+      # ------------------------------------------------------------
+      # 12. Показываем итоговую структуру
+      # ------------------------------------------------------------
+      - name: Show Final Site
+        run: |
+          echo "===== FINAL SITE ====="
+
+          find final_site \
+            -maxdepth 2 \
+            -type f \
+            | sort \
+            | head -200
+
+          echo
+          echo "===== VERSION DIRECTORIES ====="
+
+          find final_site \
+            -maxdepth 1 \
+            -mindepth 1 \
+            -type d \
+            -printf '%f\n' \
+            | sort
+
+
+      # ------------------------------------------------------------
+      # 13. Сохраняем сайт в gh-pages
+      # ------------------------------------------------------------
+      - name: Save Site to gh-pages
+        uses: Actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          directory: final_site
+          force: true
+          message: "Update documentation [skip ci]"
+
+
+      # ------------------------------------------------------------
+      # 14. Загружаем ТОТ ЖЕ final_site как Pages artifact
+      # ------------------------------------------------------------
+      - name: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: final_site
+
+
+  # ==============================================================
+  # DEPLOY
+  # ==============================================================
+
+  deploy:
+    name: Deploy to GitHub Pages
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

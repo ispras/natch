@@ -1,0 +1,138 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'natch_docs_v.3.4.[1-9]*'
+      - 'natch_docs_v.3.[5-9]*'
+      - 'natch_docs_v.[4-9]*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Complete History
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r docs/requirements.txt
+
+      - name: Load Extant Versions From Storage
+        run: |
+          # 1. Скачиваем текущий рабочий сайт во временную папку
+          git clone --branch gh-pages https://github.com/${{ github.repository }}.git old_site || true
+
+      - name: Sync Git Tags Inside Container
+        run: |
+          git fetch --tags --force
+          git branch -f main origin/main || true
+
+      - name: Build Multi-Version HTML
+        run: |
+          sphinx-multiversion docs current_build
+
+      - name: Merge and Create Root Redirect
+        run: |
+          mkdir -p docs/_build/html
+
+          # Переносим старые сохраненные релизы из хранилища gh-pages
+          if [ -d "old_site" ]; then
+            echo "Перенос существующих версий из хранилища..."
+            cp -r old_site/* docs/_build/html/ || true
+            rm -rf docs/_build/html/.git
+          fi
+
+          # Накладываем сверху только что собранные в текущем запуске версии (включая наш новый тег)
+          if [ -d "current_build" ]; then
+            echo "Интеграция свежих версий в общий пул..."
+            cp -r current_build/* docs/_build/html/ || true
+          fi
+
+          # Вычисляем самый свежий тег для редиректа
+          LATEST_RELEASE=$(
+            git tag --list 'natch_docs_v*' |
+            grep -E '^natch_docs_v\.(3\.4\.[1-9][0-9]*|3\.[5-9][0-9]*(\.[0-9]+)?|[4-9][0-9]*(\.[0-9]+)?)$' |
+            sort -V |
+            tail -n 1
+          )
+
+          if [ -z "$LATEST_RELEASE" ]; then
+            LATEST_RELEASE="main"
+            echo "WARNING: No found release tags, use main"
+          fi
+
+          echo "Финальный редирект главной страницы настроен на: $LATEST_RELEASE"
+
+          # 8. Принудительно создаем актуальный index.html в корне сайта
+          cat <<EOF > docs/_build/html/index.html
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+              <title>Natch documentation</title>
+              <meta http-equiv="refresh" content="0; url=./${LATEST_RELEASE}/index.html">
+              <link rel="canonical" href="./${LATEST_RELEASE}/index.html">
+            </head>
+            <body>
+              <p>
+                Redirecting to
+                <a href="./${LATEST_RELEASE}/index.html">
+                  Natch documentation ${LATEST_RELEASE}
+                </a>...
+              </p>
+            </body>
+          </html>
+          EOF
+
+      - name: Save Versions Back to Storage Branch
+        uses: Actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          directory: docs/_build/html
+          force: true
+          message: "Добавление/обновление версий документации [skip ci]"
+
+      - name: Upload documentation
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/_build/html
+          overwrite: true
+
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

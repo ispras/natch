@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Создание проекта &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="7. Определение источников пометки" href="7_taint_source.html" />
+    <link rel="prev" title="5. Командный интерфейс Natch" href="5_natch_cmd.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Создание проекта</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">6.1. Интерактивный режим создания проекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">6.2. Создание проекта с помощью конфигурационного файла</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Создание проекта</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/6_create_project.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="create_project"></a></p>
+<section id="id1">
+<h1><span class="section-number">6. </span>Создание проекта<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Для использования инструмента следует установить <em>Natch</em> и зависимости (подробнее в разделе <a class="reference internal" href="2_setup.html#setup_natch"><span class="std std-ref">Установка и настройка Natch</span></a>).</p>
+<p>Инструмент <em>Natch</em> состоит из нескольких взаимосвязанных частей:</p>
+<ul class="simple">
+<li><p>Модифицированный эмулятор QEMU (расширенный механизмами анализа помеченных данных, инструментирования и поддержки плагинов)</p></li>
+<li><p>Набор плагинов для интроспекции виртуальных машин</p></li>
+<li><p><a class="reference internal" href="#3_natch_cmd.md#natch_cmd"><span class="xref myst">Командный интерфейс для работы с инструментом</span></a></p></li>
+<li><p><a class="reference internal" href="app2_configs.html#app_configs"><span class="std std-ref">Конфигурационные файлы</span></a></p></li>
+</ul>
+<p>Интерес для пользователя представляют последние два пункта. Работа с <em>Natch</em> построена на использовании оберток над
+виртуальной машиной и утилитами, чтобы максимально упростить работу с инструментом. Она начинается с команды
+<code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code>, с помощью которой создаются проекты.</p>
+<p>Создав проект, вы получите возможность запускать инструмент в режимах записи и воспроизведения (подробнее в разделе
+<a class="reference internal" href="8_scenario_work.html#record_replay"><span class="std std-ref">Запись и воспроизведение сценариев</span></a>), а так же главный конфигурационный файл <code class="docutils literal notranslate"><span class="pre">natch.cfg</span></code>,
+содержащий основные настройки инструмента.
+Вообще в <em>Natch</em> используется несколько конфигурационных файлов, ознакомиться с ними можно в разделе
+<a class="reference internal" href="app2_configs.html#app_configs"><span class="std std-ref">Конфигурационные файлы Natch</span></a> или по ходу чтения документации.</p>
+<p>Как упоминалось выше, работа с объектами оценки в инструменте организована с помощью проектов (рабочих директорий) –
+отдельных папок, содержащих информацию об объекте оценки, необходимую для работы с ним и последующего анализа.</p>
+<p>Проект создается на основе образа исследуемой системы и ряда характеристик. Может быть создан двумя способами:
+с помощью стандартного интерактивного режима или готового конфигурационного файла. Ниже представлено описание каждого способа.</p>
+<p><a name="natch_run_script"></a></p>
+<section id="id2">
+<h2><span class="section-number">6.1. </span>Интерактивный режим создания проекта<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Командный интерфейс инструмента включает команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code>, которая предназначена для генерации опций для запуска <em>Natch</em>,
+а также для первоначальной настройки инструмента. Команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code> можно запускать из любого расположения,
+все необходимое для дальнейшей работы будет помещено в рабочую директорию, указанную пользователем.</p>
+<p>В процессе выполнения команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code> пользователю потребуется отвечать на вопросы для формирования параметров запуска инструмента.
+На выходе будет сгенерирован файл <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code>, содержащий опции командной строки для запуска эмлуятора. Командная строка формируется
+непосредственно во время выполнения команд, влекущих запуск эмулятора, а именно, <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">record</span></code>, <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code>, <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">kvm</span></code> и <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">tuning</span></code>.</p>
+<p>При необходимости внести изменения в командную строку запуска следует отредактировать файл <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code>.
+Обратите внимание, что некоторые строки начинаются с меток <code class="docutils literal notranslate"><span class="pre">[rr]</span></code>, <code class="docutils literal notranslate"><span class="pre">[record]</span></code>, <code class="docutils literal notranslate"><span class="pre">[replay]</span></code>, <code class="docutils literal notranslate"><span class="pre">[tuning]</span></code> и <code class="docutils literal notranslate"><span class="pre">[kvm]</span></code>,
+это связано с тем, что в режимах тюнинга, записи и воспроизведения командные строки отличаются. Скорее всего,
+вы можете не использовать префиксы, но если вдруг, то метки обозначают область применения опций:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[rr]</span></code> – для командной строки в режимах записи и воспроизведения;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[record]</span></code> – только для режима записи;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[replay]</span></code> – только для режима воспроизведения;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[tuning]</span></code> – только на этапе тюнинга;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[kvm]</span></code> – только для режима аппаратной виртуализации.</p></li>
+</ul>
+<p>Команда <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code> имеет ряд параметров, два обязательных, остальные опциональные.
+Обязательные параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">workdir</span></code> – название рабочей директории, которая будет создана для проекта</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> – путь к образу исследуемой системы</p></li>
+</ul>
+<p>Название рабочей директории – это или просто название папки или полный путь к папке, которая будет создана для хранения всех файлов инструмента.</p>
+<p>Если каталог уже существует, будет создан новый с постфиксом <code class="docutils literal notranslate"><span class="pre">_х</span></code>, где x – это число от 1 до максимально возможного.</p>
+<p>Опциональные параметры:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-a/--arch</span></code> – выбор архитектуры (x86_64, aarch64)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-k/--kernel</span></code> – путь к ядру (опция kernel эмулятора QEMU, если ядро ОС не загружается из образа системы)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o/--os-name</span></code> – название операционной системы, для которой будет использован инструмент
+(по умолчанию Linux, предоставляется выбор из следующих вариантов: Linux, FreeBSD, Win8, Win8.1, Win10)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c/--config</span></code> – путь к конфигурационному файлу, с помощью которого можно автоматически
+создать проект с заданными характеристиками (подробнее в разделе
+<a class="reference internal" href="#natch_save_settings"><span class="std std-ref">Создание проекта с помощью конфигурационного файла</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--old</span></code> – текстовая версия мастера создания проекта</p></li>
+</ul>
+<p>Также команду можно запустить с опцией <code class="docutils literal notranslate"><span class="pre">-h</span></code> и получить справку по доступным опциям.</p>
+<p>Описание команды и ее параметров представлено ниже:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: Natch create [-h] [-k KERNEL] [-o {Linux,FreeBSD,Win8,Win8.1,Win10}] [-c CONFIG] workdir image
+
+positional arguments:
+  workdir               path to project workdir
+  image                 path to image
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -a {x86_64,aarch64}, --arch {x86_64,aarch64}
+                        emulated architecture
+  -k KERNEL, --kernel KERNEL
+                        path to kernel
+  -o {Linux,FreeBSD,Win8,Win8.1,Win10}, --os_name {Linux,FreeBSD,Win7,Win8,Win8.1,Win10}
+                        supporting guest OS
+  -c CONFIG, --config CONFIG
+                        path to project settings
+  --old                 old version of project creation
+</pre></div>
+</div>
+<p>Пример запуска команды:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>natch<span class="w"> </span>create<span class="w"> </span>&lt;workdir&gt;<span class="w"> </span>&lt;image&gt;<span class="w"> </span>-o<span class="w"> </span>Linux
+</pre></div>
+</div>
+<p>Среди опциональных параметров команды есть параметр <code class="docutils literal notranslate"><span class="pre">--old</span></code>, с помощью которого мастер настройки будет
+запущен в привычном текстовом формате. С версии <em>Natch 3.4</em> для создания проекта может быть использован
+графический мастер, если хостовая система пользователя имеет графическое окружение.</p>
+<p>Главный экран мастера представлен на рисунке ниже.</p>
+<p><img alt="_images/main.png" src="_images/main.png" /><figcaption><em>Главный экран мастера создания проекта</em></figcaption></p>
+<p>Ниже подробно описан текстовый способ создания проекта, но он полностью соответствует графическому по наполнению.</p>
+<p>Создание проекта проходит в два этапа: на первом пользователю будет задан ряд вопросов, на втором действия будут происходить автоматически.
+Во время работы может потребоваться пароль администратора (если пользователь разрешит монтирование образа).</p>
+<p>Список вопросов, которые будут заданы при выполнении команды:</p>
+<ul class="simple">
+<li><p><em>Количество оперативной памяти</em> <br />
+Необходимо указать объем оперативной памяти, выделяемый виртуальной машине.
+Указывается число в гигабайтах или мегабайтах с соответствующим постфиксом G или M, например 512M.</p></li>
+<li><p><em>Режим работы эмулятора</em> <br />
+Эмулятор может быть запущен в графическом (обычном), текстовом или vnc режиме. По умолчанию режим графический,
+если же необходимо работать в текстовом или vnx режиме следует дать соответствующий ответ.
+Для работы в текстовом режиме потребуется дополнительная настройка вашего образа (образ из тестового набора уже настроен).</p></li>
+<li><p><em>Сетевые опции</em> <br />
+В этом меню пользователь может указать порты, которые необходимо пробросить в виртуальную машину.
+Запрос на ввод портов появится при выборе ответа <em>Y/y</em> или при нажатии клавиши <em>Enter</em>.
+Кроме того, будет предложено помечать не только Destination ports, но и Source. Если это необходимо,
+следует выбрать ответ <em>Y/y</em> или нажать клавишу <em>Enter</em>. Порты следует указывать через запятую.
+На каждый указанный порт будет назначен порт для обращения к машине извне, формироваться они будут следующим образом:
+первый порт из динамического диапазона для первого пользовательского порта, для остальных путем прибавления единицы.
+Например, пользователь ввел порты 7777, 8888, получим 49152 и 49153 соответственно.</p></li>
+<li><p><em>Создание конфигурационного файла для бинарных файлов</em> <br />
+Для некоторых сценариев работы с <em>Natch</em> требуется иметь набор исследуемых бинарных файлов как внутри образа,
+так и снаружи. Модули можно извлечь заранее и передать путь к ним, либо можно указать путь к модулям
+в гостевой системе, тогда они будут извлечены автоматически (эта опция доступна только если разрешено
+монтирование образа).
+Итого, если монтирование разрешено, то необходимо будет выбрать какой путь указать – в хостовой или
+гостевой системе. Если монтирование запрещено – можно указать только хостовой путь.
+Если модули не нужны, можно пропустить этот шаг.</p></li>
+<li><p><em>Получение символьной информации</em> <br />
+Далее пользователю предложат скачать отладочные символы для системных библиотек,
+от которых зависит его приложение, и символы ядра операционной системы.
+Если отладочные символы нужны (а чаще всего так и есть) то следует нажать <em>Enter</em>, <em>y</em> или <em>Y</em>,
+в противном случае ввести <em>n</em> или <em>N</em>. В случае если на предыдущем
+шаге модули не были выбраны, то при согласии на получение отладочной информации, она будет скачана для модулей ядра.
+С версии 3.2 появилась секция с раширенными настройками получения отладочной информации, где
+можно указать пути к локальным хранилищам отладочной информации, указать сервера и т.д.</p></li>
+<li><p><em>Генерация конфигурационного файла для ядерных сущностей</em> <br />
+Следующий вопрос касается конфигурационного файла <em>task.cfg</em>. Как правило, следует воспользоваться ответом по умолчанию (<em>Enter</em>, <em>y</em>, <em>Y</em>).
+Но если во время создания проекта нет возможности подождать генерацию – сделать это можно уже в готовом проекте
+с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">tuning</span></code>.</p></li>
+</ul>
+<p>Вопросы закончились, теперь потребуется ввести пароль администратора. Далее будет происходить монтирование образа, удостоверьтесь,
+что в системе не работают другие виртуальные машины. После чего работа будет выполняться автоматически, это может занять продолжительное время.
+Это касается ситуации, когда монтирование образа разрешено.</p>
+<p>Автоматически будут происходить следующие действия:</p>
+<ul class="simple">
+<li><p><em>Получение отладочных символов</em> <br />
+Этап может быть опущен, если пользователь отказался от скачивания отладочной информации. Если нет,
+то на этом этапе будет произведено сканирование образа, получение файлов из него,
+а также скачивание отладочных символов разными методами (если один способом не получилось, будет использован другой).
+Также будут найдены и скачаны символы для интерпретаторов Python, символы для Java, JavaScript и C#.</p></li>
+<li><p><em>Генерация task.cfg</em> <br />
+Сразу после скачивания модулей будет запущен эмулятор с целью получить информацию о смещениях структур ядра,
+если была указана необходимость генерации. В штатной ситуации эмулятор сам завершит работу и наступит следующий этап.
+В некоторых случаях эмулятору может не хватить информации для создания конфигурационного файла за время загрузки операционной системы,
+если ОС загрузилась и долго ничего не происходит, попробуйте повзаимодействовать с системой (авторизоваться, открыть какой-нибудь файл, и т.д.),
+либо выполнить перезагрузку системы, чтобы самый долгий этап работы системы прошел снова.</p></li>
+<li><p><em>Извлечение символьной информации</em> <br />
+Это последний этап настройки проекта. Будут просканированы все модули и пострена база отладочных символов.</p></li>
+</ul>
+<p>На этом настройка окончена.</p>
+<p>Кроме командных строк будет сгенерирована заготовка конфигурационного файла <em>Natch</em> (подробнее в разделе <a class="reference internal" href="app2_configs.html#main_config"><span class="std std-ref">Основной конфигурационный файл natch.cfg</span></a>).
+В полученном файле описаны все возможные секции и поля с примерами заполнения,
+часть из которых закомментирована. При необходимости этот файл можно отредактировать (команда <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">edit</span> <span class="pre">main</span></code>)
+– раскомментировать нужные секции и внести актуальные значения параметров.
+Имя конфигурационного файла задается по умолчанию, а именно <em>natch.cfg</em>.</p>
+<p>После создания проекта в текущей директории появится еще один файл. Это файл с конфигурацией проекта, речь о котором пойдет в следующем разделе.</p>
+<p><a name="natch_save_settings"></a></p>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.2. </span>Создание проекта с помощью конфигурационного файла<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>При создании проекта пользователь отвечает на вопросы скрипта, однако, все они записываются и могут быть переиспользованы в режиме командной строки вместо интерактивного.
+Сохранено это все в файле под названием <code class="docutils literal notranslate"><span class="pre">settings_&lt;project_name&gt;.ini</span></code>, файл располагается в директории, откуда была запущена команда <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code>.</p>
+<p>Сохраняются настройки и в случае нештатного завершения работы скрипта, например, если что-то пошло не так на этапе генерации <code class="docutils literal notranslate"><span class="pre">task.cfg</span></code>.</p>
+<p>Конфигурационный файл <code class="docutils literal notranslate"><span class="pre">settings_test.ini</span></code> содержит две секции – <code class="docutils literal notranslate"><span class="pre">Settings</span></code> и <code class="docutils literal notranslate"><span class="pre">Debug_ext</span></code>.
+Полный набор опций секции <code class="docutils literal notranslate"><span class="pre">Settings</span></code> выглядит следующим образом:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Settings]</span>
+<span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
+<span class="na">arch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">x86_64</span>
+<span class="na">mount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">ram</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4G</span>
+<span class="na">emu_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">graphic</span>
+<span class="na">port_forwarding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">source_ports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">ports_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5555</span>
+<span class="na">module_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">guest_module_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/home/user/Sample2</span><span class="w"> </span><span class="c1"># host_module_dir</span>
+<span class="na">debug_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">tuning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+</pre></div>
+</div>
+<p>Некоторые параметры могут отсутствовать, если, например, вы отказались от пробрасывания портов.</p>
+<p>Пройдемся по опциям:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code> – версия конфигурационного файла <code class="docutils literal notranslate"><span class="pre">natch.cfg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arch</span></code> – архитектура гостевой системы (x86_64 или aarch64)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mount</span></code> – разрешено ли монтировать образ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ram</span></code> – количество выделенной машине оперативной памяти</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">emu_mode</span></code> – режим работы эмулятора (текстовый, графический или vnc)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port_forwarding</span></code> – необходимость проброса портов</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source_ports</span></code> – необходимость проброса source портов</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ports_str</span></code> – собственно проброшенные порты</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module_config</span></code> – необходимость включения модулей в проект</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">guest_module_dir</span> <span class="pre">|</span> <span class="pre">host_module_dir</span></code> – путь к директории с модулями в гостевой или хосторой системе</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">debug_info</span></code> – необходимость получения отладочной информации</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tuning</span></code> – необходимость генерации <code class="docutils literal notranslate"><span class="pre">task.cfg</span></code></p></li>
+</ul>
+<p>Если вы хотите создать проект, используя уже готовый конфигурационный файл, но не хотите, например, ждать генерацию <code class="docutils literal notranslate"><span class="pre">task.cfg</span></code>,
+просто установите значение параметра <code class="docutils literal notranslate"><span class="pre">tuning</span></code> в <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Секция <code class="docutils literal notranslate"><span class="pre">Debug_ext</span></code> может быть пустой, если вы отказывались от выбора дополнительных настроек сбора отладочной информации
+на этапе создания проекта.
+Поля секции частично повторяют конфигурационный файл <code class="docutils literal notranslate"><span class="pre">debug_info.cfg</span></code>,
+описанный в приложении <a class="reference internal" href="app2_configs.html#debug_config"><span class="std std-ref">Конфигурационный файл для управления отладочной информацией debug_info.cfg</span></a>.
+Обратите внимание, что не все поля участвуют в файле настроек, а так же в связи с разной структурой этих файлов, иногда
+нет прямого соответствия опция – опция, иногда это имя секции – опция, например, в <code class="docutils literal notranslate"><span class="pre">debug_info.cfg</span></code> есть секция <code class="docutils literal notranslate"><span class="pre">UserFolder</span></code>,
+в то время как в файле настроек будет поле <code class="docutils literal notranslate"><span class="pre">user_folder</span></code>.</p>
+<p>Полный набор возможных опций секции выглядит так:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Debug_ext]</span>
+<span class="na">attempts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">30</span>
+<span class="na">debug</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">False</span>
+<span class="na">user_folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/path/to/dir</span>
+<span class="na">kernel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">java</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">csharp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">servers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">server1,server2</span>
+<span class="na">pkg_analysis_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">pkg_list_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/path/fo/file</span>
+<span class="na">docker_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/path</span>
+<span class="na">local_podman</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/path</span>
+<span class="na">root_podman</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/path</span>
+</pre></div>
+</div>
+<p>Значение опций:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">attempts</span></code> – количество попыток получения доступа к интернет-ресурсам</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">debug</span></code> – включение диагностических сообщений</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user_folder</span></code> – путь к пользовательской директории с отладочными символами</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kernel</span></code> – разрешение загрузки символьной информации для ядра</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python</span></code> – разрешение загрузки символьной информации для Python интерпретаторов</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">java</span></code> – разрешение загрузки символьной информации для Java</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">csharp</span></code> – разрешение загрузки символьной информации для C#</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node</span></code> – разрешение загрузки символьной информации для JavaScript (в том числе Node.js)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">servers</span></code> – список пользовательских серверов с отлодочными символами</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pkg_analysis_enable</span></code> – включение метода пакетного анализа гостевой операционной системы, если он был для нее реализован</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pkg_list_path</span></code> – путь к файлу со списком пакетов, требующих отладочную информацию</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker_path</span></code> – путь в гостевой системе до директории с Docker</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">local_podman</span></code> – путь в гостевой системе до директории с rootless Podman</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">root_podman</span></code> – путь в гостевой системе до директории с root Podman</p></li>
+</ul>
+<p>Использовать конфигурационный файл с настройками проекта можно так:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>natch<span class="w"> </span>create<span class="w"> </span>&lt;workdir&gt;<span class="w"> </span>&lt;image&gt;<span class="w"> </span>-c<span class="w"> </span>settings_test.ini
+</pre></div>
+</div>
+<p>Единственное что попросит у вас скрипт – пароль администратора. Остальная работа будет проделана автоматически.</p>
+<p>Предполагается, что как минимум однажды проект был создан с помощью скрипта и файл с настройками появится сам,
+однако, никто не мешает создать такой файл самостоятельно. Обратить внимание следует только на то, что параметры, связанные
+с портами и модулями, захватывают по несколько полей.</p>
+<p>Если <code class="docutils literal notranslate"><span class="pre">ports_forwarding</span> <span class="pre">=</span> <span class="pre">False</span></code>, то поля <code class="docutils literal notranslate"><span class="pre">source_ports</span></code> и <code class="docutils literal notranslate"><span class="pre">ports_str</span></code> не нужны.</p>
+<p>Если <code class="docutils literal notranslate"><span class="pre">module_config</span> <span class="pre">=</span> <span class="pre">False</span></code>, то не нужно указывать поле <code class="docutils literal notranslate"><span class="pre">module_dir</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="5_natch_cmd.html" class="btn btn-neutral float-left" title="5. Командный интерфейс Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="7_taint_source.html" class="btn btn-neutral float-right" title="7. Определение источников пометки" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='main', url='6_create_project.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="6_create_project.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    main
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="6_create_project.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

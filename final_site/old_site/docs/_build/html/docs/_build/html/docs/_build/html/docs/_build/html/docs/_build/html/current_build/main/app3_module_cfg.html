@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>В. Формат списка исполняемых модулей &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Г. Графы взаимодействия помеченных процессов и модулей" href="app4_graphs.html" />
+    <link rel="prev" title="Б. Конфигурационные файлы Natch" href="app2_configs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">В. Формат списка исполняемых модулей</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app3_module_cfg.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="app_module_config"></a></p>
+<section id="id1">
+<h1>В. Формат списка исполняемых модулей<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Пример конфигурационного файла <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1"># module.cfg</span>
+
+<span class="w">    </span><span class="k">[Image1]</span>
+<span class="w">    </span><span class="na">type</span><span class="o">=</span><span class="s">KERNEL</span>
+<span class="w">    </span><span class="na">host_path</span><span class="o">=</span><span class="s">vmlinux</span>
+<span class="w">    </span><span class="na">coverage</span><span class="o">=</span><span class="s">False</span>
+<span class="w">    </span><span class="na">map</span><span class="o">=</span><span class="s">System.map</span>
+<span class="w">    </span><span class="na">textstart</span><span class="o">=</span><span class="s">0xffffffff81000000</span>
+
+<span class="w">    </span><span class="k">[Image2]</span>
+<span class="w">    </span><span class="na">type</span><span class="o">=</span><span class="s">USER</span>
+<span class="w">    </span><span class="na">host_path</span><span class="o">=</span><span class="s">exe/dpkg</span>
+<span class="w">    </span><span class="na">coverage</span><span class="o">=</span><span class="s">True</span>
+<span class="w">    </span><span class="na">debuginfo</span><span class="o">=</span><span class="s">exe/dpkg.dbg</span>
+
+<span class="w">    </span><span class="k">[Image3]</span>
+<span class="w">    </span><span class="na">type</span><span class="o">=</span><span class="s">USER</span>
+<span class="w">    </span><span class="na">host_path</span><span class="o">=</span><span class="s">exe/apt-get</span>
+<span class="w">    </span><span class="na">coverage</span><span class="o">=</span><span class="s">True</span>
+
+<span class="w">    </span><span class="k">[Image4]</span>
+<span class="w">    </span><span class="na">type</span><span class="o">=</span><span class="s">USER</span>
+<span class="w">    </span><span class="na">host_path</span><span class="o">=</span><span class="s">exe/cat</span>
+<span class="w">    </span><span class="na">coverage</span><span class="o">=</span><span class="s">True</span>
+<span class="w">    </span><span class="na">debuginfo</span><span class="o">=</span><span class="s">exe/cat-8.32-31.fc35.x86_64.debug</span>
+<span class="w">    </span><span class="na">tieddebug</span><span class="o">=</span><span class="s">exe/dwp</span>
+<span class="w">    </span><span class="na">vmidb</span><span class="o">=</span><span class="s">vmidb/Image4.bin</span>
+
+<span class="w">    </span><span class="k">[Image5]</span>
+<span class="w">    </span><span class="na">type</span><span class="o">=</span><span class="w"> </span><span class="s">PYTHON</span>
+<span class="w">    </span><span class="na">host_path</span><span class="o">=</span><span class="s">lib/python3.9</span>
+<span class="w">    </span><span class="na">guest_path</span><span class="o">=</span><span class="s">/usr/bin/python3.9</span>
+<span class="w">    </span><span class="na">coverage</span><span class="o">=</span><span class="s">False</span>
+<span class="w">    </span><span class="na">debuginfo</span><span class="o">=</span><span class="s">lib/02f8a561c3abdb9c8d8c859d4243bd8c3f928f.debug</span>
+<span class="w">    </span><span class="na">vmidb</span><span class="o">=</span><span class="s">vmidb/Image5.bin</span>
+</pre></div>
+</div>
+<p>Конфигурационный файл содержит набор секций с префиксом <code class="docutils literal notranslate"><span class="pre">Image</span></code>.</p>
+<p>В каждой такой секции описывается отдельный бинарный файл.</p>
+<p>В этой секции могут быть объявлены следующие поля: <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">host_path</span></code>, <code class="docutils literal notranslate"><span class="pre">guest_path</span></code>, <code class="docutils literal notranslate"><span class="pre">coverage</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">textstart</span></code>, <code class="docutils literal notranslate"><span class="pre">debuginfo</span></code>, <code class="docutils literal notranslate"><span class="pre">tieddebug</span></code>, <code class="docutils literal notranslate"><span class="pre">vmidb</span></code>.</p>
+<p><strong>Поле type</strong></p>
+<p>Для каждого раздела типа <code class="docutils literal notranslate"><span class="pre">Image</span></code> обязательно нужно указать его тип, который может быть одним из следующих:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">USER</span></code>: пользовательский модуль</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code> – модуль ядра</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PYTHON</span></code> – модуль Python</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">JAVA</span></code> – модуль Java</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CSHARP</span></code> – модуль C#</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHARED_LIBRARY</span></code>– модуль разделяемой библиотеки</p></li>
+</ul>
+<p>Обычно это поле заполняется автоматически либо при создании конфигурационного файла, либо при загрузке отладочной информации.</p>
+<p><strong>Поля host_path и guest_path</strong></p>
+<p>Каждый раздел типа <code class="docutils literal notranslate"><span class="pre">Image</span></code> обязательно должен содержать хотя бы одно из полей <code class="docutils literal notranslate"><span class="pre">host_path</span></code> или <code class="docutils literal notranslate"><span class="pre">guest_path</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">host_path</span></code> – путь к бинарному файлу в хостовой системе</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">guest_path</span></code> – путь к бинарному файлу в гостевой системе</p></li>
+</ul>
+<p>Рекомендуется использовать <code class="docutils literal notranslate"><span class="pre">guest_path</span></code>, так как указание <code class="docutils literal notranslate"><span class="pre">host_path</span></code> требует дополнительного этапа анализа – поиска модуля в гостевом образе.</p>
+<p><strong>Поле coverage</strong></p>
+<p>Для каждого раздела типа <code class="docutils literal notranslate"><span class="pre">Image</span></code> обязательно должен быть указать флаг <code class="docutils literal notranslate"><span class="pre">coverage</span></code>, который отвечает за попытку выгрузки исходного кода
+для данного бинарного файла (необходима для дальнейшего сбора покрытия кода). По умолчанию <code class="docutils literal notranslate"><span class="pre">coverage</span></code> установлен в значение «истина»
+для всех пользовательских модулей.</p>
+<p><strong>Поля map, debuginfo и tieddebug</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span></code> – содержит путь к файлу с символьной информацией, сгенерированной
+компилятором или дизассемблером IDA (при использовании IDA для генерации map файлов нужно выставлять галочку <em>Segmentation information</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">debuginfo</span></code> – указывает путь к ELF-файлу, содержащему основную отладочную информацию. (Получить информацию о местоположении этого файла
+можно с помощью команды <code class="docutils literal notranslate"><span class="pre">readelf</span> <span class="pre">-wk</span> <span class="pre">&lt;ваш</span> <span class="pre">путь</span> <span class="pre">к</span> <span class="pre">бинарному</span> <span class="pre">файлу&gt;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tieddebug</span></code> – указывает путь к ELF-файлу, который содержит альтернативные отладочные символы, дополнительно к тем, что указаны в <code class="docutils literal notranslate"><span class="pre">debuginfo</span></code>.
+(Получить информацию о местоположении этого файла можно с помощью команды <code class="docutils literal notranslate"><span class="pre">readelf</span> <span class="pre">-wk</span> <span class="pre">&lt;ваш</span> <span class="pre">путь</span> <span class="pre">к</span> <span class="pre">файлу</span> <span class="pre">с</span> <span class="pre">основной</span> <span class="pre">отладочной</span> <span class="pre">информацией&gt;</span></code>)</p></li>
+</ul>
+<p>Эти поля следует использовать, если вы предоставляете бинарный файл без отладочной информации и хотите получить более качественный анализ,
+например, для отображения имен функций в <em>SNatch</em>.</p>
+<p><strong>Поле textstart</strong></p>
+<p>При указании поля <code class="docutils literal notranslate"><span class="pre">map</span></code> может быть задано поле <code class="docutils literal notranslate"><span class="pre">textstart</span></code>.
+Как правило, нет необходимости определять <code class="docutils literal notranslate"><span class="pre">textstart</span></code> вручную, потому что это просходит автоматически.
+В случае, если <em>Natch</em> не сможет определить смещение, будет выведено сообщение.</p>
+<p>Поле <code class="docutils literal notranslate"><span class="pre">textstart</span></code> используется, если адреса в символьном файле абсолютные, а в исполняемом файле нет.
+Так как модуль может загружаться в разные места памяти, необходимо вычислить смещение каждой функции от начала секции <code class="docutils literal notranslate"><span class="pre">.text</span></code>.
+В поле <code class="docutils literal notranslate"><span class="pre">textstart</span></code> как раз и указывается адрес начала секции <code class="docutils literal notranslate"><span class="pre">.text</span></code>.
+Это поле нужно в редких случаях, например, для ядерных модулей (см. ниже). В остальных случаях можно ничего не указывать.</p>
+<p>Чтобы получить информацию о секциях в исполняемом файле, можно использовать утилиту <em>readelf</em>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>readelf<span class="w"> </span>-S<span class="w"> </span>&lt;config_name&gt;
+</pre></div>
+</div>
+<p>Пример, когда <code class="docutils literal notranslate"><span class="pre">textstart</span></code> необходимо указывать:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    map-файл:
+
+    ffffffffa0000bed t cleanup_module
+    ffffffffa00008c2 t logring_syslog_write_raw
+    ffffffffa0000a4b t init_module
+    ffffffffa000098d t logring_syslog_write
+
+    вывод утилиты readelf:
+
+    Section Headers:
+    [Nr] Name              Type             Address           Offset
+         Size              EntSize          Flags  Link  Info  Align
+    [ 0]                   NULL             0000000000000000  00000000
+         0000000000000000  0000000000000000           0     0     0
+    [ 1] .text             PROGBITS         0000000000000000  00000040
+         0000000000000c8c  0000000000000000  AX       0     0     4
+</pre></div>
+</div>
+<p>Нас интересуют секции типа <code class="docutils literal notranslate"><span class="pre">PROGBITS</span></code>. Если у них указан нулевой адрес, то их не получится
+сопоставить с map-файлом при его загрузке в <em>Natch</em>.
+Поэтому необходимо вручную определить адрес секции <code class="docutils literal notranslate"><span class="pre">.text</span></code>.</p>
+<p>Пример, когда <code class="docutils literal notranslate"><span class="pre">textstart</span></code> не нужен:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    map-файл:
+
+    00000006:000000000000C000       .init_proc
+    00000007:000000000000C030       .wget_netrc_db_free
+    00000007:000000000000C040       .wget_bar_update
+    00000007:000000000000C050       .seteuid
+    00000007:000000000000C060       .chdir
+    00000007:000000000000C070       .fileno
+    00000007:000000000000C080       .wget_list_free
+    00000007:000000000000C090       .dup2
+    00000007:000000000000C0A0       .printf
+
+    вывод утилиты readelf:
+
+    Section Headers:
+    [Nr] Name              Type             Address            Offset
+         Size              EntSize          Flags  Link  Info  Align
+    [11] .init             PROGBITS         000000000000c000   0000c000
+         0000000000000017  0000000000000000 AX     0     0     4
+</pre></div>
+</div>
+<p>Адрес секции здесь указан и он соответствует адресам, записанным в map-файле,
+поэтому параметр <code class="docutils literal notranslate"><span class="pre">textstart</span></code> можно не указывать.</p>
+<p><strong>Поле vmidb</strong></p>
+<p>Отладочная и символьная информация из исполняемых файлов может быть заранее разобрана и сохранена
+во время работы конфигурационных скриптов. Путь к полученному хранилищу записывается в поле <code class="docutils literal notranslate"><span class="pre">vmidb</span></code>.
+Данное поле заполняется автоматически и не требует ручного вмешательства или корректировки.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="app2_configs.html" class="btn btn-neutral float-left" title="Б. Конфигурационные файлы Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="app4_graphs.html" class="btn btn-neutral float-right" title="Г. Графы взаимодействия помеченных процессов и модулей" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='main', url='app3_module_cfg.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="app3_module_cfg.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/app3_module_cfg.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/app3_module_cfg.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6/app3_module_cfg.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/app3_module_cfg.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/app3_module_cfg.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/app3_module_cfg.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    main
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/app3_module_cfg.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/app3_module_cfg.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6/app3_module_cfg.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/app3_module_cfg.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/app3_module_cfg.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/app3_module_cfg.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="app3_module_cfg.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

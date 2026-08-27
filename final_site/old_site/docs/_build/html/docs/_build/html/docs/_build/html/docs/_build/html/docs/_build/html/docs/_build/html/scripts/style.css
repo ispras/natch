@@ -1,0 +1,54 @@
+h1 {
+	font-family: Verdana;
+	font-size: 22px;
+}
+
+h2 {
+	font-family: Verdana;
+	font-size: 18px;
+}
+
+h3 {
+	font-family: Verdana;
+	font-size: 16px;
+}
+
+h4 {
+	font-family: Verdana;
+	font-size: 14px;
+}
+
+p {
+	font-family: Verdana;
+	font-size: 12px;
+	text-align: justify;
+}
+
+li {
+	font-family: Verdana;
+	font-size: 12px;
+	text-align: justify;
+}
+
+code {
+	font-family: Ubuntu Mono;
+	font-size: 12px;
+}
+
+img {
+	min-width: 100px;
+	max-width: 500px;
+	margin: auto;
+  	display: block;
+	object-fit: cover;
+	image-resolution: 200dpi;
+}
+
+figcaption {
+	font-size: 10px;
+	font-style: italic;
+	padding: 0.2em;
+	text-align: center;
+}
+
+

@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Б. Конфигурационные файлы Natch &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="В. Формат списка исполняемых модулей" href="app3_module_cfg.html" />
+    <link rel="prev" title="А. Настройка окружения для использования лицензированного Natch" href="app1_license.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Б. Конфигурационные файлы Natch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#natch-cfg">Основной конфигурационный файл natch.cfg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#taint-cfg">Конфигурационный файл для помеченных данных taint.cfg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cfg">Конфигурационный файл для модулей module.cfg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debug-info-cfg">Конфигурационный файл для управления отладочной информацией debug_info.cfg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-cfg">Конфигурационный файл для процессов task.cfg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Конфигурационный файл для системных вызовов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Б. Конфигурационные файлы Natch</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app2_configs.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="app_configs"></a></p>
+<section id="natch">
+<h1>Б. Конфигурационные файлы Natch<a class="headerlink" href="#natch" title="Ссылка на этот заголовок"></a></h1>
+<p>Для работы инструмента <em>Natch</em> требуются конфигурационные файлы. Основной конфигурационный <code class="docutils literal notranslate"><span class="pre">natch.cfg</span></code> файл отдается непосредственно инструменту на вход,
+остальные являются источниками настроек для плагинов, входящих в состав <em>Natch</em>.</p>
+<p>Для каждого сценария также автоматически создаётся конфигурационный файл <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code>, в котором описываются правила для помеченных данных.</p>
+<p>Ниже описаны все конфигурационные файлы, используемые <em>Natch</em>.</p>
+<p><a name="main_config"></a></p>
+<section id="natch-cfg">
+<h2>Основной конфигурационный файл natch.cfg<a class="headerlink" href="#natch-cfg" title="Ссылка на этот заголовок"></a></h2>
+<p>Все секции и параметры файла конфигурации приведены ниже.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Natch settings</span>
+
+<span class="k">[Version]</span>
+<span class="na">version</span><span class="o">=</span><span class="s">8</span>
+
+<span class="c1"># Section for path to work directory</span>
+<span class="k">[OutputData]</span>
+<span class="na">workdir</span><span class="o">=</span><span class="s">/home/user/workdir</span>
+
+<span class="c1"># Section for loading task_struct offsets</span>
+<span class="k">[Tasks]</span>
+<span class="na">config</span><span class="o">=</span><span class="s">task.cfg</span>
+
+<span class="c1"># Section for loading modules</span>
+<span class="k">[Modules]</span>
+<span class="na">config</span><span class="o">=</span><span class="s">module.cfg</span>
+<span class="na">log</span><span class="o">=</span><span class="s">taint_txt.log</span>
+<span class="na">params_log</span><span class="o">=</span><span class="s">params.log</span>
+
+<span class="c1"># Enable network logging</span>
+<span class="k">[NetLog]</span>
+<span class="na">on</span><span class="o">=</span><span class="s">true</span>
+
+<span class="c1"># Section for enabling additional plugins</span>
+<span class="k">[Plugins]</span>
+<span class="na">items</span><span class="o">=</span><span class="s">bcqti,broker,addr=:5555</span><span class="c1">;some_plugin</span>
+
+<span class="c1"># Section for loading custom syscall config</span>
+<span class="k">[Syscalls]</span>
+<span class="na">config</span><span class="o">=</span><span class="s">custom_x86_64.cfg</span>
+<span class="na">attempts</span><span class="o">=</span><span class="s">50</span>
+</pre></div>
+</div>
+<p><strong>Секция Version</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">version</span></code> – номер версии конфигурационного файла <em>Natch</em>. Генерируется автоматически, редактирование не требуется.</p></li>
+</ul>
+<p><strong>Секция OutputData</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">workdir</span></code> – путь к директории, куда будут записываться все файлы, генерируемые инструментом.
+Внутри <code class="docutils literal notranslate"><span class="pre">workdir</span></code> будут создан каталог <code class="docutils literal notranslate"><span class="pre">output_\&lt;scenario_name\&gt;</span></code>, в который будут записаны файлы для анализа в графической подсистеме
+(бинарные логи, графы взаимодействия процессов и модулей, символьная информация), этот же каталог будет заархивирован.</p></li>
+</ul>
+<p><strong>Секция Tasks</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">config</span></code> – указывается имя конфигурационного файла для распознавания процессов (подробнее в пункте <a class="reference internal" href="#tasks_config"><span class="std std-ref">Конфигурационный файл для процессов</span></a>).</p></li>
+</ul>
+<p><strong>Секция Modules</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">config</span></code> – указывается имя конфигурационного файла для распознавания модулей (подробнее в пункте <a class="reference internal" href="#api_config"><span class="std std-ref">Конфигурационный файл для модулей</span></a>).</p></li>
+<li><p>Полe <code class="docutils literal notranslate"><span class="pre">log</span></code> – содержит название файла, в который в процессе работы будет записываться подробный лог помеченных данных (подробнее в разделе <a class="reference internal" href="10_additional.html#taint_log"><span class="std std-ref">Подробная трасса помеченных данных</span></a>).</p></li>
+<li><p>Полe <code class="docutils literal notranslate"><span class="pre">params_log</span></code> – содержит название файла, в который в процессе работы будет записываться лог с помеченными параметрами функций (подробнее в разделе <a class="reference internal" href="10_additional.html#taint_params_log"><span class="std std-ref">Получение областей помеченной памяти для функций</span></a>).</p></li>
+</ul>
+<p><strong>Секция NetLog</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">on</span></code> – принимает логическое значение, при установке в true данные о сетевом трафике и его содержимое сохраняются в файлы для дальнейшего анализа.</p></li>
+</ul>
+<p><strong>Секция Plugins</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">items</span></code> – через точку с запятой указываются плагины, не входящие в состав <em>Natch</em>, но которые должны быть загружены.</p></li>
+</ul>
+<p><strong>Секция Syscalls</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">config</span></code> – указывается имя конфигурационного файла для перехвата системных вызовов (подробнее в пункте <a class="reference internal" href="#syscalls_config"><span class="std std-ref">Конфигурационный файл для системных вызовов</span></a>).</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">attempts</span></code> – дает возможность задать количество срабатываний системных вызовов для тюнинга. Может понадобиться уменьшить, если настройка не успевает пройти. По умолчанию 50.</p></li>
+</ul>
+<p><a name="taint_config"></a></p>
+</section>
+<section id="taint-cfg">
+<h2>Конфигурационный файл для помеченных данных taint.cfg<a class="headerlink" href="#taint-cfg" title="Ссылка на этот заголовок"></a></h2>
+<p>Содержание файла конфигурации <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code> приведено ниже.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Natch working mode</span>
+<span class="k">[Mode]</span>
+<span class="na">light</span><span class="o">=</span><span class="s">false</span>
+
+<span class="k">[Taint]</span>
+<span class="c1"># Threshold value for tainting. Should be in decimal number system [1..255]</span>
+<span class="na">threshold</span><span class="o">=</span><span class="s">255</span>
+<span class="na">on</span><span class="o">=</span><span class="s">true</span>
+
+<span class="k">[Ports]</span>
+<span class="c1"># 6 is for tcp, 17 for udp</span>
+<span class="na">ip_protocol</span><span class="o">=</span><span class="s">6</span>
+<span class="c1"># ports are supported for tcp only yet</span>
+<span class="na">dst</span><span class="o">=</span><span class="s">22</span><span class="c1">;80;3500;5432</span>
+<span class="na">src</span><span class="o">=</span><span class="s">22</span><span class="c1">;80;3500;5432</span>
+<span class="c1">#json=filtered.json</span>
+
+<span class="c1"># Section for add tainted files</span>
+<span class="k">[TaintFile]</span>
+<span class="na">list</span><span class="o">=</span><span class="s">file1.txt</span><span class="c1">;file2.txt</span>
+
+<span class="c1"># Section for usb traffic tainting</span>
+<span class="k">[USB]</span>
+<span class="na">on</span><span class="o">=</span><span class="s">true</span>
+
+<span class="c1"># Section for enable generating graphs</span>
+<span class="k">[TaintedTask]</span>
+<span class="na">task_graph</span><span class="o">=</span><span class="s">true</span>
+<span class="na">module_graph</span><span class="o">=</span><span class="s">true</span>
+
+<span class="c1"># Section for getting coverage</span>
+<span class="k">[Coverage]</span>
+<span class="na">file</span><span class="o">=</span><span class="s">coverage</span>
+<span class="na">taint</span><span class="o">=</span><span class="s">true</span>
+
+<span class="c1"># Section for collecting arguments of functions</span>
+<span class="k">[FunctionArgs]</span>
+<span class="na">config</span><span class="o">=</span><span class="s">func.cfg</span>
+</pre></div>
+</div>
+<p><strong>Секция Mode</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">light</span></code> – принимает логическое значение, при установке в true включается облегченный режим работы <em>Natch</em>,
+по умолчанию выключен (подробнее в разделе <a class="reference internal" href="10_additional.html#natch_light"><span class="std std-ref">Облегченный режим работы Natch</span></a>).</p></li>
+</ul>
+<p><strong>Секция Taint</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">threshold</span></code> – пороговое значение для отслеживания помеченных данных, задается десятеричным числом в диапазоне от 1 до 255.
+Чем больше число, тем пометка будет сильнее, то есть в поверхность атаки будут попадать минимально измененные данные.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">on</span></code> – принимает логическое значение, при установке в true отслеживание помеченных данных будет включено при старте эмулятора.
+Если это не требуется, следует установить значение false.</p></li>
+</ul>
+<p>Если секция <code class="docutils literal notranslate"><span class="pre">Taint</span></code> не определена, по умолчанию отслеживание помеченных данных будет выключено и пороговое значение будет установлено в 0.</p>
+<p><strong>Секция Ports</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">ip_protocol</span></code> – описывает тип протокола 4 уровня. Если не указано, пакеты по этому полю не фильтруются.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">src</span></code> – фильтр по Source Port в заголовке TCP, порты перечисляются через точку с запятой.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">dst</span></code> – фильтр по Destination Port в заголовке TCP, порты перечисляются через точку с запятой.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">json</span></code> – имя json-файла с выбранными для пометки пакетами и их фрагментами.</p></li>
+</ul>
+<p><strong>Секция TaintFile</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">list</span></code> – через точку с запятой могут быть перечислены имена файлов, которые требуется пометить.
+Указываются имена файлов гостевой машины в формате имя + расширение. Для надежности рекомендуется не использовать пути.
+Пометка произойдет автоматически при запуске эмулятора.</p></li>
+</ul>
+<p><strong>Секция USB</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">on</span></code> – принимает логическое значение, при установке в true будет включено отслеживание помеченных данных. Если это не требуется, следует установить значение false.</p></li>
+</ul>
+<p><strong>Секция TaintedTask</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">task_graph</span></code> – принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф задач и потоков помеченных данных.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">module_graph</span></code> – принимает логическое значение, при установке в true при завершении работы эмулятора будет создан граф модулей и потоков помеченных данных.</p></li>
+</ul>
+<p><strong>Секция Coverage</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">file</span></code> – имя файла без расширения, куда будет записана информация о покрытии кода.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">taint</span></code> – определяет режим сбора покрытия кода (подробнее в пункте <a class="reference internal" href="10_additional.html#functional_coverage"><span class="std std-ref">Анализ покрытия бинарного кода</span></a>).</p></li>
+</ul>
+<p><strong>Секция FunctionArgs</strong></p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">config</span></code> – указывается имя конфигурационного файла, содержащее описание функций (подробнее в пункте <a class="reference internal" href="10_additional.html#func_args"><span class="std std-ref">Получение аргументов вызываемых функций</span></a>).</p></li>
+</ul>
+<p><a name="api_config"></a></p>
+</section>
+<section id="module-cfg">
+<h2>Конфигурационный файл для модулей module.cfg<a class="headerlink" href="#module-cfg" title="Ссылка на этот заголовок"></a></h2>
+<p>Конфигурационный файл секции <code class="docutils literal notranslate"><span class="pre">Modules</span></code> генерируется автоматически на этапе конфигурирования <em>Natch</em>.</p>
+<p>В редких случаях может потребоваться ручная доработка, подробная информация про этот файл в разделе <a class="reference internal" href="app3_module_cfg.html#app_module_config"><span class="std std-ref">Формат списка исполняемых модулей</span></a></p>
+<p><a name="debug_config"></a></p>
+</section>
+<section id="debug-info-cfg">
+<h2>Конфигурационный файл для управления отладочной информацией debug_info.cfg<a class="headerlink" href="#debug-info-cfg" title="Ссылка на этот заголовок"></a></h2>
+<p>Содержимое файла конфигурации <code class="docutils literal notranslate"><span class="pre">debug_info.cfg</span></code> представлено ниже.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Debug Info configuration</span>
+
+<span class="k">[Version]</span>
+<span class="na">version</span><span class="o">=</span><span class="s">1</span>
+
+<span class="k">[Common]</span>
+<span class="c1"># Sets max download attempts for debug information</span>
+<span class="na">attempts</span><span class="o">=</span><span class="s">30</span>
+<span class="na">mount</span><span class="o">=</span><span class="s">True</span>
+<span class="na">debug</span><span class="o">=</span><span class="s">False</span>
+
+<span class="c1"># Section for paths to module configs</span>
+<span class="k">[Configs]</span>
+<span class="na">path</span><span class="o">=</span><span class="s">/home/user/project/module.cfg</span>
+
+<span class="c1"># Section for sets DebugInfoD servers for debugging symbol search</span>
+<span class="k">[DebugInfoD]</span>
+<span class="c1"># servers=['https://example1.com', 'https://example2.com']</span>
+
+<span class="c1"># Section for Repository settings</span>
+<span class="k">[PackageAnalysis]</span>
+<span class="c1"># Path for exporting generated list of packages needing debug information.</span>
+<span class="c1"># WARNING: This option disables debug package loading.</span>
+<span class="c1"># path_to_save_pkg_list=your/path/to/destonation/file</span>
+
+<span class="c1"># Section for additional symbols search</span>
+<span class="k">[Symbols]</span>
+<span class="na">kernel</span><span class="o">=</span><span class="s">True</span>
+<span class="na">python</span><span class="o">=</span><span class="s">True</span>
+<span class="na">csharp</span><span class="o">=</span><span class="s">True</span>
+<span class="na">java</span><span class="o">=</span><span class="s">True</span>
+
+<span class="c1"># Section for path to directory with debug symbols</span>
+<span class="c1"># [UserFolder]</span>
+<span class="c1"># path=your/path/to/directory</span>
+
+<span class="c1"># Section for Containerization Tool</span>
+<span class="k">[ContTools]</span>
+<span class="na">docker_path</span><span class="o">=</span><span class="s">/var/lib/docker</span>
+<span class="c1"># local_podman_path=/home/user/.local/share/containers</span>
+<span class="na">root_podman_path</span><span class="o">=</span><span class="s">/var/lib/containers/</span>
+</pre></div>
+</div>
+<p>Конфигуратор отладочной информации позволяет настроить способы ее получения, указать определенные сервера
+или локальные пути хранения символов.</p>
+<p><strong>Секция Version</strong></p>
+<p>Является обязательной и содержит сверсию текущего конфигурационного файла.</p>
+<p><strong>Секция Common</strong></p>
+<p>Является обязательной и содержит в себе поля, которые непосредственно влияют на все этапы процесса загрузки отладочных символов.</p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">attempts</span></code> – является обязательным и определяет число итераций, в ходе которых скрипт пытается получить
+доступ к различным интернет-ресурсам. В случае временной недоступности указанных ресурсов скрипт ожидает определенный
+промежуток времени перед повторной попыткой обращения к ним.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">mount</span></code> – определяет необходимость монтирования гостевой системы и, по умолчанию, имеет значение <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+В случае, если гостевой образ не может быть смонтирован по каким-либо причинам, можно запустить данный скрипт в <em>Лёгком режиме</em>,
+установив данный параметр в значение <code class="docutils literal notranslate"><span class="pre">False</span></code>. При этом дальнейший анализ ограничивается исключительно поиском отладочных символов для модулей,
+указанных в конфигурационном файле хостовой системы. Этот поиск происходит либо в пользовательской директории,
+либо с использованием сервиса <code class="docutils literal notranslate"><span class="pre">DebugInfoD</span></code>, при условии, что пользователь дал на это согласие. Указание параметра <code class="docutils literal notranslate"><span class="pre">False</span></code> препятствует
+автоматическому определению типа гостевой операционной системы. Рекомендуется указать сервера для сервиса <code class="docutils literal notranslate"><span class="pre">DebugInfoD</span></code>, соответствующие вашей операционной системе.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">debug</span></code> – флаг включения диагностических сообщений, по умолчанию, имеет значение <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+<p><strong>Секция Configs</strong></p>
+<p>Является обязательной и включает в себя информацию о конфигурационном файле, используемом для модулей.</p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">path</span></code> – является обязательным и содержит путь к конфигурационному файлу, в котором перечислены пути до модулей.</p></li>
+</ul>
+<p><strong>Секция DebugInfoD</strong></p>
+<p>При активации данной секции перечень доступных методов для поиска отладочных символов будет дополнен сервисом <code class="docutils literal notranslate"><span class="pre">DebugInfoD</span></code>,
+если ваша гостевая ОС поддерживает его. Оставьте эту секцию закомментированной или удалите её, если этого не требуется.</p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">servers</span></code> – содержит пользовательский список серверов, специфических для конкретных операционных систем.
+Сервера по умолчанию установлены для операционных систем Ubuntu, Fedora, Alt и Debian. Формат поля: servers=[„https://example1.com“, „https://example2.com“].</p></li>
+</ul>
+<p><strong>Секция PackageAnalysis</strong></p>
+<p>При активации данной секции перечень доступных методов для поиска отладочных символов будет дополнен методом
+пакетного анализа гостевой операционной системы, если он был реализован для вашей гостевой ОС. На данный момент это:
+Ubuntu, Fedora, Alt 10 и Alpine (работает с последними версиями пакетов). Оставьте эту секцию закомментированной или удалите её, если этого не требуется.</p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">path_to_save_pkg_list</span></code> – содержит путь к файлу, в который будет экспортирован список пакетов,
+требующих отладочную информацию. Одним из возможных сценариев использования этого списка является сбор указанных в нем пакетов
+в гостевой операционной системе с отладочными символами, а затем повторный запуск данного скрипта.
+Обратите внимание, при использовании данной опции отладочные пакеты не будут загружены этим методом.</p></li>
+</ul>
+<p>В дополнение к описанным выше методам поиска отладочных символов, если гостевая система была смонтирована,
+автоматически происходит поиск уже установленных отладочных символов в директории по умолчанию (<code class="docutils literal notranslate"><span class="pre">/usr/lib/debug</span></code>)
+для всех типов гостевых операционных систем.</p>
+<p><strong>Секция Symbols</strong></p>
+<p>Является обязательной и содержит информацию о дополнительных символах, которые следует загружать.</p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">kernel</span></code> – флаг разрешения загрузки символьной информации для ядра. При установке соответствующего флага,
+скрипт позволяет выкачивать из образа ядро вместе с его символьной информацией. Если не удалось определить, какое ядро используется,
+то выкачивается информация для всех ядер, найденных в каталоге <code class="docutils literal notranslate"><span class="pre">\boot</span></code>.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">python</span></code> – флаг разрешения загрузки символьной информации для Python интерпретаторов.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">csharp</span></code> – флаг разрешения загрузки символьной информации для C#.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">java</span></code> – флаг разрешения загрузки символьной информации для Java.</p></li>
+</ul>
+<p><strong>Секция UserFolder</strong></p>
+<p>При активации данной секции перечень доступных методов для поиска отладочных символов будет дополнен поиском в директории,
+указанной пользователем. Оставьте эту секцию закомментированной или удалите её, если этого не требуется.</p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">path</span></code> – является обязательным и содержит путь к пользовательской директории, в которой хранятся отладочные символы.
+Структура переданной директории должна соответствовать требованиям операционной системы к директории, в которую устанавливаются отладочные символы.</p></li>
+</ul>
+<p><strong>Секция ContTools</strong></p>
+<p>При активации данной секции будет проведен анализ не только гостевой операционной системы,
+но и систем контейнеризации, которые в ней используются.</p>
+<ul class="simple">
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">docker_path</span></code> – содержит путь в гостевой системе до директории с Docker,
+по умолчанию это (<code class="docutils literal notranslate"><span class="pre">/var/lib/docker</span></code>). Если анализ Docker не требуется, закомментируйте это поле.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">local_podman_path</span></code> – содержит путь в гостевой системе до директории с rootless Podman.
+Учтите, что у этого поля нет значения по умолчанию. Если у вас есть контейнеры,
+созданные от имени пользователя, и вы хотите их проанализировать, необходимо указать этот путь.
+(пример пути: <code class="docutils literal notranslate"><span class="pre">/home/user/.local/share/containers</span></code>).
+Если анализ rootless Podman не требуется, закомментируйте это поле.</p></li>
+<li><p>Поле <code class="docutils literal notranslate"><span class="pre">root_podman_path</span></code> – содержит путь в гостевой системе до директории с root Podman,
+по умолчанию это (<code class="docutils literal notranslate"><span class="pre">/var/lib/containers/</span></code>). Если анализ root Podman не требуется, закомментируйте это поле.</p></li>
+</ul>
+<p><a name="tasks_config"></a></p>
+</section>
+<section id="task-cfg">
+<h2>Конфигурационный файл для процессов task.cfg<a class="headerlink" href="#task-cfg" title="Ссылка на этот заголовок"></a></h2>
+<p>Конфигурационный файл секции <code class="docutils literal notranslate"><span class="pre">Tasks</span></code> генерируется автоматически на этапе конфигурирования <em>Natch</em>.</p>
+<p><a name="syscalls_config"></a></p>
+</section>
+<section id="id1">
+<h2>Конфигурационный файл для системных вызовов<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Конфигурационные файлы для перехвата системных вызовов поставляются с инструментом и, как правило, подгружаются автоматически.</p>
+<p>В редких случаях следует указывать конкретный файл, но писать самостоятельно его не нужно, лучше обратиться к разработчикам.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="app1_license.html" class="btn btn-neutral float-left" title="А. Настройка окружения для использования лицензированного Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="app3_module_cfg.html" class="btn btn-neutral float-right" title="В. Формат списка исполняемых модулей" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.7.1', url='app2_configs.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/app2_configs.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="app2_configs.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.7.1
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="app2_configs.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/app2_configs.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

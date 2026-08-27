@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Е. Изменение командной строки эмулятора &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Ж. Рекомендации по подготовке и анализу объекта оценки" href="app7_oo_preparation.html" />
+    <link rel="prev" title="Д. Формат файла с покрытием кода" href="app5_coverage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Е. Изменение командной строки эмулятора</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Добавить второй диск</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Добавить несколько сетевых адаптеров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssh">Пробросить ssh</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Е. Изменение командной строки эмулятора</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app6_cmd_line.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="natch_cmd_line"></a></p>
+<section id="id1">
+<h1>Е. Изменение командной строки эмулятора<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Командная строка, формируемая инструментом по умолчанию, не всегда может отвечать требованиям пользователя.
+Для того чтобы расширить конфигурацию самостоятельно, предусмотрен файл с параметрами эмулятора, который
+формируется при создании проекта и располагается в рабочей директории. Это файл <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code>.
+Подробнее про работу с этим файлом можно узнать в разделе
+<a class="reference internal" href="6_create_project.html#natch_run_script"><span class="std std-ref">Интерактивный режим создания проекта</span></a>.</p>
+<p>В этом разделе рассмотрим несколько типичных ситуаций модификации командной строки запуска эмулятора.</p>
+<p>Важно! При самостоятельной модификации параметров запуска эмулятора не гарантируется корректная работа команд из набора <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">set</span></code>.</p>
+<section id="id2">
+<h2>Добавить второй диск<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Настройка проекта строится на основе образа операционной системы, и в интерфейсе не предусмотрено
+добавление более одного диска, а иногда это может потребоваться.
+К счастью, большинство опций эмулятора QEMU могут быть применены и в <em>Natch</em>, путем самостоятельного
+редактирования файла параметров <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code>.</p>
+<p>В <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code> присутствуют строки с метками, отвечающими за режим работы. Если вам нужен второй
+диск только для режима аппаратной виртуализации – необходимо добавить соответствующие строки только
+с этой меткой. Наример, мы хотим добавить второй диск с названием <code class="docutils literal notranslate"><span class="pre">second.qcow2</span></code>.
+Изменим <code class="docutils literal notranslate"><span class="pre">id</span></code> устройства и получится так:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">kvm</span><span class="p">]</span><span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=../../</span><span class="n">test_image_debian</span><span class="o">.</span><span class="n">qcow2</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">ide0</span><span class="o">-</span><span class="n">hd0</span><span class="p">,</span><span class="k">if</span><span class="o">=</span><span class="n">none</span>  <span class="c1"># основной диск</span>
+<span class="p">[</span><span class="n">kvm</span><span class="p">]</span><span class="o">-</span><span class="n">device</span> <span class="n">ide</span><span class="o">-</span><span class="n">hd</span><span class="p">,</span><span class="n">bus</span><span class="o">=</span><span class="n">ide</span><span class="mf">.0</span><span class="p">,</span><span class="n">drive</span><span class="o">=</span><span class="n">ide0</span><span class="o">-</span><span class="n">hd0</span>                        <span class="c1"># основной диск</span>
+<span class="p">[</span><span class="n">kvm</span><span class="p">]</span><span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=../../</span><span class="n">second</span><span class="o">.</span><span class="n">qcow2</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">ide1</span><span class="o">-</span><span class="n">hd0</span><span class="p">,</span><span class="k">if</span><span class="o">=</span><span class="n">none</span>
+<span class="p">[</span><span class="n">kvm</span><span class="p">]</span><span class="o">-</span><span class="n">device</span> <span class="n">ide</span><span class="o">-</span><span class="n">hd</span><span class="p">,</span><span class="n">bus</span><span class="o">=</span><span class="n">ide</span><span class="mf">.1</span><span class="p">,</span><span class="n">drive</span><span class="o">=</span><span class="n">ide1</span><span class="o">-</span><span class="n">hd0</span>
+</pre></div>
+</div>
+<p>Такая конфигурация будет работать только для режима аппаратной виртуализации, но скорее всего
+вас интересует работа <em>Natch</em>, значит придется позаботиться о поддержке детерминированного воспроизведения.</p>
+<p>Если второй диск используется только как дополнительное хранилище, режим тюнинга можно не трогать.</p>
+<p>Для работы двух и более дисков в режиме детерминированного воспроизведения необходимо предварительно
+создать оверлеи для новых дисков, чтобы реальный образ оставался неизменным и была возможность воспроизведения.
+Рассмотрим пример с тем же диском <code class="docutils literal notranslate"><span class="pre">second.qcow</span></code>.</p>
+<p>Для создания оверлея можно использовать утилиту <code class="docutils literal notranslate"><span class="pre">natch-qemu-img</span></code> из комплекта <em>Natch</em> или стандартную (под именем <code class="docutils literal notranslate"><span class="pre">qemu-img</span></code>), если
+у вас установлен эмулятор QEMU.
+Создаем оверлей (мы располагаемся в папке проекта):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qemu</span><span class="o">-</span><span class="n">img</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">qcow2</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">Images</span><span class="o">/</span><span class="n">second</span><span class="o">.</span><span class="n">qcow2</span> <span class="o">-</span><span class="n">F</span> <span class="n">qcow2</span> <span class="n">second</span><span class="o">.</span><span class="n">diff</span>
+</pre></div>
+</div>
+<p>Теперь добавим еще одно дисковое устройство с меткой <code class="docutils literal notranslate"><span class="pre">[rr]</span></code> по аналогии с существующим, не забывая менять идентификаторы:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=</span><span class="n">SCENARIO_NAME</span><span class="o">/</span><span class="n">test_image_debian_new</span><span class="o">.</span><span class="n">diff</span><span class="p">,</span><span class="k">if</span><span class="o">=</span><span class="n">none</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">disk</span>  <span class="c1"># основной диск</span>
+<span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="n">drive</span> <span class="n">driver</span><span class="o">=</span><span class="n">blkreplay</span><span class="p">,</span><span class="k">if</span><span class="o">=</span><span class="n">none</span><span class="p">,</span><span class="n">image</span><span class="o">=</span><span class="n">disk</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">disk</span><span class="o">-</span><span class="n">rr</span>                 <span class="c1"># основной диск</span>
+<span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="n">device</span> <span class="n">ide</span><span class="o">-</span><span class="n">hd</span><span class="p">,</span><span class="n">bus</span><span class="o">=</span><span class="n">ide</span><span class="mf">.0</span><span class="p">,</span><span class="n">drive</span><span class="o">=</span><span class="n">disk</span><span class="o">-</span><span class="n">rr</span>                                <span class="c1"># основной диск</span>
+<span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=</span><span class="n">second</span><span class="o">.</span><span class="n">diff</span><span class="p">,</span><span class="k">if</span><span class="o">=</span><span class="n">none</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">disk2</span>
+<span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="n">drive</span> <span class="n">driver</span><span class="o">=</span><span class="n">blkreplay</span><span class="p">,</span><span class="k">if</span><span class="o">=</span><span class="n">none</span><span class="p">,</span><span class="n">image</span><span class="o">=</span><span class="n">disk2</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">disk</span><span class="o">-</span><span class="n">rr2</span>
+<span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="n">device</span> <span class="n">ide</span><span class="o">-</span><span class="n">hd</span><span class="p">,</span><span class="n">bus</span><span class="o">=</span><span class="n">ide</span><span class="mf">.1</span><span class="p">,</span><span class="n">drive</span><span class="o">=</span><span class="n">disk</span><span class="o">-</span><span class="n">rr2</span>
+</pre></div>
+</div>
+<p>Теперь можно использовать оба диска и воспроизведение будет работать.</p>
+</section>
+<section id="id3">
+<h2>Добавить несколько сетевых адаптеров<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>По умолчанию используется один сетевой адаптер модели <code class="docutils literal notranslate"><span class="pre">e1000</span></code>, но если вам нужно больше адаптеров,
+можно их добавить. Обратите внимание, что анализ помеченных данных в <em>Natch</em> работает только на модели <code class="docutils literal notranslate"><span class="pre">e1000</span></code>.</p>
+<p>Так как работа <em>Natch</em> предполагает детерминированное воспроизведение, просто добавить новое устройство
+нельзя, нужно обеспечить его работу в режиме воспроизведения. Рассмотрим добавление еще одного сетевого
+адаптера без проброса портов. Для этого откройте файл <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code> на редактирование, найдите упоминание
+<code class="docutils literal notranslate"><span class="pre">netdev</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span>
+<span class="o">-</span><span class="n">device</span> <span class="n">e1000</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">net0</span>
+<span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="nb">object</span> <span class="nb">filter</span><span class="o">-</span><span class="n">replay</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">replay</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">net0</span>
+</pre></div>
+</div>
+<p>В таком простом случае обратить внимание нужно на последнюю строчку, которая добавляет фильтр для режимов записи и
+воспроизведения. Добавить еще одно такое же устройство можно просто изменив поля <code class="docutils literal notranslate"><span class="pre">id</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span>
+<span class="o">-</span><span class="n">device</span> <span class="n">e1000</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">net0</span>
+<span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="nb">object</span> <span class="nb">filter</span><span class="o">-</span><span class="n">replay</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">replay</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">net0</span>
+<span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net1</span>
+<span class="o">-</span><span class="n">device</span> <span class="n">e1000</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">net1</span>
+<span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="nb">object</span> <span class="nb">filter</span><span class="o">-</span><span class="n">replay</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">replay1</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">net1</span>
+</pre></div>
+</div>
+<p>Теперь в нашей конфигурации два сетевых адаптера и воспроизведение будет работать.</p>
+<p>Когда в конфигурации присутствуют проброшенные порты, строк страновится больше:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">kvm</span><span class="p">]</span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span><span class="p">,</span><span class="n">hostfwd</span><span class="o">=</span><span class="n">tcp</span><span class="p">:</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">49152</span><span class="o">-</span><span class="p">:</span><span class="mi">5555</span>
+<span class="p">[</span><span class="n">tuning</span><span class="p">]</span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span><span class="p">,</span><span class="n">hostfwd</span><span class="o">=</span><span class="n">tcp</span><span class="p">:</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">49152</span><span class="o">-</span><span class="p">:</span><span class="mi">5555</span>
+<span class="p">[</span><span class="n">record</span><span class="p">]</span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span><span class="p">,</span><span class="n">hostfwd</span><span class="o">=</span><span class="n">tcp</span><span class="p">:</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">49152</span><span class="o">-</span><span class="p">:</span><span class="mi">5555</span>
+<span class="p">[</span><span class="n">replay</span><span class="p">]</span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span>
+<span class="o">-</span><span class="n">device</span> <span class="n">e1000</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">net0</span>
+<span class="p">[</span><span class="n">rr</span><span class="p">]</span><span class="o">-</span><span class="nb">object</span> <span class="nb">filter</span><span class="o">-</span><span class="n">replay</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">replay</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">net0</span>
+</pre></div>
+</div>
+<p>Проброс портов должен фигурировать во всех возможных режимах работы эмулятора, кроме воспроизведения.
+Видим, что для режимов записи и воспроизведения строки разные, поэтому уже нельзя использовать метку <code class="docutils literal notranslate"><span class="pre">[rr]</span></code>.
+В то время как фильтр так и остается для <code class="docutils literal notranslate"><span class="pre">[rr]</span></code>.</p>
+<p>Однако, если использовать режимы тюнинга и аппаратной виртуализации не планируется, строки можно
+опустить. Как и в предыдущем примере, необходимо изменить <code class="docutils literal notranslate"><span class="pre">id</span></code>, а так же указать порты для проброса.</p>
+</section>
+<section id="ssh">
+<h2>Пробросить ssh<a class="headerlink" href="#ssh" title="Ссылка на этот заголовок"></a></h2>
+<p>Со стороны эмулятора необходимо организовать проброску порта для подключения по ssh (порт 22 по умолчанию,
+либо который установлен у вас). Сделать это можно на этапе создания проекта в разделе про сеть.
+Укажите порт 22 для пробрасывания, а снаружи можно будет подключаться по выданному порту (от 49152,
+в зависимости от количества портов в списке).</p>
+<p>Если пробрасывался только порт 22, в <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code> появятся записи вида:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">kvm</span><span class="p">]</span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span><span class="p">,</span><span class="n">hostfwd</span><span class="o">=</span><span class="n">tcp</span><span class="p">:</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">49152</span><span class="o">-</span><span class="p">:</span><span class="mi">22</span>
+<span class="p">[</span><span class="n">tuning</span><span class="p">]</span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span><span class="p">,</span><span class="n">hostfwd</span><span class="o">=</span><span class="n">tcp</span><span class="p">:</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">49152</span><span class="o">-</span><span class="p">:</span><span class="mi">22</span>
+<span class="p">[</span><span class="n">record</span><span class="p">]</span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span><span class="p">,</span><span class="n">hostfwd</span><span class="o">=</span><span class="n">tcp</span><span class="p">:</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">49152</span><span class="o">-</span><span class="p">:</span><span class="mi">22</span>
+<span class="p">[</span><span class="n">replay</span><span class="p">]</span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">net0</span>
+</pre></div>
+</div>
+<p>Если на этапе создания проекта вы отказались от пробрасываения портов, можно воспрользоваться командой
+<code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">set</span> <span class="pre">port</span> <span class="pre">22</span></code> и необходимые изменения будут внесены автоматически как в <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code> так и в
+конфигурационные файлы сценариев, если они были выбраны.</p>
+<!-- вместо этого сделать раздел с расширениями опций куэму -->
+<!--
+как поменять дисковое устройство
+как добавить второй диск
+как пробросить ssh
+как добавить несколько сетевых адаптеров -->
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="app5_coverage.html" class="btn btn-neutral float-left" title="Д. Формат файла с покрытием кода" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="app7_oo_preparation.html" class="btn btn-neutral float-right" title="Ж. Рекомендации по подготовке и анализу объекта оценки" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.6', url='app6_cmd_line.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/app6_cmd_line.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/app6_cmd_line.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/app6_cmd_line.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="app6_cmd_line.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/app6_cmd_line.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/app6_cmd_line.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/app6_cmd_line.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.6
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/app6_cmd_line.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/app6_cmd_line.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="app6_cmd_line.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/app6_cmd_line.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/app6_cmd_line.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/app6_cmd_line.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/app6_cmd_line.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

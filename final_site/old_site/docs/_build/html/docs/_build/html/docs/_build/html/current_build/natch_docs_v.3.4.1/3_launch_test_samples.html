@@ -1,0 +1,829 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Запуск тестовых примеров Natch &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="4. Настройка окружения для работы с Natch" href="4_setup_env.html" />
+    <link rel="prev" title="2. Установка и настройка Natch" href="2_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Запуск тестовых примеров Natch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">3.1. Получение образа и тестовых примеров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">3.2. Создание проекта для работы с тестовым образом</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.2.1. Создание проекта</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">3.3. Запись сценария работы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">3.4. Воспроизведение сценария и сбор данных для анализа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#snatch">3.5. Анализ с использованием SNatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wireshark">3.6. Просмотр сетевого трафика в Wireshark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">3.7. Изменение настроек проекта</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Запуск тестовых примеров Natch</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/3_launch_test_samples.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="natch_stepbystep"></a></p>
+<section id="natch">
+<h1><span class="section-number">3. </span>Запуск тестовых примеров Natch<a class="headerlink" href="#natch" title="Ссылка на этот заголовок"></a></h1>
+<p>В этом разделе представлен пошаговый разбор работы с тестовыми примерами <em>Natch</em>,
+а так же немного затронут инструмент <em>SNatch</em>
+(подробности в разделе <a class="reference internal" href="9_snatch.html#snatch"><span class="std std-ref">Анализ поверхности атаки с помощью SNatch</span></a>).</p>
+<p>Для работы с инструментом <em>Natch</em> нужны входные данные, а именно, подготовленный образ системы с собранным в нем объектом оценки, а так же бинарные файлы самого объекта оценки.
+Чтобы быстро попробовать <em>Natch</em>, разработчики подготовили образ и несколько примеров, на которых можно поэкспериментировать без лишних трудозатрат.</p>
+<p>Предполагается, что <em>Natch</em> и зависимости уже установлены в системе, но если это не так, перейдите в раздел <a class="reference internal" href="2_setup.html#setup_natch"><span class="std std-ref">Установка и настройка Natch</span></a>.</p>
+<p><a name="test_suite"></a></p>
+<section id="id1">
+<h2><span class="section-number">3.1. </span>Получение образа и тестовых примеров<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Подготовленный разработчиками <a class="reference external" href="https://nextcloud.ispras.ru/index.php/s/testing_natch">тестовый набор</a> включает в себя минимизированный образ гостевой операционной системы Debian
+(размер qcow2-образа около 1 ГБ), а также два комплекта программ (Sample1_bins и Sample2_bins), собранных с отладочными символами.
+Помимо этого, в тестовом наборе находится ряд скриптов, которые не пригодятся нам в этом разделе, но будут нужны для автоматизации выполнения сценариев,
+подробнее можно ознакомиться в разделе <a class="reference internal" href="11_automation.html#automation"><span class="std std-ref">Автоматизированное выполнение</span></a>.</p>
+<p>Команда для скачивания тестового комплекта с помощью <em>curl</em> выглядит так:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>-o<span class="w"> </span>materials.zip<span class="w"> </span>https://nextcloud.ispras.ru/index.php/s/testing_natch/download
+</pre></div>
+</div>
+<p>После скачивания обучающих материалов их следует распаковать.</p>
+<p>Образ гостевой ОС находится в папке <code class="docutils literal notranslate"><span class="pre">Natch_testing_materials</span></code>. Учётные записи пользователей: <code class="docutils literal notranslate"><span class="pre">user/user</span></code> и <code class="docutils literal notranslate"><span class="pre">root/root</span></code>.</p>
+<p><strong>Сценарий использования тестового комплекта Sample1_bins</strong></p>
+<p>Программа <code class="docutils literal notranslate"><span class="pre">test_sample</span></code> читает файл <em>sample.txt</em>, в первой строке которого записан адрес Google. Он передает эту строку в качестве параметра программе <code class="docutils literal notranslate"><span class="pre">test_sample_2</span></code>.
+Программа <code class="docutils literal notranslate"><span class="pre">test_sample_2</span></code> «курлит гугл» в файл <em>curl.txt</em>.
+В образе исполняемые файлы находятся в папке <code class="docutils literal notranslate"><span class="pre">/home/user/Sample1</span></code>, там же расположены и исходные коды.</p>
+<p>Запуск тестового сценария:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>Sample1
+./test_sample
+</pre></div>
+</div>
+<p><strong>Сценарий использования тестового комплекта Sample2_bins</strong></p>
+<p>В ходе сценария необходимо запустить <code class="docutils literal notranslate"><span class="pre">redis-server</span></code> внутри виртуальной машины, в хостовой же системе запустить клиент <code class="docutils literal notranslate"><span class="pre">redis-cli</span></code> и отправить на сервер несколько запросов.</p>
+<p>Команда для запуска <code class="docutils literal notranslate"><span class="pre">redis-server</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>redis-server<span class="w"> </span>--port<span class="w"> </span><span class="m">5555</span><span class="w"> </span>--protected-mode<span class="w"> </span>no
+</pre></div>
+</div>
+<p>Команда запуска клиентской улититы:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>redis-cli<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-p<span class="w"> </span><span class="m">49152</span>
+</pre></div>
+</div>
+<p>Утилиту <code class="docutils literal notranslate"><span class="pre">redis-cli</span></code> можно поставить в вашу систему (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">redis-tools</span></code>), либо воспользоваться бинарным файлом <code class="docutils literal notranslate"><span class="pre">redis-cli</span></code> из тестового набора
+(необходимо будет выставить права на исполнение).</p>
+<p>Далее выполнить какие-нибудь действия, например <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">b</span> <span class="pre">VeryBigValue</span></code>, <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">b</span></code>.</p>
+<p>В тестовом образе redis установлен в систему.</p>
+<p><a name="config_natch_test_image"></a></p>
+</section>
+<section id="id2">
+<h2><span class="section-number">3.2. </span>Создание проекта для работы с тестовым образом<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Все основные функции <em>Natch</em> доступны через команду <code class="docutils literal notranslate"><span class="pre">natch</span></code> в командной строке. Запуск этой команды без параметров
+отобразит справочную информацию о версии и доступных действиях:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Natch_v.3.4
+Copyright (c) 2020-2025 ISP RAS
+
+based on QEMU emulator v.7.2.0
+Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
+
+Available builds: x86_64, aarch64
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         Natch version
+
+main commands:
+  {create,cr,record,replay,kvm,tuning,info,delete,edit,set,modules,settings}
+                        use &lt;cmd_name&gt; -h/--help for additional information
+    create (cr)         create project
+    record              record scenario (only for project)
+    replay              replay scenario (only for project)
+    kvm                 launch QEMU kvm without Natch (only for x86_64)
+    tuning              launch tuning (only for project)
+    info                info about project (only for project)
+    delete              delete scenario (only for project)
+    edit                edit Natch config files (only for project)
+    coverage            get coverage for code (only for project)
+    set                 change some project settings (only for project)
+    modules             add/update/copy modules in the project (requires sudo)
+    settings            Natch shell settings
+    check               check your system parameters
+</pre></div>
+</div>
+<p>Подробно <a class="reference internal" href="#3_natch_cmd.md#natch_cmd"><span class="xref myst">командный интерфейс Natch</span></a> описан в соответствуюшем разделе.</p>
+<p>Работа с тестовыми примерами <em>Natch</em> начинается с создания проекта (рабочей директории).
+Помимо этого, процесс настройки созданного проекта может включать ручной этап, который предполагает внесение изменений в
+конфигурационные файлы проекта.
+Предназначение файлов конфигурации и их параметров описано в разделе <a class="reference internal" href="app2_configs.html#app_configs"><span class="std std-ref">Конфигурационные файлы Natch</span></a>.</p>
+<section id="id3">
+<h3><span class="section-number">3.2.1. </span>Создание проекта<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<p>Создание проекта выполняется командой <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code> (подробнее в разделе <a class="reference internal" href="6_create_project.html#create_project"><span class="std std-ref">Создание проекта</span></a>),
+которая имеет два обязательных параметра – название будущего проекта и путь к образу исследуемой системы.
+В процессе выполнения команды будет задан ряд вопросов. Запустим ее:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user@natch1:~/natch_quickstart$ natch create test1 Natch_testing_materials/test_image_debian.qcow2
+
+Directory for project files /home/user/natch_quickstart/test1 was created
+OS: Linux
+
+Image: /home/user/natch_quickstart/Natch_testing_materials/test_image_debian.qcow2
+
+-&gt; Attention! To create a project you will need a root password
+</pre></div>
+</div>
+<p>Команда выдаст предупреждение о том, что в процессе настройки потребуется пароль администратора.</p>
+<p>Далее будет проверено наличие, а так же доступность утилиты <code class="docutils literal notranslate"><span class="pre">natch-qemu-img</span></code>,
+которая потребуется в дальнейшей настройке и работе. В случае успеха увидим:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Checking natch-qemu-img utility...
+Utility natch-qemu-img is ok
+</pre></div>
+</div>
+<p>Если что-то пошло не так, создание проекта будет прервано.</p>
+<p>Для поиска исполняемых модулей, скачивания отладочной информации и некоторых других файлов потребуется
+монтировать образ. Однако, от этой опции можно отказаться, в этом случае часть функционала будет недоступна.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-&gt; Attention! Some options need to mount your image
+Do you agree to mount image? [Y/n] y
+</pre></div>
+</div>
+<p>Укажите сколько памяти выдать гостевой виртуальной машине (постфикс указывать обязательно. G или M):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Common options
+Enter RAM size with suffix G or M (e.g. 4G or 256M): 4G
+</pre></div>
+</div>
+<p>Далее можно выбрать режим работы эмулятора – графический, текстовый, vnc или ssh. По умолчанию графический.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Select mode you want to run emulator: graphic [G/g] (default), text [T/t], vnc [V/v] or ssh [S/s]: g
+</pre></div>
+</div>
+<p>Если сценарий предполагает передачу помеченных данных по сети (далее мы рассматриваем в качестве основного как раз сценарий №2 –
+взаимодействие с redis-сервером, слушающим tcp-порт 5555), нам потребуется взаимодействовать с сетевыми сервисами гостевой ОС с помощью программ,
+запущенных на хосте. Указываем <em>Natch</em>, какой порт мы хотим пробросить в гостевую ОС:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Network option
+Do you want to use ports forwarding? [Y/n] y
+Do you want to taint source ports too? [Y/n] n
+Write the ports you want separated by commas (e.g. 7777, 8888, etc) 5555
+Your pair of ports for connecting: 5555 &lt;=&gt; 49152
+</pre></div>
+</div>
+<p>Далее последует ряд вопросов, реакция на которые будет не сразу. Произойдет сбор сведений, а затем
+наступит автоматическая фаза, где в соответствии с выбранными характеристиками будут происходить действия.</p>
+<p>Первый из вопросов касается конфигурационного файла для модулей. Согласимся на его создание и
+нам нужно будет указать путь к каталогу на хосте, содержащем копии бинарных файлов, размещенных в гостевой ОС.
+Находятся они в папках <code class="docutils literal notranslate"><span class="pre">Sample1_bins</span></code> и <code class="docutils literal notranslate"><span class="pre">Sample2_bins</span></code> в тестовых материалах.
+Так как будет проделан пример с <code class="docutils literal notranslate"><span class="pre">redis</span></code>, то следует указать путь к папке <code class="docutils literal notranslate"><span class="pre">Sample2_bins</span></code>.
+Если для другого вашего сценария бинарные файлы отсутствуют, можно отказаться создавать конфигурационный файл модулей.</p>
+<p><strong>Обновление!</strong> С версии 3.2 можно указывать путь к модулям в гостевой системе, таким образом, можно заранее не выкачивать
+бинарные файлы в хостовую систему, но только если было дано согласие на монтирование образа.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Modules part
+Do you want to create module config? [Y/n] y
+Select way to point directory with modules: from HOST [H/h] system (default) or GUEST [G/g] system: h
+Enter path to binaries dir (or 'exit' to skip): /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins
+</pre></div>
+</div>
+<p>Затем будет предложено скачать отладочные символы для системных модулей. Соглашаемся, так следует поступать в
+большинстве случаев. В версии 3.2 появляется дополнительный вопрос, предлагающий использовать расширенные настройки
+поиска и скачивания отладочной информации. Откажемся.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Debug info part
+Do you want to get debug info for system modules? [Y/n] y
+Do you want to set additional parameters? (many questions) [y/N] n
+</pre></div>
+</div>
+<p>Финальный вопрос касается генерации конфигурационного файла, содержащего смещения структур ядра исследуемой ОС.
+Этот файл необходим для работы инструмента, и ранее сгенерированного у нас нет, так что соглашаемся.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Generate config file task.cfg? (recommended) [Y/n] y
+</pre></div>
+</div>
+<p>Последнее, что надо ввести пользователю – пароль администратора.</p>
+<p>Дальнейшие действия выполняются автоматически, процесс может занять продолжительное время.
+На этом этапе произойдет монтирование образа, поиск системных библиотек и интерпретаторов,
+скачивание отладочной информации для них. Затем будет формироваться конфигурационный файл <code class="docutils literal notranslate"><span class="pre">task.cfg</span></code>,
+для чего потребуется запуск эмулятора. Последним этапом будет формирование базы символов для
+всех модулей из конфигурационного файла <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code>.</p>
+<p>Все это время в консоль будут выводиться сообщения примерно следующего вида:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>────────────────────────────── Module Configuration Section ───────────────────────────────────────
+
+Mounting Image - OK
+
+[Parsing received folder...]
+Status: Found: 2
+
+[Searching Host Images In Guest OS...]
+Status: Found: 2
+
+[Searching Debugging Information...]
+Status: Found: 0 | Skipped: 2
+
+USER statistics:
+Images have been found                                            :     OK
+Added images                                                      :     2
+Added debugging information                                       :     0
+Added tied information                                            :     0
+
+
+ld-linux-* is always skipped and isn't counted in calculations
+Your config file module.cfg was created
+Umounting Image - OK
+Mounting Image - OK
+
+─────────────────────────────── Libraries Searching Section ───────────────────────────────────────
+
+&gt;&gt;&gt; Host Config Section &gt;&gt;&gt;
+
+[Reading Module Config...]
+Status: Found: 2
+
+&gt;&gt;&gt; Additional Section &gt;&gt;&gt;
+
+[Searching Python, Java, C# Symbols...]
+Status: Found: 47
+
+
+─────────────────────────────────────────── OS ────────────────────────────────────────────────────
+───────────────────────────── Library-Debug Matching Section ──────────────────────────────────────
+
+────────────────────────────── Searching Additional Symbols ───────────────────────────────────────
+&gt;&gt;&gt; Shared Libraries Section &gt;&gt;&gt;
+
+[Searching Shared Libraries For...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ 46/48  96% 0:00:03
+Status: Found: 46 | Skipped: 2
+
+[Preparing Found Shared Libraries...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 31/31 100% 0:00:00
+Status: Found: 31
+
+&gt;&gt;&gt; Kernel Section &gt;&gt;&gt;
+
+[Searching Kernel Symbols...]
+Status: Found: 1
+──────────────────────────────────── Debugging Symbols ────────────────────────────────────────────
+&gt;&gt;&gt; Method [1/2]: Default System Location Analysis &gt;&gt;&gt;
+
+[Searching Debugging Information...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  0/78   0% 0:00:00
+Status: Found: 0 | Skipped: 78
+WARNING: Folder '/mnt/point3788669/usr/lib/debug' does not exist!
+Default System Location Analysis method was skipped!
+&gt;&gt;&gt; Method [2/2]: DebugInfoD &gt;&gt;&gt;
+Checking available DebugInfoD servers - OK
+
+[Searching Debugging Information...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ 75/78  96% 0:05:32
+Response:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78/78 100% 0:05:32
+Status: Found: 75 | Skipped: 3
+───────────────────────────────────── Tieddebug Symbols ───────────────────────────────────────────
+
+&gt;&gt;&gt; Method [1/1]: DebugInfoD &gt;&gt;&gt;
+Checking available DebugInfoD servers - OK
+
+[Searching Tieddebug Information...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0/1   0% 0:00:01
+Response:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1/1 100% 0:00:01
+Status: Found: 0 | Skipped: 1
+
+────────────────────────────────────────── DOCKER ─────────────────────────────────────────────────
+
+WARNING: Docker not found at path: /mnt/point3788669/var/lib/docker! DOCKER analysis will be skipped!
+
+
+────────────────────────────────────── ROOT_PODMAN ────────────────────────────────────────────────
+
+
+WARNING: Podman not found at path: /mnt/point3788669/var/lib/containers/! ROOT_PODMAN analysis will be skipped!
+
+
+──────────────────────────────── Removing Non-OS Images ───────────────────────────────────────────
+
+
+──────────────────────────────── Clear Resources Section ──────────────────────────────────────────
+
+Umounting Image - OK
+───────────────────────────────────── Result Section ──────────────────────────────────────────────
+
+HOST statistics:
+Images have been found                                            :     OK
+Added images                                                      :     2
+Added debugging information                                       :     0
+Added tied information                                            :     0
+
+KERNEL statistics:
+Images have been found                                            :     OK
+Added images                                                      :     1
+Added debugging information for kernel                            :     1
+
+PYTHON statistics:
+Images have been found                                            :     OK
+Added images                                                      :     46
+Added debugging information                                       :     46
+Added tied information                                            :     0
+
+SHARED_LIBRARY statistics:
+Images have been found                                            :     OK
+Added images                                                      :     31
+Added debugging information                                       :     31
+Added tied information                                            :     2
+ld-linux-* is always skipped and isn't counted in calculations
+
+Your config file '/home/user/natch_quickstart/test1/module.cfg' was updated
+
+Tuning process will be started soon. Please, do not close the emulator
+Three...
+Two..
+One.
+Go!
+Natch monitor - type 'help' for more information
+(natch)
+Natch v.3.4
+(c) 2020-2025 ISP RAS
+
+Reading Natch config file...
+[Tasks] No such file 'task.cfg'. It will be created.
+Checking config file '/home/user/natch_quickstart/test1/module.cfg'...
+Now tuning will be launched.
+
+Tuning started. Please wait a little...
+Generating config file: task.cfg
+Trying to find 10 kernel-specific parameters
+[01/10] Parameter - task, files and mm struct   : Found
+[02/10] Parameter - files lock                  : Found
+[03/10] Parameter - args                        : Found
+[04/10] Parameter - mount                       : Found
+[05/10] Parameter - mmap lock                   : Found
+[06/10] Parameter - f_count                     : Found
+[07/10] Parameter - exit_state                  : Found
+[08/10] Parameter - file read position          : Found
+[09/10] Parameter - socket                      : Found
+[10/10] Parameter - uid                         : Found
+
+Detected 8 of 8 kernel-specific parameters. Creating config file...
+
+Tuning completed successfully!
+
+Symbol info part
+Reading symbols for loaded modules
+
+Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server
+Created symbol database for /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-cli
+...
+...
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/f902f8a561c3abdb9c8d8c859d4243bd8c3f928f/python3.9
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/cc89a8838df3652561ab61598035775fa95f8917/vmlinux-5.10.0-17-amd64
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/5018237bbf012b4094027fd0b96fc22a24496ea4/libpthread-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/e9d2c06479b13dd3cfa78d714d11dccf6fcbee51/libm-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/bc22349819818055008048f8001e3910ffc16dc7/libexpat.so.1.6.12
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/a89a9c8e4a828f47e68e2d1dafca4aae087d061d/libz.so.1.2.11
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/5675f6cc697d1e1fb135c65cbb0f917550fe85ac/libutil-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/118b90161526d181807818c459baee841993795b/libdl-2.31.so
+Created symbol database for /home/user/natch_quickstart/test1/libs/src/2e5abcee94f3bcbed7bba094f341070a2585a2ba/libc-2.31.so
+
+Your config file '/home/user/natch_quickstart/test1/module.cfg' for modules was updated
+</pre></div>
+</div>
+<p>Cоздание проекта завершено успешно, всё готово к записи сценария:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Configuration file natch.cfg was created.
+You can edit it before using Natch.
+
+Settings completed! Now you can launch Natch and enjoy! :)
+
+
+File 'settings_test1.ini' was saved here: /home/user/natch_quickstart/
+You can use it for creating other projects
+
+Checking the project's completeness...
+/home/user/natch_quickstart/test1/natch.cfg                 +
+/home/user/natch_quickstart/test1/qemu_opts.ini             +
+/home/user/natch_quickstart/test1/service_info.ini          +
+/home/user/natch_quickstart/test1/module.cfg                +
+Everything is fine!
+</pre></div>
+</div>
+<p>В папке проекта появится конфигурационный файл <code class="docutils literal notranslate"><span class="pre">natch.cfg</span></code>, содержащий общие настройки проекта, которые можно редактировать,
+кроме того после записи сценария появится (в соответствующей папке) еще один конфигурационный файл <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code>,
+который тоже можно редактировать. Также в папке проекта находится файл <code class="docutils literal notranslate"><span class="pre">natch.log</span></code>, содержащий журнал происходивших событий.</p>
+<p>Кроме того, в месте запуска команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code> сохранится файл <code class="docutils literal notranslate"><span class="pre">settings_test1.ini</span></code>, который можно будет использовать для
+полностью автоматического создания проекта-клона, либо файл можно отредактировать и создать проект с нужными
+характеристиками. Подробнее в разделе <a class="reference internal" href="6_create_project.html#natch_save_settings"><span class="std std-ref">Создание проекта с помощью конфигурационного файла</span></a>.</p>
+<p><a name="record_scenario"></a></p>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.3. </span>Запись сценария работы<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Можно переходить к записи сценария. Рассмотрим в качестве примера сценарий с redis-сервером (Sample2_bins).
+Для записи сценария нужно перейти в рабочую директорию и запустить команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">record</span> <span class="pre">-s</span> <span class="pre">&lt;name&gt;</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>user@natch1:~/natch_quickstart/test1$<span class="w"> </span>natch<span class="w"> </span>record<span class="w"> </span>-s<span class="w"> </span>sample_redis
+</pre></div>
+</div>
+<p>В результате запустится эмулятор.</p>
+<p>Введём логин и пароль учетной записи пользователя – <code class="docutils literal notranslate"><span class="pre">user/user</span></code> и запустим redis-сервер:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">redis</span><span class="o">-</span><span class="n">server</span> <span class="o">--</span><span class="n">port</span> <span class="mi">5555</span> <span class="o">--</span><span class="n">protected</span><span class="o">-</span><span class="n">mode</span> <span class="n">no</span>
+</pre></div>
+</div>
+<p>Cоединимся с ним из хостовой ОС чтобы убедиться, что система работает как надо:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user@natch1:~/natch_quickstart$ redis-cli -h localhost -p 49152
+
+localhost:49152&gt; select 0
+OK
+localhost:49152&gt; set a b
+OK
+localhost:49152&gt; get a
+"b"
+localhost:49152&gt; exit
+</pre></div>
+</div>
+<p><strong>Важное замечание</strong>: <em>весь записываемый сценарий включает в себя и этап загрузки ОС, но помеченные данные появятся практически в самом конце,
+когда мы обратимся к redis-серверу. Соответственно, для существенного сокращения времени на сбор данных (последующее выполнение <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code>)
+нам необходимо сделать снапшот в точке, максимально приближенной к началу поступления помеченных данных в системе. То есть сейчас, когда от порождения
+помеченных данных нас отделяет повторная отправка в redis уже знакомых нам команд</em>.</p>
+<p>Нажмем <code class="docutils literal notranslate"><span class="pre">Ctrl+Alt+G</span></code>, выйдем в монитор QEMU (bash-терминал хостовой ОС в котором мы запустили <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">record</span></code>) и выполним команду генерации снапшота:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">savevm</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Используем имя <code class="docutils literal notranslate"><span class="pre">ready</span></code>. Сохранение состояния займёт несколько секунд, в зависимости от размера образа и производительности компьютера в целом.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user@natch1:~/natch_quickstart/test1$ natch record -s sample_redis
+Natch monitor - type 'help' for more information
+(natch)
+Natch v.3.4
+(c) 2020-2025 ISP RAS
+
+Reading Natch config file...
+Network logging enabled
+Config is loaded.
+You can make system snapshots with the command: savevm &lt;snapshot_name&gt;
+Network pcap log file: "/home/user/natch_quickstart/test1/sample_redis/network.pcap"
+Network json log file: "/home/user/natch_quickstart/test1/sample_redis/network.json"
+
+(natch) savevm ready
+(natch)
+</pre></div>
+</div>
+<p>После того как снапшот был сгенерирован, снова отправим какие-нибудь данные из хостовой ОС в redis-сервер. Теперь завершим работу QEMU, закрыв графическое окно эмулятора.</p>
+<p>Сценарий работы с <code class="docutils literal notranslate"><span class="pre">redis</span></code> записан.</p>
+<p>Теперь в папке с нашим проектом (<code class="docutils literal notranslate"><span class="pre">test1</span></code>) появилась директория с названием сценария <code class="docutils literal notranslate"><span class="pre">sample_redis</span></code>. В ней размещены логи сетевых операций, файл журнала, оверлей диска,
+и, самое главное для пользователя – <a class="reference internal" href="app2_configs.html#taint_config"><span class="std std-ref">конфигурационный файл помеченных данных</span></a> <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code>. На данный момент все настройки по умолчанию нам подходят.</p>
+<p>Для каждого вновь записанного сценария будет появляться своя папка с индивидуальными настройками.</p>
+<p>Настройки можно редактировать с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">edit</span> <span class="pre">taint</span></code>, где будет предложено выбрать нужный сценарий.</p>
+<p><a name="replay_scenario"></a></p>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.4. </span>Воспроизведение сценария и сбор данных для анализа<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Для воспроизведения нужно выполнить команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user@natch1:~/natch_quickstart/test1/$ natch replay
+</pre></div>
+</div>
+<p>Команда может принимать ряд параметров (см. <a class="reference internal" href="#3_natch_cmd.md#cmd_replay"><span class="xref myst">natch replay</span></a>).
+В нашем случае команда могла бы выглядеть так:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user@natch1:~/natch_quickstar/test1/$ natch replay -s sample_redis -S ready
+</pre></div>
+</div>
+<p>Запускать replay можно без параметров, он сам или загрузит нужный сценарий (если он единственный)
+или предложит выбрать из списка существующих, точно так же произойдет с выбором снапшота.</p>
+<p>Начнём воспроизведение сценария, а точнее его фрагмента, который выполнялся после создания снапшота. Это будет несколько медленнее, чем базовое выполнение.</p>
+<p>Через какое-то время выполнение сценария завершится, графическое окно закроется, и вы увидите сообщение наподобие приведённого ниже, свидетельствующее о том,
+что интересующие нас модули гостевой ОС были распознаны успешно, и, следовательно, мы получим в отчетах корректную символьную информацию.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Snapshot to load: ready
+Natch monitor - type 'help' for more information
+(natch)
+Natch v.3.4
+(c) 2020-2025 ISP RAS
+
+Reading Natch config file...
+Network logging enabled
+Task graph enabled
+Module graph enabled
+Taint enabled
+Config is loaded.
+File events binary log file /home/user/natch_quickstart/test1/output_sample_redis/files_b.log created successfully
+Module binary log file /home/user/natch_quickstart/test1/output_sample_redis/log_m_b.log created successfully
+Modules: started reading binaries
+Modules: finished with 13 of 13 binaries for analysis
+thread_monitor: identification method is set to a complex developed at isp approach
+Started thread monitoring
+Tasks: config file is open.
+Process events binary log file /home/user/natch_quickstart/test1/output_sample_redis/log_p_b.log created successfully
+Network json log file: "/home/user/natch_quickstart/test1/output_sample_redis/tnetwork.json"
+Binary log file /home/user/natch_quickstart/test1/output_sample_redis/log_t_b.log created successfully
+Binary call_stack log file /home/user/natch_quickstart/test1/output_sample_redis/log_cs_b.log created successfully
+Detected module /home/user/natch_quickstart/test1/libs/src/cc89a8838df3652561ab61598035775fa95f8917/vmlinux-5.10.0-17-amd64 execution
+Detected module /home/user/natch_quickstart/test1/libs/src/2e5abcee94f3bcbed7bba094f341070a2585a2ba/libc-2.31.so execution
+Detected module /home/user/natch_quickstart/Natch_testing_materials/Sample2_bins/redis-server execution
+Detected module /home/user/natch_quickstart/test1/libs/src/5018237bbf012b4094027fd0b96fc22a24496ea4/libpthread-2.31.so execution
+Detected module /home/user/natch_quickstart/test1/libs/src/e9d2c06479b13dd3cfa78d714d11dccf6fcbee51/libm-2.31.so execution
+
+
+=========== Statistics ===========
+
+Tainted files             : 0
+Tainted packets           : 147
+Tainted processes         : 3
+Tainted modules           : 3
+Tainted file reads        : 0
+Tainted memory accesses   : 21026
+
+Compressing data. Please wait..
+
+test1+sample_redis.tar.zst completed
+</pre></div>
+</div>
+<p>Если работа системы завершилась успешно, и вы не поймали, например, <code class="docutils literal notranslate"><span class="pre">core</span> <span class="pre">dumped</span></code> (о чём стоит немедленно сообщить в <a class="reference external" href="https://gitlab.ispras.ru/natch/natch-support/-/issues">трекер</a> с приложением всех артефактов),
+можно переходить к анализу собранных данных.</p>
+<p>После воспроизведения сценария в папке проекта появилась директория с выходными данными <code class="docutils literal notranslate"><span class="pre">output_sample_redis</span></code> и, главное, архив, который необходимо передать в графическую подсистему <em>SNatch</em>.
+Название архива формируется следующим образом:<code class="docutils literal notranslate"> <span class="pre">&lt;название</span> <span class="pre">проекта&gt;+&lt;название</span> <span class="pre">сценария&gt;.tar.zst</span></code>. Таким образом, записывая разные сценарии, уже готовые архивы не будут перезаписаны и могут быть
+использованы повторно или переданы третьим лицам.</p>
+<p><a name="snatch_analysis"></a></p>
+</section>
+<section id="snatch">
+<h2><span class="section-number">3.5. </span>Анализ с использованием SNatch<a class="headerlink" href="#snatch" title="Ссылка на этот заголовок"></a></h2>
+<p><em>SNatch</em> – это подсистема визуализации данных и статистик, собранных при воспроизведении сценария работы под управлением <em>Natch</em>.
+<em>SNatch</em> реализован в формате веб-службы с браузерным интерфейсом просмотра.</p>
+<p>В комплект поставки <em>SNatch</em> входят скрипты <code class="docutils literal notranslate"><span class="pre">snatch_start.sh</span></code> и <code class="docutils literal notranslate"><span class="pre">snatch_stop.sh</span></code> для запуска и остановки <em>SNatch</em> соответственно.
+Скрипт <code class="docutils literal notranslate"><span class="pre">snatch_start.sh</span></code> запускает необходимые для работы службы, а также открывает браузер с интерфейсом.
+В терминал, из которого был запущен скрипт, будут приходить сообщения от сервера, однако, он свободен для использования,
+поэтому по окончании работы из него же можно запустить скрипт <code class="docutils literal notranslate"><span class="pre">snatch_stop.sh</span></code> для остановки служб.
+Запускать <code class="docutils literal notranslate"><span class="pre">snatch_stop.sh</span></code> следует всегда, в противном случае процессы останутся висеть в памяти вашего компьютера до перезагрузки.</p>
+<p>Полное руководство пользователя <em>SNatch</em> доступно в разделе <a class="reference internal" href="9_snatch.html#snatch"><span class="std std-ref">Анализ поверхности атаки с помощью SNatch</span></a>, здесь же приведем краткий обзор некоторых аналитик.</p>
+<p>Запустим <em>SNatch</em>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>user@natch1:~/natch_quickstart$<span class="w"> </span>./snatch/snatch_start.sh
+</pre></div>
+</div>
+<p>Создадим проект на основе собранных данных (необходимо указывать tar.zst-архив, формируемый <em>Natch</em> в каталоге проекта по результатам выполнения <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code>):</p>
+<p><img alt="_images/snatch_new_project.png" src="_images/snatch_new_project.png" /><figcaption><em>Создание SNatch проекта</em></figcaption></p>
+<p>Через некоторое время процесс загрузки архива завершится и станут доступны различные виды аналитик (<em>их число и возможности постоянно нарастают</em>).</p>
+<p>Главное окно представляет динамическую визуализацию распространения помеченных данных.
+Ярким цветом на каждом шаге <em>Временной шкалы</em> выделяются сущности, взаимодействующие на данном конкретном шаге.</p>
+<p>Кликнув по процессу <em>redis-server</em> мы увидим боковую панель с информацией об этом процессе.</p>
+<p><img alt="_images/snatch_main.png" src="_images/snatch_main.png" /><figcaption><em>Интерфейс <em>SNatch</em></em></figcaption></p>
+<p>На боковой панели так же находится кнопка для перехода на граф модулей, связанных с выбранным процессом.
+На рисунке ниже представлен граф модулей для процесса <code class="docutils literal notranslate"><span class="pre">redis-server</span></code>.</p>
+<p><img alt="_images/snatch_module_graph.png" src="_images/snatch_module_graph.png" /><figcaption><em>Модуль граф для redis-server</em></figcaption></p>
+<p>Для просмотра таких аналитик, как граф вызовов и флейм граф, следует их предварительно сгенерировать, нажав на соответствующие кнопки <em>Создать</em>.</p>
+<p>Фрагмент графа вызовов для примера с redis-server представлен на рисунке ниже. Голубым цветом выделены функции, работавшие с помеченными данными.</p>
+<p><img alt="_images/snatch_callstack.png" src="_images/snatch_callstack.png" /><figcaption><em>Граф вызовов</em></figcaption></p>
+<p>Подробнее о возможностях <em>SNatch</em> написано в разделе <a class="reference internal" href="9_snatch.html#snatch"><span class="std std-ref">Анализ поверхности атаки с помощью SNatch</span></a>.</p>
+</section>
+<section id="wireshark">
+<h2><span class="section-number">3.6. </span>Просмотр сетевого трафика в Wireshark<a class="headerlink" href="#wireshark" title="Ссылка на этот заголовок"></a></h2>
+<p>Анализировать трафик в Wireshark можно прямо из интерфейса <em>SNatch</em> с помощью раздела <em>Сетевой трафик</em>. Здесь можно увидеть интерфейсы и сессии, клик по каждой записи будет открывать Wireshark с соответствующими данными.</p>
+<p><img alt="_images/snatch_traffic.png" src="_images/snatch_traffic.png" /><figcaption><em>Информация о трафике</em></figcaption></p>
+<p>Так же можно открывать только помеченный трафик, трафик, относящийся к сценарию, а так же весь трафик с помощью соответствующих кнопок.</p>
+<p><img alt="_images/wireshark.png" src="_images/wireshark.png" /><figcaption><em>Исследование трафика в Wireshark</em></figcaption></p>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.7. </span>Изменение настроек проекта<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<p>В рассмотренном сценарии нам не пришлось изменять конфигурационный файл сценария, потому что порт был установлен при настройке проекта. Однако, это может потребоваться.
+Конфигурационный файл <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code> находится в папке со сценарием и содержит следующие секции:
+<em>Mode</em>, <em>Taint</em>, <em>Ports</em>, <em>TaintFile</em>, <em>USB</em>, <em>TaintedTask</em>, <em>Coverage</em>, <em>FunctionArgs</em>.
+Появляется папка со сценарием, как мы уже знаем, после записи сценария.</p>
+<p>Попробуем записать сценарий для первого тестового примера. Запустим уже знакомую команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">record</span> <span class="pre">-s</span> <span class="pre">sample_test</span></code>, дождемся загрузки ОС.
+Для выполнения сценария следует перейти в папку <code class="docutils literal notranslate"><span class="pre">Sample1</span></code>, на этом моменте не забыть сохранить состояние машины <code class="docutils literal notranslate"><span class="pre">savevm</span> <span class="pre">ready</span></code>, вернуться в эмулятор и
+запустить программу <code class="docutils literal notranslate"><span class="pre">./test_sample</span></code>.
+Дожидаемся завершения программы и работу эмулятора можно завершать.</p>
+<p>После того как сценарий записан, следует указать источник пометки. Это можно сделать с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">edit</span> <span class="pre">taint</span></code>. Выберем сценарий <code class="docutils literal notranslate"><span class="pre">sample_test</span></code> и внесем изменения
+в файл конфигурации.</p>
+<p>Пометить файл <em>sample.txt</em> нужно следующим образом:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[TaintFile]</span>
+<span class="na">list</span><span class="o">=</span><span class="s">sample.txt</span>
+</pre></div>
+</div>
+<p>Так же мы увидим, что в наследство от первоначальной настройки остался выбранный порт. В этом сценарии отслеживание сети не требуется, закомментируем секцию <em>Ports</em> полностью.</p>
+<p>Казалось бы все готово к воспроизведению сценария, но при первоначальной настройке мы указывали путь только к <code class="docutils literal notranslate"><span class="pre">Sample2_bins</span></code>, значит <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code> ничего не знает про бинарные файлы для
+первого тестового сценария. Просто руками дописать их в конфигурационный файл не сработает, потому что необходимо еще собрать отладочную информацию для системных
+библиотек, от которых зависят бинарные файлы, а так же построить символьную информацию. Потребуется запуск специальной команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">modules</span> <span class="pre">add</span></code>.</p>
+<p>Потребуется указать путь к папке с новыми модулями.</p>
+<p>Сейчас <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code> содержит 80 записей. Выполним команду:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user@natch1:~/natch_quickstart/test1$ natch modules add --host-dir ../Natch_testing_materials/Sample1_bins
+</pre></div>
+</div>
+<p>Для монтирования образа будет запрошен пароль администратора. Затем будут происходить действия, которые вы уже видели при первоначальной настройке проекта.</p>
+<p>После того как команда отработала, мы увидим что записей в конфигурационном файле стало 82. Никаких новых системных библиотек не добавилось, только бинарные файлы нашего примера.</p>
+<p>Теперь все готово, выполним <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code> без параметров и увидим, что нам предлагают выбрать из двух вариантов. Выбираем <code class="docutils literal notranslate"><span class="pre">sample_test</span></code>. И снова выбор, теперь снапшота. Выбираем <code class="docutils literal notranslate"><span class="pre">ready</span></code>.</p>
+<p>После того как эмулятор отработает увидим следующую статистику:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>============ Statistics ============
+
+Tainted files             : 1
+Tainted packets           : 0
+Tainted processes         : 9
+Tainted modules           : 16
+Tainted file reads        : 1
+Tainted memory accesses   : 2275
+</pre></div>
+</div>
+<p>Так же в папке с проектом появится новая директория <code class="docutils literal notranslate"><span class="pre">output_sample_test</span></code> и архив <code class="docutils literal notranslate"><span class="pre">test1+sample_test.tar.zst</span></code>.</p>
+<p>Помимо команды для добавления модулей в конфигурационный файл, существует еще возможность обновить содержимое <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code> (команда <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">modules</span> <span class="pre">update</span></code>).
+Кроме того, можно внести некоторые изменения в настройки проекта, используя группу команд <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">set</span></code>.</p>
+<p>Ознакомиться с подробным описанием возможностей команды <code class="docutils literal notranslate"><span class="pre">natch</span></code> можно в разделе <a class="reference internal" href="#3_natch_cmd.md#natch_cmd"><span class="xref myst">Командный интерфейс Natch</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="2_setup.html" class="btn btn-neutral float-left" title="2. Установка и настройка Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="4_setup_env.html" class="btn btn-neutral float-right" title="4. Настройка окружения для работы с Natch" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.4.1', url='3_launch_test_samples.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/3_launch_test_samples.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="3_launch_test_samples.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/3_launch_test_samples.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6/3_launch_test_samples.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/3_launch_test_samples.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/3_launch_test_samples.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/3_launch_test_samples.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.8.1/3_launch_test_samples.html" style="color: #3498db;">natch_docs_v.3.8.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.4.1
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="3_launch_test_samples.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/3_launch_test_samples.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6/3_launch_test_samples.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/3_launch_test_samples.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/3_launch_test_samples.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/3_launch_test_samples.html">natch_docs_v.3.7.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.8.1/3_launch_test_samples.html">natch_docs_v.3.8.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/3_launch_test_samples.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

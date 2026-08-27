@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13. FAQ &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="14. Системные требования и ограничения Natch" href="14_requirements.html" />
+    <link rel="prev" title="12. Примеры использования Natch" href="12_applications.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">13. </span>FAQ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/13_faq.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="faq"></a></p>
+<section id="faq">
+<h1><span class="section-number">13. </span>FAQ<a class="headerlink" href="#faq" title="Ссылка на этот заголовок"></a></h1>
+<p>В этом разделе собраны наиболее часто встречающиеся проблемы при работе с инструментами <em>Natch</em> и <em>SNatch</em>, раздел будет пополняться.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: хочется узнать срок действия лицензии</p>
+<p><strong>Решение</strong>: в случае с сетевым ключом откройте http://localhost:1947/<em>int</em>/products.html,
+далее кликните на <code class="docutils literal notranslate"><span class="pre">Features</span></code> напротив продукта <em>Natch</em>. При использовании аппаратного ключа
+следует открыть http://localhost:1947/<em>int</em>/devices.html и кликнуть на <code class="docutils literal notranslate"><span class="pre">Features</span></code> напротив записи,
+соответствующей вашему аппаратному ключу.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: непонятно какой дистрибутив скачать</p>
+<p><strong>Решение</strong>: в связи с переходом на новую версию аппаратных ключей инструмента лицензирования Sentinel
+до окончания действия всех выданных лицензий будут поддерживаться два варианта дистрибутива.
+Если у вас старые ключи Sentinel, то следует брать дистрибутив из папки Sentinel_YM, если вы новый
+пользователь <em>Natch</em> – дистрибутив для вас в папке Sentinel_XE.</p>
+<p>В постфиксах указаны первые символы кодов вендора системы лицензирования Sentinel – YMYCK и XEKDC.
+Этот код можно увидеть на обратной стороне вашего аппаратного ключа с лицензией
+(либо определить по числовому коду в соответствующем поле графы ключа в Sentinel Admin Control Center
+после установки драйверов Sentinel Runtime: 101213 для YMYCK и 36343 для XEKDC).</p>
+<p>Также рекомендуется переустановить окружение (aksusbd_<em>current_version</em>_amd64.deb для Ubuntu/Debian/Astra),
+пакет находится в папке с дистрибутивом. Для Alt необходимо выполнить <code class="docutils literal notranslate"><span class="pre">epm</span> <span class="pre">play</span> <span class="pre">aksusbd</span></code>.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: настройка стенда происходит очень медленно</p>
+<p><strong>Решение</strong>: используйте команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">kvm</span></code> для работы QEMU в режиме аппаратной виртуализации.
+Чтобы проверить включен ли KVM в уже запущенной виртуальной машине – введите в мониторе <em>Natch</em> команду <code class="docutils literal notranslate"><span class="pre">info</span> <span class="pre">kvm</span></code>.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: <em>Natch</em> не запускается</p>
+<p>При запуске появляется сообщение <em>«Sentinel LDK Protection System: Sentinel key not found»</em></p>
+<p><strong>Решение</strong>: проверьте наличие лицензии. Удостоверьтесь что используете подходящий вашему ключу дистрибутив,
+а так же что окружение для ключей Sentinel установлено и оно подходящей версии.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: <em>Natch</em> завершается с ошибкой illegal instruction (недопустимая инструкция)</p>
+<p>При возникновении ошибки illegal instruction (недопустимая инструкция), следует проверить совместимость
+вашего процессора. Для этого выполните команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">m1</span> <span class="n">flags</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">'/avx/ &amp;&amp; /sse/ &amp;&amp; /sse4_1/ &amp;&amp; /sse4_2/'</span>
+</pre></div>
+</div>
+<p>Если вывод пустой, значит ваш процессор не подходит.</p>
+<p><strong>Решение</strong>: необходимо использовать процессор, поддерживающий расширения <code class="docutils literal notranslate"><span class="pre">avx</span></code>, <code class="docutils literal notranslate"><span class="pre">sse</span></code>, <code class="docutils literal notranslate"><span class="pre">sse4_1</span></code>, <code class="docutils literal notranslate"><span class="pre">sse4_2</span></code>.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: тюнинг работает слишком долго и ничего не происходит</p>
+<p><strong>Решение</strong>: подождите (чаще всего это и есть решение). Если ОС загрузилась, а настройка все еще идет, попробуйте поделать что-то, например, позапускать программы,
+чтобы спровоцировать возникновение системных вызовов. В случае если вы используете экзотическую ОС и тюнинг не может быть выполнен, он завершится по таймауту
+и вы получите сообщение о нештатном завершении настройки. В таком случае обратитесь к разработчику.</p>
+<p>Так же тюнинг может быть выполнен не полностью, но если все обязательные параметры были обнаружены, настройки сформируются и инструмент будет работать.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: статистика помеченных данных показывает нули</p>
+<p><strong>Решение</strong>: чаще всего такая ситуация возникает, если источник помеченных данных был указан неверно (или не указан вовсе) или
+если работа с помеченными данными происходила до того как состояние машины было сохранено. Проверьте:</p>
+<ul class="simple">
+<li><p>указали ли вы источники пометки в конфигурационном файле <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code> (<code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">edit</span> <span class="pre">taint</span></code>)</p></li>
+<li><p>выполнили ли команду <code class="docutils literal notranslate"><span class="pre">savevm</span></code> до того как поработали с помеченными данными</p></li>
+</ul>
+<p>Если все верно, а статистика нулевая, возможно это баг :) Обратитесь к разработчику, пожалуйста.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: появилась необходимость перегенерировать <code class="docutils literal notranslate"><span class="pre">task.cfg</span></code>. Например, у вас есть проект и вы не хотите его пересоздавать,
+а версия конфигурационного файла <code class="docutils literal notranslate"><span class="pre">task.cfg</span></code> изменилась и <em>Natch</em> не запускается</p>
+<p><strong>Решение</strong>: выполните команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">tuning</span></code>, согласитесь с тем что хотите переписать существующий файл <code class="docutils literal notranslate"><span class="pre">task.cfg</span></code>, дождитесь окончания работы эмулятора.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: не установился <em>SNatch</em></p>
+<p><strong>Решение</strong>: проверьте, что в названиях директорий, в которых вы находитесь, нет пробелов. Если есть, устраните проблему и перезапустите <code class="docutils literal notranslate"><span class="pre">snatch_setup.sh</span></code>.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: шкала прогресса «Processing surface» пропала до завершения обработки архива (например, после обновления страницы).</p>
+<p><strong>Решение</strong>: процесс обработки архива продолжается в фоне. При его завершении в консоли появится сообщение <code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">___</span> <span class="pre">is</span> <span class="pre">done!</span></code></p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: в Графе вызовов для модуля отсутствуют символы</p>
+<p><strong>Решение</strong>: стоит проверить есть ли в модуле, к которому относятся вызовы, символы. Для этого нужно посмотреть полный путь модуля (включить опцию “Полные пути модулей”)
+и найти этот же модуль в файле <code class="docutils literal notranslate"><span class="pre">module.cfg</span></code> по полному пути. В найденной записи в поле <code class="docutils literal notranslate"><span class="pre">vmidb</span></code> нужно найти название файла, в котором лежат символы для модуля.
+Далее стоит найти этот файл в папке <code class="docutils literal notranslate"><span class="pre">vmidb</span></code> в папке проекта. Если файл пустой или «почти пустой», значит внутри модуля нет символьной информации. Нужно пересобрать его с отладочными опциями компилятора.</p>
+<p>Если файл не пустой, то, вероятно, в процессе <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code> возникла ошибка «has no unique code pages for detection». Запустите <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code> повторно,
+эти ошибки обычно появляются в начале вывода в консоли, выделенные красным шрифтом.
+Поищите среди ошибок упоминание искомого модуля. Ошибка говорит о том, что для модуля есть дубликаты, поэтому не удалось его однозначно идентифицировать.
+Чтобы эта ошибка исчезла, нужно из конфигурационного файла модулей удалить или закомментировать записи с дубликатами. Какие файлы являются дубликатами явно не указано, но обычно это файлы с одинаковыми или похожими именами.
+Далее нужно повторно запустить <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code> и убедиться, что ошибка пропала. Символы должны появиться.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: Flame graph долго строится/завис</p>
+<p><strong>Решение</strong>: процесс построения флейм графа может занять очень длительное время, более часа.</p>
+<p>При построении флейм графа выводится прогресс. Если же ждать все равно больше не хочется,
+процесс построения можно прервать с помощью кнопки <code class="docutils literal notranslate"><span class="pre">Generate</span></code>, которая краснеет при наведении мыши.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: во время экспорта проекта в PDF появляется сообщение об ошибке для какого-то из заданных параметров</p>
+<p><strong>Решение</strong>: вероятнее всего, сгенерированная для данного параметра (чаще всего это относится к ресурсам)
+таблица оказалась слишком большой для используемой библиотеки. В таком случае рекомендуется использование предлагаемых фильтров:
+включить «only tainted», чтобы в отчет попали только связанные с пометками данные, и отключить «include root», чтобы оставить только пользовательские процессы.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: на Alt Linux, во время создания проекта после тюнинга на этапе сборки отладочной информации,
+возникают ошибки <code class="docutils literal notranslate"><span class="pre">FATAL:</span> <span class="pre">Error</span> <span class="pre">create</span> <span class="pre">mounted</span> <span class="pre">folder</span></code> и <code class="docutils literal notranslate"><span class="pre">FATAL:</span> <span class="pre">Error</span> <span class="pre">delete</span> <span class="pre">mounted</span> <span class="pre">folder</span></code></p>
+<p><strong>Решение</strong>: убедитесь в том, что учетная запись root добавлена в sudoers.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: во время воспроизведения записанного сценария появляется ошибка
+<code class="docutils literal notranslate"><span class="pre">natch-qemu-x86_64:</span> <span class="pre">../plugins_isp/sources/common_plugins/utils/kernel_struct_utils.c:282:</span> <span class="pre">parse_param_recursive:</span> <span class="pre">Assertion</span> <span class="pre">'0'</span> <span class="pre">failed</span></code></p>
+<p><strong>Решение</strong>: вероятнее всего не был успешно завершен тюнинг для вашей гостевой ОС. Вы можете выполнить тюнинг отдельно для уже созданного проекта.
+См. <a class="reference internal" href="#3_natch_cmd.md#cmd_tuning"><span class="xref myst">natch tuning</span></a>. В случае проблем с тюнингом вашей гостевой ОС, обратитесь в техническую поддержку.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: исследуемый продукт развернут в контейнере Podman. Во время создания проекта на этапе ROOT_PODMAN возникает вывод:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[Filling Docker Layers...]
+Status: Found: 0
+WARNING: [Errno 2] No such file or directory:
+'/mnt/point3202315/var/lib/containers/storage/overlay-containers/containers.json' ROOT_PODMAN analysis will be skipped!
+</pre></div>
+</div>
+<p><strong>Решение</strong>: решения может быть два – отредактировать конфигурационный файл <code class="docutils literal notranslate"><span class="pre">debug_info.cfg</span></code> или пересоздать проект.</p>
+<p>Первый вариант: перейдите в рабочую директорию и выполните команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">edit</span> <span class="pre">debug</span></code>. В секции <code class="docutils literal notranslate"><span class="pre">ContTools</span></code>
+введите путь к Podman директории в соответствуюшем поле – <code class="docutils literal notranslate"><span class="pre">local_podman_path</span></code> или <code class="docutils literal notranslate"><span class="pre">root_podman_path</span></code>.
+После этого выполните команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">modules</span> <span class="pre">update</span></code>.</p>
+<p>Второй вариант: создайте проект заново, на этапе <code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">set</span> <span class="pre">additional</span> <span class="pre">parameters?</span></code> введите <code class="docutils literal notranslate"><span class="pre">Y</span></code>.
+Затем, если вы используете Podman под рутом, введите <code class="docutils literal notranslate"><span class="pre">Y</span></code> на этапе <code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">analyze</span> <span class="pre">Root</span> <span class="pre">Podman</span></code>,
+если вы используете Podman под обычным пользователем, введите <code class="docutils literal notranslate"><span class="pre">Y</span></code> на этапе <code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">analyze</span> <span class="pre">Local</span> <span class="pre">Podman</span></code>.
+На следующем шаге введите путь к Podman директории, содержащей <code class="docutils literal notranslate"><span class="pre">containers.json</span></code>.</p>
+<p>В случае local Podman на Astra Linux нужная директория это <code class="docutils literal notranslate"><span class="pre">/home/YourUser/.local/share/containers/</span></code>.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: во время добавления архива в SNatch возникает ошибка <code class="docutils literal notranslate"><span class="pre">Worker</span> <span class="pre">exited</span> <span class="pre">prematurely:</span> <span class="pre">signal</span> <span class="pre">9</span> <span class="pre">(SIGKILL)</span> <span class="pre">Job:</span> <span class="pre">XX</span></code></p>
+<p><strong>Решение</strong>: ошибка говорит о том, что скорее всего не хватает оперативной памяти для разбора архива.
+Для корректной работы SNatch с архивами в несколько сотен мегабайт и более рекомендуется не менее 32Гб оперативной памяти.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: нужно добавить опцию в командную строку запуска эмулятора</p>
+<p><strong>Решение</strong>: по умолчанию в командную строку попадает ограниченный набор опций, однако, пользователь
+может добавить все что необходимо в файл <code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code>, расположенный в рабочей директории.
+В файле предусмотрены метки для формирования строк для разных режимов – <code class="docutils literal notranslate"><span class="pre">[record]</span></code>, <code class="docutils literal notranslate"><span class="pre">[replay]</span></code>, <code class="docutils literal notranslate"><span class="pre">[rr]</span></code>, <code class="docutils literal notranslate"><span class="pre">[tuning]</span></code> и <code class="docutils literal notranslate"><span class="pre">[kvm]</span></code>.
+Если их не использовать – опция будет применена во всех режимах.
+Подробнее в разделе <a class="reference internal" href="6_create_project.html#natch_run_script"><span class="std std-ref">Интерактивный режим создания проекта</span></a>.
+Также несколько типичных случаев редактирования командной строки описаны в приложении
+<a class="reference internal" href="app6_cmd_line.html#natch_cmd_line"><span class="std std-ref">Изменение командной строки эмулятора</span></a>.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: в ходе анализа сценариев работы многопроцессного программного комплекса,
+предназначенного для работы на многоядерных (многопроцессорных) платформах, запись сценария происходит очень медленно</p>
+<p><strong>Решение</strong>: в настоящий момент и в обозримой перспективе отсутствует. Запись сценария требует запуска
+эмулятора QEMU в режиме полносистемной эмуляции, подразумевающем выполнение всего исполняемого кода
+анализируемого программного комплекса (включая код среды его функционирования - ОС, BIOS, эмулированных устройств и т. п.)
+в виртуальном процессоре – программной модели процессора (эмулятор QEMU работает в данном режиме по умолчанию, в случае если не указан ключ <code class="docutils literal notranslate"><span class="pre">enable-kvm</span></code>).</p>
+<p>Скорость выполнения исполняемого кода в режиме полносистемной эмуляции намного ниже по сравнению с
+выполнением на аппаратном процессоре, однако позволяет логировать любые изменения состояния виртуального процессора,
+оперативной памяти, а также взаимодействия с внешними по отношению к эмулированному пространству сущностями (сеть и т. п.).
+В том числе это позволяет записывать и в дальнейшем воспроизводить работу виртуальной машины,
+сохраняя в файл случайные и недетерминированные события, меняющие состояния виртуальной машины.</p>
+<p>Добавление возможности надежного логирования работы даже двухядерной (двухпроцессорной) системы,
+требует записывать ещё и порядок обращения процессоров к памяти, чтобы избежать состояния гонки при воспроизведении.
+Такой лог будет на несколько порядков больше лога однопроцессорной машины, что делает запись/воспроизведение
+неприменимыми при существующих объёмах и скоростях накопителей.</p>
+<p>Реализация данного механизма на программном уровне является фундаментальной проблемой, до сих пор не имеющей в мире эффективного решения.
+Некоторые попытки решить аналогичную задачу для архитектуры x86_64 делались разработчиками процессоров, в частности компанией Intel,
+однако во-первых они не завершились удачными конкретными решениями, во-вторых – требовали доработки процессора за счёт внесения в него
+отдельного специализированного блока, отвечающего за корректное логирование всех операций доступа – то есть создания отдельное процессорной линейки.
+Таким образом в настоящий момент увеличение числа ядер виртуального процессора QEMU и запись сценариев в многоядерном (многопроцессорном)
+режиме не представляется возможным технологически.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: при запуске SNatch в консоли возникает сообщение <code class="docutils literal notranslate"><span class="pre">celery:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>. Веб-интерфейс SNatch отображается, но архивы загружаются моментально, без обработки данных, создавая пустые проекты.
+Служба rabbitmq-server (rabbitmq на Alt Linux) не запущена и при попытке ее ручного запуска возникают ошибки.</p>
+<p><strong>Решение</strong>: убедитесь в том, что у вашей Linux машины задано имя в <code class="docutils literal notranslate"><span class="pre">/etc/hostname</span></code>. При его отсутствии возникают проблемы с запуском зависимой службы <code class="docutils literal notranslate"><span class="pre">rabbitmq-server</span></code>. Задайте имя машины в <code class="docutils literal notranslate"><span class="pre">/etc/hostname</span></code> и создайте для неё в <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> запись вида: <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span> <span class="pre">&lt;имя_машины&gt;</span></code>, после чего перезагрузите вашу машину.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: при переустановке/удалении SNatch в консоли возникают сообщения о том, что некоторые *.sh и *.py скрипты в <code class="docutils literal notranslate"><span class="pre">/usr/bin/snatch/</span></code> не найдены. Из-за этого вместо удаления инициализируется повторная установка и удаление, также как и переустановка, оказывается невозможным.</p>
+<p><strong>Решение</strong>: выполните удаление скриптов, выполняемых при удалении SNatch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dpkg</span><span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">snatch</span><span class="o">.</span><span class="n">prerm</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dpkg</span><span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">snatch</span><span class="o">.</span><span class="n">postrm</span>
+</pre></div>
+</div>
+<p>Повторите удаление, - теперь оно будет успешно выполнено. После чего можно установить SNatch заново.</p>
+<hr class="docutils" />
+<p><strong>Проблемы</strong>:</p>
+<ul class="simple">
+<li><p>Страница <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code> не загружается</p></li>
+<li><p>При выборе архива возникает сообщение <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">handler</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">respond...</span></code> / <code class="docutils literal notranslate"><span class="pre">Обработчик</span> <span class="pre">задач</span> <span class="pre">не</span> <span class="pre">отвечает...</span></code> с предложением запустить <code class="docutils literal notranslate"><span class="pre">snatch_start.sh</span></code>.</p></li>
+<li><p>При загрузке архива в SNatch прогресс-бар не появляется, в левой панели процентное значение увеличивается до 100, после чего итоги разбора архива не загружаются или загружаются частично.</p></li>
+</ul>
+<p>При этом установка SNatch выполнена без ошибок, <code class="docutils literal notranslate"><span class="pre">configure.sh</span></code> и <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> выполнены (только для Alt Linux и РЕД ОС).</p>
+<p><strong>Решение</strong>: В этих случаях рекомендуется открыть в текстовом редакторе файл <code class="docutils literal notranslate"><span class="pre">/usr/bin/snatch/snatch_start.sh</span></code> и в строках запуска <code class="docutils literal notranslate"><span class="pre">celery</span></code> и веб-сервера <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> заменить <code class="docutils literal notranslate"><span class="pre">/dev/null</span></code> на <code class="docutils literal notranslate"><span class="pre">/tmp/&lt;logfilename&gt;</span></code> следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nohup</span> <span class="n">celery</span> <span class="o">-</span><span class="n">A</span> <span class="n">myproduct</span> <span class="n">worker</span> <span class="o">-</span><span class="n">l</span> <span class="n">INFO</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">celery</span><span class="o">.</span><span class="n">log</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&amp;</span>
+<span class="o">...</span>
+<span class="n">nohup</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="o">--</span><span class="n">insecure</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5555</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">django</span><span class="o">.</span><span class="n">log</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p>При этом иногда перед <code class="docutils literal notranslate"><span class="pre">celery</span></code> и <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> может быть указан путь, который необходимо сохранить в команде.</p>
+<p>Затем, находясь в том же каталоге <code class="docutils literal notranslate"><span class="pre">/usr/bin/snatch/</span></code>, выполните <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> (если присутствует) или <code class="docutils literal notranslate"><span class="pre">snatch_start.sh</span></code>, после чего посмотрите созданные файлы журналов.
+Обычно проблемы могут возникать при условии, если <code class="docutils literal notranslate"><span class="pre">celery</span></code> или <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> не были найдены. В этом случае можно вручную указать правильный путь к ним. При корректной установке <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> находится в <code class="docutils literal notranslate"><span class="pre">/usr/bin/snatch/</span></code>, а <code class="docutils literal notranslate"><span class="pre">celery</span></code> располагается в зависимости от ОС (<code class="docutils literal notranslate"><span class="pre">/home/$USER/.local/bin/</span></code> или <code class="docutils literal notranslate"><span class="pre">/opt/snatch/venv/env/bin/</span></code>).</p>
+<p>Детали вашей проблемы просим сообщить в техническую поддержку.</p>
+<hr class="docutils" />
+<p><strong>Проблема</strong>: SNatch хранит распакованные проекты в директории пользователя, а у меня там мало места. Могу я выбрать другой каталог?</p>
+<p><strong>Решение</strong>: Откройте в текстовом редакторе файл <code class="docutils literal notranslate"><span class="pre">/usr/bin/snatch/snatch/settings.py</span></code> и отредактируйте путь в параметре <code class="docutils literal notranslate"><span class="pre">MEDIA_ROOT</span></code>. Убедитесь, что на указываемый там каталог у текущего пользователя достаточно прав. Перейдите в каталог <code class="docutils literal notranslate"><span class="pre">/usr/bin/snatch/</span></code>. Для Alt Linux и РЕД ОС запустите <code class="docutils literal notranslate"><span class="pre">run.sh</span></code>, для остальных ОС - <code class="docutils literal notranslate"><span class="pre">snatch_stop.sh</span></code>, а затем <code class="docutils literal notranslate"><span class="pre">snatch_start.sh</span></code>.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="12_applications.html" class="btn btn-neutral float-left" title="12. Примеры использования Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="14_requirements.html" class="btn btn-neutral float-right" title="14. Системные требования и ограничения Natch" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.7', url='13_faq.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/13_faq.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/13_faq.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/13_faq.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6/13_faq.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/13_faq.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="13_faq.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/13_faq.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.7
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/13_faq.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/13_faq.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6/13_faq.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/13_faq.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="13_faq.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/13_faq.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/13_faq.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

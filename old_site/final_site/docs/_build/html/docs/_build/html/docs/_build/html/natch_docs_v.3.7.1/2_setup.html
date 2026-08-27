@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Установка и настройка Natch &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="3. Запуск тестовых примеров Natch" href="3_launch_test_samples.html" />
+    <link rel="prev" title="1. Что такое Natch" href="1_natch.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Установка и настройка Natch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">2.1. Комплект поставки Natch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2.2. Установка инструмента Natch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.2.1. Установка пакета Natch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#astra-linux">2.2.2. Установка зависимостей (Astra Linux)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debian-13">2.2.3. Установка зависимостей (Debian 13)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#snatch">2.3. Установка графической подсистемы SNatch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alt">2.3.1. Конфигурирование базы данных для Alt и РЕД ОС</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.3.2. Запуск SNatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>Установка и настройка Natch</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/2_setup.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="setup_natch"></a></p>
+<section id="natch">
+<h1><span class="section-number">2. </span>Установка и настройка Natch<a class="headerlink" href="#natch" title="Ссылка на этот заголовок"></a></h1>
+<p><a name="complect"></a></p>
+<section id="id1">
+<h2><span class="section-number">2.1. </span>Комплект поставки Natch<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Инструмент <em>Natch</em> состоит из двух частей: непосредственно <em>Natch</em>, который используется для
+сбора информации о работе объекта оценки, и графическая подсистема <em>SNatch</em>, в которой происходит обработка
+собранных данных и построение аналитик.</p>
+<p>Для использования лицензионной версии <em>Natch</em> необходимо получить аппаратный или сетевой ключ и провести настройку окружения.
+Подробная инструкция находится в разделе <a class="reference internal" href="app1_license.html#app_license"><span class="std std-ref">Настройка окружения для использования лицензированного Natch</span></a>.</p>
+<p>В комплект поставки инструмента входит пакет <em>Natch</em>, архив <em>SNatch</em> и документация.</p>
+<p>Инструменты <em>Natch</em> и <em>SNatch</em> распространяются в виде установочных пакетов для следующих операционных систем:</p>
+<ul class="simple">
+<li><p>Alt 10, 11</p></li>
+<li><p>Astra 1.7, 1.8</p></li>
+<li><p>Debian 12, 13</p></li>
+<li><p>Ubuntu 22, 24</p></li>
+<li><p>РЕД ОС 8</p></li>
+</ul>
+<p>В пакете представлен защищенный бинарный дистрибутив, требующий наличия аппаратного ключа (персональный «черный» ключ,
+сетевой «красный» ключ или иные версии ключа) с лицензией c идентификатором «6».</p>
+<p><a class="reference external" href="https://nextcloud.ispras.ru/index.php/s/Y9fSdo7LJ5SRJHf">Дистрибутив Natch v.3.4</a></p>
+<p><a class="reference internal" href="#app9_releases.md#app_releases"><span class="xref myst">Предыдущие релизы</span></a></p>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.2. </span>Установка инструмента Natch<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Установка <em>Natch</em> происходит в два этапа:</p>
+<ul class="simple">
+<li><p>установка пакета в соответствии с хостовой ОС</p></li>
+<li><p>установка зависимостей (встроена в установку пакета на всех ОС кроме Astra)</p></li>
+</ul>
+<section id="id3">
+<h3><span class="section-number">2.2.1. </span>Установка пакета Natch<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<p>В связи с переходом на новую версию аппаратных ключей инструмента лицензирования Sentinel до окончания действия всех выданных лицензий будут
+поддерживаться два варианта дистрибутива. Если у вас старые ключи Sentinel, то следует брать дистрибутив из папки Sentinel_YM, если вы
+новый пользователь <em>Natch</em> – дистрибутив для вас в папке Sentinel_XE. Также рекомендуется переустановить окружение
+(aksusbd_<em>current_version</em>_amd64.deb для Ubuntu/Debian/Astra), пакет находится в папке с дистрибутивом. Для Alt необходимо выполнить <code class="docutils literal notranslate"><span class="pre">epm</span> <span class="pre">play</span> <span class="pre">aksusbd</span></code>.</p>
+<p>Как понять какой у вас ключ: с обратной стороны аппаратного ключа указан серийный номер. Обратите внимание на третью строчку, если
+текст начинается с «XE» значит у вас новый ключ, если с «YM» – старый.</p>
+<p><strong>Установка для Ubuntu, Debian и Astra</strong></p>
+<p>Сначала выполните команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+</pre></div>
+</div>
+<p>Для установки <em>Natch</em> скачайте соответствующий вашей ОС дистрибутив и используйте команду (пример для ubuntu24):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">natch_x</span><span class="o">.</span><span class="n">x_ubuntu24</span><span class="o">.</span><span class="n">deb</span>
+</pre></div>
+</div>
+<p>При возникновении ошибки <em>dpkg: depencency problems prevent configuration of natch</em> выполните команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>Для обновления <em>Natch</em> предварительно требуется удаление установленной версии. Для удаления <em>Natch</em> из системы используйте команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="o">--</span><span class="n">purge</span> <span class="n">remove</span> <span class="n">natch</span>
+</pre></div>
+</div>
+<p><strong>Установка для Alt</strong></p>
+<p>Если на машине не установлен pip, то перед установкой пакета следует выполнить команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"apt-get install python3-module-pip"</span>
+</pre></div>
+</div>
+<p>Для установки <em>Natch</em> скачайте дистрибутив и используйте команду (пример для Alt 11):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"apt-get install natch_x.x_alt11.rpm"</span>
+</pre></div>
+</div>
+<p>Для обновления <em>Natch</em> предварительно требуется удаление установленной версии. Для удаления <em>Natch</em> из системы используйте команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"apt-get --purge remove natch"</span>
+</pre></div>
+</div>
+<p><strong>Установка для РЕД ОС</strong></p>
+<p>Если на машине не установлен pip, то перед установкой пакета следует выполнить команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">module</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+<p>Для установки <em>Natch</em> скачайте дистрибутив и используйте команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">natch_x</span><span class="o">.</span><span class="n">x_redos8</span><span class="o">.</span><span class="n">rpm</span>
+</pre></div>
+</div>
+<p>Для обновления <em>Natch</em> предварительно требуется удаление установленной версии. Для удаления <em>Natch</em> из системы используйте команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">remove</span> <span class="n">natch</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>При установке <em>Natch</em> бинарные файлы распаковываются в <code class="docutils literal notranslate"><span class="pre">/usr/bin/natch-bin/</span></code>.</p>
+</section>
+<section id="astra-linux">
+<h3><span class="section-number">2.2.2. </span>Установка зависимостей (Astra Linux)<a class="headerlink" href="#astra-linux" title="Ссылка на этот заголовок"></a></h3>
+<p>После успешной установки <em>Natch</em> следует установить зависимости, необходимые для работы скриптов.
+Для этого нужно запустить скрипт <code class="docutils literal notranslate"><span class="pre">setup_requirements.sh</span></code>, находящийся в папке установки инструмента:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">natch</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">natch_scripts</span><span class="o">/</span><span class="n">setup_requirements</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Во время выполнения скрипта потребуется пароль администратора.</p>
+<p>Для хостовых систем Alt, Ubuntu, Debian, РЕД ОС установка зависимостей таким способом не требуется.</p>
+<p>Для хостовых систем Astra Linux 1.7-1.8 требуется сервис unionfs, отсутствующий в APT-репозитории. В случае работы с контейнерами
+в гостевых системах на этих хостовых системах можно <a class="reference external" href="https://pkgs.org/download/unionfs-fuse">скачать по ссылке</a> и установить deb пакет для Debian 12.</p>
+</section>
+<section id="debian-13">
+<h3><span class="section-number">2.2.3. </span>Установка зависимостей (Debian 13)<a class="headerlink" href="#debian-13" title="Ссылка на этот заголовок"></a></h3>
+<p>Для хостового Debian 13 требуется сервис unionfs, отсутствующий в APT-репозитории. Он необходим только в случае работы с контейнерами в гостевых системах. <a class="reference external" href="https://pkgs.org/download/unionfs-fuse">По ссылке</a> можно скачать и установить deb пакет от Debian 12.
+Все остальные зависимости на Debian 13 устанавливаются автоматически.</p>
+<p><a name="setup_snatch"></a></p>
+</section>
+</section>
+<section id="snatch">
+<h2><span class="section-number">2.3. </span>Установка графической подсистемы SNatch<a class="headerlink" href="#snatch" title="Ссылка на этот заголовок"></a></h2>
+<p>Установка <em>SNatch</em> происходит в несколько этапов:</p>
+<ul class="simple">
+<li><p>установка пакета в соответствии с хостовой ОС, включает установку зависимых пакетов</p></li>
+</ul>
+<p>После установки <em>SNatch</em> автоматически выполняется проверка свободного дискового пространства в директории $HOME/snatch/media/, которая используется по умолчанию для хранения проектных данных. Вы увидите сообщение с результатами проверки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>62Гб доступно в /home/$USER/snatch/media/, где SNatch хранит распакованные данные проектов для анализа.
+Этого достаточно для обычных сценариев, однако для объемных сценариев могут потребоваться сотни гигабайт свободного места.
+Вы можете изменить заданный по умолчанию каталог с помощью скрипта /usr/bin/snatch/changedatadir.sh.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>конфигурирование базы данных (встроена в установку пакета на всех ОС кроме Alt и РЕД ОС).</p></li>
+</ul>
+<p>После конфигурирования в терминале будут выведены учетные данные для подключения к БД (произвольный пароль генерируется автоматически):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Учётные</span> <span class="n">данные</span> <span class="n">для</span> <span class="n">прямого</span> <span class="n">доступа</span> <span class="n">к</span> <span class="n">БД</span> <span class="n">PostgreSQL</span><span class="p">:</span>
+<span class="o">==========================================</span>
+ <span class="n">Имя</span> <span class="n">БД</span><span class="p">:</span> <span class="n">snatch_db</span>
+ <span class="n">Пользователь</span><span class="p">:</span> <span class="n">snatch_user</span>
+ <span class="n">Пароль</span><span class="p">:</span> <span class="n">zc03c03OwmEN80dHY</span>
+<span class="o">==========================================</span>
+</pre></div>
+</div>
+<p>Затем будет выведено сообщение про созданного суперпользователя для выполнения CI API запросов:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Внимание! Этот токен может быть использован для CI API запросов (он также сохранён в /usr/bin/snatch/ci_token.txt).
+5e298a9ef020bef92dbe0c6a8cf3cd63ea621f84
+</pre></div>
+</div>
+<p><a class="reference internal" href="#snatch_configure"><span class="std std-ref">Конфигурирование БД на Alt и РЕД ОС</span></a></p>
+<ul class="simple">
+<li><p>запуск необходимых сервисов, включая запуск самого SNatch (встроен в установку пакета на всех ОС кроме Alt и РЕД ОС)</p></li>
+</ul>
+<p><a class="reference internal" href="#snatch_start"><span class="std std-ref">Запуск SNatch на Alt и РЕД ОС</span></a></p>
+<p>По завершении <em>SNatch</em> автоматически откроется в браузере. Он доступен по адресу http://localhost:8000. Если страница не загрузилась автоматически, обновите ее через несколько секунд.</p>
+<p>Если все прошло корректно вы увидите приглашение <em>Войти</em>.</p>
+<p>Обратите внимание, что не нужно пытаться использовать здесь учетные данные БД PostgreSQL, которые были показаны ранее.</p>
+<p>Нажмите на кнопку <em>Зарегистрироваться</em> и создайте учетную запись для вашего пользователя. После этого вы автоматически выполните вход в <em>SNatch</em> и сможете загрузить ваш сценарий, полученный в <em>Natch</em>.</p>
+<p><strong>Установка для Ubuntu, Debian и Astra</strong></p>
+<p>Для установки <em>SNatch</em> скачайте соответствующий вашей ОС дистрибутив и используйте команду (пример для ubuntu24):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">snatch_x</span><span class="o">.</span><span class="n">x_ubuntu24</span><span class="o">.</span><span class="n">deb</span>
+</pre></div>
+</div>
+<p>При возникновении ошибки <em>dpkg: depencency problems prevent configuration of natch</em> выполните команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>Для обновления <em>SNatch</em> предварительно требуется удаление установленной версии. Для удаления <em>SNatch</em> из системы без удаления файла лога и каталога с хранимыми проектами используйте команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">remove</span> <span class="n">snatch</span>
+</pre></div>
+</div>
+<p>Следует обратить внимание, что при последующей установке <em>SNatch</em> вы не сможете открыть загруженные ранее проекты. Потребуется заново загрузить соответствующие архивы в <em>SNatch</em>.</p>
+<p>Если требуется полное удаление <em>SNatch</em> используйте команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="o">--</span><span class="n">purge</span> <span class="n">remove</span> <span class="n">snatch</span>
+</pre></div>
+</div>
+<p>При этом вам необходимо будет интерактивно подтвердить удаление файла лога и каталога с проектами.</p>
+<p><strong>Установка для Alt</strong></p>
+<p>Если на машине не установлен pip, то перед установкой пакета следует выполнить команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"apt-get install python3-module-pip"</span>
+</pre></div>
+</div>
+<p>Для установки <em>SNatch</em> скачайте дистрибутив и используйте команду (пример для Alt 11):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"apt-get install snatch_x.x_alt11.rpm"</span>
+</pre></div>
+</div>
+<p>Для обновления <em>SNatch</em> предварительно требуется удаление установленной версии. Для удаления <em>SNatch</em> из системы используйте команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"apt-get --purge remove snatch"</span>
+</pre></div>
+</div>
+<p><strong>Установка для РЕД ОС</strong></p>
+<p>Если на машине не установлен pip, то перед установкой пакета следует выполнить команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+<p>Для установки <em>SNatch</em> скачайте дистрибутив и используйте команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">snatch_x</span><span class="o">.</span><span class="n">x_redos8</span><span class="o">.</span><span class="n">rpm</span>
+</pre></div>
+</div>
+<p>Для обновления <em>SNatch</em> предварительно требуется удаление установленной версии. Для удаления <em>SNatch</em> из системы используйте команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">remove</span> <span class="n">snatch</span>
+</pre></div>
+</div>
+<p><a name="snatch_configure"></a></p>
+<section id="alt">
+<h3><span class="section-number">2.3.1. </span>Конфигурирование базы данных для Alt и РЕД ОС<a class="headerlink" href="#alt" title="Ссылка на этот заголовок"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Данная</span> <span class="pre">операция</span> <span class="pre">не</span> <span class="pre">требуется</span> <span class="pre">для</span> <span class="pre">ОС</span> <span class="pre">Astra</span> <span class="pre">Linux,</span> <span class="pre">Debian,</span> <span class="pre">Ubuntu.</span></code></p>
+<p>После установки вы увидите сообщение:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Для</span> <span class="n">завершения</span> <span class="n">настройки</span> <span class="n">SNatch</span> <span class="n">запустите</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">snatch</span><span class="o">/</span><span class="n">configure</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Запустите скрипт <em>configure.sh</em>.
+На Alt появится запрос пароля суперпользователя. Немногим позже в ходе выполнения конфигурирования он будет запрошен снова.
+После первого ввода пароля суперпользователя на Alt 11 появится запрос <em>Введите новый пароль суперпользователя</em> для БД PosgreSQL. Задайте и повторите его. Через пару секунд его потребуется ввести снова.</p>
+<p>На всех ОС будет выполнено создание и конфигурирование БД, после чего появится сообщение, содержащее учетные данные для подключения к БД (произвольный пароль генерируется автоматически) и команду для запуска SNatch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Учётные</span> <span class="n">данные</span> <span class="n">для</span> <span class="n">прямого</span> <span class="n">доступа</span> <span class="n">к</span> <span class="n">БД</span> <span class="n">PostgreSQL</span><span class="p">:</span>
+<span class="o">==========================================</span>
+ <span class="n">Имя</span> <span class="n">БД</span><span class="p">:</span> <span class="n">snatch_db</span>
+ <span class="n">Пользователь</span><span class="p">:</span> <span class="n">snatch_user</span>
+ <span class="n">Пароль</span><span class="p">:</span> <span class="n">zc03c03OwmEN80dHY</span>
+<span class="o">==========================================</span>
+</pre></div>
+</div>
+<p>Затем будет выведено сообщение про созданного суперпользователя для выполнения CI API запросов:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Внимание! Этот токен может быть использован для CI API запросов (он также сохранён в /usr/bin/snatch/ci_token.txt).
+5e298a9ef020bef92dbe0c6a8cf3cd63ea621f84
+</pre></div>
+</div>
+<p><a name="snatch_start"></a></p>
+</section>
+<section id="id4">
+<h3><span class="section-number">2.3.2. </span>Запуск SNatch<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p><em>SNatch</em> запускается автоматически после установки на ОС Astra Linux, Debian и Ubuntu.</p>
+<p>Для запуска после перезагрузки системы используйте скрипт <em>/usr/bin/snatch/snatch_start.sh</em></p>
+<p><strong>Первый запуск SNatch на Alt и РЕД ОС</strong></p>
+<p>Для первого запуска SNatch на Alt и РЕД ОС используйте скрипт <em>/usr/bin/snatch/run.sh</em>. Это потребует прав суперпользователя для запуска зависимых служб. По завершении вы увидите сообщение:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SNatch</span> <span class="n">запущен</span><span class="o">.</span> <span class="n">Откройте</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span> <span class="n">в</span> <span class="n">вашем</span> <span class="n">браузере</span><span class="o">.</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>При установке <em>SNatch</em> бинарные файлы распаковываются в <code class="docutils literal notranslate"><span class="pre">/usr/bin/snatch/</span></code>.</p>
+<p>Обращаем ваше внимание, что для ОС Astra Linux версии 1.7 подсистема <em>SNatch</em> не предусмотрена. Изучать результаты, полученные в Astra, можно будет на любой другой поддерживаемой ОС.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="1_natch.html" class="btn btn-neutral float-left" title="1. Что такое Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="3_launch_test_samples.html" class="btn btn-neutral float-right" title="3. Запуск тестовых примеров Natch" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.7.1', url='2_setup.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/2_setup.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="2_setup.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.7.1
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="2_setup.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/2_setup.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. Запись и воспроизведение сценариев &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="9. Анализ поверхности атаки с помощью SNatch" href="9_snatch.html" />
+    <link rel="prev" title="7. Определение источников пометки" href="7_taint_source.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Запись и воспроизведение сценариев</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">8.1. Подготовка к записи сценария</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">8.2. Запись сценария</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">8.3. Воспроизведение сценария</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">8. </span>Запись и воспроизведение сценариев</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/8_scenario_work.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="record_replay"></a></p>
+<section id="id1">
+<h1><span class="section-number">8. </span>Запись и воспроизведение сценариев<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Запись и воспроизведение сценариев являются неотъемлемыми частями работы с инструментом.
+Процессы записи и воспроизведения инициируются выполнением соответствующих команд:
+<code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">record</span></code> и <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code> соответственно.
+Обратите внимание, что обе команды необходимо запускать из рабочей директории проекта.</p>
+<p>Командная строка для запуска эмулятора формируется на лету, используя файл с опциями (<code class="docutils literal notranslate"><span class="pre">qemu_opts.ini</span></code>),
+при необходимости, в него можно вносить изменения. Подробнее про этот файл можно узнать в разделе
+<a class="reference internal" href="6_create_project.html#natch_run_script"><span class="std std-ref">Интерактивный режим создания проекта</span></a>.</p>
+<section id="id2">
+<h2><span class="section-number">8.1. </span>Подготовка к записи сценария<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Чтобы анализ записанного сценария не занимал слишком много времени,
+необходимо заранее подумать, какие именно действия будут в нём происходить.
+Чем меньше действий, тем меньше работает виртуальная машина, тем меньше времени займёт воспроизведение и анализ.
+И тем меньше будет объём данных, полученных при анализе.</p>
+<p>Кроме того, стоит позаботиться о том, чтобы во время записи анализируемого сценария
+не выполнялись никакие лишние процессы. Самые популярные из лишних процессов это графический интерфейс
+(следует предпочитать работу в консоли) и процесс автоматических обновлений (например, unattended upgrades в Ubuntu).</p>
+<p>Чтобы полученная поверхность атаки была более компактной и понятной, нужно стараться помечать конкретные
+входные данные, а не весь входящий трафик. Например, можно пометить отдельный пакет с заполненными
+полями формы, как описано в разделе <a class="reference internal" href="7_taint_source.html#taint_filter"><span class="std std-ref">Более сложная фильтрация трафика</span></a>.</p>
+<p>С той же целью нужно строить сценарии таким образом, чтобы в каждом был один условный «тест».
+Тогда будет легче определять, с какими функциями программы связаны те или иные входные данные.
+Можно создавать такие тесты в рамках одного сценария, разделяя их снапшотами.
+А затем использовать воспроизведение от одного снапшота до другого.</p>
+<p><a name="record"></a></p>
+</section>
+<section id="id3">
+<h2><span class="section-number">8.2. </span>Запись сценария<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Под записью сценария понимается работа с объектом оценки внутри виртуальной машины, где все действия записываются
+в некий журнал с целью многократного автоматического воспроизведения в дальнейшем.
+Выполнение команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">record</span></code> влечет запись одного сценария.</p>
+<p>В рамках одного проекта можно создавать несколько сценариев, то есть выполнить команду
+<code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">record</span></code> несколько раз, используя разные названия сценариев.
+Это может быть полезно, если, например, ваш объект оценки может быть запущен либо использован
+разными способами, или в образе имеется несколько объектов оценки.
+В таких ситуациях нет необходимости создавать каждый раз новый проект.</p>
+<p>Записать сценарий можно с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">record</span> <span class="pre">-s</span> <span class="pre">&lt;name&gt;</span></code>, где <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> – название сценария.
+Обратите внимание, что при указании уже существующего имени, сценарий будет перезаписан.
+Сценарии располагаются в отдельных папках с указанными пользователем названиями.
+В каждую такую папку после записи помещаются все необходимые для работы сценария файлы –
+<a class="reference internal" href="app2_configs.html#taint_config"><span class="std std-ref">конфигурационный файл для помеченных данных</span></a>,
+журнал, оверлей, логи сетевых взаимодействий и т.д.</p>
+<p>На этапе записи существует важный момент – необходимо сохранить состояние машины (сделать снапшот) перед тем,
+как будет произведена работа непосредственно с объектом оценки.
+Это необходимо для того, чтобы воспроизводить сценарий с момента сохранения снапшота.
+В противном случае воспроизводиться будет все, включая загрузку операционной системы, толку от этого не много, а воспроизвести такой
+сценарий если и получится, то понадобится очень много времени. Поэтому имеет смысл максимально ограничить полезные действия.
+Сохранение состояния машины делается в консоли <em>Natch</em> с помощью команды:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">savevm</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Где <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> название вашего снапшота. Снапшотов в процессе работы можно делать несколько и запоминать их не нужно,
+посмотреть список сохраненных снапшотов можно с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">info</span></code> (подробнее про <a class="reference internal" href="#3_natch_cmd.md#cmd_info"><span class="xref myst">natch info</span></a>),
+а также на этапе воспроизведения будет показан список сохраненных снапшотов. Обратите внимание, что название снапшота
+должно иметь длину не менее трех символов.</p>
+<p>Завершить работу с эмулятором можно любым удобным способом: ввести команду <code class="docutils literal notranslate"><span class="pre">q/quit</span></code> в консоли <em>Natch</em>, просто закрыть окно эмулятора или
+«выключить компьютер» средствами гостевой ОС. Сценарий записан, можно переходить к определению источников пометки и воспроизведению.</p>
+<p><a name="replay"></a></p>
+</section>
+<section id="id4">
+<h2><span class="section-number">8.3. </span>Воспроизведение сценария<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Когда сценарий записан, можно переходить к этапу воспроизведения, на котором анализируется все что происходило в системе и собираются логи.
+Но сначала следует определить источники пометки. Подробнее об источниках в разделе <a class="reference internal" href="7_taint_source.html#taint_source"><span class="std std-ref">Определение источников пометки</span></a>.
+Определяются они в <a class="reference internal" href="app2_configs.html#taint_config"><span class="std std-ref">конфигурационном файле для помеченных данных</span></a>, отредактировать который можно с помощью
+команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">edit</span> <span class="pre">taint</span></code>.</p>
+<p>Воспроизведение выполняется с помощью команды <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code>.
+Чтобы не попасть в ситуацию, когда сценарий записан, воспроизведение запущено, а про источники пометки забыли –
+предусмотрена проверка конфигурационного файла <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code>. Если в нем не будет зафиксировано изменений,
+перед воспроизведением будет отображено текущее состояние пометок и последует вопрос действительно ли вы хотите продолжить.
+Если вы точно уверены, что изменять конфигурационный файл вам не надо, можно использовать параметр команды
+<code class="docutils literal notranslate"><span class="pre">--no-check</span></code>, который сразу же запустит воспроизведение, минуя проверку.</p>
+<p>Помимо этого, команда <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code> имеет ряд других необязательных параметров (подробнее про <a class="reference internal" href="#3_natch_cmd.md#cmd_replay"><span class="xref myst">natch replay</span></a>).</p>
+<p>Запускать воспроизведение можно без параметров – <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">replay</span></code>.
+В связи с тем, что сценариев в проекте может быть несколько, при выполнении команды ситуация может разворачиваться несколькими способами:</p>
+<ul class="simple">
+<li><p><em>У нас один сценарий и один снапшот</em>. В этом случае воспроизведение запустится и отработает без участия пользователя.</p></li>
+<li><p><em>У нас один сценарий и несколько снапшотов</em>. Сценарий будет выбран по умолчанию, а для загрузки нужного снапшота нужно будет выбрать его из меню (с помощью стрелочек и клавиши Enter).</p></li>
+<li><p><em>У нас несколько сценариев и один снапшот (для выбранного сценария)</em>. Для выбора сценария будет отображено меню с доступными сценариями, снапшот загрузится автоматически.</p></li>
+<li><p><em>У нас несколько сценариев и несколько снапшотов (для выбранного сценария)</em>. В обоих случаях будет отображено меню.</p></li>
+</ul>
+<p>Например, во время записи был создан сценарий с названием <em>sample</em>, в процессе работы был сохранен снапшот с именем <em>state</em>,
+конфигурационный файл <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code> не нуждается в корректировке.
+Запустить воспроизведение с этого момента можно с помощью команды с параметрами:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>natch<span class="w"> </span>replay<span class="w"> </span>-s<span class="w"> </span>sample<span class="w"> </span>-S<span class="w"> </span>state<span class="w"> </span>--no-check
+</pre></div>
+</div>
+<p>На этапе воспроизведения, кроме выбора сценария и снапшота, от пользователя больше ничего не требуется.</p>
+<p>Иногда воспроизведение работает довольно медленно. Чтобы убедиться, в том, что ничего не зависло, можно в мониторе виртуальной машины
+использовать команду <code class="docutils literal notranslate"><span class="pre">info</span> <span class="pre">replay</span></code>. Она показывает текущий счётчик воспроизведённых инструкций (если ВМ запускалась со снапшота,
+счётчик начинается не с нуля). Если при повторном выполнении команды <code class="docutils literal notranslate"><span class="pre">info</span> <span class="pre">replay</span></code> счётчик не меняется,
+то воспроизведение по какой-то причине зависло. Чаще всего это происходит, если командная строка запуска эмулятора
+была сконфигурирована неправильно. В любом случае, стоит обратиться в техническую поддержку.</p>
+<p>После завершения воспроизведения создаётся архива <code class="docutils literal notranslate"><span class="pre">*.tar.zst</span></code> с результатами анализа и
+выводится статистика пометок. Если вдруг вы увидели во всех графах нули, значит в вашем сценарии ничего не пометилось, и следует проверить
+источники пометок в соответствующем сценарии (<code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">edit</span> <span class="pre">taint</span></code>), а так же удостовериться, что работа с помеченными данными была после того как был сделан снапшот системы.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="7_taint_source.html" class="btn btn-neutral float-left" title="7. Определение источников пометки" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="9_snatch.html" class="btn btn-neutral float-right" title="9. Анализ поверхности атаки с помощью SNatch" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='natch_docs_v.3.7.1', url='8_scenario_work.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../main/8_scenario_work.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/8_scenario_work.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/8_scenario_work.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6/8_scenario_work.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/8_scenario_work.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/8_scenario_work.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="8_scenario_work.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    natch_docs_v.3.7.1
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/8_scenario_work.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/8_scenario_work.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6/8_scenario_work.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/8_scenario_work.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/8_scenario_work.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="8_scenario_work.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="../main/8_scenario_work.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

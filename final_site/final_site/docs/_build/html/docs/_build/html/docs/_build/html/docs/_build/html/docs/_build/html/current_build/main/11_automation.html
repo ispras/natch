@@ -1,0 +1,822 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11. Автоматизация процессов &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="12. Примеры использования Natch" href="12_applications.html" />
+    <link rel="prev" title="10. Дополнительные возможности Natch" href="10_additional.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Автоматизация процессов</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#snatch-ci-cd">11.1. SNatch CI/CD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ci-create-project">11.1.1. ci_create_project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ci-get-status">11.1.2. ci_get_status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ci-get-proj-list">11.1.3. ci_get_proj_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ci-get-content">11.1.4. ci_get_content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ci-get-user">11.1.5. ci_get_user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ci-user-reset-password">11.1.6. ci_user_reset_password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ci-delete-project">11.1.7. ci_delete_project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">11.2. Автоматизированное выполнение</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">11.2.1. Реализация автоматизации</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">11.2.2. Адаптация скриптов автоматизации</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#automation-sh">11.2.2.1. automation.sh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-record-exp">11.2.2.2. run_record_<scenarioname>.exp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snatch-snatch-py">11.2.2.3. snatch/snatch.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">11.2.3. Пример автоматической проверки</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app7_oo_preparation.html">Ж. Рекомендации по подготовке и анализу объекта оценки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11. </span>Автоматизация процессов</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/11_automation.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="auto"></a></p>
+<section id="id1">
+<h1><span class="section-number">11. </span>Автоматизация процессов<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>В этом разделе представлено API для получения информации из SNatch, а также показано как можно автоматизировать выполнение сценариев
+работы <em>Natch</em> от создания проекта до получения финального PDF-отчета на примере наших тестовых сценариев.</p>
+<p><a name="snatch_cicd"></a></p>
+<section id="snatch-ci-cd">
+<h2><span class="section-number">11.1. </span>SNatch CI/CD<a class="headerlink" href="#snatch-ci-cd" title="Ссылка на этот заголовок"></a></h2>
+<p>API реализовано бэкэндом SNatch, поэтому чтобы им пользоваться, необходимо запустить скрипт <code class="docutils literal notranslate"><span class="pre">/usr/bin/snatch/snatch_start.sh</span></code>, как и при браузерном использовании.
+Для выполнения авторизации при запросе возможно использовать один из двух вариантов:</p>
+<ol class="arabic simple">
+<li><p>Базовая аутентификация, при которой требуется использовать ключ <code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&quot;&lt;login&gt;:&lt;password&gt;&quot;</span></code>, используя учетные данные созданного в веб-браузере пользователя.</p></li>
+<li><p>Bearer-токен. При установке <em>SNatch</em> на последнем этапе создаётся пользователь БД ci_bot, для которого в консоль выводится токен (он также сохраняется в файл <code class="docutils literal notranslate"><span class="pre">/usr/bin/snatch/ci_token.txt</span></code>). Это отдельный пользователь для выполнения CI операций, который имеет доступ только к своим проектам. Для выполнения авторизации при запросе требуется использовать ключ <code class="docutils literal notranslate"><span class="pre">-H</span> <span class="pre">&quot;Authorization:</span> <span class="pre">Token</span> <span class="pre">&lt;YOUR_TOKEN_GOES_HERE&gt;&quot;</span></code>.</p></li>
+</ol>
+<section id="ci-create-project">
+<h3><span class="section-number">11.1.1. </span>ci_create_project<a class="headerlink" href="#ci-create-project" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p>POST запрос ci_create_project для создания проекта (аналогично проекту в браузерной версии, впоследствии может открываться и из браузера). Сопровождается обязательным параметром file, и необязательными project_name и async.</p></li>
+</ul>
+<p>Пример запроса:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span><span class="s2">"&lt;login&gt;:&lt;password&gt;"</span><span class="w"> </span>-F<span class="w"> </span><span class="s2">"project_name=test_proj_name"</span><span class="w"> </span>-F<span class="w"> </span><span class="s2">"async=true"</span><span class="w"> </span>-F<span class="w"> </span><span class="s2">"file=@/home/snatch_traces/example.tar.zst"</span><span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/ci_create_project/
+</pre></div>
+</div>
+<p>или</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Token &lt;YOUR_TOKEN_GOES_HERE&gt;"</span><span class="w"> </span>-F<span class="w"> </span><span class="s2">"project_name=test_proj_name"</span><span class="w"> </span>-F<span class="w"> </span><span class="s2">"async=true"</span><span class="w"> </span>-F<span class="w"> </span><span class="s2">"file=@/home/snatch_traces/example.tar.zst"</span><span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/ci_create_project/
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>file —  путь к архиву, полученному от Natch</p></li>
+<li><p>project_name — имя для создаваемого проекта («default_name» по умолчанию)</p></li>
+<li><p>async — для асинхронного создания проекта (по умолчанию False). Если установлен в True, то ответ на запрос вернется сразу и будет содержать дополнительное поле task_id для отслеживания процесса создания. В этом случае пользователь должен самостоятельно определить, в какой момент создание проекта было завершено, чтобы иметь возможность запрашивать его данные. Для состояния False процесс создания проекта будет синхронным, и ответ вернется по его завершении.</p></li>
+</ul>
+<p>Пример ответа:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w"> </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b9d7d69a-8783-464c-9f1d-5a72ac74678a"</span><span class="p">,</span><span class="w"> </span><span class="nt">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c9596e03-e007-4bac-9d81-837094d54e2b"</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>status — принимает значение «200» для корректного запроса и «400» для ошибочного.</p></li>
+<li><p>project_id — идентификатор созданного проекта, по которому можно обращаться при запросе содержимого.</p></li>
+<li><p>task_id — идентификатор задачи создания проекта. Возвращается, если в запросе использовался параметр «async=true». Используется для уточнения статуса задачи.</p></li>
+</ul>
+</section>
+<section id="ci-get-status">
+<h3><span class="section-number">11.1.2. </span>ci_get_status<a class="headerlink" href="#ci-get-status" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p>GET запрос ci_get_status для уточнения статуса задачи создания проекта при использовании асинхронного подхода. Сопровождается обязательным параметром task_id.</p></li>
+</ul>
+<p>Пример запроса:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span><span class="s2">"&lt;login&gt;:&lt;password&gt;"</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>-G<span class="w"> </span>http://localhost:8000/ci_get_status/<span class="w"> </span>-d<span class="w"> </span><span class="nv">task_id</span><span class="o">=</span>c9596e03-e007-4bac-9d81-837094d54e2b
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>task_id — идентификатор задачи, полученный в ответном сообщении запроса ci_create_project.</p></li>
+</ul>
+<p>Пример ответа:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w"> </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w"> </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>status — принимает значение «200» для корректного запроса и «400» для ошибочного.</p></li>
+<li><p>state — описывает состояние выполняемой задачи, и может принимать значения [«REVOKED», «PROGRESS», …, «SUCCESS»]. Из этих состояний наибольший интерес представляет «PROGRESS», который гласит о корректном процессе выполнения задачи, и «SUCCESS», который обозначает корректное завершение задачи.</p></li>
+<li><p>result — содержит сопроводительное сообщение о состоянии задачи.</p></li>
+</ul>
+</section>
+<section id="ci-get-proj-list">
+<h3><span class="section-number">11.1.3. </span>ci_get_proj_list<a class="headerlink" href="#ci-get-proj-list" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p>GET запрос ci_get_proj_list для запроса списка созданных в SNatch проектов.</p></li>
+</ul>
+<p>Пример запроса:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span><span class="s2">"&lt;login&gt;:&lt;password&gt;"</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>-G<span class="w"> </span>http://localhost:8000/ci_get_proj_list/
+</pre></div>
+</div>
+<p>Пример ответа:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w"> </span><span class="nt">"proj_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_project"</span><span class="p">,</span><span class="w"> </span><span class="nt">"proj_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc5f666f-e5d4-41f8-93ce-e9b99bb5c0d1"</span><span class="p">,</span><span class="w"> </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">}]}</span>
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>status — принимает значение «200» для корректного запроса и «400» для ошибочного.</p></li>
+<li><p>proj_list — содержит список созданных (как с помощью автоматизации так и через пользовательский UI) проектов. Каждый элемент списка содержит следующие поля: title — имя проекта; proj_id — идентификатор проекта; description - дополнительная информация о проекте (задаётся через UI).</p></li>
+</ul>
+</section>
+<section id="ci-get-content">
+<h3><span class="section-number">11.1.4. </span>ci_get_content<a class="headerlink" href="#ci-get-content" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p>GET запрос ci_get_content для получения содержимого проекта. Сопровождается обязательными параметрами project_id и type.</p></li>
+</ul>
+<p>Пример запроса:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span><span class="s2">"&lt;login&gt;:&lt;password&gt;"</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>-G<span class="w"> </span>http://localhost:8000/ci_get_content/<span class="w"> </span>-d<span class="w"> </span><span class="nv">project_id</span><span class="o">=</span>b9d7d69a-8783-464c-9f1d-5a72ac74678a<span class="w"> </span>-d<span class="w"> </span><span class="nv">type</span><span class="o">=</span>callgraph
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>project_id — идентификатор проекта, полученный в ответе запроса ci_create_project.</p></li>
+<li><p>type — тип запрашиваемого содержимого. Может принимать одно из значений:  [callgraph, interp_callgraph, resources, process_tree, files, process_info, process_timeline, attack_surface].</p></li>
+</ul>
+<p>Пример ответа:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w"> </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"graph_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"pname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gpugi"</span><span class="p">,</span><span class="w"> </span><span class="nt">"proc"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">"cg_array"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"0x24e8"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">}]}]</span><span class="w"> </span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>status — принимает значение «200» для корректного запроса и «400» для ошибочного.</p></li>
+<li><p>content — запрашиваемое содержимое в json-формате.</p></li>
+</ul>
+<p>Пример ответа на некорректный запрос:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400"</span><span class="p">,</span><span class="w"> </span><span class="nt">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can not return content for provided type. Please make sure that type is one of the following: callgraph, interp_callgraph, resources, process_tree, files, process_info, process_timeline, attack_surface."</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>status — статус запроса, в случае ошибки всегда будет принимать значение «400».</p></li>
+<li><p>msg — сопроводительное сообщение об ошибке.</p></li>
+</ul>
+</section>
+<section id="ci-get-user">
+<h3><span class="section-number">11.1.5. </span>ci_get_user<a class="headerlink" href="#ci-get-user" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p>GET запрос ci_get_user для получения списка пользователей.</p></li>
+</ul>
+<p>Пример запроса:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>-G<span class="w"> </span>http://localhost:8000/ci_get_users/<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Token &lt;YOUR_TOKEN_GOES_HERE&gt;"</span>
+</pre></div>
+</div>
+<p>Пример ответа:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ci_bot"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alexey"</span><span class="p">}]</span>
+</pre></div>
+</div>
+</section>
+<section id="ci-user-reset-password">
+<h3><span class="section-number">11.1.6. </span>ci_user_reset_password<a class="headerlink" href="#ci-user-reset-password" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p>POST запрос ci_user_reset_password для сброса пароля пользователю. При этом пользователю можно установить как желаемый пароль, так и использовать сгенерированный произвольный пароль.</p></li>
+</ul>
+<p>Пример запроса для установки желаемого пароля:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/ci_user_reset_password/<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Token &lt;YOUR_TOKEN_GOES_HERE&gt;"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'{ "user_id": 3, "password": "NewSecurePass123" }'</span>
+</pre></div>
+</div>
+<p>Пример ответа:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"ok"</span><span class="p">,</span><span class="nt">"user_id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">"new_password"</span><span class="p">:</span><span class="s2">"NewSecurePass123"</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Пример запроса для установки произвольного пароля:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/ci_user_reset_password/<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Token &lt;YOUR_TOKEN_GOES_HERE&gt;"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'{ "user_id": 3, "password": "" }'</span>
+</pre></div>
+</div>
+<p>Пример ответа:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"ok"</span><span class="p">,</span><span class="nt">"user_id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">"new_password"</span><span class="p">:</span><span class="s2">"5FIoIZnabuHg"</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ci-delete-project">
+<h3><span class="section-number">11.1.7. </span>ci_delete_project<a class="headerlink" href="#ci-delete-project" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p>POST запрос ci_delete_project для удаления проекта. Сопровождается необязательным параметром project_id, содержащим id для удаляемого проекта. Если значение id = 0 или не указано, то удалятся все проекты.</p></li>
+</ul>
+<p>Пример запроса:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span><span class="s2">"&lt;login&gt;:&lt;password&gt;"</span><span class="w"> </span>-F<span class="w"> </span><span class="s2">"project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"</span><span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/ci_delete_project/
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>project_id — идентификатор проекта (по умолчанию отсутствует и в этом сценарии удаляет все проекты)
+Пример ответа:</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w"> </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_id=b9d7d69a-8783-464c-9f1d-5a72ac74678a"</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>status — принимает значение «200» для корректного запроса и «400» для ошибочного.</p></li>
+<li><p>project_id — идентификатор удаленного проекта.</p></li>
+</ul>
+<p><a name="automation"></a></p>
+</section>
+</section>
+<section id="id2">
+<h2><span class="section-number">11.2. </span>Автоматизированное выполнение<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>После обновления <em>Natch</em> ранее записанные сценарии могут не работать. Перезапись тестовых сценариев может быть достаточно трудоёмка.
+Здесь на помощь приходит автоматизация. Также она будет полезна при необходимости встраивания <em>Natch</em> в CI/CD.
+Средствами <code class="docutils literal notranslate"><span class="pre">bash</span></code> и <code class="docutils literal notranslate"><span class="pre">expect</span></code> возможно автоматизировать создание проекта, запись сценария и его последующее воспроизведение, а с помощью <code class="docutils literal notranslate"><span class="pre">python</span></code> - создание проекта в <em>SNatch</em> и проверку его содержания. Затем при помощи <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> <em>SNatch</em> запускается в браузере и генерируется PDF отчет.</p>
+<p>Автоматизация записи сценария возможна при использовании консольных действий на Linux (через telnet) или Windows 10-11 (при использовании ssh).</p>
+<p><strong>Важно!</strong> Перед использованием автоматизации убедитесь в том, что</p>
+<ul class="simple">
+<li><p><em>Natch</em> установлен и установка зависимостей была выполнена.</p></li>
+<li><p><em>SNatch</em>, соответствующий установленной версии <em>Natch</em>, установлен. Для Alt и РЕД ОС также должно быть выполнено конфигурирование и первый запуск.</p></li>
+</ul>
+<section id="id3">
+<h3><span class="section-number">11.2.1. </span>Реализация автоматизации<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<p>В архиве с тестовым примером (см. раздел <a class="reference internal" href="#4_launch_test_samples.md#test_suite"><span class="xref myst">Получение образа и тестовых примеров</span></a> находится скрипт <code class="docutils literal notranslate"><span class="pre">automation.sh</span></code>,
+шаблоны записи сценариев для тестовых примеров (<code class="docutils literal notranslate"><span class="pre">run_record_sample1.exp</span></code> и <code class="docutils literal notranslate"><span class="pre">run_record_sample2.exp</span></code>), а также Python-скрипты в каталоге <code class="docutils literal notranslate"><span class="pre">snatch</span></code> и вспомогательный скрипт <code class="docutils literal notranslate"><span class="pre">wait4release.sh</span></code>.
+Необходимо сохранить все файлы в одном каталоге и запустить скрипт <code class="docutils literal notranslate"><span class="pre">automation.sh</span></code>.</p>
+<p>Скрипт выполняет следующие действия:</p>
+<ul class="simple">
+<li><p>Устанавливает требующиеся пакеты (expect, selenium и др.).</p></li>
+<li><p>Удаляет последний проект, созданный при автоматизированном выполнении.</p></li>
+<li><p>Создает новый проект в подкаталоге <code class="docutils literal notranslate"><span class="pre">autotest</span></code>. Создание нового проекта описано в разделе <a class="reference internal" href="6_create_project.html#create_project"><span class="std std-ref">Создание проекта</span></a>.</p></li>
+</ul>
+<p>Далее, для каждого из двух примеров:</p>
+<ul class="simple">
+<li><p>Модифицирует конфигурационный файл qemu_opts.ini, содержащий настройки QEMU.</p></li>
+<li><p>На основе шаблона записи сценария создает expect скрипт <code class="docutils literal notranslate"><span class="pre">record_sampleX.exp</span></code> для записи тестового сценария.</p></li>
+<li><p>Используя созданный скрипт, записывает тестовый сценарий. Запись сценария вручную описана в разделе <a class="reference internal" href="8_scenario_work.html#record"><span class="std std-ref">Запись сценария</span></a>.</p></li>
+<li><p>Обновляет конфигурационный файл taint.cfg для пометки данных, которые необходимо отслеживать.</p></li>
+<li><p>Выполняет воспроизведение записанного сценария. Воспроизведение сценария детально описано в разделе <a class="reference internal" href="8_scenario_work.html#replay"><span class="std std-ref">Воспроизведение сценария</span></a>.</p></li>
+<li><p>Вспомогательный скрипт <code class="docutils literal notranslate"><span class="pre">wait4release.sh</span></code> используется для ожидания завершения работы natch и проверки используемого для диагностики порта.</p></li>
+<li><p>Выполняет распаковку поверхности атаки. Описание используемой команды смотрите в пункте <a class="reference internal" href="#3_natch_cmd.md#cmd_coverage"><span class="xref myst">natch coverage</span></a></p></li>
+</ul>
+<p>После выполнения скрипта в подкаталоге <code class="docutils literal notranslate"><span class="pre">autotest</span></code> появляются архивы <code class="docutils literal notranslate"><span class="pre">autotest+sample1.tar.zst</span></code> и <code class="docutils literal notranslate"><span class="pre">autotest+sample2.tar.zst</span></code> для дальнейшего анализа.</p>
+<p>Затем:</p>
+<ul class="simple">
+<li><p>Выполняется запуск предварительно установленного <em>SNatch</em>.</p></li>
+<li><p><em>SNatch</em> открывается в браузере, выполняется создание учетной записи, а затем вход с использованием этой учетной записи.</p></li>
+<li><p>Средствами SNatch CI API (см. раздел <a class="reference internal" href="#snatch_cicd"><span class="std std-ref">SNatch CI/CD</span></a>) сгенерированные архивы загружаются в базу данных <em>SNatch</em> (создаются проекты).</p></li>
+<li><p>После загрузки проверяются различные аналитики содержимого проектов: Call Graph, Interpreter Call Graph, Resources, Process Tree, Files, Process Info, Process Timeline. Также выводится краткая информация, содержащая размер в байтах каждого из полученного вывода JSON и начало блока данных.</p></li>
+<li><p><em>SNatch</em> открывается в браузере, где поочередно открывается каждый проект, выполняется переход на Module Graph для активации этого графа в отчете,
+а затем генерируется сам PDF отчет, который в конце сохраняется в каталоге ~/Downloads. Этими действиями управляет <code class="docutils literal notranslate"><span class="pre">snatch.py</span></code> на основе <em>Selenium</em>.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3><span class="section-number">11.2.2. </span>Адаптация скриптов автоматизации<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p>Скрипты автоматизации содержат комментарии, которые помогут вам адаптировать их под свои проекты. Для этого требуются следующие действия:</p>
+<section id="automation-sh">
+<h4><span class="section-number">11.2.2.1. </span>automation.sh<a class="headerlink" href="#automation-sh" title="Ссылка на этот заголовок"></a></h4>
+<ul class="simple">
+<li><p>В функции <code class="docutils literal notranslate"><span class="pre">introAndPrompts</span></code> в параметре <code class="docutils literal notranslate"><span class="pre">path2binaries</span></code> указывается путь к бинарным файлам. В <code class="docutils literal notranslate"><span class="pre">place4binaries</span></code> указывается <code class="docutils literal notranslate"><span class="pre">h</span></code> в случае расположения бинарных файлов на хосте, <code class="docutils literal notranslate"><span class="pre">g</span></code> - на гостевом образе (виртуальной машине).</p></li>
+<li><p>В функции <code class="docutils literal notranslate"><span class="pre">checkRequirements</span></code> отредактируйте параметры <code class="docutils literal notranslate"><span class="pre">requirements</span></code> и <code class="docutils literal notranslate"><span class="pre">pip_requirements</span></code>, указав через пробел пакеты, которые требуется проверить/установить на хост.</p></li>
+<li><p>В функции <code class="docutils literal notranslate"><span class="pre">createProject</span></code> можно добавить дополнительные параметры для запуска <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code> в параметре <code class="docutils literal notranslate"><span class="pre">natchRun</span></code>.</p></li>
+<li><p>В функции <code class="docutils literal notranslate"><span class="pre">recAndReplay</span></code> измените параметр <code class="docutils literal notranslate"><span class="pre">samples</span></code>, указав через пробел названия тестовых сценариев.</p></li>
+<li><p>Эти названия тестовых сценариев соответствуют названиям в именах скриптов <code class="docutils literal notranslate"><span class="pre">run_record_&lt;scenarioname&gt;.exp</span></code>, которые также должны быть созданы.</p></li>
+<li><p>В функции <code class="docutils literal notranslate"><span class="pre">preRecordConfiguration</span></code> отредактируйте путь к <code class="docutils literal notranslate"><span class="pre">rootFS</span></code>, а также перенправляемые порты в <code class="docutils literal notranslate"><span class="pre">forwPorts</span></code>.</p></li>
+<li><p>В функции <code class="docutils literal notranslate"><span class="pre">preReplayConfiguration</span></code> отредактируйте генерируемый <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code> файл (см. раздел <a class="reference internal" href="app2_configs.html#taint_config"><span class="std std-ref">Конфигурационный файл для помеченных данных</span></a>),
+в котором указываются помечаемые файлы, сокеты, протоколы, порты и т.д.</p></li>
+</ul>
+<p>Также необходимо иметь в виду следующее:</p>
+<ul class="simple">
+<li><p>Скрипт ищет qcow2 образ в каталоге со скриптом. Убедитесь в том, что в каталоге только один qcow2 файл или отредактируйте параметр <code class="docutils literal notranslate"><span class="pre">qcow2Path</span></code>.</p></li>
+<li><p>Имя проекта <code class="docutils literal notranslate"><span class="pre">autotest</span></code> можно изменить в параметре <code class="docutils literal notranslate"><span class="pre">projName</span></code>.</p></li>
+</ul>
+</section>
+<section id="run-record-exp">
+<h4><span class="section-number">11.2.2.2. </span>run_record_<scenarioname>.exp<a class="headerlink" href="#run-record-exp" title="Ссылка на этот заголовок"></a></h4>
+<ul class="simple">
+<li><p>Отредактируйте код, начиная с <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">OS</span> <span class="pre">login</span></code>, причем код до <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Connect</span> <span class="pre">from</span> <span class="pre">host</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">VM</span> <span class="pre">by</span> <span class="pre">telnet</span> <span class="pre">to</span> <span class="pre">save</span> <span class="pre">a</span> <span class="pre">snapshot</span></code> является подготовительным и не попадет в записываемый сценарий.
+Записываемый сценарий, который вы планируете в дальнейшем анализировать, должен начинаться с <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">When</span> <span class="pre">snapshot</span> <span class="pre">is</span> <span class="pre">saved,</span> <span class="pre">everything</span> <span class="pre">is</span> <span class="pre">ready</span> <span class="pre">to</span> <span class="pre">record</span> <span class="pre">a</span> <span class="pre">scenario</span></code>.
+Используйте любое руководство по <code class="docutils literal notranslate"><span class="pre">expect</span></code> для получения подробной информации о реализации.</p></li>
+<li><p>Для пробрасывания порта из хоста в образ используйте <code class="docutils literal notranslate"><span class="pre">hostfwd</span></code> параметр у <code class="docutils literal notranslate"><span class="pre">-netdev</span></code> строки запуска <em>Natch</em> (см. пример в <code class="docutils literal notranslate"><span class="pre">run_record_sample2.exp</span></code>).</p></li>
+<li><p>Когда сценарий записан, и ваш скрипт функционирует корректно, вы можете отключить вывод из виртуальной машины. Для этого нужно раскомментировать строку <code class="docutils literal notranslate"><span class="pre">#log_user</span> <span class="pre">0</span></code>, которая добавляется в создаваемый скрипт записи сценария в функции <code class="docutils literal notranslate"><span class="pre">preRecordConfiguration</span></code> скрипта <code class="docutils literal notranslate"><span class="pre">automation.sh</span></code>.</p></li>
+</ul>
+</section>
+<section id="snatch-snatch-py">
+<h4><span class="section-number">11.2.2.3. </span>snatch/snatch.py<a class="headerlink" href="#snatch-snatch-py" title="Ссылка на этот заголовок"></a></h4>
+<ul class="simple">
+<li><p>Отредактировать название и путь к файлу лога можно в строке <code class="docutils literal notranslate"><span class="pre">logfile</span> <span class="pre">=</span></code></p></li>
+<li><p>По умолчанию, тесты запускаются в Firefox. Можно использовать Chrome, для этого нужно заменить значение FF на CHROME в строке <code class="docutils literal notranslate"><span class="pre">useBrowser</span> <span class="pre">=</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="id5">
+<h3><span class="section-number">11.2.3. </span>Пример автоматической проверки<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p>Выполните скрипт <code class="docutils literal notranslate"><span class="pre">automation.sh</span></code>. При этом появляется описание действий, выполняемых скриптом. Также определяется образ qcow2, который расположен в каталоге со скриптом:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ISP RAS Natch - Automation Sample
+
+It automatically performs the following:
+1. Installs the required packages (only for the first time).
+2. Cleans up the previous autotest project.
+3. Creates a new project (natch create).
+4. For both existing samples:
+ ∟ Prepares a required configuration (qemu_opts.ini, an expect script for making the record).
+ ∟ Records a predefined scenario (natch record).
+ ∟ Configuring the tainting (taint.cfg).
+ ∟ Replays the recorded scenario (natch replay).
+ ∟ Extracts coverage (natch extract coverage).
+5. Opens SNatch to create an account and try login.
+6. The generated archives are added to SNatch DB using SNatch CI API.
+7. The content of the projects is tested by the available options of SNatch CI API.
+8. The PDF reports for the projects are generated by SNatch via browser and saved to Downloads directory
+
+Image name:     test_image_debian
+QCOW2 image:    /vms/test_image/test_image_debian.qcow2
+Project dir:    /vms/test_image/autotest
+Modules dir:    /home/user (on guest)
+</pre></div>
+</div>
+<p>По запросу требуется ввести пароль суперпользователя. После этого начнется поиск и установка требующихся пакетов. Пароль сохраняется в файл sudo.pwd в текущую директорию, и в дальнейшем запрашиваться не будет. После ввода пароля следует установка требующихся компонент.
+Затем запускается создание проекта командой <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">create</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>spawn natch create autotest /vms/test_image/test_image_debian.qcow2
+Directory for project files /vms/test_image/autotest was created
+OS: Linux
+
+Image: /vms/test_image/test_image_debian.qcow2
+
+-&gt; Attention! To create a project you will need a root password
+
+
+Checking natch-qemu-img utility...
+Utility natch-qemu-img is ok
+
+-&gt; Attention! Some options need to mount your image
+Do you agree to mount image? [Y/n] Y
+
+Common options
+Enter RAM size with suffix G or M (e.g. 4G or 256M): 4G
+Select mode you want to run emulator: graphic [G/g] (default), text [T/t] or vnc [V/v]
+
+Network option
+Do you want to use port forwarding? [Y/n] N
+
+Modules part
+Do you want to create module config? [Y/n] Y
+Select way to point directory with modules - from HOST [H/h] system (default) or GUEST [G/g] system: g
+Enter path to binaries dir in guest system (or 'exit' to skip): /home/user
+
+Debug info part
+Do you want to get debug info for system modules? [Y/n] Y
+Do you want to set additional parameters? (many questions) [y/N] N
+
+Generate config file task.cfg? (recommended) [Y/n] Y
+
+The steps above require a root password
+
+[sudo] password for user:
+Mounting Image - OK
+
+[Copying files to host system...]
+Status: Found: 2
+Umounting Image - OK
+
+
+──────────────────────── Module Configuration Section ────────────────────────
+
+
+Mounting Image - OK
+
+[Parsing received folder...]
+Status: Found: 2279
+
+[Searching Debugging Information...]
+Status: Found: 2 | Skipped: 5
+
+USER statistics:
+Images have been found                                            :     OK
+Added images                                                      :     7
+Added debugging information                                       :     2
+Added tied information                                            :     0
+
+
+ld-linux-* is always skipped and is not counted in calculations
+Your config file module.cfg was created
+Umounting Image - OK
+Mounting Image - OK
+
+...
+
+Your config file '/vms/test_image/autotest/module.cfg' for modules was updated
+
+Configuration file natch.cfg was created.
+You can edit it before using Natch.
+
+Settings completed! Now you can launch Natch and enjoy! :)
+
+
+File 'settings_autotest.ini' was saved here: /vms/test_image
+You can use it for creating other projects
+
+Checking the projects completeness...
+/vms/test_image/autotest/natch.cfg                 +
+/vms/test_image/autotest/qemu_opts.ini             +
+/vms/test_image/autotest/service_info.ini          +
+/vms/test_image/autotest/module.cfg                +
+Everything is fine!
+</pre></div>
+</div>
+<p>Следом появляется сообщение о создании архивной копии qemu_opts.ini. В одном проекте мы будем записывать
+два независимых сценария, и поэтому хотим начинать настройку опций QEMU с чистого конфигурационного файла,
+сгенерированного при создании проекта.</p>
+<p>Далее создается скрипт записи:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Created the record script /vms/test_image/autotest/record_sample1.exp
+</pre></div>
+</div>
+<p>После чего стартует запись сценария: <code class="docutils literal notranslate"><span class="pre">Recording</span> <span class="pre">a</span> <span class="pre">sample1</span> <span class="pre">scenario...</span></code>. На этом этапе запускается скрипт <code class="docutils literal notranslate"><span class="pre">record_sample1.exp</span></code>.
+Этот скрипт загружает виртуальную машину и автоматически записывается тестовый сценарий для первого примера.</p>
+<p>По завершении работы expect-скрипта активность возвращается к <code class="docutils literal notranslate"><span class="pre">automation.sh</span></code> и появляется сообщение о том, что была выполнена настройка <code class="docutils literal notranslate"><span class="pre">taint.cfg</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>taint.cfg: set tainting sample.txt
+</pre></div>
+</div>
+<p>Затем запускается воспроизведение записанного сценария:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Replaying the sample1 scenario...
+spawn natch replay -s sample1 -S autosave
+
+Natch_v.3.4
+(c) 2020-2025 ISP RAS
+
+Waiting for the icount 13142751405 to be reached...
+Start icount 13142751405 has been reached
+Reading Natch config file...
+Checking config file '/vms/test_image/autotest/module.cfg'...
+Natch is working in NORMAL mode
+
+Network logging enabled
+Task graph enabled
+Module graph enabled
+Taint enabled
+Config is loaded.
+File monitor storage /vms/test_image/autotest/output_sample1/filemon.log created successfully
+Module binary log file /vms/test_image/autotest/output_sample1/log_m_b.log created successfully
+Modules: started reading binaries
+Modules: finished with 87 of 87 binaries for analysis
+thread_monitor: identification method is set to a complex developed at isp approach
+Started thread monitoring
+Tasks: config file is open.
+Network json log file: "/vms/test_image/autotest/output_sample1/tnetwork.json"
+Taint log storage file /vms/test_image/autotest/output_sample1/taint.log created successfully
+Binary call_stack log file /vms/test_image/autotest/output_sample1/log_cs_b.log created successfully
+Tainting file: sample.txt
+(natch) Detected module /vms/test_image/autotest/debug_info/guest_system/lib/54ce98cf6f65914636ace1714872566n
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/126d561af479fb6bad3ace2334af40f1/libc-2n
+./test_sample
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/0b0c82f0b1cea7f0db918daf79e6f5b6/test_sn
+I am a just function
+res = 47270
+value is even
+I am a just function
+Address for curl: www.google.com
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/7e29edbe29acf0ed4457899b90f65de5/test_sn
+File /home/user/Sample1/sample.txt is opened, handle = 0x0000000000000003
+File /home/user/Sample1/sample.txt is opened, handle = 0x0000000000000001
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/cb5e1aed69e5825344104409380618b7/libffin
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/855da59f8deb05d1edb1391aa41a5545/libdb-n
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/2e93e13b373621a7d3aaddacd6701fa8/libssln
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/791f890164e45876863a379f3cc80d7d/libpthn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/37c74ba908b7557fdc1301b97e4599e2/libkeyn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/380061e32442beddc07979d12fc4a1e8/libdl-n
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/d9e8cb528c03d87895f5af76e7da7341/libresn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/d861ebb9591e1df1a976daed3647b3da/libkrbn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/66c3bc8b77614fd5412317f9b504eca0/libcomn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/fe8eadb6d18a039846578f3c06ff4de7/libk5cn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/b39a79b8f3c07df3c91e50a2fb8ed970/libkrbn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/4f9f1f95098b2baaba560f5e1ff6f9a3/libgssn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/83c9488ccb57383a628a199f9e7b17cb/libcryn
+Detected module /vms/test_image/autotest/debug_info/guest_system/lib/8e12a00fd2769b5130e11cf3a773289f/libz.sn
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0File /home/user/Sample1/sample.txt is ope1
+100 23962    0 23962    0     0   164k      0 --:--:-- --:--:-- --:--:--  164k
+result file: sample.txt
+user@debian:~/Sample1$
+============ Statistics ============
+
+Tainted files             : 1
+Tainted packets           : 21
+Tainted processes         : 3
+Tainted modules           : 3
+Tainted file reads        : 0
+Tainted memory accesses   : 37518
+
+====================================
+
+
+Compressing data. Please wait..
+
+autotest+sample1.tar.zst completed
+</pre></div>
+</div>
+<p>После чего выполняется поиск поверхности атаки, результаты которого добавляются в созданный архив:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Extract coverage for sample1
+spawn natch coverage extract -s sample1
+[sudo] password for user:
+Mounting Image - OK
+
+[Reading Module Config...]
+Status: Found: 7
+
+[Searching Images By Numbers...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7/7 100% 0:00:00
+Status: Found: 7
+
+[Parsing Cov64 Modules...]
+Status: Found: 43 | Skipped: 40
+
+[Parsing Cov64 BBs...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45462/45462 100% 0:00:00
+Status: Found: 45462
+
+[Parsing VmiDbs...]
+Progress:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7/7 100% 0:00:01
+Status: Found: 7
+
+[Filling Info For Images...]
+WARNING: Image ../debug_info/guest_system/lib/80f502f2064bc93c4c673ace7eed5208/redis-check-rdb: Coverage for was not
+found!
+WARNING: Image ../debug_info/guest_system/lib/6ec6d8037c4dfc1ea5e9fbae56d98d33/redis-benchmark: Coverage for was not
+found!
+WARNING: Image ../debug_info/guest_system/lib/4e4fc92774670e5c02c60d937d19688c/redis-cli: Coverage for was not found!
+WARNING: Image ../debug_info/guest_system/lib/260ebb825b267c3f6d01a8840240299c/lua: Coverage for was not found!
+WARNING: Image ../debug_info/guest_system/lib/68b38b1fc4ba765d9cdf4e68f0332e38/luac: Coverage for was not found!
+Progress:    ━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2/7  29% 0:00:00
+Status: Found: 2 | Skipped: 5
+
+[Generating Lcov...]
+Status: Found: 2
+Umounting Image - OK
+Found 2 entries.
+Found common filename prefix "/vms/test_image/autotest/output_sample1/source_files/home/user"
+Generating output.
+Processing file Sample1/test_sample_2.c
+  lines=11 hit=11 functions=2 hit=2
+Processing file Sample1/test_sample.c
+  lines=41 hit=38 functions=6 hit=6
+Overall coverage rate:
+  lines......: 94.2% (49 of 52 lines)
+  functions......: 100.0% (8 of 8 functions)
+
+Compressing data. Please wait..
+
+Archive autotest+sample1.tar.zst updated!
+</pre></div>
+</div>
+<p>Далее скрипт возвращает нам сгенерированный при создании проекта qemu_opts.ini, включает перенаправление порта,
+требующееся для второго сценария, и шаги, начиная с создания скрипта записи, повторяются снова для второго примера.
+По завершении процедуры для обоих примеров появляется сообщение:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SNatch started.
+</pre></div>
+</div>
+<p>После чего запускается <code class="docutils literal notranslate"><span class="pre">snatch.py</span></code>. Он открывает <em>SNatch</em> в браузере, выполняется регистрация учетной записи с произвольным именем пользователя и паролем. Учетные данные выводятся в консоль и записываются в файл <code class="docutils literal notranslate"><span class="pre">snatch.creds</span></code>, в лог и отчет. Браузер закрывается.</p>
+<p>Сгенерированные архивы загружаются в SNatch и проходят проверку:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>INFO [upload:30] Uploading /vms/_test/autotest/autotest+sample1.tar.zst to SNatch
+INFO [upload:53] Upload OK, project_id: 07c497e0-4c2c-472e-8d34-2fbab688ad52
+INFO [upload:89] Obtained the callgraph data:
+Length: 229950 bytes
+Data: [{"pname": "swapper/0", "proc": 1, "cg_array": [{"0x2c95f4": {"children": [{"0x2c91c0": {"children":...
+WARNING [upload:85] interp_callgraph data is blank
+INFO [upload:89] Obtained the resources data:
+Length: 17165 bytes
+Data: [{"resources": {"modules": [{"name": "/boot/vmlinuz-5.10.0-17-amd64", "taint": False, "symbolless": ...
+INFO [upload:89] Obtained the process_tree data:
+Length: 2699 bytes
+Data: {"name": ".", "children": [{"proc": 0, "name": "unknown", "children": [], "uids": [], "pid": 0, "arg...
+INFO [upload:89] Obtained the files data:
+Length: 10002 bytes
+Data: [{"name": "/dev/ttyS0", "tainted": 1, "list": [{"proc": 15, "name": "curl", "uids": [{"uid": 1000, "...
+INFO [upload:89] Obtained the process_info data:
+Length: 6062 bytes
+Data: {"processes": {"0": {"proc": 0, "name": "unknown", "parents": "", "cont_name": "", "root": 0, "taint...
+INFO [upload:89] Obtained the process_timeline data:
+Length: 8711 bytes
+Data: {"0": [{"name": "unknown", "start": 0, "end": 1, "root": 0, "tainted": 0, "info": {"name": "unknown"...
+INFO [upload:89] Obtained the attack_surface data:
+Length: 9169 bytes
+Data: [{"files": [], "name": "test_sample", "proc": 7, "tag": "", "root": 0, "tainted": 1, "binaries": [{"...
+</pre></div>
+</div>
+<p>Снова запускается <em>SNatch</em> в браузере, открывается первый проект, выполняется переход на <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">Graph</span></code>, потом на <code class="docutils literal notranslate"><span class="pre">Module</span> <span class="pre">Graph</span></code> для их активации, а затем генерируется и сохраняется PDF отчет.
+Действия повторяются для второго проекта.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SNatch opened in browser.
+Report /home/user/Downloads/report-sample2-16-10-2024.pdf (417.7 KB) has been generated.
+Report /home/user/Downloads/report-sample1-16-10-2024.pdf (364.14 KB) has been generated.
+</pre></div>
+</div>
+<p>В результате в каталоге Downloads мы получаем PDF отчеты для двух тестовых приложений.</p>
+<p>Следует обратить особое внимание, что автоматизация намеренно не очищает базу данных уже загруженных ранее проектов в <em>SNatch</em>, так что, если вы ранее уже загружали свои проекты в него, они не пропадут. Более того, для них также будут сгенерированы отчеты.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="10_additional.html" class="btn btn-neutral float-left" title="10. Дополнительные возможности Natch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="12_applications.html" class="btn btn-neutral float-right" title="12. Примеры использования Natch" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='main', url='11_automation.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="11_automation.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.4.1/11_automation.html" style="color: #3498db;">natch_docs_v.3.4.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.5/11_automation.html" style="color: #3498db;">natch_docs_v.3.5</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6/11_automation.html" style="color: #3498db;">natch_docs_v.3.6</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.6.1/11_automation.html" style="color: #3498db;">natch_docs_v.3.6.1</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7/11_automation.html" style="color: #3498db;">natch_docs_v.3.7</a></dd>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/11_automation.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    main
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.4.1/11_automation.html">natch_docs_v.3.4.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.5/11_automation.html">natch_docs_v.3.5</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6/11_automation.html">natch_docs_v.3.6</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.6.1/11_automation.html">natch_docs_v.3.6.1</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7/11_automation.html">natch_docs_v.3.7</a>
+      </dd>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/11_automation.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="11_automation.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

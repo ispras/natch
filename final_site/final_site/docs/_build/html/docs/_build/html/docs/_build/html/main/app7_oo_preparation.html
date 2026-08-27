@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ж. Рекомендации по подготовке и анализу объекта оценки &mdash; Natch documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=75d691f5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=372fde1a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="З. История релизов Natch" href="app8_releases.html" />
+    <link rel="prev" title="Е. Изменение командной строки эмулятора" href="app6_cmd_line.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Natch
+              <img src="_static/logo.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_natch.html">1. Что такое Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_setup.html">2. Установка и настройка Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_launch_test_samples.html">3. Запуск тестовых примеров Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup_env.html">4. Настройка окружения для работы с Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Работа с Natch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_natch_cmd.html">5. Командный интерфейс Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_create_project.html">6. Создание проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_taint_source.html">7. Определение источников пометки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_scenario_work.html">8. Запись и воспроизведение сценариев</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_snatch.html">9. Анализ поверхности атаки с помощью SNatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_additional.html">10. Дополнительные возможности Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_automation.html">11. Автоматизация процессов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_applications.html">12. Примеры использования Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Справочная информация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="13_faq.html">13. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_requirements.html">14. Системные требования и ограничения Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app1_license.html">А. Настройка окружения для использования лицензированного Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app2_configs.html">Б. Конфигурационные файлы Natch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app3_module_cfg.html">В. Формат списка исполняемых модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app4_graphs.html">Г. Графы взаимодействия помеченных процессов и модулей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app5_coverage.html">Д. Формат файла с покрытием кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app6_cmd_line.html">Е. Изменение командной строки эмулятора</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ж. Рекомендации по подготовке и анализу объекта оценки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Подготовка образа исследуемой системы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Анализ приложений на компилируемых языках</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#go">Анализ приложений на языке Go</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#natch">Использование Natch для интерпретируемых языков</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python">Анализ Python приложений</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#java-javascript-net">Анализ приложений на Java, JavaScript, .NET</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#map">Получение map-файлов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Анализ кластеров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Анализ приложений внутри контейнеров</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app8_releases.html">З. История релизов Natch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conferences.html">Участие в конференциях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trophies.html">Практическое применение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Публикации</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Natch</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Ж. Рекомендации по подготовке и анализу объекта оценки</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app7_oo_preparation.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="page-break-before:always;">
+</div>
+<p><a name="app_preparation"></a></p>
+<section id="id1">
+<h1>Ж. Рекомендации по подготовке и анализу объекта оценки<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<section id="id2">
+<h2>Подготовка образа исследуемой системы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Для того чтобы воспользоваться инструментом <em>Natch</em> необходимо подготовить образ системы,
+совместимый с виртуальной машиной QEMU.</p>
+<ul class="simple">
+<li><p>Объект оценки должен быть собран внутри образа, а бинарные файлы выгружены наружу, чтобы
+и в гостевой и хостовой системах имелись одинаковые экземпляры (с версии 3.2 выгрузка может быть
+сделана автоматически на этапе создания проекта).</p></li>
+<li><p>Чтобы компиляция и настройка ПО внутри виртуальной машины проходила комфортней, рекомендуется
+запускать QEMU в режиме аппаратной виртуализации, что существенно ускорит работу гостевой системы.
+Для этого можно использовать команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">kvm</span></code>, или, если запускаете эмулятор с помощью собственной
+командной строки, виртуализация включается ключом <code class="docutils literal notranslate"><span class="pre">-enable-kvm</span></code>.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>Анализ приложений на компилируемых языках<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Для отображения символьных имен функций в отчётах <em>Natch</em>,
+нужно собирать ПО с отладочной информацией.
+Natch поддерживает отладочную информацию в формате DWARF.
+В любом современном компиляторе это достигается использованием ключа <code class="docutils literal notranslate"><span class="pre">-g</span></code>.
+Если при этом отключать оптимизации (ключ <code class="docutils literal notranslate"><span class="pre">-O0</span></code>), то отображаемый в интерфейсе анализа стек вызовов будет более точным/понятным.</p>
+</section>
+<section id="go">
+<h2>Анализ приложений на языке Go<a class="headerlink" href="#go" title="Ссылка на этот заголовок"></a></h2>
+<p>Приложения на языке Go имеют собственный (отличный от DWARF) формат отладочной информации.
+Natch поддерживает анализ этой информации, если используется Go версии 1.2 или новее.
+При сборке никакие дополнительные ключи не нужны, так как компилятор в любом
+случае включает в исполняемый файл достаточно информации об именах функций и исходных файлов.</p>
+<p><a name="natch_interpreters"></a></p>
+</section>
+<section id="natch">
+<h2>Использование Natch для интерпретируемых языков<a class="headerlink" href="#natch" title="Ссылка на этот заголовок"></a></h2>
+<p>Для наблюдения полноценной символьной информации в аналитиках <em>SNatch</em>, <em>Natch</em>
+должен получить отладочную информацию не только для исследуемых модулей, но и для
+используемых интерпретаторов.</p>
+<p>С версии 3.2 есть возможность гибко настраивать получение отладочной информации
+на этапе создания проекта, а также редактировать ее в дальнейшем при работе с проектом.
+Информация о сборе отладочных символов находится в конфигурационном файле
+<code class="docutils literal notranslate"><span class="pre">debug_info.cfg</span></code> (подробнее в разделе
+<a class="reference internal" href="app2_configs.html#debug_config"><span class="std std-ref">Конфигурационный файл для управления отладочной информацией debug_info.cfg</span></a>),
+который может быть отредактирован в любой момент после создания проекта
+с помощью команды (<a class="reference internal" href="#3_natch_cmd.md#cmd_edit"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">edit</span> <span class="pre">debug</span></code></span></a>).
+После редактирования следует выполнить команду <code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">modules</span> <span class="pre">update</span></code>
+(<a class="reference internal" href="#3_natch_cmd.md#cmd_modules_update"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">natch</span> <span class="pre">modules</span> <span class="pre">update</span></code></span></a>).</p>
+<p>При использовании стандартных Python, Java, JavaScript, .NET отладочная информация скачивается автоматически на
+этапе создания проекта, если вы умышленно не отключите эту возможность в расширенных
+настройках.</p>
+<p><a name="interpreters_python"></a></p>
+<section id="python">
+<h3>Анализ Python приложений<a class="headerlink" href="#python" title="Ссылка на этот заголовок"></a></h3>
+<p>При использовании собственной сборки Python необходимо отдельно предоставить отладочные символы,
+в противном случае символизации Python-кода не будет.</p>
+<p>Расположить отладочные символы можно по стандартному пути для
+отладочных символов в системе, либо использовать расширенные настройки получения
+отладочной информации на этапе создания проекта и указать собственный путь.</p>
+<p>При использовании стандартной сборки следует проконтролировать, что символы будут загружены
+(в случае если вы выбрали расширенные настройки получения отладочной информации, если нет,
+все будет загружено автоматически).</p>
+<p><a name="interpreters_java"></a></p>
+</section>
+<section id="java-javascript-net">
+<h3>Анализ приложений на Java, JavaScript, .NET<a class="headerlink" href="#java-javascript-net" title="Ссылка на этот заголовок"></a></h3>
+<p>Как и в случае с Python, использование собственной сборки Java/.NET-машины или JavaScript-интерпретатора
+влечет необходимость предоставления отладочных символов.</p>
+<p>Расположить отладочные символы можно по стандартному пути для
+отладочных символов в системе, либо использовать расширенные настройки получения
+отладочной информации на этапе создания проекта и указать собственный путь.</p>
+<p>Также, в связи с особенностями реализации интроспекции jit-кода, для успешного проведения анализа
+требуется включать в сценарий момент запуска jit-компиляторе или интерпретатора,
+в противном случае функции из скрипта или байт-кода не смогут быть распознаны.</p>
+<p>Если такой сценарий получается слишком большим (например, когда старт занимает значительное время
+по сравнению с «полезной» работой), то следует использовать облегчённый режим воспроизведения.
+Тогда вспомогательные данные сохранятся вместе со сценарием, и можно будет запустить воспроизведение
+с полноценным анализом с любого момента.</p>
+</section>
+</section>
+<section id="map">
+<h2>Получение map-файлов<a class="headerlink" href="#map" title="Ссылка на этот заголовок"></a></h2>
+<p>Если по какой-то причине собрать программу с отладочной информацией невозможно, то для получения символов <em>Natch</em> может использовать
+map-файлы. Получение map-файлов для исполняемого файла возможно с помощью сторонних инструментов.
+Например, для генерации map-файла можно применить дизассемблер
+<a class="reference external" href="https://hex-rays.com/ida-free/">IDA Free</a>. Для этого необходимо скачать установочный комплект по указанной ссылке и, возможно,
+доустановить библиотеки Qt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>qt5-default
+</pre></div>
+</div>
+<p>После установки IDA необходимо запустить её, открыть интересующий исполняемый файл.</p>
+<p><img alt="_images/ida_map1.png" src="_images/ida_map1.png" /><figcaption><em>Загрузка бинарного файла в IDA Pro</em></figcaption></p>
+<p>Пройти процедуру генерации map-файла.</p>
+<p><img alt="_images/ida_map2.png" src="_images/ida_map2.png" /><figcaption><em>Генерация map-файла</em></figcaption></p>
+<p>Обязательным пунктом является только <em>Segmentation information</em>, остальные по желанию.</p>
+<p><img alt="_images/ida_map3.png" src="_images/ida_map3.png" /><figcaption><em>Выбор опций map-файла</em></figcaption></p>
+<p>Полученный map-файл должен быть помещен в папку с исполняемыми файлами, которые будут переданы в <em>Natch</em>.
+Имя map-файла должно соответствовать имени бинарного файла, например, <code class="docutils literal notranslate"><span class="pre">program</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">program.map</span></code>, <code class="docutils literal notranslate"><span class="pre">lib_x.so</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">lib_x.so.map</span></code>.</p>
+</section>
+<section id="id4">
+<h2>Анализ кластеров<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Анализ кластеров из нескольких гостевых систем возможен по отдельности – для каждой гостевой системы запускается отдельный экземпляр <em>Natch</em>.
+Кластер можно связать через виртуальный коммутатор. Генерация совокупной интегральной поверхности атаки и ее единого графического представления не поддерживается.</p>
+</section>
+<section id="id5">
+<h2>Анализ приложений внутри контейнеров<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Если в вашей системе используются docker/podman-контейнеры, то, на данный момент, для получения максимально возможной
+информации о них, сохранять состояние машины следует до запуска контейнеров.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="app6_cmd_line.html" class="btn btn-neutral float-left" title="Е. Изменение командной строки эмулятора" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="app8_releases.html" class="btn btn-neutral float-right" title="З. История релизов Natch" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права ISPRAS. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- 
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions" style="position: fixed; bottom: 0; left: 0; width: 300px; z-index: 200;">
+  <span class="rst-current-version" data-toggle="rst-current-version" style="background: #2980b9; color: white; padding: 6px 12px; display: block; cursor: pointer; font-weight: bold;">
+    <span class="fa fa-book"> Версии документации</span>
+    v: Version(name='main', url='app7_oo_preparation.html', version='', release='', is_released=False)
+    <span class="fa fa-caret-down" style="float: right;"></span>
+  </span>
+  <div class="rst-other-versions" style="background: #2c3e50; color: #ecf0f1; display: none; padding: 10px;">
+    
+    <dl style="margin-bottom: 10px;">
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Ветки</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="app7_oo_preparation.html" style="color: #3498db;">main</a></dd>
+      
+    </dl>
+    
+    
+    <dl>
+      <dt style="font-weight: bold; color: #95a5a6; text-transform: uppercase; font-size: 0.8rem;">Релизы</dt>
+      
+      <dd style="margin-left: 10px; margin-top: 5px;"><a href="../natch_docs_v.3.7.1/app7_oo_preparation.html" style="color: #3498db;">natch_docs_v.3.7.1</a></dd>
+      
+    </dl>
+    
+  </div>
+</div>
+<script>
+  document.querySelector('.rst-current-version').addEventListener('click', function() {
+    var other = document.querySelector('.rst-other-versions');
+    other.style.display = other.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+ -->
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Версия документации</span>
+    main
+    <span class="fa fa-caret-down"></span>
+  </span>
+
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Релизы</dt>
+      <dd>
+        <a href="../natch_docs_v.3.7.1/app7_oo_preparation.html">natch_docs_v.3.7.1</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Ветки</dt>
+      <dd>
+        <a href="app7_oo_preparation.html">main</a>
+      </dd>
+    </dl>
+
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

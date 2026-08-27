@@ -1,0 +1,8 @@
+# Documentation build dependencies
+
+sphinx>=8.0,<9.0
+myst-parser
+sphinx-rtd-theme
+sphinx-multitoc-numbering
+sphinx-design
+sphinx-multiversion

@@ -166,30 +166,26 @@ jobs:
 
 
       # ------------------------------------------------------------
-      # 10. Root redirect
+      # 10. Root redirect (С защитой от кэширования браузером)
       # ------------------------------------------------------------
       - name: Create Root Redirect
         run: |
-
           cat > final_site/index.html <<EOF
           <!DOCTYPE html>
           <html>
             <head>
               <meta charset="utf-8">
-
               <title>Natch documentation</title>
 
-              <meta
-                http-equiv="refresh"
-                content="0; url=./${LATEST_RELEASE}/index.html"
-              >
+              <!-- Запрещаем браузерам кэшировать эту страницу перенаправления -->
+              <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+              <meta http-equiv="Pragma" content="no-cache">
+              <meta http-equiv="Expires" content="0">
 
-              <link
-                rel="canonical"
-                href="./${LATEST_RELEASE}/index.html"
-              >
+              <!-- Выполняем мгновенный редирект на последнюю версию -->
+              <meta http-equiv="refresh" content="0; url=./${LATEST_RELEASE}/index.html">
+              <link rel="canonical" href="./${LATEST_RELEASE}/index.html">
             </head>
-
             <body>
               <p>
                 Redirecting to

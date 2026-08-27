@@ -22,8 +22,12 @@ concurrency:
 
 jobs:
   build:
-    name: Build documentation
+    name: Build and deploy documentation
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       # ------------------------------------------------------------
@@ -58,15 +62,19 @@ jobs:
           git fetch origin --prune
           git fetch origin --tags --force
 
-          # echo "Current ref:"
-          # git describe --always --decorate
-
           echo
           echo "Documentation tags:"
           git tag --list 'natch_docs_v.*' | sort -V
 
+
       # ------------------------------------------------------------
-      # 5. Полная сборка всех версий
+      # 5. Configure GitHub Pages
+      # ------------------------------------------------------------
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # ------------------------------------------------------------
+      # 6. Полная сборка всех версий
       # ------------------------------------------------------------
       - name: Build Multi-Version Documentation
         run: |
@@ -74,16 +82,12 @@ jobs:
 
           sphinx-multiversion docs final_site
 
-        env:
-          SPHINX_MULTIVERSION_PRE_BUILD_REF: ${{ github.ref }}
-
 
       # ------------------------------------------------------------
-      # 6. Проверяем результат sphinx-multiversion
+      # 7. Проверяем результат sphinx-multiversion
       # ------------------------------------------------------------
       - name: Show Built Versions
         run: |
-
           echo "===== GENERATED VERSION DIRECTORIES ====="
 
           find final_site \
@@ -93,9 +97,18 @@ jobs:
             -printf '%f\n' |
             sort
 
+          echo
+          echo "===== CURRENT ROOT ====="
+
+          find final_site \
+            -mindepth 1 \
+            -maxdepth 1 \
+            -printf '%f\n' |
+            sort
+
 
       # ------------------------------------------------------------
-      # 7. Находим последний релиз
+      # 8. Находим последний релиз
       # ------------------------------------------------------------
       - name: Find Latest Release
         run: |
@@ -106,13 +119,6 @@ jobs:
             sort -V |
             tail -n 1
           )
-
-          # LATEST_RELEASE=$(
-          #   git tag --list 'natch_docs_v.*' |
-          #   grep -E '^natch_docs_v\.[0-9]+\.[0-9]+(\.[0-9]+)?$' |
-          #   sort -V |
-          #   tail -n 1
-          # )
 
           if [ -z "$LATEST_RELEASE" ]; then
             echo "WARNING: No release tag found."
@@ -125,23 +131,22 @@ jobs:
 
 
       # ------------------------------------------------------------
-      # 8. Проверяем, что релиз действительно собран
+      # 9. Проверяем, что релиз действительно собран
       # ------------------------------------------------------------
       - name: Verify Latest Release
         run: |
 
+          RELEASE_INDEX="final_site/${LATEST_RELEASE}/index.html"
+
           echo "Checking:"
-          echo "final_site/${LATEST_RELEASE}/index.html"
+          echo "$RELEASE_INDEX"
 
-          if [ ! -f "final_site/${LATEST_RELEASE}/index.html" ]; then
-
+          if [ ! -f "$RELEASE_INDEX" ]; then
             echo
             echo "ERROR: Latest release was not generated!"
             echo
-
             echo "Expected:"
-            echo "final_site/${LATEST_RELEASE}/index.html"
-
+            echo "$RELEASE_INDEX"
             echo
             echo "Available directories:"
 
@@ -155,11 +160,13 @@ jobs:
             exit 1
           fi
 
+          echo
           echo "OK: release exists"
+          ls -lh "$RELEASE_INDEX"
 
 
       # ------------------------------------------------------------
-      # 9. Root redirect
+      # 10. Root redirect
       # ------------------------------------------------------------
       - name: Create Root Redirect
         run: |
@@ -196,12 +203,14 @@ jobs:
 
 
       # ------------------------------------------------------------
-      # 10. КРИТИЧЕСКАЯ ПРОВЕРКА
+      # 11. КРИТИЧЕСКАЯ ПРОВЕРКА
       # ------------------------------------------------------------
       - name: Verify Final Site
         run: |
 
-          echo "===== FINAL SITE ROOT ====="
+          echo "======================================"
+          echo "FINAL SITE ROOT"
+          echo "======================================"
 
           find final_site \
             -mindepth 1 \
@@ -210,73 +219,55 @@ jobs:
             sort
 
           echo
-          echo "===== RELEASE INDEX ====="
+          echo "======================================"
+          echo "LATEST RELEASE"
+          echo "======================================"
+
+          echo "$LATEST_RELEASE"
+
+          echo
+          echo "======================================"
+          echo "RELEASE INDEX"
+          echo "======================================"
 
           ls -lh \
             "final_site/${LATEST_RELEASE}/index.html"
 
           echo
-          echo "===== ROOT REDIRECT ====="
+          echo "======================================"
+          echo "ROOT INDEX"
+          echo "======================================"
 
           cat final_site/index.html
 
 
       # ------------------------------------------------------------
-      # 11. Публикуем Pages Artifact
+      # 12. Загружаем ИМЕННО final_site в Pages artifact
       # ------------------------------------------------------------
+
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: final_site
 
 
-  # ==============================================================
-  # DEPLOY
-  # ==============================================================
-
-  # deploy:
-  #   name: Deploy to GitHub Pages
-
-  #   runs-on: ubuntu-latest
-
-  #   needs: build
-
-  #   permissions:
-  #     pages: write
-  #     id-token: write
-
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
-
-  #   steps:
-
-  #     - name: Deploy
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4
-
-  deploy:
-    name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
-    needs: build
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+      # ------------------------------------------------------------
+      # 13. Deploy Pages
+      # ------------------------------------------------------------
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
+
+      # ------------------------------------------------------------
+      # 14. Показываем URL deployment
+      # ------------------------------------------------------------
+
       - name: Show deployment URL
         run: |
+          echo "======================================"
           echo "DEPLOYED TO:"
+          echo "======================================"
+
           echo "${{ steps.deployment.outputs.page_url }}"

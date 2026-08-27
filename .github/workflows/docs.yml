@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -57,9 +57,6 @@ jobs:
       # ------------------------------------------------------------
       # 4. Явно обновляем refs
       # ------------------------------------------------------------
-      # ------------------------------------------------------------
-      # 4. Явно обновляем refs (ИСПРАВЛЕННЫЙ ВАРИАНТ)
-      # ------------------------------------------------------------
       - name: Fetch branches and tags
         run: |
           # 1. Скачиваем обновления веток
@@ -75,13 +72,7 @@ jobs:
 
 
 
-      # ------------------------------------------------------------
-      # 5. Configure GitHub Pages
-      # ------------------------------------------------------------
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      # ------------------------------------------------------------
+       # ------------------------------------------------------------
       # 6. Полная сборка всех версий
       # ------------------------------------------------------------
       - name: Build Multi-Version Documentation
@@ -192,7 +183,6 @@ jobs:
               <meta http-equiv="Pragma" content="no-cache">
               <meta http-equiv="Expires" content="0">
 
-              <!-- ИСПОЛЬЗУЕМ АБСОЛЮТНЫЙ ПУТЬ С ИМЕНЕМ РЕПОЗИТОРИЯ -->
               <meta http-equiv="refresh" content="0; url=${LATEST_RELEASE}/index.html">
               <link rel="canonical" href="${LATEST_RELEASE}/index.html">
             </head>
@@ -246,6 +236,12 @@ jobs:
           echo "======================================"
 
           cat final_site/index.html
+
+      # ------------------------------------------------------------
+      # 5. Configure GitHub Pages
+      # ------------------------------------------------------------
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
 
       # ------------------------------------------------------------

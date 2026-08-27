@@ -49,20 +49,6 @@ html_sidebars = {
 }
 
 
-# # Принудительно внедряем наш шаблон версий в разметку темы Read the Docs
-# html_context = {
-#     'extra_nav_items': [
-#         # Этот трюк заставляет Sphinx отрендерить наш шаблон внутри сайдбара
-#         '<!--include_versioning-->',
-#     ]
-# }
-
-# # Переопределяем встроенный шаблон темы, чтобы подключить наш файл
-# def setup(app):
-#     app.config.html_context['extra_nav_items'] = ['versioning.html']
-
-
-
 # settins for sphinx-multiversion
 
 smv_branch_whitelist = r'^main$'
@@ -73,8 +59,6 @@ smv_tag_whitelist = r'^natch_docs_v\.(3\.4\.[1-9][0-9]*|3\.[5-9][0-9]*(\.[0-9]+)
 smv_released_pattern = r'^tags/.*$'
 
 master_doc = 'index'
-
-
 
 # HTML theme
 

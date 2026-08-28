@@ -182,12 +182,15 @@ jobs:
       - name: Create Root Redirect
         run: |
 
+
           echo $(pwd)
           cat > final_site/index.html <<EOF
           <!DOCTYPE html>
           <html>
             <head>
               <meta charset="utf-8">
+              <meta http-equiv="Status" content="200">
+              <meta http-equiv="content-security-policy" content="default-src 'self'">
               <title>Natch documentation</title>
 
               <!-- Запрещаем кэширование страницы перенаправления -->

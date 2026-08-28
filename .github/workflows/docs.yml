@@ -63,7 +63,11 @@ jobs:
           git fetch origin main --prune
           git fetch origin "+refs/tags/*:refs/tags/*" --force
 
-          git branch -f main origin/main
+          # 2. Обновляем локальную ветку main при пуше тегов
+          if [ "${{ github.ref_type }}" = "tag" ]; then
+            echo "Triggered by a tag. Forcing local main branch update..."
+            git branch -f main origin/main
+          fi
 
           echo
           echo "Доступные теги локально на диске:"

@@ -252,6 +252,17 @@ jobs:
 
           cat final_site/index.html
 
+      # ------------------------------------------------------------
+      # 11.5. Сбрасываем контекст Git, чтобы upload-pages-artifact не терял файлы
+      # ------------------------------------------------------------
+      - name: Reset Git context before upload
+        run: |
+          # Удаляем внутреннюю папку .git текущего воркспейса.
+          # Это превратит всю рабочую директорию в обычный набор файлов.
+          # Экшен upload-pages-artifact больше не будет смотреть на правила Git,
+          # detached HEAD или .gitignore, а просто упакует папку final_site.
+          rm -rf .git
+          echo "Git metadata removed. Ready for complete upload."
 
       # ------------------------------------------------------------
       # 12. Загружаем final_site в Pages artifact

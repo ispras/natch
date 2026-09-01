@@ -25,9 +25,9 @@ jobs:
     name: Build and deploy documentation
     runs-on: ubuntu-latest
 
-    # environment:
-    #   name: github-pages
-    #   url: ${{ steps.deployment.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       # ------------------------------------------------------------
@@ -273,25 +273,25 @@ jobs:
           path: final_site
 
 
-      # # ------------------------------------------------------------
-      # # 13. Deploy Pages
-      # # ------------------------------------------------------------
+      # ------------------------------------------------------------
+      # 13. Deploy Pages
+      # ------------------------------------------------------------
 
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
 
-      # # ------------------------------------------------------------
-      # # 14. Показываем URL deployment
-      # # ------------------------------------------------------------
+      # ------------------------------------------------------------
+      # 14. Показываем URL deployment
+      # ------------------------------------------------------------
 
-      # - name: Show deployment URL
-      #   run: |
-      #     echo "======================================"
-      #     echo "DEPLOYED TO:"
-      #     echo "======================================"
+      - name: Show deployment URL
+        run: |
+          echo "======================================"
+          echo "DEPLOYED TO:"
+          echo "======================================"
 
-      #     echo "${{ steps.deployment.outputs.page_url }}"
+          echo "${{ steps.deployment.outputs.page_url }}"
 
 

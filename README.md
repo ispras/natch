@@ -52,9 +52,9 @@ Natch (Network Application Tainting Can Help) -- это инструмент д�
 
 [13. Примеры использования Natch](docs/13_applications.md)
 
-[14. FAQ](docs/14_faq.md)
+[14. Системные требования и ограничения Natch](docs/14_requirements)
 
-[15. Системные требования и ограничения Natch](docs/15_requirements)
+[15. FAQ](docs/15_faq.md)
 
 [Приложение А. Настройка окружения для использования лицензированного Natch](docs/app1_license.md)
 

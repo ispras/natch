@@ -32,8 +32,8 @@
 :::
 :::{grid-item-card} <H2>{octicon}`question` Справочная информация</H2>
 
-* [Часто задаваемые вопросы (FAQ)](14_faq)
-* [Системные требования и ограничения Natch](15_requirements)
+* [Системные требования и ограничения Natch](14_requirements)
+* [Часто задаваемые вопросы (FAQ)](15_faq)
 * [Телеграм-канал поддержки Natch](https://t.me/ispras_natch)
 :::
 
@@ -112,8 +112,8 @@
 :caption: Справочная информация
 :hidden:
 
-14_faq
 14_requirements
+15_faq
 ```
 
 ```{toctree}

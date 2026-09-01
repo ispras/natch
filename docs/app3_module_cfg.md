@@ -1,6 +1,3 @@
-<div style="page-break-before:always;">
-</div>
-
 <a name="app_module_config"></a>
 
 # В. Формат списка исполняемых модулей

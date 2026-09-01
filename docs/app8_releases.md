@@ -1,6 +1,3 @@
-<div style="page-break-before:always;">
-</div>
-
 <a name="app_releases"></a>
 
 # З. История релизов Natch

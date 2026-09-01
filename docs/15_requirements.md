@@ -1,6 +1,3 @@
-<div style="page-break-before:always;">
-</div>
-
 <a name="app_requirements"></a>
 
 # Системные требования и ограничения Natch

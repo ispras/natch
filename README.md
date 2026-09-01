@@ -28,47 +28,49 @@ Natch (Network Application Tainting Can Help) -- это инструмент д�
 
 [1. Что такое Natch](docs/1_natch.md)
 
-[2. Установка и настройка Natch](docs/2_setup.md)
+[2. Настройка окружения для работы с Natch](docs/2_setup_env.md)
 
-[3. Командный интерфейс Natch](docs/3_natch_cmd.md)
+[3. Установка и настройка Natch](docs/3_setup.md)
 
 [4. Запуск тестовых примеров Natch](docs/4_launch_test_samples.md)
 
-[5. Настройка окружения для работы с Natch](docs/5_setup_env.md)
+[5. Командный интерфейс Natch](docs/5_natch_cmd.md)
 
-[6. Создание проекта](docs/6_create_project.md)
+[6. Подготовка образа с объектом оценки](docs/6_prepare_image)
 
-[7. Определение источников пометки](docs/7_taint_source.md)
+[7. Создание проекта](docs/7_create_project.md)
 
-[8. Запись и воспроизведение сценариев](docs/8_scenario_work.md)
+[8. Определение источников пометки](docs/8_taint_source.md)
 
-[9. Анализ поверхности атаки с помощью SNatch](docs/9_snatch.md)
+[9. Запись и воспроизведение сценариев](docs/9_scenario_work.md)
 
-[10. Дополнительные возможности Natch](docs/10_additional.md)
+[10. Анализ поверхности атаки с помощью SNatch](docs/10_snatch.md)
 
-[11. Автоматизация процессов](docs/11_automation.md)
+[11. Дополнительные возможности Natch](docs/11_additional.md)
 
-[12. Примеры использования Natch](docs/12_applications.md)
+[12. Автоматизация процессов](docs/12_automation.md)
 
-[13. FAQ](docs/13_faq.md)
+[13. Примеры использования Natch](docs/13_applications.md)
 
-[Приложение 1. Настройка окружения для использования лицензированного Natch](docs/app1_license.md)
+[14. FAQ](docs/14_faq.md)
 
-[Приложение 2. Конфигурационные файлы Natch](docs/app2_configs.md)
+[15. Системные требования и ограничения Natch](docs/15_requirements)
 
-[Приложение 3. Формат списка исполняемых модулей](docs/app3_module_cfg.md)
+[Приложение А. Настройка окружения для использования лицензированного Natch](docs/app1_license.md)
 
-[Приложение 4. Графы взаимодействия помеченных процессов и модулей](docs/app4_graphs.md)
+[Приложение Б. Конфигурационные файлы Natch](docs/app2_configs.md)
 
-[Приложение 5. Формат файла с покрытием кода](docs/app5_coverage.md)
+[Приложение В. Формат списка исполняемых модулей](docs/app3_module_cfg.md)
 
-[Приложение 6. Изменение командной строки эмулятора](docs/app6_cmd_line.md)
+[Приложение Г. Графы взаимодействия помеченных процессов и модулей](docs/app4_graphs.md)
 
-[Приложение 7. Требования и ограничения Natch](docs/app7_requirements.md)
+[Приложение Д. Формат файла с покрытием кода](docs/app5_coverage.md)
 
-[Приложение 8. Рекомендации по подготовке и анализу объекта оценки](docs/app8_oo_preparation.md)
+[Приложение Е. Изменение командной строки эмулятора](docs/app6_cmd_line.md)
 
-[Приложение 9. История релизов Natch](docs/app9_releases.md)
+[Приложение Ж. Рекомендации по подготовке и анализу объекта оценки](docs/app8_oo_preparation.md)
+
+[Приложение З. История релизов Natch](docs/app9_releases.md)
 
 -----
 

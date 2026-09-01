@@ -1,6 +1,3 @@
-<div style="page-break-before:always;">
-</div>
-
 <a name="app_license"></a>
 
 # А. Настройка окружения для использования лицензированного Natch

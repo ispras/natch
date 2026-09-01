@@ -1,6 +1,3 @@
-<div style="page-break-before:always;">
-</div>
-
 <a name="natch_additional"></a>
 
 # Дополнительные возможности Natch
@@ -149,7 +146,7 @@ Call stack:
 
 В настоящее время формат LCOV применяется исключительно для отображения выполненных инструкций и функций, без учета частоты выполнения строк кода.
 
-В *Natch* это реализовано командой [`natch coverage extract`](3_natch_cmd.md#cmd_coverage).
+В *Natch* это реализовано командой [`natch coverage extract`](5_natch_cmd.md#cmd_coverage).
 
 В результате выполнения команды генерируется ряд файлов, в том числе `cov.info`, а также создается отчет в формате HTML с помощью утилиты `genhtml`,
 входящей в состав пакета программ `lcov`.

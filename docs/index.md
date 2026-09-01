@@ -14,25 +14,26 @@
 :::{grid-item-card} <H2>{octicon}`rocket` Начало работы</H2>
 
 * [Что такое Natch](1_natch)
-* [Установка и настройка Natch](2_setup)
-* [Запуск тестовых примеров](3_launch_test_samples)
-* [Настройка окружения для работы с Natch](4_setup_env)
+* [Настройка окружения для работы с Natch](2_setup_env)
+* [Установка и настройка Natch](3_setup)
+* [Запуск тестовых примеров](4_launch_test_samples)
 :::
 :::{grid-item-card} <H2>{octicon}`terminal` Работа с Natch</H2>
 
 - [Командный интерфейс Natch](5_natch_cmd)
-- [Создание проекта](6_create_project)
-- [Определение источников пометки](7_taint_source)
-- [Запись и воспроизведение сценариев](8_scenario_work)
-- [Анализ поверхности атаки с помощью SNatch](9_snatch)
-- [Дополнительные возможности Natch](10_additional)
-- [Автоматизация процессов](11_automation)
-- [Примеры использования Natch](12_applications)
+- [Подготовка образа с объектом оценки](6_prepare_image)
+- [Создание проекта](7_create_project)
+- [Определение источников пометки](8_taint_source)
+- [Запись и воспроизведение сценариев](9_scenario_work)
+- [Анализ поверхности атаки с помощью SNatch](10_snatch)
+- [Дополнительные возможности Natch](11_additional)
+- [Автоматизация процессов](12_automation)
+- [Примеры использования Natch](13_applications)
 :::
 :::{grid-item-card} <H2>{octicon}`question` Справочная информация</H2>
 
-* [Часто задаваемые вопросы (FAQ)](13_faq)
-* [Системные требования и ограничения Natch](14_requirements)
+* [Часто задаваемые вопросы (FAQ)](14_faq)
+* [Системные требования и ограничения Natch](15_requirements)
 * [Телеграм-канал поддержки Natch](https://t.me/ispras_natch)
 :::
 
@@ -83,9 +84,9 @@
 :hidden:
 
 1_natch
-2_setup
-3_launch_test_samples
-4_setup_env
+2_setup_env
+3_setup
+4_launch_test_samples
 ```
 
 ```{toctree}
@@ -95,13 +96,14 @@
 :hidden:
 
 5_natch_cmd
-6_create_project
-7_taint_source
-8_scenario_work
-9_snatch
-10_additional
-11_automation
-12_applications
+6_prepare_image
+7_create_project
+8_taint_source
+9_scenario_work
+10_snatch
+11_additional
+12_automation
+13_applications
 ```
 
 ```{toctree}
@@ -110,7 +112,7 @@
 :caption: Справочная информация
 :hidden:
 
-13_faq
+14_faq
 14_requirements
 ```
 

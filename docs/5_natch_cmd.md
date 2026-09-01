@@ -1,6 +1,3 @@
-<div style="page-break-before:always;">
-</div>
-
 <a name="natch_cmd"></a>
 
 # Командный интерфейс Natch
@@ -109,7 +106,7 @@ Natch configs editing:
 natch create test_sample Natch_testing_materials/test_image_debian.qcow2
 ```
 
-Подробнее о создании проекта можно узнать в разделе [Создание проекта](6_create_project.md#create_project).
+Подробнее о создании проекта можно узнать в разделе [Создание проекта](7_create_project.md#create_project).
 
 <a name="cmd_record"></a>
 
@@ -129,7 +126,7 @@ natch create test_sample Natch_testing_materials/test_image_debian.qcow2
 natch record -s sample
 ```
 
-Подробнее о записи сценария в разделе [Запись сценария](8_scenario_work.md#record).
+Подробнее о записи сценария в разделе [Запись сценария](9_scenario_work.md#record).
 
 <a name="cmd_replay"></a>
 
@@ -167,7 +164,7 @@ natch replay -s sample
 natch replay --start login --end get_info
 ```
 
-Подробнее о воспроизведении сценария в разделе [Воспроизведение сценария](8_scenario_work.md#replay).
+Подробнее о воспроизведении сценария в разделе [Воспроизведение сценария](9_scenario_work.md#replay).
 
 <a name="cmd_kvm"></a>
 
@@ -199,7 +196,7 @@ natch kvm -s
 natch kvm --args "-vnc 127.0.0.1:0"
 ```
 
-Обычно используется для подготовки объекта оценки (подробнее в разделе [Настройка окружения для работы с Natch](5_setup_env.md#setup_env))
+Обычно используется для подготовки объекта оценки (подробнее в разделе [Подготовка образа с объектом оценки](6_prepare_image.md#prepare_image))
 или для быстрого доступа к исследуемой системе.
 
 Параметр `-m` доступен только при запуске команды вне рабочей директории, в противном

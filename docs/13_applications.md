@@ -1,6 +1,3 @@
-<div style="page-break-before:always;">
-</div>
-
 <a name="natch_applications"></a>
 
 # Примеры использования Natch
@@ -187,7 +184,7 @@ natch kvm -i test_image_debian.qcow2
 Эти опции автоматически попадут в параметры запуска *Natch* при указании соответствующего параметра
 во время создания проекта командой `natch create`.
 
-Дальше нужно создать с помощью *Natch* проект, как описано в разделе [Создание проекта](6_create_project.md#create_project).
+Дальше нужно создать с помощью *Natch* проект, как описано в разделе [Создание проекта](7_create_project.md#create_project).
 
 Нужно будет указать текстовый режим работы эмулятора:
 ```text

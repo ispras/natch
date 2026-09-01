@@ -1,6 +1,3 @@
-<div style="page-break-before:always;">
-</div>
-
 <a name="app_preparation"></a>
 
 # Ж. Рекомендации по подготовке и анализу объекта оценки
@@ -49,9 +46,9 @@ Natch поддерживает анализ этой информации, ес�
 `debug_info.cfg` (подробнее в разделе
 [Конфигурационный файл для управления отладочной информацией debug_info.cfg](app2_configs.md#debug_config)),
 который может быть отредактирован в любой момент после создания проекта
-с помощью команды ([`natch edit debug`](3_natch_cmd.md#cmd_edit)).
+с помощью команды ([`natch edit debug`](5_natch_cmd.md#cmd_edit)).
 После редактирования следует выполнить команду `natch modules update`
-([`natch modules update`](3_natch_cmd.md#cmd_modules_update)).
+([`natch modules update`](5_natch_cmd.md#cmd_modules_update)).
 
 При использовании стандартных Python, Java, JavaScript, .NET отладочная информация скачивается автоматически на
 этапе создания проекта, если вы умышленно не отключите эту возможность в расширенных

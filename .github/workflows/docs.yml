@@ -272,7 +272,6 @@ jobs:
         with:
           path: final_site
 
-
       # ------------------------------------------------------------
       # 13. Deploy Pages
       # ------------------------------------------------------------
@@ -280,7 +279,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
 
       # ------------------------------------------------------------
       # 14. Показываем URL deployment

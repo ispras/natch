@@ -2,7 +2,7 @@
 
 **Natch v.3.4**
 
-[Телеграм-канал поддержки Natch](https://t.me/ispras_natch)
+:man_mechanic: [Телеграм-канал поддержки Natch](https://t.me/ispras_natch)
 ____
 _В связи с переходом на новую версию аппаратных ключей инструмента лицензирования Sentinel до окончания действия всех выданных лицензий будут поддерживаться два варианта дистрибутива.
 Если у вас старые ключи Sentinel, то следует брать дистрибутив из папки Sentinel_YM, если вы новый пользователь *Natch* -- дистрибутив для вас в папке Sentinel_XE._
@@ -24,7 +24,7 @@ Natch (Network Application Tainting Can Help) -- это инструмент д�
 
 
 
-
+### :rocket: Начало работы
 
 [1. Что такое Natch](docs/1_natch.md)
 
@@ -33,6 +33,9 @@ Natch (Network Application Tainting Can Help) -- это инструмент д�
 [3. Установка и настройка Natch](docs/3_setup.md)
 
 [4. Запуск тестовых примеров Natch](docs/4_launch_test_samples.md)
+
+
+### :crystal_ball: Работа с Natch
 
 [5. Командный интерфейс Natch](docs/5_natch_cmd.md)
 
@@ -52,32 +55,37 @@ Natch (Network Application Tainting Can Help) -- это инструмент д�
 
 [13. Примеры использования Natch](docs/13_applications.md)
 
+### :interrobang: Справочная информация
+
 [14. Системные требования и ограничения Natch](docs/14_requirements)
 
 [15. FAQ](docs/15_faq.md)
 
-[Приложение А. Настройка окружения для использования лицензированного Natch](docs/app1_license.md)
 
-[Приложение Б. Конфигурационные файлы Natch](docs/app2_configs.md)
+### :paperclip: Приложения
 
-[Приложение В. Формат списка исполняемых модулей](docs/app3_module_cfg.md)
+[А. Настройка окружения для использования лицензированного Natch](docs/app1_license.md)
 
-[Приложение Г. Графы взаимодействия помеченных процессов и модулей](docs/app4_graphs.md)
+[Б. Конфигурационные файлы Natch](docs/app2_configs.md)
 
-[Приложение Д. Формат файла с покрытием кода](docs/app5_coverage.md)
+[В. Формат списка исполняемых модулей](docs/app3_module_cfg.md)
 
-[Приложение Е. Изменение командной строки эмулятора](docs/app6_cmd_line.md)
+[Г. Графы взаимодействия помеченных процессов и модулей](docs/app4_graphs.md)
 
-[Приложение Ж. Рекомендации по подготовке и анализу объекта оценки](docs/app8_oo_preparation.md)
+[Д. Формат файла с покрытием кода](docs/app5_coverage.md)
 
-[Приложение З. История релизов Natch](docs/app9_releases.md)
+[Е. Изменение командной строки эмулятора](docs/app6_cmd_line.md)
+
+[Ж. Рекомендации по подготовке и анализу объекта оценки](docs/app8_oo_preparation.md)
+
+[З. История релизов Natch](docs/app9_releases.md)
 
 -----
 
-[Видеозаписи вебинаров](https://nextcloud.ispras.ru/index.php/s/3LEqid57bn8PYGx)
+:video_camera: [Видеозаписи вебинаров](https://nextcloud.ispras.ru/index.php/s/3LEqid57bn8PYGx)
 
-[Выступления на конференциях](docs/conferences.md)
+:loudspeaker: [Выступления на конференциях](docs/conferences.md)
 
-[Практическое применение Natch](docs/trophies.md)
+:ballot_box_with_check: [Практическое применение Natch](docs/trophies.md)
 
-[Научные публикации](docs/publications.md)
+:mortar_board: [Научные публикации](docs/publications.md)

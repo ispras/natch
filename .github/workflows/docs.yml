@@ -218,7 +218,7 @@ jobs:
       # 10.5. Alias /snatch
       #
       # https://ispras.github.io/natch/snatch
-      # https://ispras.github.io/natch/${LATEST_RELEASE}/6_prepare_image.html
+      # https://ispras.github.io/natch/${LATEST_RELEASE}/10_snatch.html
       # ------------------------------------------------------------
       - name: Create SNatch Redirect
         run: |
@@ -240,16 +240,16 @@ jobs:
               <meta http-equiv="Expires" content="0">
 
               <meta http-equiv="refresh"
-                    content="0; url=../${LATEST_RELEASE}/6_prepare_image.html">
+                    content="0; url=../${LATEST_RELEASE}/10_snatch.html">
 
               <link rel="canonical"
-                    href="../${LATEST_RELEASE}/6_prepare_image.html">
+                    href="../${LATEST_RELEASE}/10_snatch.html">
             </head>
 
             <body>
               <p>
                 Redirecting to
-                <a href="../${LATEST_RELEASE}/6_prepare_image.html">
+                <a href="../${LATEST_RELEASE}/10_snatch.html">
                   SNatch documentation
                 </a>...
               </p>

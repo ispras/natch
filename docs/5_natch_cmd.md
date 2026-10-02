@@ -122,8 +122,8 @@ Natch configs editing:
 
 Примеры:
 ```text
-./natch image create -f qcow2 lubuntu.qcow2 20G
-./natch image -- --help
+natch image create -f qcow2 lubuntu.qcow2 20G
+natch image -- --help
 ```
 
 Обратите внимание, что в случае вызова справки утилиты обязательно использовать разделитель `--` перед

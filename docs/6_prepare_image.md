@@ -67,16 +67,16 @@ natch kvm -i <image_name>.qcow2 -m 4G --args "-cdrom <your_os>.iso"
 
 
 Рассмотрим пошаговый пример подготовки объекта оценки.
-В качестве объекта оценки возьмем программу *wget*. Для выполнения [скрипта `configure`](https://thoughtbot.com/blog/the-magic-behind-configure-make-make-install), входящего в комплект поставки *wget*,
+В качестве объекта оценки возьмем программу *wget2*. Для выполнения скрипта `configure`, входящего в комплект поставки *wget2*,
 потребуется установить дополнительные зависимости (скрипт выведет их наименования в случае неудачного завершения), например:
 ```bash
-sudo apt install -y gnutls-dev gnutls-bin curl make gcc g++
+sudo apt install -y gnutls-dev gnutls-bin curl make gcc g++ pkg-config
 ```
 
-Скачаем исходные тексты *wget* из репозитория:
+Скачаем исходные тексты *wget2* из репозитория:
 ```bash
-curl -o wget-1.21.2.tar.gz  'https://ftp.gnu.org/gnu/wget/wget-1.21.2.tar.gz'
-tar -xzf wget-1.21.2.tar.gz && cd wget-1.21.2
+curl -o wget-1.21.2.tar.gz  'https://ftp.gnu.org/gnu/wget/wget2-2.3.0.tar.gz'
+tar -xzf wget2-2.3.0.tar.gz && cd wget2-2.3.0
 ```
 Скрипт `configure` запустим с ключами, устанавливающими параметры компилятора для сохранения отладочной информации.
 После этого запустим `make` для сборки проекта.
@@ -94,8 +94,8 @@ make
 (подробнее в разделе [Командный интерфейс Natch](5_natch_cmd.md#cmd_files_extract)):
 
 ```bash
-mkdir wget-1.21.2
-natch files extract -i lubuntu.qcow2 -p /home/user/wget-1.21.2 -D wget-1.21.2 -e
+mkdir wget2-2.3.0
+natch files extract -i <image_name>.qcow2 -p /home/user/wget2-2.3.0 -D wget2-2.3.0 -e
 ```
 
 С версии *Natch 3.2* файлы объекта оценки все еще нужны *Natch* для работы, но могут быть извлечены
@@ -108,16 +108,15 @@ natch files extract -i lubuntu.qcow2 -p /home/user/wget-1.21.2 -D wget-1.21.2 -e
 Команда запуска:
 
 ```bash
-natch kvm -i lubuntu.qcow2 -m 4G
+natch kvm -i <image_name>.qcow2 -m 4G
 ```
 Дожидаемся загрузки ОС, авторизуемся, пробуем выполнить обращение к произвольному сетевому ресурсу с помощью
 собранной нами версии *wget*:
 ```bash
-cd wget-1.21.2/src && sudo ./wget ispras.ru
+cd wget2-2.3.0/src && ./wget2 ispras.ru
 ```
-В результате вы должны увидеть приблизительно следующую картину в графическом окне QEMU,
-свидетельствующую о том, что объект оценки корректно выполняется и сетевая доступность для
-виртуальной машины обеспечена:
+В результате вы должны увидеть в эмуляторе приблизительно следующую картину, которая говорит
+о том, что объект оценки корректно выполняется и сетевая доступность для виртуальной машины обеспечена:
 
 <img src="images/quickstart/check.png"><figcaption>_Пример подготовленного ОО в QEMU_</figcaption>
 

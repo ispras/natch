@@ -132,11 +132,11 @@ System parameters:
 Создание проекта выполняется командой `natch create` (подробнее в разделе [Создание проекта](7_create_project.md#create_project)),
 которая имеет два обязательных параметра -- название будущего проекта и путь к образу исследуемой системы.
 Команда создания проекта имеет как графический, так и текстовый интерфейс. Для простоты пояснений шагов рассмотрим
-текстовую версию (для этого нужно указать опцию `--old`).
+текстовую версию (для этого нужно указать опцию `--text`).
 В процессе выполнения команды будет задан ряд вопросов. Запустим ее:
 
 ```text
-user@natch1:~/natch_quickstart$ natch create test1 Natch_testing_materials/test_image_debian.qcow2 --old
+user@natch1:~/natch_quickstart$ natch create test1 Natch_testing_materials/test_image_debian.qcow2 --text
 
 Directory for project files /home/user/natch_quickstart/test1 was created
 OS: Linux

@@ -239,7 +239,7 @@ natch files copy -i Natch_testing_materials/test_image_debian.qcow2 -p Natch_tes
 - `-k/--kernel` -- путь до ядра
 - `-o/--os_name` -- выбор гостевой ОС (Linux, FreeBSD, Win8, Win8.1, Win10)
 - `-c/--config` -- путь до файла конфигурации для автоматического создания проекта
-- `--old` -- текстовая версия мастера создания проекта
+- `--text` -- текстовая версия мастера создания проекта
 - `-h/--help` -- справка по команде
 
 Пример:
